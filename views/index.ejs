@@ -2,6 +2,11 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <%- include('partials/head') %>
+  <!-- Preload All 4 Hero Section Images for Instant Zero-Lag Transitions -->
+  <link rel="preload" as="image" href="/images/HERO%20SECTION%20(1).jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/HERO%20SECTION%20(2).jpg">
+  <link rel="preload" as="image" href="/images/HERO%20SECTION%20(3).jpg">
+  <link rel="preload" as="image" href="/images/HERO%20SECTION%20(4).jpg">
 </head>
 <body class="bg-white text-brand-text">
 
@@ -42,25 +47,39 @@
              alt="City Line Tours Kashmir Scenic View 1" 
              class="kenburns-1 brightness-[0.75]"
              loading="eager"
-             fetchpriority="high">
+             fetchpriority="high"
+             decoding="async">
       </div>
 
       <!-- Slide 2: Hero Section Photo 2 -->
       <div class="hero-slide" data-slide="1">
         <img src="/images/HERO SECTION (2).jpg" 
              alt="City Line Tours Kashmir Scenic View 2" 
-             class="kenburns-2 brightness-[0.70]">
+             class="kenburns-2 brightness-[0.70]"
+             loading="eager"
+             decoding="async">
       </div>
 
       <!-- Slide 3: Hero Section Photo 3 -->
       <div class="hero-slide" data-slide="2">
         <img src="/images/HERO SECTION (3).jpg" 
              alt="City Line Tours Kashmir Scenic View 3" 
-             class="kenburns-3 brightness-[0.75]">
+             class="kenburns-3 brightness-[0.75]"
+             loading="eager"
+             decoding="async">
+      </div>
+
+      <!-- Slide 4: Hero Section Photo 4 -->
+      <div class="hero-slide" data-slide="3">
+        <img src="/images/HERO SECTION (4).jpg" 
+             alt="City Line Tours Kashmir Scenic View 4" 
+             class="kenburns-4 brightness-[0.75]"
+             loading="eager"
+             decoding="async">
       </div>
 
       <!-- Dual Layer Gradient Overlay for Rich Readability & Contrast -->
-      <div class="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/50 to-brand-navy/35 z-10"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/50 to-brand-navy/35 z-10 pointer-events-none"></div>
     </div>
 
     <!-- Ambient Gentle Snowfall Canvas Overlay -->
@@ -115,6 +134,7 @@
         <button type="button" class="hero-scene-dot w-6 sm:w-8 h-1.5 rounded-full bg-brand-sky transition-all duration-300" data-target="0" title="Kashmir Scenic 1"></button>
         <button type="button" class="hero-scene-dot w-2 h-1.5 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-target="1" title="Kashmir Scenic 2"></button>
         <button type="button" class="hero-scene-dot w-2 h-1.5 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-target="2" title="Kashmir Scenic 3"></button>
+        <button type="button" class="hero-scene-dot w-2 h-1.5 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-target="3" title="Kashmir Scenic 4"></button>
       </div>
 
     </div>

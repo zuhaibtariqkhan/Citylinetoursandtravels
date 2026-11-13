@@ -435,12 +435,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
   // ========================================================
-  // 2. KEN-BURNS MULTI-SCENE HERO SLIDER
+  // 2. KEN-BURNS MULTI-SCENE HERO SLIDER (OPTIMIZED ZERO-LAG)
   // ========================================================
   const heroSlides = document.querySelectorAll('.hero-slide');
   const heroDots = document.querySelectorAll('.hero-scene-dot');
   let currentHeroSlide = 0;
   let heroInterval = null;
+
+  // Preload all hero slide images into memory immediately so there is never a pause or lag
+  if (heroSlides.length > 0) {
+    heroSlides.forEach(slide => {
+      const img = slide.querySelector('img');
+      if (img && img.src) {
+        const preloader = new Image();
+        preloader.src = img.src;
+      }
+    });
+  }
 
   function setHeroSlide(index) {
     if (heroSlides.length === 0) return;
@@ -465,6 +476,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function startHeroTimer() {
     if (heroSlides.length <= 1) return;
+    if (heroInterval) clearInterval(heroInterval);
     heroInterval = setInterval(() => {
       setHeroSlide(currentHeroSlide + 1);
     }, 6500);
@@ -480,6 +492,15 @@ document.addEventListener('DOMContentLoaded', () => {
         setHeroSlide(target);
         startHeroTimer();
       });
+    });
+
+    // Pause slider when browser tab is hidden to prevent catch-up jumps
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (heroInterval) clearInterval(heroInterval);
+      } else {
+        startHeroTimer();
+      }
     });
   }
 
