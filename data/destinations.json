@@ -8,7 +8,7 @@
     "shortDescription": "Experience the charm of Srinagar, famous for Dal Lake, traditional houseboats, beautiful Mughal gardens and iconic Shikara rides. Explore Nishat Bagh, Shalimar Bagh, Chashme Shahi, Pari Mahal and Shankaracharya Temple while enjoying the timeless beauty of Kashmir.",
     "fullDescription": "Experience the charm of Srinagar, famous for Dal Lake, traditional houseboats, beautiful Mughal gardens and iconic Shikara rides. Explore Nishat Bagh, Shalimar Bagh, Chashme Shahi, Pari Mahal and Shankaracharya Temple while enjoying the timeless beauty of Kashmir. As the summer capital of Jammu & Kashmir, Srinagar is a living postcard of calm waters, majestic chinars, and snow-kissed Himalayan backdrops.",
     "bestTimeToVisit": "April to October (Pleasant & Blossoms) | December to February (Winter & Snowfall)",
-    "suggestedDuration": " to  Days",
+    "suggestedDuration": "2 to 3 Days",
     "altitude": "1,585 m / 5,200 ft",
     "distanceFromAirport": "12 km • ~25 mins from Srinagar Airport",
     "mapCoords": {
@@ -32,7 +32,7 @@
       "Savor authentic Wazwan at a traditional restaurant",
       "Shop for authentic GI-tagged Pashmina and walnut wood art"
     ],
-    "image": "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/SRINAGAR.jpeg",
     "featured": true
   },
   {
@@ -44,7 +44,7 @@
     "shortDescription": "Discover Pahalgam, a beautiful valley surrounded by pine forests, snow-covered mountains and the flowing Lidder River. Explore Betaab Valley, Aru Valley and Chandanwari, and enjoy the peaceful atmosphere of this popular mountain destination.",
     "fullDescription": "Discover Pahalgam, a beautiful valley surrounded by pine forests, snow-covered mountains and the flowing Lidder River. Explore Betaab Valley, Aru Valley and Chandanwari, and enjoy the peaceful atmosphere of this popular mountain destination. Fondly called the Valley of Shepherds, Pahalgam is the quintessential mountain getaway with scenic trails, trout streams, and romantic Bollywood movie backdrops.",
     "bestTimeToVisit": "March to November (Lush Greenery) | December to February (Quiet Winter Magic)",
-    "suggestedDuration": " to  Days",
+    "suggestedDuration": "2 to 3 Days",
     "altitude": "2,130 m / 6,990 ft",
     "distanceFromAirport": "90 km • ~2 hrs 30 mins from Srinagar",
     "mapCoords": {
@@ -68,7 +68,7 @@
       "Riverside walks through whispering deodar pine forests",
       "Nature photography among pine groves in Aru Valley"
     ],
-    "image": "https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/PAHALGAM.jpeg",
     "featured": true
   },
   {
@@ -104,7 +104,7 @@
       "Winter walks through snowy pine glades",
       "Excursion to the frozen waterfall of Drung"
     ],
-    "image": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/GULMARG.jpeg",
     "featured": true
   },
   {
@@ -116,7 +116,7 @@
     "shortDescription": "Explore Sonamarg, a magnificent valley surrounded by towering mountains, glaciers and beautiful streams. Visit Thajiwas Glacier, enjoy scenic mountain drives and experience the natural beauty of the Sind River.",
     "fullDescription": "Explore Sonamarg, a magnificent valley surrounded by towering mountains, glaciers and beautiful streams. Visit Thajiwas Glacier, enjoy scenic mountain drives and experience the natural beauty of the Sind River. Sonamarg serves as the historic gateway on the Srinagar-Leh highway, framed by Mount Kolahoi and Sirbal peaks.",
     "bestTimeToVisit": "April to October (Open Highway & Glacier Trekking)",
-    "suggestedDuration": " to  Days",
+    "suggestedDuration": "1 to 2 Days",
     "altitude": "2,730 m / 8,960 ft",
     "distanceFromAirport": "80 km • ~2 hrs 15 mins from Srinagar",
     "mapCoords": {
@@ -140,7 +140,7 @@
       "Camping under starlit Himalayan skies",
       "Mountain photography along scenic gorge routes"
     ],
-    "image": "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/SONAMARG.jpeg",
     "featured": true
   },
   {
@@ -176,7 +176,7 @@
       "Sip freshly brewed Kashmiri Kahwa by the riverbank",
       "Nature walks away from commercial crowds"
     ],
-    "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/DOODHPATHRI.jpeg",
     "featured": true
   },
   {
@@ -212,7 +212,7 @@
       "Relax in tranquil silence surrounded by wild meadows",
       "Visit the 600-year-old Charar-e-Sharief shrine en route"
     ],
-    "image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/YUSMARG.jpeg",
     "featured": true
   },
   {
@@ -241,7 +241,7 @@
       "Scenic mountain drive through South Kashmir apple orchards",
       "Peaceful picnic amidst dense pine glades"
     ],
-    "image": "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/AHARBAL.jpeg",
     "featured": false
   },
   {
@@ -253,7 +253,7 @@
     "shortDescription": "Explore Gurez Valley, known for its traditional wooden houses, breathtaking mountain scenery and the beautiful Kishanganga River. Visit Dawar and admire the majestic Habba Khatoon Peak.",
     "fullDescription": "Explore Gurez Valley, known for its traditional wooden houses, breathtaking mountain scenery and the beautiful Kishanganga River. Visit Dawar and admire the majestic Habba Khatoon Peak. Crossing the high Razdan Pass (11,672 ft), Gurez greets travelers with welcoming Dardic culture, emerald waters, and pristine Himalayan solitude.",
     "bestTimeToVisit": "June to September (Pass Open & Glorious Summer)",
-    "suggestedDuration": " to  Days",
+    "suggestedDuration": "2 to 3 Days",
     "altitude": "2,400 m / 7,874 ft",
     "distanceFromAirport": "125 km • ~5 hrs across Razdan Pass",
     "mapCoords": {
@@ -277,7 +277,7 @@
       "Drive along the remote frontier route to Tulail Valley",
       "Spot Himalayan marmots and high alpine birds"
     ],
-    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/GUREZ VALLEY.jpeg",
     "featured": true
   },
   {
@@ -289,7 +289,7 @@
     "shortDescription": "Enjoy the spectacular beauty of Peer Ki Gali along the historic Mughal Road. Surrounded by the Pir Panjal mountains, green meadows and snow-covered landscapes, it offers an unforgettable mountain journey.",
     "fullDescription": "Enjoy the spectacular beauty of Peer Ki Gali along the historic Mughal Road. Surrounded by the Pir Panjal mountains, green meadows and snow-covered landscapes, it offers an unforgettable mountain journey connecting the Kashmir valley with Poonch and Rajouri at an elevation of 3,490 meters.",
     "bestTimeToVisit": "June to October (Open Pass & Alpine Wildflowers)",
-    "suggestedDuration": "Day Drive / Transit Route",
+    "suggestedDuration": "1 Day Drive / Transit Route",
     "altitude": "3,490 m / 11,450 ft",
     "distanceFromAirport": "85 km • ~3 hrs via Shopian",
     "attractions": [
@@ -306,7 +306,7 @@
       "Sip hot tea and Kahwa at high-altitude mountain stalls",
       "Explore historical remnants of royal Mughal travel rest houses"
     ],
-    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/PEER KI GALI.jpeg",
     "featured": false
   },
   {
@@ -335,7 +335,7 @@
       "Browse traditional saffron, dry fruits, and handicraft stalls",
       "Photography of hillside heritage architecture"
     ],
-    "image": "https://images.unsplash.com/photo-1590073844006-33379778ae09?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/AISHMUQAM.jpeg",
     "featured": false
   },
   {
@@ -364,7 +364,7 @@
       "Relax in shaded gazebo pavilions surrounded by murmuring channels",
       "Family picnic beneath mature chinars and deodars"
     ],
-    "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/KOKERNAG.jpeg",
     "featured": false
   },
   {
@@ -393,7 +393,7 @@
       "Learn about Mughal royal visits to Kashmir recorded in Tuzk-e-Jahangiri",
       "Peaceful morning photography of stone arches reflecting in crystal water"
     ],
-    "image": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/VERINAG.jpeg",
     "featured": false
   },
   {
@@ -422,7 +422,7 @@
       "Take short hikes along the barren wind-swept ridgelines",
       "Picnic amidst untouched sub-alpine meadows in Daksum"
     ],
-    "image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/SINTHAN TOP.jpeg",
     "featured": false
   },
   {
@@ -434,7 +434,7 @@
     "shortDescription": "Discover Jammu, known for its rich heritage, historic temples, traditional markets and beautiful surroundings. Explore the region’s cultural attractions and enjoy its distinctive hospitality.",
     "fullDescription": "Discover Jammu, known for its rich heritage, historic temples, traditional markets and beautiful surroundings. Explore the region’s cultural attractions and enjoy its distinctive hospitality. As the winter capital, Jammu stands proudly on the Shivalik hills overlooking the Tawi River, famed for ancient forts, Dogra palaces, and mouthwatering Kaladi kulchas.",
     "bestTimeToVisit": "October to April (Mild, Pleasant Winter Weather)",
-    "suggestedDuration": " to  Days",
+    "suggestedDuration": "1 to 2 Days",
     "altitude": "327 m / 1,073 ft",
     "distanceFromAirport": "5 km from Jammu Airport (IXJ)",
     "attractions": [
@@ -451,7 +451,7 @@
       "Shop for traditional Dogra handicrafts, walnuts, and pashminas",
       "Sunset viewpoints overlooking the Tawi River valley"
     ],
-    "image": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/JAMMU.jpeg",
     "featured": true
   },
   {
@@ -463,7 +463,7 @@
     "shortDescription": "Experience Patnitop, a charming hill destination surrounded by pine forests, green meadows and mountain views. Enjoy peaceful walks, scenic drives and outdoor activities.",
     "fullDescription": "Experience Patnitop, a charming hill destination surrounded by pine forests, green meadows and mountain views. Enjoy peaceful walks, scenic drives and outdoor activities. Situated on a plateau at 2,024 meters in the Ramban/Udhampur district along the Jammu-Srinagar highway, Patnitop is a year-round mountain retreat offering summer greenery and winter snow.",
     "bestTimeToVisit": "May to October (Pleasant Summer) | December to March (Winter Snow)",
-    "suggestedDuration": " to  Days",
+    "suggestedDuration": "1 to 2 Days",
     "altitude": "2,024 m / 6,640 ft",
     "distanceFromAirport": "110 km • ~3 hrs from Jammu Airport",
     "attractions": [
@@ -480,7 +480,7 @@
       "Short scenic drive up to Natha Top for snow views",
       "Taste fresh Patisa sweet and roasted corn on the cob"
     ],
-    "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/PATNITOP.jpeg",
     "featured": true
   },
   {
@@ -509,7 +509,7 @@
       "Camping and stargazing in pristine mountain air",
       "Relaxing lakeside picnics away from busy tourist hubs"
     ],
-    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/SANASAR.jpeg",
     "featured": true
   },
   {
@@ -521,7 +521,7 @@
     "shortDescription": "Discover Ladakh, a spectacular Himalayan destination famous for dramatic mountains, ancient monasteries, high-altitude lakes and extraordinary landscapes. Experience its unique culture, peaceful villages and unforgettable mountain journeys.",
     "fullDescription": "Discover Ladakh, a spectacular Himalayan destination famous for dramatic mountains, ancient monasteries, high-altitude lakes and extraordinary landscapes. Experience its unique culture, peaceful villages and unforgettable mountain journeys. Leh, the capital of Ladakh, rests at 3,500 meters, crowned by the historic Leh Palace, Shanti Stupa, and ancient Gompas.",
     "bestTimeToVisit": "May to October (Pleasant Summer & High Mountain Roads Open)",
-    "suggestedDuration": " to  Days Base",
+    "suggestedDuration": "3 to 4 Days Base",
     "altitude": "3,500 m / 11,480 ft",
     "distanceFromAirport": "4 km from Kushok Bakula Rimpochee Airport (IXL), Leh",
     "attractions": [
@@ -538,7 +538,7 @@
       "Savor steaming Thukpa, Momos, and butter tea in cozy cafes",
       "Shop for genuine turquoise jewelry, pashminas, and Tibetan singing bowls"
     ],
-    "image": "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/LADAKH.jpeg",
     "featured": true
   },
   {
@@ -567,7 +567,7 @@
       "Stay in boutique luxury desert camps surrounded by orchards",
       "Explore apricot orchards and traditional Ladakhi farmsteads"
     ],
-    "image": "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/NUBRA VALLEY.jpeg",
     "featured": true
   },
   {
@@ -579,7 +579,7 @@
     "shortDescription": "Witness the incredible beauty of Pangong Lake, known for its changing shades of blue and magnificent mountain surroundings. It is one of the most iconic destinations in Ladakh.",
     "fullDescription": "Witness the incredible beauty of Pangong Lake, known for its changing shades of blue and magnificent mountain surroundings. It is one of the most iconic destinations in Ladakh. Extending over 134 km from India into Tibet at an elevation of 4,225 meters, its saline waters shimmer in ethereal gradients of cobalt, turquoise, and emerald.",
     "bestTimeToVisit": "May to September (Unfrozen Brilliant Waters)",
-    "suggestedDuration": " to  Days",
+    "suggestedDuration": "1 to 2 Days",
     "altitude": "4,225 m / 13,860 ft",
     "distanceFromAirport": "160 km from Leh via Chang La Pass",
     "attractions": [
@@ -596,7 +596,7 @@
       "Spot endemic Brahminy ducks and migratory geese",
       "Stargaze under billions of visible Milky Way stars"
     ],
-    "image": "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/PANGONG LAKE.jpeg",
     "featured": true
   },
   {
@@ -625,7 +625,7 @@
       "Sample locally harvested Sea Buckthorn tea and juices",
       "Camp under a dazzling canopy of constellations"
     ],
-    "image": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/HUNDER SAND DUNES.jpeg",
     "featured": false
   },
   {
@@ -654,7 +654,7 @@
       "Birdwatching for rare Himalayan migratory species",
       "World-class landscape and Astrophotography"
     ],
-    "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/TSO MORIRI.jpeg",
     "featured": false
   },
   {
@@ -683,7 +683,7 @@
       "Experience warm home-cooked meals in traditional village homestays",
       "Spot Tibetan wild ass (Kiang) across high-altitude plains"
     ],
-    "image": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/HANLE.jpeg",
     "featured": false
   },
   {
@@ -695,7 +695,7 @@
     "shortDescription": "Explore Turtuk, known for its unique Balti culture, traditional houses, apricot orchards and beautiful mountain landscapes. Experience the warm hospitality and local traditions.",
     "fullDescription": "Explore Turtuk, known for its unique Balti culture, traditional houses, apricot orchards and beautiful mountain landscapes. Experience the warm hospitality and local traditions. As India's northernmost village opened to tourists, Turtuk sits along the Shyok River near the Line of Control, rich in wooden heritage houses and sweet apricots.",
     "bestTimeToVisit": "May to October (Apricot Harvest & Pleasant Temperatures)",
-    "suggestedDuration": " to  Days from Nubra",
+    "suggestedDuration": "1 to 2 Days from Nubra",
     "altitude": "3,000 m / 9,842 ft",
     "distanceFromAirport": "205 km from Leh (80 km from Diskit)",
     "attractions": [
@@ -712,7 +712,7 @@
       "Visit the ancestral royal residence of the Yabgo Dynasty",
       "Savor authentic Balti dishes such as Kissir and Muskat"
     ],
-    "image": "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/TURTUK.jpeg",
     "featured": false
   },
   {
@@ -724,7 +724,7 @@
     "shortDescription": "Discover Zanskar Valley, famous for its remote villages, dramatic mountain landscapes, ancient monasteries and adventurous routes.",
     "fullDescription": "Discover Zanskar Valley, famous for its remote villages, dramatic mountain landscapes, ancient monasteries and adventurous routes. Guarded by the great Zanskar mountain range, this isolated valley is a haven for intrepid travelers, home to the cliff-clinging Phugtal Gompa, Padum, and the frozen winter Chadar route.",
     "bestTimeToVisit": "June to September (Shinkun La & Pensi La Passes Open)",
-    "suggestedDuration": " to  Days Expedition",
+    "suggestedDuration": "3 to 4 Days Expedition",
     "altitude": "3,650 m / 12,000 ft",
     "distanceFromAirport": "230 km from Leh / Kargil",
     "attractions": [
@@ -741,7 +741,7 @@
       "Camp beside turquoise glacial rivers under towering peaks",
       "Immerse in ancient Tibetan Buddhist rituals untouched by modernity"
     ],
-    "image": "https://images.unsplash.com/photo-1508873696983-2df5293cb32f?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/ZANSKAR VALLEY.jpeg",
     "featured": false
   },
   {
@@ -770,7 +770,7 @@
       "Enjoy traditional Ladakhi butter tea at cliffside cafes",
       "Experience the serene sunset turning the mud formations golden"
     ],
-    "image": "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/LAMAYURU.jpeg",
     "featured": false
   },
   {
@@ -799,7 +799,7 @@
       "Browse traditional handicraft workshops in Alchi village",
       "Reflect in the ancient silence of one of the Himalayas' oldest complexes"
     ],
-    "image": "https://images.unsplash.com/photo-1528164344705-475426879c0d?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/ALCHI MONASTERY.jpeg",
     "featured": false
   },
   {
@@ -811,7 +811,7 @@
     "shortDescription": "Experience Tso Kar, a beautiful high-altitude salt lake surrounded by open plains and mountains. The region is also known for its unique birdlife.",
     "fullDescription": "Experience Tso Kar, a beautiful high-altitude salt lake surrounded by open plains and mountains. The region is also known for its unique birdlife. Located in the southern Rupshu plateau at 4,530 meters, white salt deposits crust its shores, creating a stark and otherworldly Himalayan landscape.",
     "bestTimeToVisit": "June to September (Migratory Bird Season & Clear Trails)",
-    "suggestedDuration": "1 Day En Route Manali-Leh / Pangong",
+    "suggestedDuration": "1 Day En Route Manali to Leh / Pangong",
     "altitude": "4,530 m / 14,860 ft",
     "distanceFromAirport": "135 km south of Leh",
     "attractions": [
@@ -828,7 +828,7 @@
       "Experience remote silence away from tourist-heavy circuits",
       "Visit nomadic tent settlements on the high Rupshu plateau"
     ],
-    "image": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/TSO KAR.jpeg",
     "featured": false
   },
   {
@@ -857,7 +857,7 @@
       "Breathtaking photography of Himalayan summits stretching to Tibet",
       "Celebrate the pinnacle achievement of high-altitude Himalayan travel"
     ],
-    "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/UMILING LA.jpeg",
     "featured": false
   },
   {
@@ -886,7 +886,7 @@
       "Photograph the breathtaking facade hanging from sheer limestone cliffs",
       "Experience timeless Himalayan monastic tranquility"
     ],
-    "image": "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=1200&q=80",
+    "image": "/DESTINATIONS/PHUGTAL MONESTRY.jpeg",
     "featured": false
   }
 ]
