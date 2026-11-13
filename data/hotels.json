@@ -10,8 +10,15 @@
     "badge": "5-Star Luxury",
     "tagline": "Perched on Kralsangri hill offering panoramic vistas of Dal Lake and Zabarwan ranges.",
     "shortDescription": "Overlooking the placid waters of Dal Lake and framed by the majestic Zabarwan mountain range, Taj Dal View is the epitome of luxury hospitality in Srinagar with heated pool, fine dining, and Jiva spa.",
-    "amenities": ["Dal Lake Views", "Heated Swimming Pool", "Jiva Spa & Wellness", "Central Heating", "Fine Dining Restaurants", "Free High-Speed Wi-Fi"],
-    "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "Dal Lake Views",
+      "Heated Swimming Pool",
+      "Jiva Spa & Wellness",
+      "Central Heating",
+      "Fine Dining Restaurants",
+      "Free High-Speed Wi-Fi"
+    ],
+    "image": "/HOTELS/TAJ DAL VIEW.jpeg"
   },
   {
     "id": "the-lalit-grand-palace",
@@ -24,8 +31,15 @@
     "badge": "Royal Heritage 5-Star",
     "tagline": "The former royal residence of Maharaja Pratap Singh surrounded by century-old Chinar trees.",
     "shortDescription": "Built in 1910 by Maharaja Pratap Singh, The LaLit Grand Palace Srinagar is a royal heritage masterpiece overlooking Dal Lake with palatial suites, heated indoor pool, and regal dining.",
-    "amenities": ["Historic Royal Palace", "Indoor Heated Pool", "Sprawling Chinar Lawns", "Rejuve The Spa", "Dal Lake View", "Heritage Suites"],
-    "image": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "Historic Royal Palace",
+      "Indoor Heated Pool",
+      "Sprawling Chinar Lawns",
+      "Rejuve The Spa",
+      "Dal Lake View",
+      "Heritage Suites"
+    ],
+    "image": "/HOTELS/THE LALIT GRAND PALACE.jpeg"
   },
   {
     "id": "sarovar-premiere",
@@ -38,8 +52,15 @@
     "badge": "5-Star Deluxe",
     "tagline": "Sophisticated contemporary comfort, world-class dining and premium executive hospitality.",
     "shortDescription": "Conveniently positioned on the airport corridor in Srinagar, Sarovar Premiere offers refined five-star luxury with elegantly appointed rooms, wellness spa, and round-the-clock service.",
-    "amenities": ["Contemporary 5-Star Rooms", "Multi-Cuisine Buffet", "Wellness Spa & Fitness", "Central Air & Heating", "Airport Proximity", "Executive Lounge"],
-    "image": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "Contemporary 5-Star Rooms",
+      "Multi-Cuisine Buffet",
+      "Wellness Spa & Fitness",
+      "Central Air & Heating",
+      "Airport Proximity",
+      "Executive Lounge"
+    ],
+    "image": "/HOTELS/SAROVAR PREMIERE.jpeg"
   },
   {
     "id": "welcomheritage",
@@ -52,8 +73,15 @@
     "badge": "5-Star Heritage",
     "tagline": "Curated heritage hospitality celebrating royal Kashmiri artistry, traditions and calm waters.",
     "shortDescription": "WelcomHeritage properties in Srinagar represent the pinnacle of Kashmiri cultural grandeur with hand-carved deodar woodwork, lakefront settings, royal butler service, and exquisite Wazwan.",
-    "amenities": ["Heritage Woodwork", "Waterfront Setting", "Private Shikara Transfers", "Traditional Wazwan Dining", "Personal Butler Service", "Central Heating"],
-    "image": "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "Heritage Woodwork",
+      "Waterfront Setting",
+      "Private Shikara Transfers",
+      "Traditional Wazwan Dining",
+      "Personal Butler Service",
+      "Central Heating"
+    ],
+    "image": "/HOTELS/WELCOMHERITAGE.jpeg"
   },
   {
     "id": "asian-park",
@@ -66,8 +94,15 @@
     "badge": "4-Star Premium",
     "tagline": "Modern deluxe stay minutes from Dal Lake, Boulevard promenade and Mughal gardens.",
     "shortDescription": "Located in close proximity to Dal Lake and Srinagar's famous Mughal gardens, Asian Park Hotel blends modern elegance with traditional Kashmiri warmth and centrally heated rooms.",
-    "amenities": ["Close to Boulevard & Dal Lake", "Centrally Heated Rooms", "Multi-Cuisine Restaurant", "Family Suites", "24/7 Room Service", "Free Wi-Fi"],
-    "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "Close to Boulevard & Dal Lake",
+      "Centrally Heated Rooms",
+      "Multi-Cuisine Restaurant",
+      "Family Suites",
+      "24/7 Room Service",
+      "Free Wi-Fi"
+    ],
+    "image": "/HOTELS/ASIAN PARK.jpeg"
   },
   {
     "id": "namrose-resorts-spa",
@@ -80,8 +115,15 @@
     "badge": "4-Star Lakefront",
     "tagline": "A stylish lakeside sanctuary with restorative spa therapy and mountain view dining.",
     "shortDescription": "Set directly on Boulevard Road along Dal Lake, Namrose Resorts & Spa features chic designer interiors, scenic lakeside balcony rooms, full-body restorative therapies, and terrace dining.",
-    "amenities": ["Lake Boulevard Frontage", "Full-Service Spa", "Scenic Balcony Rooms", "Rooftop Terrace Dining", "Central Heating", "Free Wi-Fi"],
-    "image": "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "Lake Boulevard Frontage",
+      "Full-Service Spa",
+      "Scenic Balcony Rooms",
+      "Rooftop Terrace Dining",
+      "Central Heating",
+      "Free Wi-Fi"
+    ],
+    "image": "/HOTELS/NAMROSE RESORTS & SPA.jpeg"
   },
   {
     "id": "comrade-inn",
@@ -94,8 +136,15 @@
     "badge": "4-Star Boutique",
     "tagline": "Refined hospitality in the fashionable shopping and residential quarter of Rajbagh.",
     "shortDescription": "Comrade Inn is an esteemed 4-star boutique hotel located in Rajbagh, Srinagar's diplomatic heart. Offering premium sound-insulated guestrooms with individual climate controls and fine dining.",
-    "amenities": ["Upscale Rajbagh Location", "Climate-Controlled Suites", "Multi-Cuisine Fine Dining", "Business Lounge & Wi-Fi", "Free Valet Parking", "24/7 In-Room Dining"],
-    "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "Upscale Rajbagh Location",
+      "Climate-Controlled Suites",
+      "Multi-Cuisine Fine Dining",
+      "Business Lounge & Wi-Fi",
+      "Free Valet Parking",
+      "24/7 In-Room Dining"
+    ],
+    "image": "/HOTELS/COMRADE INN.jpeg"
   },
   {
     "id": "ov-boutique",
@@ -108,8 +157,15 @@
     "badge": "3-Star Boutique",
     "tagline": "Contemporary minimalist aesthetics combined with thoughtful, intimate guest service.",
     "shortDescription": "Ov Boutique Hotel delivers a refreshingly contemporary experience in Srinagar with clean minimalist lines, cozy electric heating blankets, in-house coffee bar, and attentive staff.",
-    "amenities": ["Cozy Boutique Design", "Heating & Electric Blankets", "Specialty Coffee Bar", "High-Speed Wi-Fi", "Tour Assistance", "Power Backup"],
-    "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "Cozy Boutique Design",
+      "Heating & Electric Blankets",
+      "Specialty Coffee Bar",
+      "High-Speed Wi-Fi",
+      "Tour Assistance",
+      "Power Backup"
+    ],
+    "image": "/HOTELS/OV BOUTIQUE.jpeg"
   },
   {
     "id": "midtown-greens",
@@ -122,8 +178,15 @@
     "badge": "3-Star Garden View",
     "tagline": "Peaceful green gardens and comfortable family accommodations in the heart of Srinagar.",
     "shortDescription": "Tucked away in a tranquil residential pocket near the Tourist Reception Centre, Midtown Greens offers a serene garden sanctuary with spacious bedrooms, home-style meals, and helpful staff.",
-    "amenities": ["Tranquil Private Lawn", "Comfortable Family Rooms", "Room Heating", "Home-Style Dining", "Free Wi-Fi", "Secure Parking"],
-    "image": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "Tranquil Private Lawn",
+      "Comfortable Family Rooms",
+      "Room Heating",
+      "Home-Style Dining",
+      "Free Wi-Fi",
+      "Secure Parking"
+    ],
+    "image": "/HOTELS/MIDTOWN GREENS.jpeg"
   },
   {
     "id": "pride-inn",
@@ -136,8 +199,15 @@
     "badge": "3-Star Deluxe",
     "tagline": "Dependable comfort, spotless amenities and warm Kashmiri hospitality for every holiday.",
     "shortDescription": "Pride Inn is a trusted 3-star property recognized for its spotless hygiene, generous room dimensions, and polite staff, making it perfect for families seeking great value and warm hospitality.",
-    "amenities": ["Spacious Deluxe Rooms", "Central Heating", "Multi-Cuisine Restaurant", "Power Backup", "Free Wi-Fi", "Room Service"],
-    "image": "https://images.unsplash.com/photo-1568495248636-6432b97bd949?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "Spacious Deluxe Rooms",
+      "Central Heating",
+      "Multi-Cuisine Restaurant",
+      "Power Backup",
+      "Free Wi-Fi",
+      "Room Service"
+    ],
+    "image": "/HOTELS/PRIDE INN.jpeg"
   },
   {
     "id": "the-khyber-resort-spa",
@@ -150,8 +220,15 @@
     "badge": "5-Star Alpine Ski Resort",
     "tagline": "World-renowned Himalayan ski resort nestled 8,825 feet high with Apharwat panoramas.",
     "shortDescription": "Perched at 8,825 feet among virgin pine forests in Gulmarg, The Khyber Himalayan Resort & Spa is India's most celebrated alpine luxury resort with ski-in access, heated indoor glass pool, and L'Occitane Spa.",
-    "amenities": ["Ski-In / Ski-Out Access", "Indoor Heated Infinity Pool", "The Khyber Spa by L'Occitane", "Apharwat Mountain Views", "Fine Dining Restaurants", "Central Heating"],
-    "image": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "Ski-In / Ski-Out Access",
+      "Indoor Heated Infinity Pool",
+      "The Khyber Spa by L'Occitane",
+      "Apharwat Mountain Views",
+      "Fine Dining Restaurants",
+      "Central Heating"
+    ],
+    "image": "/HOTELS/THE KHYBER HIMALAYAN RESORTS & SPA.jpeg"
   },
   {
     "id": "hilltop-gulmarg",
@@ -164,8 +241,15 @@
     "badge": "4-Star Alpine Resort",
     "tagline": "Walking distance from the Gulmarg Gondola with cozy alpine wood fireplaces.",
     "shortDescription": "Hotel Hilltop Gulmarg is ideally situated within walking distance of the Gulmarg Gondola base station. Featuring warm pine-paneled rooms, central heating, a roaring lobby fireplace, and mountain views.",
-    "amenities": ["Walking Distance to Gondola", "Central Heating & Fireplace", "Snow Mountain Views", "Mughlai & Pure Veg Dining", "Ski Equipment Storage", "Free Wi-Fi"],
-    "image": "https://images.unsplash.com/photo-1517840901100-8179e982acb7?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "Walking Distance to Gondola",
+      "Central Heating & Fireplace",
+      "Snow Mountain Views",
+      "Mughlai & Pure Veg Dining",
+      "Ski Equipment Storage",
+      "Free Wi-Fi"
+    ],
+    "image": "/HOTELS/HILLTOP.jpeg"
   },
   {
     "id": "apple-tree-resorts",
@@ -178,8 +262,15 @@
     "badge": "3-Star Scenic Resort",
     "tagline": "Surrounded by fragrant apple orchards and snow-clad foothills at the gateway to Gulmarg.",
     "shortDescription": "Located in the picturesque Tangmarg valley at the gateway to Gulmarg, Apple Tree Resorts offers cozy heated cottages surrounded by apple orchards, bonfire evenings, and hearty meals.",
-    "amenities": ["Apple Orchard Setting", "Heated Mountain Cottages", "Bonfire Evenings", "Multi-Cuisine Meals", "Gulmarg Snow Transfers", "Scenic Balconies"],
-    "image": "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "Apple Orchard Setting",
+      "Heated Mountain Cottages",
+      "Bonfire Evenings",
+      "Multi-Cuisine Meals",
+      "Gulmarg Snow Transfers",
+      "Scenic Balconies"
+    ],
+    "image": "/HOTELS/APPLE TREE RESORTS.jpeg"
   },
   {
     "id": "welcomhotel-pine-n-peak",
@@ -192,7 +283,14 @@
     "badge": "5-Star Mountain Resort",
     "tagline": "Pahalgam's premier five-star sanctuary perched high on the pine-covered Rajwas plateau.",
     "shortDescription": "Perched atop the Rajwas plateau overlooking the Lidder River and snow-crested pine ridges, Welcomhotel Pine N Peak is Pahalgam's only branded 5-star resort blending timber architecture with luxury.",
-    "amenities": ["Pahalgam 5-Star Luxury", "Panoramic Lidder River Views", "Pine Forest Setting", "Saqi Lounge & Cafe Gulmarg", "Heated Rooms & Spa", "Curated Nature Treks"],
+    "amenities": [
+      "Pahalgam 5-Star Luxury",
+      "Panoramic Lidder River Views",
+      "Pine Forest Setting",
+      "Saqi Lounge & Cafe Gulmarg",
+      "Heated Rooms & Spa",
+      "Curated Nature Treks"
+    ],
     "image": "https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?auto=format&fit=crop&w=1000&q=80"
   },
   {
@@ -206,8 +304,15 @@
     "badge": "5-Star Luxury",
     "tagline": "Lavish river-valley luxury framed by the rushing Lidder and cascading cedar hills.",
     "shortDescription": "Setting a new benchmark for five-star indulgence in Pahalgam, Mountnoor Sarovar Premiere features magnificent alpine architecture, temperature-controlled luxury suites, and Lidder river views.",
-    "amenities": ["5-Star River-Facing Suites", "Lidder Valley Balconies", "Wellness Spa & Sauna", "Centralized Heating", "Gourmet Dining Restaurant", "Kids Play Area"],
-    "image": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "5-Star River-Facing Suites",
+      "Lidder Valley Balconies",
+      "Wellness Spa & Sauna",
+      "Centralized Heating",
+      "Gourmet Dining Restaurant",
+      "Kids Play Area"
+    ],
+    "image": "/HOTELS/MOUNTNOOR SAROVAR PREMIERE.jpeg"
   },
   {
     "id": "the-walnut-creek",
@@ -220,8 +325,15 @@
     "badge": "4-Star Riverside",
     "tagline": "Elegant riverside getaway enveloped by ancient walnut trees and whispering pines.",
     "shortDescription": "The Walnut Creek is an enchanting 4-star boutique resort located on the riverbanks of Pahalgam. Offering cedar-clad rooms, private sitting verandas, Lidder river views, and evening lawn bonfires.",
-    "amenities": ["Riverside Walnut Grove", "Cedar-Paneled Rooms", "Lawn Bonfires & Music", "River-Facing Balconies", "Room Heating", "Multi-Cuisine Kitchen"],
-    "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "Riverside Walnut Grove",
+      "Cedar-Paneled Rooms",
+      "Lawn Bonfires & Music",
+      "River-Facing Balconies",
+      "Room Heating",
+      "Multi-Cuisine Kitchen"
+    ],
+    "image": "/HOTELS/THE WALNUT CREEK.jpeg"
   },
   {
     "id": "black-pearl",
@@ -234,8 +346,15 @@
     "badge": "3-Star Comfort",
     "tagline": "Friendly hospitality and cozy rooms making Pahalgam's valleys accessible to all travellers.",
     "shortDescription": "Hotel Black Pearl offers dependable 3-star comfort in the scenic surroundings of Pahalgam with heated bedrooms, clean ensuite bathrooms, tasty meals, and close access to Betaab valley.",
-    "amenities": ["Mountain Valley Views", "Heating Arrangements", "Fresh Indian & Mughlai Food", "Pony Ride Assistance", "Power Backup", "24/7 Hot Water"],
-    "image": "https://images.unsplash.com/photo-1549294413-26f195200c16?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "Mountain Valley Views",
+      "Heating Arrangements",
+      "Fresh Indian & Mughlai Food",
+      "Pony Ride Assistance",
+      "Power Backup",
+      "24/7 Hot Water"
+    ],
+    "image": "/HOTELS/BLACK PEARL.jpeg"
   },
   {
     "id": "houseboat-royal-star",
@@ -248,8 +367,15 @@
     "badge": "4-Star Heritage Houseboat",
     "tagline": "Hand-carved cedar floating palace offering traditional Shikara crossings and lake living.",
     "shortDescription": "Moored on the calm waters of Dal Lake, Houseboat Royal Star provides an authentic Kashmiri heritage stay with walnut-wood carvings, chandeliers, sun-deck, and private Shikara ferry service.",
-    "amenities": ["Authentic Dal Lake Stay", "Hand-Carved Walnut Interiors", "Private Sunset Sun-Deck", "Complimentary Shikara Crossings", "Authentic Kashmiri Meals", "Heating & Hot Water"],
-    "image": "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "Authentic Dal Lake Stay",
+      "Hand-Carved Walnut Interiors",
+      "Private Sunset Sun-Deck",
+      "Complimentary Shikara Crossings",
+      "Authentic Kashmiri Meals",
+      "Heating & Hot Water"
+    ],
+    "image": "/HOTELS/HOUSEBOAT ROYAL STAR.jpeg"
   },
   {
     "id": "mascot-houseboats",
@@ -262,7 +388,14 @@
     "badge": "5-Star Luxury Houseboat",
     "tagline": "The jewel of tranquil Nigeen Lake celebrated for royal luxury and unmatched privacy.",
     "shortDescription": "Widely acclaimed as one of Kashmir's most prestigious luxury houseboat fleets, Mascot Houseboats is anchored on serene Nigeen Lake with palatial rooms, dedicated butler hospitality, and Wazwan dining.",
-    "amenities": ["5-Star Luxury Houseboat", "Tranquil Nigeen Lake Setting", "Royal Antique Kashmiri Decor", "Dedicated Butler Service", "Private Sun-Deck Veranda", "Gourmet Candlelight Wazwan"],
-    "image": "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=1000&q=80"
+    "amenities": [
+      "5-Star Luxury Houseboat",
+      "Tranquil Nigeen Lake Setting",
+      "Royal Antique Kashmiri Decor",
+      "Dedicated Butler Service",
+      "Private Sun-Deck Veranda",
+      "Gourmet Candlelight Wazwan"
+    ],
+    "image": "/HOTELS/MASCOT HOUSEBOATS.jpeg"
   }
 ]
