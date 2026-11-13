@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body class="bg-brand-offwhite text-brand-text min-h-screen">
+  <%- include('navbar') %>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      <div>
+        <h1 class="font-serif text-3xl font-bold text-brand-navy">Email Notifications & Outbox</h1>
+        <p class="text-xs sm:text-sm text-brand-muted mt-1">
+          Every customer enquiry generates an email notification to you and an acknowledgment to the customer.
+        </p>
+      </div>
+
+      <!-- Quick Test Email Form -->
+      <form action="/admin/emails/test" method="POST" class="bg-white p-3 rounded-2xl border border-brand-border shadow-sm flex items-center space-x-2">
+        <input type="email" name="targetEmail" value="<%= settings.notificationEmail || settings.email %>" placeholder="Your test email" class="form-input text-xs py-1.5 w-60">
+        <button type="submit" class="btn-primary px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap flex items-center space-x-1.5">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          <span>Send Test Email</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Test Result Flash Notice -->
+    <% if (testResult) { %>
+      <div class="mb-6 p-4 bg-blue-50 border border-blue-200 text-blue-900 rounded-xl text-xs sm:text-sm flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <i data-lucide="info" class="w-5 h-5 text-blue-600 shrink-0"></i>
+          <span><%= testResult %></span>
+        </div>
+        <a href="/admin/settings" class="text-xs font-bold text-blue-700 hover:underline">Configure SMTP Settings &rarr;</a>
+      </div>
+    <% } %>
+
+    <!-- Email Notification Configuration Summary Box -->
+    <div class="bg-white p-6 rounded-2xl border border-brand-border shadow-sm mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-4">
+        <div class="w-12 h-12 rounded-xl bg-brand-light text-brand-blue flex items-center justify-center shrink-0">
+          <i data-lucide="mail-check" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h3 class="font-serif text-lg font-bold text-brand-navy">Lead Forwarding Address:</h3>
+          <p class="text-xs sm:text-sm font-semibold text-brand-blue"><%= settings.notificationEmail || settings.email %></p>
+          <p class="text-xs text-brand-muted">All enquiries submitted by visitors are formatted and dispatched to this email.</p>
+        </div>
+      </div>
+
+      <div>
+        <a href="/admin/settings" class="btn-outline px-4 py-2 rounded-xl text-xs font-semibold flex items-center space-x-1.5">
+          <i data-lucide="settings" class="w-3.5 h-3.5"></i>
+          <span>Edit Email & SMTP Settings</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Email Logs Outbox Table -->
+    <div class="bg-white rounded-2xl border border-brand-border shadow-sm overflow-hidden">
+      <div class="p-5 border-b border-brand-border flex items-center justify-between">
+        <h2 class="font-serif text-lg font-bold text-brand-navy">Email Dispatch History (<%= emailLogs.length %> Logs)</h2>
+        <span class="text-xs text-brand-muted">Keeps record of all sent notifications and previews</span>
+      </div>
+
+      <% if (emailLogs.length === 0) { %>
+        <div class="p-16 text-center text-brand-muted">
+          <i data-lucide="mail" class="w-12 h-12 mx-auto text-slate-300 mb-3"></i>
+          <p class="font-semibold text-base">No emails dispatched yet.</p>
+          <p class="text-xs mt-1">Submit an enquiry on any package or test the form to see the generated email here.</p>
+        </div>
+      <% } else { %>
+        <div class="divide-y divide-slate-100">
+          <% emailLogs.forEach((mail, idx) => { %>
+            <div class="p-6 hover:bg-slate-50/70 transition">
+              <div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+                
+                <div class="space-y-1.5 flex-1">
+                  <div class="flex items-center space-x-3">
+                    <span class="text-xs font-bold px-2.5 py-0.5 rounded-full <%= mail.type === 'Admin Notification' ? 'bg-blue-100 text-blue-800' : (mail.type === 'Customer Confirmation' ? 'bg-emerald-100 text-emerald-800' : 'bg-purple-100 text-purple-800') %>">
+                      <%= mail.type %>
+                    </span>
+                    <span class="text-xs text-brand-muted">
+                      <%= new Date(mail.sentAt).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) %> IST
+                    </span>
+                    <% if (mail.enquiryId) { %>
+                      <span class="text-[11px] font-mono font-semibold text-brand-blue">
+                        Ref: #<%= mail.enquiryId %>
+                      </span>
+                    <% } %>
+                  </div>
+
+                  <h3 class="font-bold text-sm text-brand-navy"><%= mail.subject %></h3>
+
+                  <div class="text-xs text-brand-muted flex items-center space-x-4">
+                    <span><strong>To:</strong> <%= mail.recipient %></span>
+                    <span>
+                      <strong>Status:</strong> 
+                      <span class="<%= mail.status.includes('delivered') ? 'text-emerald-600 font-semibold' : (mail.status.includes('simulated') ? 'text-amber-600 font-medium' : 'text-rose-600 font-medium') %>">
+                        <%= mail.status %>
+                      </span>
+                    </span>
+                  </div>
+
+                  <!-- Collapsible HTML Preview -->
+                  <div class="pt-2">
+                    <button type="button" onclick="document.getElementById('mail-preview-<%= idx %>').classList.toggle('hidden')" class="text-[11px] text-brand-blue font-semibold hover:underline flex items-center space-x-1">
+                      <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                      <span>Toggle Email Content Preview</span>
+                    </button>
+                    <div id="mail-preview-<%= idx %>" class="hidden mt-3 p-4 bg-slate-50 rounded-xl border border-slate-200 max-h-96 overflow-y-auto">
+                      <iframe srcdoc="<%- (mail.htmlPreview || '').replace(/"/g, '&quot;') %>" class="w-full h-80 rounded border bg-white"></iframe>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      <% } %>
+    </div>
+
+  </div>
+
+  <%- include('../partials/scripts') %>
+</body>
+</html>
+

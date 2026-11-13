@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body class="bg-white text-brand-text">
+  <%- include('partials/header') %>
+
+  <section class="py-16 bg-brand-offwhite border-b border-brand-border">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="font-serif text-3xl sm:text-4xl font-bold text-brand-navy mb-2">Terms, Conditions & Policies</h1>
+      <p class="text-sm text-brand-muted">City Line Tours And Travels • Srinagar, Kashmir</p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 text-sm text-brand-muted leading-relaxed">
+      
+      <div>
+        <h2 class="font-serif text-2xl font-bold text-brand-navy mb-3">1. Privacy Policy</h2>
+        <p class="mb-2">
+          At City Line Tours And Travels, we respect your privacy. Any personal information submitted through our website forms — including your name, telephone number, email address, and travel dates — is gathered strictly for the purpose of communicating with you, generating your requested travel quotation, and coordinating your travel arrangements.
+        </p>
+        <p>
+          We never sell, rent, or lease your personal information to third parties or unsolicited marketers.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-serif text-2xl font-bold text-brand-navy mb-3">2. Booking & Enquiry Terms</h2>
+        <p class="mb-2">
+          Submitting an enquiry via our website does not constitute a confirmed financial booking. Once our travel team receives your enquiry, we will communicate directly with you to finalize hotel categories, vehicle availability, and exact quotation.
+        </p>
+        <p>
+          Bookings are confirmed upon receipt of advance token deposit as agreed in your written travel proposal.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-serif text-2xl font-bold text-brand-navy mb-3">3. Cancellation & Refund Policy</h2>
+        <ul class="list-disc pl-5 space-y-1.5">
+          <li>Cancellations requested 30 days or more prior to arrival date: Full refund minus processing fees.</li>
+          <li>Cancellations requested 15 to 29 days prior to arrival date: 50% retention of total package cost.</li>
+          <li>Cancellations requested less than 14 days prior to arrival date: Non-refundable due to pre-committed hotel and vehicle reservations.</li>
+          <li>In unforeseen situations such as natural calamities or severe highway road blockages, City Line Tours will make best efforts to reschedule dates or offer alternative routes with minimal customer disruption.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-serif text-2xl font-bold text-brand-navy mb-3">4. Contact Information</h2>
+        <p>
+          For any clarifications regarding our policies, please contact our support desk at <a href="mailto:<%= settings.email %>" class="text-brand-blue font-semibold"><%= settings.email %></a> or call <a href="tel:<%= settings.phone %>" class="text-brand-blue font-semibold"><%= settings.phone %></a>.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+  <%- include('partials/whatsapp') %>
+  <%- include('partials/scripts') %>
+</body>
+</html>
+

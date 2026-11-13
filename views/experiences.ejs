@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body class="bg-white text-brand-text">
+  <%- include('partials/header') %>
+
+  <!-- ========================================================
+       PAGE HERO
+       ======================================================== -->
+  <section class="relative py-24 bg-brand-navy text-white overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=1920&q=80" 
+           alt="Kashmir, Jammu & Ladakh Experiences" 
+           class="w-full h-full object-cover brightness-[0.35]">
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-navy/60 via-brand-navy/40 to-brand-navy"></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-flex items-center space-x-2 bg-brand-sky/20 border border-brand-sky/40 text-brand-sky text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+        <span>44 SIGNATURE EXPERIENCES • HIMALAYAN ODYSSEY</span>
+      </span>
+
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+        Experience Kashmir, Jammu & Ladakh
+      </h1>
+
+      <p class="font-serif italic text-lg sm:text-xl text-brand-sky max-w-2xl mx-auto mb-4">
+        "Where Your Travel Dreams Take Flight."
+      </p>
+
+      <p class="text-sm sm:text-base text-slate-200 max-w-3xl mx-auto leading-relaxed">
+        From the royal Wazwan feast and winter Harissa to high mountain cable cars, white-water river rapids, sacred shrines, azure high-altitude lakes, and starlit Himalayan camping.
+      </p>
+
+      <!-- Quick Stats Strip -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto mt-10 pt-8 border-t border-white/10 text-center">
+        <div>
+          <span class="font-serif text-2xl sm:text-3xl font-bold text-amber-400">44</span>
+          <span class="block text-[11px] uppercase tracking-wider text-slate-300 font-medium">Curated Activities</span>
+        </div>
+        <div>
+          <span class="font-serif text-2xl sm:text-3xl font-bold text-brand-sky">3</span>
+          <span class="block text-[11px] uppercase tracking-wider text-slate-300 font-medium">Crown Regions</span>
+        </div>
+        <div>
+          <span class="font-serif text-2xl sm:text-3xl font-bold text-emerald-400">5</span>
+          <span class="block text-[11px] uppercase tracking-wider text-slate-300 font-medium">Epic Categories</span>
+        </div>
+        <div>
+          <span class="font-serif text-2xl sm:text-3xl font-bold text-white">100%</span>
+          <span class="block text-[11px] uppercase tracking-wider text-slate-300 font-medium">Local Kashmiri Care</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       STICKY FILTER BAR & SEARCH BAR
+       ======================================================== -->
+  <section class="sticky top-20 z-30 bg-white/95 backdrop-blur-md border-b border-brand-border py-4 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+        
+        <!-- Part Filter Tabs -->
+        <div class="flex items-center space-x-2 overflow-x-auto w-full lg:w-auto pb-1 scrollbar-thin" id="expFilterBar">
+          <button type="button" 
+                  class="exp-filter-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-navy text-white border-brand-navy shadow-sm"
+                  data-part="all">
+            All (44)
+          </button>
+          <button type="button" 
+                  class="exp-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-offwhite hover:bg-slate-100 text-brand-navy border-slate-200"
+                  data-part="1">
+            🍲 Part 1: Regional Culinary (1–9)
+          </button>
+          <button type="button" 
+                  class="exp-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-offwhite hover:bg-slate-100 text-brand-navy border-slate-200"
+                  data-part="2">
+            🏔️ Part 2: Kashmir Adventure (10–23)
+          </button>
+          <button type="button" 
+                  class="exp-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-offwhite hover:bg-slate-100 text-brand-navy border-slate-200"
+                  data-part="3">
+            🛕 Part 3: Jammu Experiences (24–28)
+          </button>
+          <button type="button" 
+                  class="exp-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-offwhite hover:bg-slate-100 text-brand-navy border-slate-200"
+                  data-part="4">
+            ❄️ Part 4: Ladakh Adventures (29–39)
+          </button>
+          <button type="button" 
+                  class="exp-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-offwhite hover:bg-slate-100 text-brand-navy border-slate-200"
+                  data-part="5">
+            ❤️ Part 5: Special for Everyone (40–44)
+          </button>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative w-full lg:w-72 shrink-0">
+          <i data-lucide="search" class="w-4 h-4 text-brand-muted absolute left-3 top-3"></i>
+          <input type="text" 
+                 id="expSearchInput" 
+                 placeholder="Search Wazwan, Gondola, Pangong..." 
+                 class="w-full pl-9 pr-4 py-2 rounded-xl border border-brand-border bg-brand-offwhite text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue">
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       MAIN EXPERIENCES SHOWCASE (44 EXPERIENCES IN 5 PARTS)
+       ======================================================== -->
+  <main class="py-16 bg-brand-offwhite">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <% 
+        const partsMeta = [
+          {
+            part: 1,
+            title: "Part 1: Regional Culinary & Food Experiences",
+            subtitle: "Delve into royal wazwan feasts, winter harissa, samovar kahwa, and high-altitude Himalayan flavours.",
+            icon: "utensils",
+            badgeColor: "bg-amber-100 text-amber-800 border-amber-300"
+          },
+          {
+            part: 2,
+            title: "Part 2: Kashmir Adventure & Outdoor Experiences",
+            subtitle: "Ascend Apharwat Peak on the Gondola, raft the roaring Lidder River, glide on Dal Lake, and trek hidden alpine passes.",
+            icon: "mountain-snow",
+            badgeColor: "bg-sky-100 text-sky-800 border-sky-300"
+          },
+          {
+            part: 3,
+            title: "Part 3: Jammu Experiences & Activities",
+            subtitle: "Sacred pilgrimages to Shri Mata Vaishno Devi, alpine pine meadows of Patnitop, and rich Dogra heritage.",
+            icon: "landmark",
+            badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300"
+          },
+          {
+            part: 4,
+            title: "Part 4: Ladakh Adventure & Cultural Experiences",
+            subtitle: "Changing azure hues of Pangong Lake, Hunder desert sand dunes, ancient Gompas, and high-altitude passes.",
+            icon: "compass",
+            badgeColor: "bg-purple-100 text-purple-800 border-purple-300"
+          },
+          {
+            part: 5,
+            title: "Part 5: Special Experiences for Everyone",
+            subtitle: "Romantic moments for honeymooners, multi-generational family joy, photography vistas, and artisan shopping.",
+            icon: "heart",
+            badgeColor: "bg-rose-100 text-rose-800 border-rose-300"
+          }
+        ];
+      %>
+
+      <% partsMeta.forEach(meta => { 
+        const partExps = experiences.filter(e => e.part === meta.part);
+        if (partExps.length === 0) return;
+      %>
+
+        <!-- Part Group Section -->
+        <section class="exp-part-group scroll-mt-36" data-part-group="<%= meta.part %>" id="part-<%= meta.part %>">
+          
+          <!-- Part Header Banner -->
+          <div class="border-b border-slate-200/80 pb-6 mb-10">
+            <div class="flex items-center space-x-2.5">
+              <span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold border <%= meta.badgeColor %> uppercase tracking-wider">
+                <i data-lucide="<%= meta.icon %>" class="w-3.5 h-3.5"></i>
+                <span>Part <%= meta.part %></span>
+              </span>
+              <span class="text-xs text-brand-muted font-medium"><%= partExps.length %> Experiences</span>
+            </div>
+            
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-navy mt-2.5 mb-2">
+              <%= meta.title.replace(/^Part \d+:\s*/, '') %>
+            </h2>
+            <p class="text-xs sm:text-sm text-brand-muted max-w-3xl leading-relaxed">
+              <%= meta.subtitle %>
+            </p>
+          </div>
+
+          <!-- Experiences Cards Grid (2-Columns for Readability and Depth) -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+            <% partExps.forEach(exp => { %>
+              <div class="exp-card bg-white rounded-3xl border border-brand-border overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                   data-part="<%= exp.part %>"
+                   data-title="<%= exp.title.toLowerCase() %>"
+                   data-desc="<%= exp.shortDescription.toLowerCase() %>"
+                   data-location="<%= (exp.location || '').toLowerCase() %>">
+                
+                <div>
+                  <!-- Card Image & Overlay Badges -->
+                  <div class="relative h-64 sm:h-72 overflow-hidden bg-slate-100">
+                    <img src="<%= exp.image %>" 
+                         alt="<%= exp.title %>" 
+                         loading="lazy"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
+                    
+                    <!-- Top Left Number Pill -->
+                    <div class="absolute top-4 left-4 flex items-center space-x-2">
+                      <span class="w-8 h-8 rounded-xl bg-brand-navy/90 backdrop-blur-md text-amber-400 font-bold text-xs flex items-center justify-center shadow border border-white/20">
+                        #<%= exp.number %>
+                      </span>
+                      <% if (exp.tag) { %>
+                        <span class="bg-white/95 backdrop-blur-md text-brand-navy text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">
+                          <%= exp.tag %>
+                        </span>
+                      <% } %>
+                    </div>
+
+                    <!-- Bottom Location Overlay -->
+                    <div class="absolute bottom-3.5 left-4 right-4 flex items-center justify-between text-white text-xs">
+                      <span class="flex items-center space-x-1.5 bg-black/40 backdrop-blur-md px-3 py-1 rounded-lg">
+                        <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-sky"></i>
+                        <span class="font-medium"><%= exp.location %></span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Card Text Content -->
+                  <div class="p-6 sm:p-7">
+                    <h3 class="font-serif text-xl sm:text-22px font-bold text-brand-navy mb-3 leading-snug group-hover:text-brand-blue transition">
+                      <%= exp.title %>
+                    </h3>
+                    <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
+                      <%= exp.shortDescription %>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Card Actions -->
+                <div class="p-6 sm:p-7 pt-0 border-t border-slate-100 mt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <button type="button" 
+                          class="enquire-now-btn w-full sm:w-auto btn-primary px-5 py-2.5 rounded-xl font-semibold text-xs flex items-center justify-center space-x-2 shadow-sm"
+                          data-package="<%= exp.title %>">
+                    <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                    <span>Enquire Activity</span>
+                  </button>
+
+                  <div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
+                    <a href="https://wa.me/916006725007?text=<%= encodeURIComponent('Hi City Line Tours, I am interested in including Experience #' + exp.number + ': ' + exp.title + ' in my tour itinerary. Please share details and pricing.') %>" 
+                       target="_blank" 
+                       class="w-full sm:w-auto bg-[#25D366] hover:bg-[#20ba59] text-white px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center space-x-1.5 transition shadow-sm"
+                       title="Ask on WhatsApp">
+                      <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                      <span>WhatsApp Specialist</span>
+                    </a>
+                    <a href="/packages" 
+                       class="btn-outline px-3.5 py-2.5 rounded-xl text-xs font-semibold text-brand-navy hover:text-brand-blue flex items-center space-x-1"
+                       title="View packages">
+                      <span>Packages &rarr;</span>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            <% }) %>
+          </div>
+
+        </section>
+
+      <% }) %>
+
+      <!-- No Search Results Found Message -->
+      <div id="noExpFound" class="hidden text-center py-16 bg-white rounded-3xl border border-brand-border p-8">
+        <i data-lucide="compass" class="w-12 h-12 text-brand-muted mx-auto mb-3"></i>
+        <h4 class="font-serif text-xl font-bold text-brand-navy">No Experiences Found</h4>
+        <p class="text-xs sm:text-sm text-brand-muted mt-1 mb-4">
+          Try searching for a different keyword like "Wazwan", "Gondola", "Pangong", or "Pahalgam".
+        </p>
+        <button type="button" id="resetSearchBtn" class="btn-primary px-5 py-2 rounded-xl text-xs font-semibold">
+          View All 44 Experiences
+        </button>
+      </div>
+
+      <!-- ========================================================
+           RESPONSIBLE TOURISM – KEEP OUR HIMALAYAS CLEAN & GREEN
+           ======================================================== -->
+      <section class="bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-900 text-white rounded-3xl p-8 sm:p-10 lg:p-12 shadow-xl border border-emerald-500/30 relative overflow-hidden">
+        <div class="relative z-10 max-w-4xl mx-auto text-center">
+          
+          <div class="inline-flex items-center space-x-2 bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4">
+            <i data-lucide="leaf" class="w-3.5 h-3.5 text-emerald-400"></i>
+            <span>CONSERVATION & SUSTAINABLE TRAVEL</span>
+          </div>
+
+          <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
+            Responsible Tourism – Keep Our Himalayas Clean & Green
+          </h2>
+
+          <p class="text-sm sm:text-base text-emerald-100 leading-relaxed max-w-3xl mx-auto mb-8">
+            Help us preserve the natural beauty of Jammu, Kashmir and Ladakh for future generations. Avoid throwing plastic bottles and wrappers in public places, never spit in public areas, use designated dustbins and respect local communities. Keep lakes, rivers, mountains and tourist destinations clean. Travel responsibly and protect the beauty of our Himalayas.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs text-left">
+            <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10">
+              <div class="flex items-center space-x-2 text-emerald-300 font-bold mb-1">
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                <span>Zero Littering</span>
+              </div>
+              <p class="text-[11px] text-slate-200">Carry your trash back and use designated bins</p>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10">
+              <div class="flex items-center space-x-2 text-emerald-300 font-bold mb-1">
+                <i data-lucide="droplet" class="w-4 h-4"></i>
+                <span>Protect Water</span>
+              </div>
+              <p class="text-[11px] text-slate-200">Preserve Dal Lake, rivers & glacial streams</p>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10">
+              <div class="flex items-center space-x-2 text-emerald-300 font-bold mb-1">
+                <i data-lucide="users" class="w-4 h-4"></i>
+                <span>Respect Locals</span>
+              </div>
+              <p class="text-[11px] text-slate-200">Honor local customs, dress codes & culture</p>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10">
+              <div class="flex items-center space-x-2 text-emerald-300 font-bold mb-1">
+                <i data-lucide="trees" class="w-4 h-4"></i>
+                <span>Eco Trails</span>
+              </div>
+              <p class="text-[11px] text-slate-200">Stay on marked paths to safeguard alpine flora</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================================
+           CLOSING BRAND CTA BANNER
+           ======================================================== -->
+      <section class="bg-gradient-to-r from-brand-navy via-[#0f2d4a] to-brand-navy text-white rounded-3xl p-8 sm:p-12 text-center shadow-xl border border-brand-blue/30">
+        <div class="max-w-3xl mx-auto">
+          <div class="inline-flex items-center space-x-2 bg-white/10 px-3.5 py-1.5 rounded-full text-xs text-brand-sky font-semibold mb-3">
+            <i data-lucide="plane" class="w-3.5 h-3.5"></i>
+            <span>CUSTOMISE YOUR HOLIDAY</span>
+          </div>
+
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mb-2">
+            City Line Tours and Travels
+          </h2>
+
+          <p class="font-serif italic text-lg sm:text-xl text-brand-sky mb-6">
+            Where Your Travel Dreams Take Flight.
+          </p>
+
+          <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto mb-8 leading-relaxed">
+            Want to combine multiple experiences into a single seamless itinerary? Speak directly with our Kashmir travel coordinators in Palpora, Srinagar.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="https://wa.me/916006725007?text=Hi%20City%20Line%20Tours,%20I%20am%20exploring%20your%2044%20Experiences%20page%20and%20would%20like%20to%20plan%20a%20customized%20itinerary" 
+               target="_blank" 
+               class="w-full sm:w-auto bg-[#25D366] hover:bg-[#20ba59] text-white px-8 py-3.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md transition">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              <span>Plan on WhatsApp (6006725007)</span>
+            </a>
+
+            <a href="/packages" class="w-full sm:w-auto btn-primary px-8 py-3.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md">
+              <i data-lucide="package" class="w-4 h-4"></i>
+              <span>Explore Tour Packages</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+  <%- include('partials/whatsapp') %>
+  <%- include('partials/enquiry-modal') %>
+  <%- include('partials/scripts') %>
+
+  <!-- ========================================================
+       CLIENT-SIDE INTERACTIVE FILTER & SEARCH SCRIPT
+       ======================================================== -->
+  <script>
+    (function initExperiencesPage() {
+      const filterBtns = document.querySelectorAll('.exp-filter-btn');
+      const searchInput = document.getElementById('expSearchInput');
+      const expCards = document.querySelectorAll('.exp-card');
+      const partGroups = document.querySelectorAll('.exp-part-group');
+      const noFoundEl = document.getElementById('noExpFound');
+      const resetSearchBtn = document.getElementById('resetSearchBtn');
+
+      let currentPart = 'all';
+      let searchQuery = '';
+
+      function applyFilters() {
+        let visibleCount = 0;
+
+        partGroups.forEach(group => {
+          const groupPart = group.getAttribute('data-part-group');
+          let groupHasVisibleCards = false;
+
+          const cardsInGroup = group.querySelectorAll('.exp-card');
+          cardsInGroup.forEach(card => {
+            const cardPart = card.getAttribute('data-part');
+            const title = card.getAttribute('data-title') || '';
+            const desc = card.getAttribute('data-desc') || '';
+            const loc = card.getAttribute('data-location') || '';
+
+            const matchesPart = (currentPart === 'all' || currentPart === cardPart);
+            const matchesSearch = (!searchQuery || title.includes(searchQuery) || desc.includes(searchQuery) || loc.includes(searchQuery));
+
+            if (matchesPart && matchesSearch) {
+              card.style.display = 'flex';
+              groupHasVisibleCards = true;
+              visibleCount++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          // Show or hide whole part section if no cards match
+          if (groupHasVisibleCards) {
+            group.style.display = 'block';
+          } else {
+            group.style.display = 'none';
+          }
+        });
+
+        // Show/hide empty state
+        if (noFoundEl) {
+          noFoundEl.style.display = (visibleCount === 0) ? 'block' : 'none';
+        }
+      }
+
+      // Filter button click handler
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentPart = btn.getAttribute('data-part');
+
+          // Update active button styles
+          filterBtns.forEach(b => {
+            if (b === btn) {
+              b.className = 'exp-filter-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-navy text-white border-brand-navy shadow-sm';
+            } else {
+              b.className = 'exp-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-offwhite hover:bg-slate-100 text-brand-navy border-slate-200';
+            }
+          });
+
+          applyFilters();
+
+          // If a specific part was chosen and not searching, smooth scroll to it
+          if (currentPart !== 'all' && !searchQuery) {
+            const targetSection = document.getElementById('part-' + currentPart);
+            if (targetSection) {
+              targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        });
+      });
+
+      // Search input handler
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = (e.target.value || '').trim().toLowerCase();
+          applyFilters();
+        });
+      }
+
+      // Reset button in empty state
+      if (resetSearchBtn) {
+        resetSearchBtn.addEventListener('click', () => {
+          if (searchInput) searchInput.value = '';
+          searchQuery = '';
+          currentPart = 'all';
+          filterBtns[0].click();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

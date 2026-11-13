@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= pkg.title %> - Official Itinerary | City Line Tours And Travels</title>
+  <link rel="icon" type="image/jpeg" href="/images/LOGO.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --navy: #0B2545;
+      --blue: #145DA0;
+      --sky: #2563EB;
+      --light-blue: #EFF6FF;
+      --text: #1E293B;
+      --muted: #475569;
+      --border: #CBD5E1;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text);
+      background: #f8fafc;
+      line-height: 1.5;
+      font-size: 13px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .no-print-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      color: white;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-print {
+      background: var(--blue);
+      color: white;
+    }
+    .btn-print:hover {
+      background: #0e4b85;
+    }
+
+    .btn-back {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+    }
+    .btn-back:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .page-container {
+      max-width: 860px;
+      margin: 32px auto;
+      background: #ffffff;
+      padding: 48px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Official Letterhead Header */
+    .letterhead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px double var(--blue);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    .brand-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-logo {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .brand-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.15;
+    }
+
+    .brand-tagline {
+      font-size: 11px;
+      color: var(--blue);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .contact-right {
+      text-align: right;
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .contact-right strong {
+      color: var(--navy);
+    }
+
+    /* Tour Summary Box */
+    .tour-hero-box {
+      background: var(--light-blue);
+      border: 1px solid #bfdbfe;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .tour-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .tour-route {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .tour-route strong {
+      color: var(--navy);
+    }
+
+    .tour-meta-badges {
+      text-align: right;
+      min-width: 180px;
+    }
+
+    .badge-duration {
+      display: inline-block;
+      background: var(--blue);
+      color: white;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+    }
+
+    .badge-price {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    /* Highlights Strip */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+
+    .highlight-item span {
+      display: block;
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .highlight-item strong {
+      font-size: 12px;
+      color: var(--navy);
+    }
+
+    /* Section Headings */
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      border-left: 4px solid var(--blue);
+      padding-left: 10px;
+      margin: 24px 0 14px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .overview-text {
+      color: #334155;
+      font-size: 12.5px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Day-Wise Itinerary Table */
+    .itinerary-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .itinerary-day-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      background: #ffffff;
+      page-break-inside: avoid;
+    }
+
+    .day-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .day-num-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .day-meals-badge {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--blue);
+      background: var(--light-blue);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .day-desc {
+      font-size: 12px;
+      color: #475569;
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+
+    .day-stay {
+      font-size: 11px;
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    /* Inclusions & Exclusions 2 Columns */
+    .inc-exc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 24px;
+      page-break-inside: avoid;
+    }
+
+    .inc-box, .exc-box {
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 11.5px;
+    }
+
+    .inc-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .inc-box h4 {
+      color: #166534;
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .exc-box {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+    }
+
+    .exc-box h4 {
+      color: #991b1b;
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    ul.clean-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul.clean-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 5px;
+      line-height: 1.4;
+    }
+
+    .inc-box li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #16a34a;
+      font-weight: bold;
+    }
+
+    .exc-box li::before {
+      content: '✕';
+      position: absolute;
+      left: 0;
+      color: #dc2626;
+      font-weight: bold;
+    }
+
+    /* Important Advisories Notice */
+    .advisory-notice {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      page-break-inside: avoid;
+    }
+
+    .advisory-notice h4 {
+      font-size: 12px;
+      color: #92400e;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .advisory-notice p {
+      font-size: 11px;
+      color: #78350f;
+      line-height: 1.45;
+      margin-bottom: 4px;
+    }
+
+    /* Footer Signoff */
+    .itinerary-footer {
+      border-top: 2px solid var(--border);
+      padding-top: 16px;
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--muted);
+      page-break-inside: avoid;
+    }
+
+    .footer-left strong {
+      color: var(--navy);
+      display: block;
+    }
+
+    .footer-stamp {
+      border: 1px dashed var(--blue);
+      padding: 6px 14px;
+      border-radius: 6px;
+      text-align: center;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Print Specific Media Rules */
+    @media print {
+      body {
+        background: #ffffff !important;
+        font-size: 12px !important;
+      }
+
+      .no-print-bar {
+        display: none !important;
+      }
+
+      .page-container {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      .section-title {
+        margin-top: 18px !important;
+      }
+
+      a {
+        text-decoration: none !important;
+        color: inherit !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Action Bar (Hidden when printed) -->
+  <div class="no-print-bar">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <a href="/packages/<%= pkg.slug %>" class="btn-action btn-back">
+        ← Back to Package Page
+      </a>
+      <span style="font-size: 12px; opacity: 0.85;">Official City Line Itinerary Document</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <button onclick="window.print()" class="btn-action btn-print">
+        🖨️ Print / Save as PDF
+      </button>
+    </div>
+  </div>
+
+  <div class="page-container">
+    
+    <!-- Letterhead -->
+    <header class="letterhead">
+      <div class="brand-left">
+        <img src="/images/LOGO.jpeg" alt="City Line Tours Logo" class="brand-logo">
+        <div>
+          <h1 class="brand-title"><%= settings.companyName %></h1>
+          <p class="brand-tagline"><%= settings.tagline %></p>
+        </div>
+      </div>
+
+      <div class="contact-right">
+        <p><strong>Hotline:</strong> 6006725007 / 9906676890</p>
+        <p><strong>WhatsApp:</strong> 6006725007</p>
+        <p><strong>Official Email:</strong> <%= settings.email %></p>
+        <p><strong>Office:</strong> Palpora, Srinagar, Jammu & Kashmir, India</p>
+        <p><strong>Website:</strong> www.citylinetours.com</p>
+      </div>
+    </header>
+
+    <!-- Tour Hero Summary -->
+    <div class="tour-hero-box">
+      <div>
+        <h2 class="tour-title"><%= pkg.title %></h2>
+        <p class="tour-route"><strong>Route:</strong> <%= pkg.route %></p>
+        <p class="tour-route" style="margin-top: 3px;"><strong>Trip Style:</strong> <%= pkg.category %> | <strong>Recommended For:</strong> <%= pkg.idealFor %></p>
+      </div>
+
+      <div class="tour-meta-badges">
+        <div class="badge-duration"><%= pkg.duration %></div>
+        <div class="badge-price">Starting from <%= pkg.priceFormatted %>/person</div>
+      </div>
+    </div>
+
+    <!-- Highlights Strip -->
+    <div class="highlights-grid">
+      <div class="highlight-item">
+        <span>Accommodation</span>
+        <strong>Houseboat & Hotel</strong>
+      </div>
+      <div class="highlight-item">
+        <span>Private Vehicle</span>
+        <strong>Dedicated Car / SUV</strong>
+      </div>
+      <div class="highlight-item">
+        <span>Meals Plan</span>
+        <strong>Breakfast & Dinner</strong>
+      </div>
+      <div class="highlight-item">
+        <span>Signature Perk</span>
+        <strong>Sunset Shikara Ride</strong>
+      </div>
+    </div>
+
+    <!-- Tour Overview -->
+    <h3 class="section-title">Tour Overview</h3>
+    <p class="overview-text"><%= pkg.fullDescription %></p>
+
+    <!-- Day-Wise Detailed Itinerary -->
+    <h3 class="section-title">Day-Wise Tour Itinerary</h3>
+    <div class="itinerary-list">
+      <% if (pkg.itinerary && pkg.itinerary.length > 0) { %>
+        <% pkg.itinerary.forEach(day => { %>
+          <div class="itinerary-day-card">
+            <div class="day-header">
+              <span class="day-num-title">Day <%= day.day %>: <%= day.title %></span>
+              <% if (day.meals) { %>
+                <span class="day-meals-badge"><%= day.meals %> Included</span>
+              <% } %>
+            </div>
+            <p class="day-desc"><%= day.description %></p>
+            <% if (day.stay) { %>
+              <div class="day-stay">🏨 Overnight Stay: <%= day.stay %></div>
+            <% } %>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+
+    <!-- Inclusions & Exclusions -->
+    <div class="inc-exc-grid">
+      <div class="inc-box">
+        <h4>Package Inclusions</h4>
+        <ul class="clean-list">
+          <% if (pkg.inclusions && pkg.inclusions.length > 0) { %>
+            <% pkg.inclusions.forEach(inc => { %>
+              <li><%= inc %></li>
+            <% }) %>
+          <% } else { %>
+            <li>Handpicked Deluxe Hotel & Luxury Houseboat stays</li>
+            <li>Daily freshly prepared Breakfast & Dinner (MAP)</li>
+            <li>Dedicated private vehicle for all airport transfers & sightseeing</li>
+            <li>Complimentary 1-hour sunset Shikara ride on Dal Lake</li>
+            <li>Toll taxes, parking, driver fuel & inter-district permits</li>
+          <% } %>
+        </ul>
+      </div>
+
+      <div class="exc-box">
+        <h4>Package Exclusions</h4>
+        <ul class="clean-list">
+          <% if (pkg.exclusions && pkg.exclusions.length > 0) { %>
+            <% pkg.exclusions.forEach(exc => { %>
+              <li><%= exc %></li>
+            <% }) %>
+          <% } else { %>
+            <li>Airfare / Train tickets to and from Srinagar</li>
+            <li>Gulmarg Gondola cable car ride tickets</li>
+            <li>Pony / horse riding, ATV quad bike, or river rafting fees</li>
+            <li>Lunch, personal shopping, laundry, and tipping</li>
+            <li>Travel insurance and personal medical expenses</li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Essential Kashmir Advisory Notice -->
+    <div class="advisory-notice">
+      <h4>Important Kashmir Travel Advisories:</h4>
+      <p>• <strong>Mobile Network:</strong> Only <strong>Postpaid SIM cards</strong> (Jio, Airtel, BSNL) function in Jammu & Kashmir. Prepaid SIMs from outside J&K are blocked by telecom regulations.</p>
+      <p>• <strong>Gulmarg Gondola Tickets:</strong> Gondola Phase 1 & Phase 2 tickets should be pre-booked online through the official J&K Cable Car website to prevent same-day unavailability.</p>
+      <p>• <strong>Winter / Spring Clothing:</strong> Warm thermals, woollen socks, heavy jackets, and waterproof gloves are strongly advised for high altitude valleys like Gulmarg and Sonamarg.</p>
+    </div>
+
+    <!-- Footer Signoff -->
+    <footer class="itinerary-footer">
+      <div class="footer-left">
+        <strong>City Line Tours And Travels</strong>
+        <span>Where Your Travel Dreams Take Flight • Palpora, Srinagar, Kashmir</span>
+        <span style="display: block; font-size: 10px; margin-top: 2px;">Direct Booking Helpline: 6006725007 / 9906676890 | <%= settings.email %></span>
+      </div>
+
+      <div class="footer-stamp">
+        Official Travel Itinerary<br>
+        Verified & Authorized
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Automatically trigger print if ?autoprint=1 is in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('autoprint') === '1') {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          window.print();
+        }, 500);
+      });
+    }
+  </script>
+</body>
+</html>
+

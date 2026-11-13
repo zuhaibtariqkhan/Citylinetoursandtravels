@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body class="bg-white text-brand-text">
+
+  <!-- Header -->
+  <%- include('partials/header') %>
+
+  <!-- Success Notification Flash (if redirected with ?enquiry_success=true) -->
+  <div id="flashNotice" class="hidden max-w-4xl mx-auto my-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-900 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-600 shrink-0"></i>
+      <div>
+        <p class="font-bold text-sm">Thank you! Your travel enquiry has been received.</p>
+        <p class="text-xs text-emerald-700">Our Kashmir travel specialist will review your request and connect with you shortly via phone or email.</p>
+      </div>
+    </div>
+    <button onclick="document.getElementById('flashNotice').remove()" class="text-emerald-700 hover:text-emerald-900 p-1">
+      <i data-lucide="x" class="w-5 h-5"></i>
+    </button>
+  </div>
+
+  <script>
+    if (window.location.search.includes('enquiry_success=true')) {
+      document.getElementById('flashNotice').classList.remove('hidden');
+    }
+  </script>
+
+  <!-- ========================================================
+       SECTION 01: HERO SECTION (Ken-Burns Slider & Snowfall)
+       ======================================================== -->
+  <section class="relative min-h-[88vh] sm:min-h-[92vh] flex items-center justify-center overflow-hidden bg-brand-navy" id="heroSection">
+    
+    <!-- Multi-Scene Ken-Burns Slider Container -->
+    <div class="absolute inset-0 z-0" id="heroSlider">
+      
+      <!-- Slide 1: Hero Section Photo 1 -->
+      <div class="hero-slide active" data-slide="0">
+        <img src="/images/HERO SECTION (1).jpg" 
+             alt="City Line Tours Kashmir Scenic View 1" 
+             class="kenburns-1 brightness-[0.75]"
+             loading="eager"
+             fetchpriority="high">
+      </div>
+
+      <!-- Slide 2: Hero Section Photo 2 -->
+      <div class="hero-slide" data-slide="1">
+        <img src="/images/HERO SECTION (2).jpg" 
+             alt="City Line Tours Kashmir Scenic View 2" 
+             class="kenburns-2 brightness-[0.70]">
+      </div>
+
+      <!-- Slide 3: Hero Section Photo 3 -->
+      <div class="hero-slide" data-slide="2">
+        <img src="/images/HERO SECTION (3).jpg" 
+             alt="City Line Tours Kashmir Scenic View 3" 
+             class="kenburns-3 brightness-[0.75]">
+      </div>
+
+      <!-- Dual Layer Gradient Overlay for Rich Readability & Contrast -->
+      <div class="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/50 to-brand-navy/35 z-10"></div>
+    </div>
+
+    <!-- Ambient Gentle Snowfall Canvas Overlay -->
+    <canvas id="snowCanvas" class="absolute inset-0 pointer-events-none z-10 w-full h-full"></canvas>
+
+    <!-- Hero Content -->
+    <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-16 pb-24">
+      
+      <!-- Small Introductory Label -->
+      <div class="hero-badge-enter inline-flex items-center space-x-2 bg-white/15 backdrop-blur-md px-4 py-1.5 rounded-full text-brand-sky text-xs font-semibold uppercase tracking-widest mb-6 border border-white/20 shadow-sm">
+        <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-sky"></i>
+        <span>KASHMIR • INDIA</span>
+      </div>
+
+      <!-- Main Georgia Bold Heading -->
+      <h1 class="hero-title-enter font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-bold text-white tracking-tight leading-[1.1] mb-6 drop-shadow-md">
+        Discover the Paradise on Earth
+      </h1>
+
+      <!-- Supporting Text -->
+      <p class="hero-text-enter max-w-2xl mx-auto text-base sm:text-lg text-slate-200 font-normal leading-relaxed mb-10">
+        Explore the breathtaking beauty of Kashmir with thoughtfully planned journeys, unforgettable experiences and personalised travel arrangements.
+      </p>
+
+      <!-- Primary Hero CTA -->
+      <div class="hero-cta-enter flex items-center justify-center">
+        <a href="/packages" class="btn-primary px-8 py-4 rounded-xl text-base font-semibold shadow-lg hover:shadow-xl flex items-center justify-center space-x-2">
+          <span>Explore Packages</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 arrow-hover"></i>
+        </a>
+      </div>
+
+      <!-- Scroll to explore indicator -->
+      <div class="mt-14 flex flex-col items-center justify-center text-slate-300 text-xs font-medium space-y-2 opacity-80 animate-bounce">
+        <span>Scroll to Explore</span>
+        <i data-lucide="chevron-down" class="w-4 h-4"></i>
+      </div>
+
+    </div>
+
+    <!-- Bottom Controls: Snowfall Toggle & Scene Indicators -->
+    <div class="absolute bottom-5 inset-x-0 z-20 px-6 sm:px-10 flex items-center justify-between text-xs">
+      
+      <!-- Snowfall Toggle Pill -->
+      <button id="snowToggleBtn" type="button" class="snow-toggle-btn px-3 py-1.5 rounded-full text-[11px] font-medium flex items-center space-x-1.5">
+        <i data-lucide="snowflake" class="w-3.5 h-3.5 text-cyan-300"></i>
+        <span id="snowStatusText">Snowfall: Active</span>
+      </button>
+
+      <!-- Ken-Burns Scene Switcher Bullets -->
+      <div class="flex items-center space-x-2.5 bg-black/30 backdrop-blur px-3 py-1.5 rounded-full border border-white/10" id="heroSceneNav">
+        <button type="button" class="hero-scene-dot w-6 sm:w-8 h-1.5 rounded-full bg-brand-sky transition-all duration-300" data-target="0" title="Kashmir Scenic 1"></button>
+        <button type="button" class="hero-scene-dot w-2 h-1.5 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-target="1" title="Kashmir Scenic 2"></button>
+        <button type="button" class="hero-scene-dot w-2 h-1.5 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-target="2" title="Kashmir Scenic 3"></button>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================================================
+       SECTION 02: QUICK ENQUIRY BAR
+       ======================================================== -->
+  <section class="relative z-20 -mt-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+    <div class="bg-white rounded-2xl shadow-xl border border-brand-border p-5 sm:p-6 lg:p-7">
+      <div class="mb-3 flex items-center justify-between border-b border-slate-100 pb-2">
+        <div class="flex items-center space-x-2 text-brand-navy">
+          <i data-lucide="compass" class="w-4 h-4 text-brand-blue"></i>
+          <span class="text-xs font-bold uppercase tracking-wider">Quick Trip Enquiry</span>
+        </div>
+        <span class="text-xs text-brand-muted">Get a tailored quote delivered to your phone & email</span>
+      </div>
+
+      <form id="quickEnquiryForm" class="ajax-enquiry-form grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+        <input type="hidden" name="source" value="Homepage Quick Bar">
+
+        <!-- Destination Select -->
+        <div>
+          <label class="block text-[11px] font-semibold text-brand-muted mb-1 uppercase tracking-wider">Destination</label>
+          <div class="relative">
+            <i data-lucide="map-pin" class="w-4 h-4 text-brand-blue absolute left-3 top-3"></i>
+            <select name="destination" class="form-input pl-9 text-xs sm:text-sm py-2.5">
+              <option value="All Kashmir (Classic Tour)">All Kashmir (Classic)</option>
+              <option value="Srinagar & Dal Lake">Srinagar & Dal Lake</option>
+              <option value="Gulmarg Ski & Gondola">Gulmarg Ski & Gondola</option>
+              <option value="Pahalgam & Betaab Valley">Pahalgam & Betaab</option>
+              <option value="Sonamarg Glaciers">Sonamarg Glaciers</option>
+              <option value="Offbeat (Doodhpathri & Gurez)">Offbeat Valleys</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Travel Date -->
+        <div>
+          <label class="block text-[11px] font-semibold text-brand-muted mb-1 uppercase tracking-wider">Travel Date</label>
+          <div class="relative">
+            <i data-lucide="calendar" class="w-4 h-4 text-brand-blue absolute left-3 top-3"></i>
+            <input type="date" name="travelDate" class="form-input pl-9 text-xs sm:text-sm py-2.5">
+          </div>
+        </div>
+
+        <!-- Travellers -->
+        <div>
+          <label class="block text-[11px] font-semibold text-brand-muted mb-1 uppercase tracking-wider">Travellers</label>
+          <div class="relative">
+            <i data-lucide="users" class="w-4 h-4 text-brand-blue absolute left-3 top-3"></i>
+            <select name="travellers" class="form-input pl-9 text-xs sm:text-sm py-2.5">
+              <option value="Couple (2 Adults)">Couple (2 Adults)</option>
+              <option value="Family (3-4 Pax)">Family (3-4 Pax)</option>
+              <option value="Group (5+ Pax)">Group (5+ Pax)</option>
+              <option value="Solo (1 Person)">Solo (1 Person)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Contact (Phone / Mobile) -->
+        <div>
+          <label class="block text-[11px] font-semibold text-brand-muted mb-1 uppercase tracking-wider">Mobile Number <span class="text-red-500">*</span></label>
+          <div class="relative">
+            <i data-lucide="phone" class="w-4 h-4 text-brand-blue absolute left-3 top-3"></i>
+            <input type="tel" name="phone" required placeholder="Phone / WhatsApp" class="form-input pl-9 text-xs sm:text-sm py-2.5">
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="flex items-end">
+          <button type="submit" class="w-full btn-primary h-[42px] rounded-lg font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow">
+            <span>Send Enquiry</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       LIVE MOUNTAIN CLIMATE & VALLEY ROAD STATUS STRIP
+       ======================================================== -->
+  <div class="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 mb-10 reveal">
+    <div class="bg-gradient-to-r from-brand-navy via-[#0f3460] to-brand-navy text-white rounded-2xl p-4 sm:p-5 shadow-xl border border-brand-blue/30">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-3.5 border-b border-white/10">
+        <div class="flex items-center space-x-2.5">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+          </span>
+          <span class="font-serif font-bold text-sm tracking-wide text-white">Live Kashmir Valley Travel Advisory</span>
+          <span class="text-[10px] uppercase tracking-wider bg-white/10 text-brand-sky px-2.5 py-0.5 rounded-full font-semibold">Real-Time Status</span>
+        </div>
+        <div class="flex items-center space-x-2 text-xs text-emerald-300 font-semibold bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+          <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+          <span>NH-44 Jammu–Srinagar Highway: Open & Clear</span>
+        </div>
+      </div>
+      
+      <!-- Weather & Valley Activity Grid -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 pt-3.5 text-xs">
+        <div class="bg-white/5 rounded-xl p-3 border border-white/5 hover:bg-white/10 transition group">
+          <div class="flex items-center justify-between text-brand-sky text-[11px] font-semibold mb-1">
+            <span>Srinagar (1,585m)</span>
+            <i data-lucide="sun" class="w-4 h-4 text-amber-400 animate-spin-slow"></i>
+          </div>
+          <div class="font-bold text-base text-white">15°C <span class="text-xs text-slate-300 font-normal">/ 5°C</span></div>
+          <div class="text-[11px] text-slate-300 mt-1 flex items-center space-x-1">
+            <i data-lucide="waves" class="w-3 h-3 text-brand-sky"></i>
+            <span>Dal Lake Shikaras: Calm</span>
+          </div>
+        </div>
+
+        <div class="bg-white/5 rounded-xl p-3 border border-white/5 hover:bg-white/10 transition group">
+          <div class="flex items-center justify-between text-brand-sky text-[11px] font-semibold mb-1">
+            <span>Gulmarg (2,650m)</span>
+            <i data-lucide="snowflake" class="w-4 h-4 text-sky-300 animate-drift"></i>
+          </div>
+          <div class="font-bold text-base text-white">4°C <span class="text-xs text-slate-300 font-normal">/ -2°C</span></div>
+          <div class="text-[11px] text-slate-300 mt-1 flex items-center space-x-1">
+            <i data-lucide="cable-car" class="w-3 h-3 text-sky-300"></i>
+            <span>Gondola Phase 1 & 2: Active</span>
+          </div>
+        </div>
+
+        <div class="bg-white/5 rounded-xl p-3 border border-white/5 hover:bg-white/10 transition group">
+          <div class="flex items-center justify-between text-brand-sky text-[11px] font-semibold mb-1">
+            <span>Pahalgam (2,130m)</span>
+            <i data-lucide="cloud-sun" class="w-4 h-4 text-amber-300 animate-cloud-drift"></i>
+          </div>
+          <div class="font-bold text-base text-white">11°C <span class="text-xs text-slate-300 font-normal">/ 2°C</span></div>
+          <div class="text-[11px] text-slate-300 mt-1 flex items-center space-x-1">
+            <i data-lucide="trees" class="w-3 h-3 text-emerald-400"></i>
+            <span>Betaab & Aru Valleys: Open</span>
+          </div>
+        </div>
+
+        <div class="bg-white/5 rounded-xl p-3 border border-white/5 hover:bg-white/10 transition group">
+          <div class="flex items-center justify-between text-brand-sky text-[11px] font-semibold mb-1">
+            <span>Sonamarg (2,730m)</span>
+            <i data-lucide="mountain" class="w-4 h-4 text-teal-300 animate-drift"></i>
+          </div>
+          <div class="font-bold text-base text-white">7°C <span class="text-xs text-slate-300 font-normal">/ -1°C</span></div>
+          <div class="text-[11px] text-slate-300 mt-1 flex items-center space-x-1">
+            <i data-lucide="compass" class="w-3 h-3 text-teal-300"></i>
+            <span>Thajiwas Glacier: Accessible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       SECTION 03: INTRODUCTION
+       ======================================================== -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Column: Large Kashmir Photograph -->
+        <div class="relative reveal">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=1000&q=80" 
+                 alt="Kashmiri Houseboat and Shikara" 
+                 class="w-full h-[450px] object-cover hover:scale-105 transition-transform duration-700">
+          </div>
+          <!-- Floating Experience Badge -->
+          <div class="absolute -bottom-6 -right-6 bg-brand-navy text-white p-5 rounded-2xl shadow-xl hidden sm:flex items-center space-x-4 border border-white/10 max-w-xs animate-float">
+            <div class="w-12 h-12 rounded-xl bg-brand-blue flex items-center justify-center text-white shrink-0">
+              <i data-lucide="shield-check" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-brand-sky">Authentic Hospitality</div>
+              <div class="text-sm font-serif font-bold">Local Kashmir Specialists</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Editorial Intro Text -->
+        <div class="space-y-6 reveal">
+          <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-light px-3.5 py-1 rounded-full">
+            ABOUT CITY LINE TOURS
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-[40px] font-bold text-brand-navy leading-tight">
+            Your Journey to Kashmir Begins Here
+          </h2>
+          <p class="text-base text-brand-muted leading-relaxed">
+            Welcome to <strong>City Line Tours And Travels</strong>. Based in the heart of Kashmir, we are dedicated to sharing the soul, majesty, and warmth of our homeland with travelers from across the world.
+          </p>
+          <p class="text-base text-brand-muted leading-relaxed">
+            From the peaceful ripples of Dal Lake at dawn to the snow-covered slopes of Apharwat Peak in Gulmarg and the roaring waters of the Lidder River in Pahalgam, our journeys are planned with care, transparent communication, and genuine passion for hospitality.
+          </p>
+
+          <!-- Key Highlights Bullet Points -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <div class="flex items-center space-x-2 text-sm font-semibold text-brand-navy">
+              <i data-lucide="badge-check" class="w-4 h-4 text-brand-blue"></i>
+              <span>Handcrafted Itineraries</span>
+            </div>
+            <div class="flex items-center space-x-2 text-sm font-semibold text-brand-navy">
+              <i data-lucide="badge-check" class="w-4 h-4 text-brand-blue"></i>
+              <span>Heritage Houseboat Stays</span>
+            </div>
+            <div class="flex items-center space-x-2 text-sm font-semibold text-brand-navy">
+              <i data-lucide="badge-check" class="w-4 h-4 text-brand-blue"></i>
+              <span>Dedicated Private Vehicles</span>
+            </div>
+            <div class="flex items-center space-x-2 text-sm font-semibold text-brand-navy">
+              <i data-lucide="badge-check" class="w-4 h-4 text-brand-blue"></i>
+              <span>24/7 Local Support</span>
+            </div>
+          </div>
+
+          <div class="pt-4 flex items-center space-x-4">
+            <a href="/about" class="btn-primary px-6 py-3 rounded-xl font-semibold text-sm flex items-center space-x-2">
+              <span>Explore More</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 arrow-hover"></i>
+            </a>
+            <a href="/contact" class="btn-outline px-6 py-3 rounded-xl font-semibold text-sm">
+              Contact Us
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       ANIMATED METRICS & TRUST STRIP (CountUp Animation)
+       ======================================================== -->
+  <section class="py-12 bg-brand-navy text-white border-y border-white/10 reveal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
+        <div class="space-y-1 pt-3 md:pt-0">
+          <div class="font-serif text-3xl sm:text-5xl font-bold text-brand-sky" data-count-to="7">7</div>
+          <p class="text-xs uppercase tracking-wider text-slate-300 font-medium">Signature Kashmir Valleys</p>
+        </div>
+        <div class="space-y-1 pt-3 md:pt-0">
+          <div class="font-serif text-3xl sm:text-5xl font-bold text-brand-sky" data-count-to="100" data-count-suffix="%">100%</div>
+          <p class="text-xs uppercase tracking-wider text-slate-300 font-medium">Tailor-Made Itineraries</p>
+        </div>
+        <div class="space-y-1 pt-3 md:pt-0">
+          <div class="font-serif text-3xl sm:text-5xl font-bold text-amber-400" data-count-to="4.9" data-count-suffix="★">4.9★</div>
+          <p class="text-xs uppercase tracking-wider text-slate-300 font-medium">Average Guest Rating</p>
+        </div>
+        <div class="space-y-1 pt-3 md:pt-0">
+          <div class="font-serif text-3xl sm:text-5xl font-bold text-brand-sky" data-count-to="24" data-count-suffix="/7">24/7</div>
+          <p class="text-xs uppercase tracking-wider text-slate-300 font-medium">Local Ground Assistance</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 04: WHY CHOOSE US
+       ======================================================== -->
+  <section class="py-20 bg-brand-offwhite">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-light px-3.5 py-1 rounded-full">
+          OUR COMMITMENT
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-navy mt-4 mb-4">
+          Travel With Confidence
+        </h2>
+        <p class="text-base text-brand-muted">
+          We believe in honest travel guidance, seamless ground coordination, and creating memories you will cherish for a lifetime.
+        </p>
+      </div>
+
+      <!-- 6 Icon-Oriented Feature Cards (Staggered Animation) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal-stagger">
+        
+        <!-- Card 1 -->
+        <div class="bg-white p-8 rounded-2xl border border-brand-border card-hover">
+          <div class="icon-container-light mb-6">
+            <i data-lucide="compass" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-brand-navy mb-2">Personalised Travel Planning</h3>
+          <p class="text-sm text-brand-muted leading-relaxed">
+            Every traveler is unique. We customize your itinerary to match your personal pace, family needs, and holiday vision.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white p-8 rounded-2xl border border-brand-border card-hover">
+          <div class="icon-container-light mb-6">
+            <i data-lucide="calendar" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-brand-navy mb-2">Beautifully Planned Journeys</h3>
+          <p class="text-sm text-brand-muted leading-relaxed">
+            Thoughtfully timed sightseeing schedules so you spend less time waiting in traffic and more time enjoying breathtaking vistas.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white p-8 rounded-2xl border border-brand-border card-hover">
+          <div class="icon-container-light mb-6">
+            <i data-lucide="sliders" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-brand-navy mb-2">Flexible Travel Options</h3>
+          <p class="text-sm text-brand-muted leading-relaxed">
+            From budget-conscious family holidays to luxury honeymoon suites and boutique stays, we adapt to your budget.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white p-8 rounded-2xl border border-brand-border card-hover">
+          <div class="icon-container-light mb-6">
+            <i data-lucide="mountain" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-brand-navy mb-2">Local Destination Knowledge</h3>
+          <p class="text-sm text-brand-muted leading-relaxed">
+            Born and raised in Kashmir, our team knows the hidden viewpoints, the best seasonal timings, and authentic local artisans.
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="bg-white p-8 rounded-2xl border border-brand-border card-hover">
+          <div class="icon-container-light mb-6">
+            <i data-lucide="shield-check" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-brand-navy mb-2">Dedicated Travel Assistance</h3>
+          <p class="text-sm text-brand-muted leading-relaxed">
+            Direct 24/7 on-trip assistance from your dedicated Kashmir coordinator to ensure peace of mind throughout your stay.
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="bg-white p-8 rounded-2xl border border-brand-border card-hover">
+          <div class="icon-container-light mb-6">
+            <i data-lucide="car" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-brand-navy mb-2">Comfortable Arrangements</h3>
+          <p class="text-sm text-brand-muted leading-relaxed">
+            Clean, sanitized vehicles with experienced mountain drivers, plus handpicked hotels with reliable winter heating.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 05: EXPLORE KASHMIR DESTINATIONS
+       ======================================================== -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header with link to all destinations -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 reveal">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-light px-3.5 py-1 rounded-full">
+            REGIONAL WONDERS
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-navy mt-4 mb-2">
+            Explore the Beauty of Kashmir
+          </h2>
+          <p class="text-base text-brand-muted max-w-xl">
+            From iconic mirrored lakes to untamed frontier valleys, discover Kashmir's premier destinations.
+          </p>
+        </div>
+        <div class="mt-4 md:mt-0">
+          <a href="/destinations" class="text-sm font-semibold text-brand-blue hover:text-brand-navy flex items-center space-x-1 group">
+            <span>View All Destinations</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 arrow-hover"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Interactive Regional Mountain Map -->
+      <div class="reveal mb-14">
+        <%- include('partials/kashmir-map') %>
+      </div>
+
+      <!-- Destinations Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal-stagger">
+        <% destinations.slice(0, 6).forEach(dest => { %>
+          <div class="bg-white rounded-2xl border border-brand-border overflow-hidden card-hover flex flex-col">
+            <div class="relative h-64 img-zoom-container">
+              <img src="<%= dest.image %>" alt="<%= dest.name %>" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 text-white">
+                <span class="text-xs uppercase tracking-wider text-brand-sky font-semibold"><%= dest.suggestedDuration %></span>
+                <h3 class="font-serif text-2xl font-bold text-white"><%= dest.name %></h3>
+              </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <p class="text-xs italic text-brand-blue font-medium mb-2">"<%= dest.tagline %>"</p>
+                <p class="text-sm text-brand-muted leading-relaxed line-clamp-3 mb-4">
+                  <%= dest.shortDescription %>
+                </p>
+              </div>
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <a href="/destinations/<%= dest.slug %>" class="text-xs font-semibold text-brand-navy hover:text-brand-blue flex items-center space-x-1 group">
+                  <span>Explore Destination</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5 arrow-hover"></i>
+                </a>
+                <button class="enquire-now-btn text-xs font-semibold text-brand-blue hover:underline" data-destination="<%= dest.name %>">
+                  Enquire Trip
+                </button>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       INTERACTIVE KASHMIR MONTH-BY-MONTH TRAVEL PLANNER
+       ======================================================== -->
+  <section class="py-16 bg-white border-b border-brand-border reveal" id="seasonPlannerSection">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-light px-3.5 py-1 rounded-full">
+          WHEN TO VISIT
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-navy mt-4 mb-2">
+          Month-by-Month Kashmir Travel Guide
+        </h2>
+        <p class="text-xs sm:text-sm text-brand-muted">
+          Select any month to discover real mountain weather, expected blooms, snow availability, and essential clothing advice.
+        </p>
+      </div>
+
+      <!-- 12 Month Selector Tabs -->
+      <div class="flex items-center justify-start lg:justify-center overflow-x-auto pb-4 gap-2 no-scrollbar" id="monthSelectorBar">
+        <!-- Rendered by JavaScript -->
+      </div>
+
+      <!-- Dynamic Month Content Card -->
+      <div id="monthDisplayCard" class="bg-brand-offwhite rounded-3xl border border-brand-border shadow-lg p-6 sm:p-10 max-w-5xl mx-auto transition-all duration-300">
+        <!-- Dynamic content filled by JavaScript -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       INTERACTIVE KASHMIR TRAVEL ADVISORY & PACKING CHECKLIST
+       ======================================================== -->
+  <section class="py-16 bg-brand-light/30 border-b border-brand-border reveal" id="packingChecklistSection">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-white px-3.5 py-1 rounded-full shadow-sm">
+          SMART TRAVEL TOOLKIT
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-navy mt-4 mb-2">
+          Kashmir Travel Advisory & Interactive Packing Checklist
+        </h2>
+        <p class="text-xs sm:text-sm text-brand-muted">
+          Tick off essential gear and crucial regional requirements for your Kashmir journey. Your progress is saved automatically.
+        </p>
+      </div>
+
+      <!-- Critical Local Advisory Banner -->
+      <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 sm:p-5 mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="flex items-start space-x-3">
+          <div class="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+            <i data-lucide="info" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-sm text-amber-900">Critical Kashmir Mobile Connectivity Note</h4>
+            <p class="text-xs text-amber-800 leading-relaxed mt-0.5">
+              Due to telecom regulations in Jammu & Kashmir, <strong>prepaid SIM cards from other Indian states do not work</strong>. Only <strong>postpaid SIM cards</strong> (Airtel, Jio, BSNL) or locally purchased J&K SIMs function here.
+            </p>
+          </div>
+        </div>
+        <a href="https://wa.me/916006725007?text=Hi%20City%20Line%20Tours,%20I%20have%20a%20question%20about%20SIM%20cards%20and%20travel%20advisories" target="_blank" class="shrink-0 bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold px-4 py-2 rounded-xl transition flex items-center space-x-1.5 shadow-sm">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+          <span>Ask Our Specialist</span>
+        </a>
+      </div>
+
+      <!-- Checklist Card -->
+      <div class="bg-white rounded-3xl border border-brand-border shadow-xl p-6 sm:p-8">
+        
+        <!-- Checklist Header with Tabs and Live Progress -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-slate-100">
+          
+          <!-- Category Filter Tabs -->
+          <div class="flex items-center flex-wrap gap-2" id="checklistTabs">
+            <button type="button" class="check-tab-btn active px-4 py-2 rounded-xl text-xs font-semibold bg-brand-blue text-white shadow-sm transition" data-category="all">
+              All Essentials (16)
+            </button>
+            <button type="button" class="check-tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-brand-offwhite text-brand-navy hover:bg-brand-light transition" data-category="advisory">
+              Documents & Tech (4)
+            </button>
+            <button type="button" class="check-tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-brand-offwhite text-brand-navy hover:bg-brand-light transition" data-category="winter">
+              Winter & Snow (6)
+            </button>
+            <button type="button" class="check-tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-brand-offwhite text-brand-navy hover:bg-brand-light transition" data-category="summer">
+              Spring & Summer (6)
+            </button>
+          </div>
+
+          <!-- Progress Bar & Count -->
+          <div class="w-full md:w-64 space-y-1.5">
+            <div class="flex items-center justify-between text-xs font-semibold">
+              <span class="text-brand-navy">Packing Progress</span>
+              <span id="packProgressText" class="text-brand-blue font-bold">0 of 16 (0%)</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+              <div id="packProgressBar" class="bg-emerald-500 h-2.5 rounded-full transition-all duration-300 w-0"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Checklist Grid -->
+        <div id="checklistItemsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5 pt-6">
+          <!-- Populated by JavaScript with localStorage persistence -->
+        </div>
+
+        <!-- Checklist Footer Tools -->
+        <div class="pt-6 mt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div class="flex items-center space-x-3">
+            <button type="button" id="checkAllBtn" class="text-brand-blue hover:underline font-semibold flex items-center space-x-1">
+              <i data-lucide="check-check" class="w-4 h-4"></i>
+              <span>Select All</span>
+            </button>
+            <span class="text-slate-300">•</span>
+            <button type="button" id="resetCheckBtn" class="text-rose-600 hover:underline font-semibold flex items-center space-x-1">
+              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+              <span>Reset List</span>
+            </button>
+          </div>
+          <div class="flex items-center space-x-3">
+            <button type="button" onclick="window.print()" class="btn-outline px-4 py-2 rounded-xl font-semibold flex items-center space-x-1.5">
+              <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+              <span>Print Checklist</span>
+            </button>
+            <a href="https://wa.me/916006725007?text=Hi%20City%20Line%20Tours,%20I%20am%20reviewing%20the%20Kashmir%20packing%20checklist%20and%20would%20like%20guidance" target="_blank" class="bg-[#25D366] text-white px-4 py-2 rounded-xl font-semibold hover:bg-[#20ba59] transition flex items-center space-x-1.5 shadow-sm">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+              <span>WhatsApp Checklist Query</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 06: POPULAR TOUR PACKAGES
+       ======================================================== -->
+  <section class="py-20 bg-brand-offwhite">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 reveal">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-light px-3.5 py-1 rounded-full">
+            FEATURED HOLIDAYS
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-navy mt-4 mb-2">
+            Find Your Perfect Kashmir Escape
+          </h2>
+          <p class="text-base text-brand-muted max-w-xl">
+            Thoughtfully organized packages with confirmed stays, private transfers, and day-wise itineraries.
+          </p>
+        </div>
+        <div class="mt-4 md:mt-0">
+          <a href="/packages" class="text-sm font-semibold text-brand-blue hover:text-brand-navy flex items-center space-x-1 group">
+            <span>Browse All Packages</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 arrow-hover"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Packages Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal-stagger">
+        <% (featuredPackages.length > 0 ? featuredPackages : allPackages).slice(0, 6).forEach(pkg => { %>
+          <div class="bg-white rounded-2xl border border-brand-border overflow-hidden card-hover flex flex-col shadow-sm">
+            
+            <!-- Image & Category Tag -->
+            <div class="relative h-60 img-zoom-container">
+              <img src="<%= pkg.featuredImage %>" alt="<%= pkg.title %>" class="w-full h-full object-cover">
+              <div class="absolute top-4 left-4">
+                <span class="bg-white/95 backdrop-blur text-brand-navy text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                  <%= pkg.category %> Special
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3 bg-brand-navy/90 text-white text-xs px-2.5 py-1 rounded-md flex items-center space-x-1.5 backdrop-blur-sm">
+                <i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-sky"></i>
+                <span><%= pkg.duration %></span>
+              </div>
+            </div>
+
+            <!-- Card Content -->
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-serif text-xl font-bold text-brand-navy mb-2 line-clamp-1 hover:text-brand-blue transition">
+                  <a href="/packages/<%= pkg.slug %>"><%= pkg.title %></a>
+                </h3>
+
+                <!-- Destination Tags -->
+                <div class="flex items-center text-xs text-brand-muted mb-3 space-x-1.5">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-blue shrink-0"></i>
+                  <span class="truncate"><%= (pkg.destinationCoverage || []).join(' • ') %></span>
+                </div>
+
+                <p class="text-xs text-brand-muted leading-relaxed line-clamp-2 mb-4">
+                  <%= pkg.shortDescription %>
+                </p>
+
+                <!-- Information Badges with Lucide Icons -->
+                <div class="grid grid-cols-2 gap-2 text-[11px] text-slate-600 bg-brand-offwhite p-3 rounded-xl mb-4">
+                  <div class="flex items-center space-x-1.5">
+                    <i data-lucide="bed-double" class="w-3.5 h-3.5 text-brand-blue"></i>
+                    <span class="truncate">Houseboat & Hotel</span>
+                  </div>
+                  <div class="flex items-center space-x-1.5">
+                    <i data-lucide="car" class="w-3.5 h-3.5 text-brand-blue"></i>
+                    <span class="truncate">Private Vehicle</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Price & Actions -->
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] text-brand-muted uppercase block">Starting From</span>
+                  <span class="font-serif text-lg font-bold text-brand-blue">
+                    <%= pkg.startingPriceFormatted %>
+                  </span>
+                  <% if (pkg.price) { %>
+                    <span class="text-[10px] text-brand-muted">/ person</span>
+                  <% } %>
+                </div>
+
+                <div class="flex items-center space-x-2">
+                  <a href="/packages/<%= pkg.slug %>" class="btn-outline px-3.5 py-1.5 rounded-lg text-xs font-semibold">
+                    Details
+                  </a>
+                  <button class="enquire-now-btn btn-primary px-3.5 py-1.5 rounded-lg text-xs font-semibold" data-package="<%= pkg.title %>">
+                    Enquire
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        <% }) %>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 07: KASHMIR EXPERIENCES
+       ======================================================== -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-light px-3.5 py-1 rounded-full">
+          UNFORGETTABLE MOMENTS
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-navy mt-4 mb-4">
+          Experience Kashmir Beyond the Journey
+        </h2>
+        <p class="text-base text-brand-muted">
+          From sunset Shikaras to riding the Gondola into mountain clouds, immerse yourself in our signature activities.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal-stagger">
+        <% experiences.slice(0, 6).forEach(exp => { %>
+          <div class="group relative rounded-2xl overflow-hidden shadow-md card-hover h-80">
+            <img src="<%= exp.image %>" alt="<%= exp.title %>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/40 to-transparent"></div>
+            
+            <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
+              <span class="text-xs text-brand-sky font-semibold tracking-wider flex items-center mb-1">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 mr-1"></i>
+                <%= exp.location %>
+              </span>
+              <h3 class="font-serif text-2xl font-bold text-white mb-2"><%= exp.title %></h3>
+              <p class="text-xs text-slate-200 line-clamp-2 mb-3 leading-relaxed">
+                <%= exp.shortDescription %>
+              </p>
+              <div class="flex items-center space-x-2">
+                <button class="enquire-now-btn text-xs font-semibold text-brand-sky hover:text-white flex items-center space-x-1" data-package="<%= exp.title %>">
+                  <span>Enquire This Experience</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+
+      <!-- Link to full 44 experiences -->
+      <div class="mt-12 text-center">
+        <a href="/experiences" class="btn-primary px-8 py-3.5 rounded-xl font-semibold text-xs sm:text-sm inline-flex items-center space-x-2 shadow-md">
+          <span>Explore All 44 Kashmir, Jammu & Ladakh Experiences</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 08: HOW IT WORKS
+       ======================================================== -->
+  <section class="py-20 bg-brand-light/50 border-y border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-white px-3.5 py-1 rounded-full shadow-sm">
+          SIMPLE 4-STEP PROCESS
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-navy mt-4 mb-4">
+          Your Kashmir Journey in Four Simple Steps
+        </h2>
+        <p class="text-base text-brand-muted">
+          Booking a memorable trip is effortless and fully transparent with City Line Tours.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative reveal-stagger">
+        
+        <!-- Step 1 -->
+        <div class="bg-white p-7 rounded-2xl border border-brand-border text-center relative card-hover">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brand-light text-brand-blue flex items-center justify-center font-bold text-lg mb-4">
+            1
+          </div>
+          <h3 class="font-serif text-lg font-bold text-brand-navy mb-2">Explore</h3>
+          <p class="text-xs text-brand-muted leading-relaxed">
+            Discover our curated destinations, holiday packages, and signature experiences.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-white p-7 rounded-2xl border border-brand-border text-center relative card-hover">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brand-light text-brand-blue flex items-center justify-center font-bold text-lg mb-4">
+            2
+          </div>
+          <h3 class="font-serif text-lg font-bold text-brand-navy mb-2">Customize</h3>
+          <p class="text-xs text-brand-muted leading-relaxed">
+            Share your preferred dates, group size, budget, and special interests with us.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-white p-7 rounded-2xl border border-brand-border text-center relative card-hover">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brand-light text-brand-blue flex items-center justify-center font-bold text-lg mb-4">
+            3
+          </div>
+          <h3 class="font-serif text-lg font-bold text-brand-navy mb-2">Connect</h3>
+          <p class="text-xs text-brand-muted leading-relaxed">
+            Receive a personalized itinerary and clear quotation directly via email & WhatsApp.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="bg-white p-7 rounded-2xl border border-brand-border text-center relative card-hover">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brand-navy text-white flex items-center justify-center font-bold text-lg mb-4 shadow">
+            4
+          </div>
+          <h3 class="font-serif text-lg font-bold text-brand-navy mb-2">Travel</h3>
+          <p class="text-xs text-brand-muted leading-relaxed">
+            Confirm your arrangements and enjoy an unforgettable, fully coordinated journey.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 09: VERIFIED GUEST REVIEWS & STAR RATING SHOWCASE
+       ======================================================== -->
+  <%- include('partials/verified-reviews') %>
+
+  <!-- ========================================================
+       SECTION: FINAL CTA
+       ======================================================== -->
+  <section class="py-16 bg-brand-light/60 border-t border-brand-border text-center reveal-scale">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-navy mb-4">
+        Let's Make Your Kashmir Journey Memorable
+      </h2>
+      <p class="text-base text-brand-muted mb-8 leading-relaxed">
+        Speak directly with our local Kashmir travel experts to start planning your dream holiday today.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/contact" class="w-full sm:w-auto btn-outline px-8 py-3.5 rounded-xl font-semibold text-sm">
+          Contact Us
+        </a>
+        <a href="/packages" class="w-full sm:w-auto btn-primary px-8 py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center space-x-2">
+          <span>Explore Tour Packages</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer & Floating Elements -->
+  <%- include('partials/footer') %>
+  <%- include('partials/whatsapp') %>
+  <%- include('partials/enquiry-modal') %>
+  <%- include('partials/scripts') %>
+
+</body>
+</html>
+

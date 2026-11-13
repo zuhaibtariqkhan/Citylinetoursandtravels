@@ -1,0 +1,697 @@
+/* ========================================================
+   CITY LINE TOURS AND TRAVELS - BRAND DESIGN SYSTEM
+   Brand Colors: Primary Blue #145DA0 | Deep Navy #0B2545
+   Typography: Georgia Bold (Headings) | Inter (Body & UI)
+   ======================================================== */
+
+:root {
+  --primary-blue: #145DA0;
+  --deep-navy: #0B2545;
+  --royal-blue: #2563EB;
+  --sky-blue: #60A5FA;
+  --light-blue: #EFF6FF;
+  --white: #FFFFFF;
+  --off-white: #F8FAFC;
+  --dark-text: #172B4D;
+  --muted-text: #64748B;
+  --border-color: #E2E8F0;
+  --success: #16A34A;
+  --error: #DC2626;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--dark-text);
+  background-color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Georgia Serif Headings as specified in Document 04 */
+.font-georgia,
+h1.font-serif,
+h2.font-serif,
+h3.font-serif,
+.heading-georgia {
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Color utility overrides */
+.bg-deep-navy { background-color: var(--deep-navy); }
+.text-deep-navy { color: var(--deep-navy); }
+.bg-primary-blue { background-color: var(--primary-blue); }
+.text-primary-blue { color: var(--primary-blue); }
+.border-primary-blue { border-color: var(--primary-blue); }
+.bg-light-blue { background-color: var(--light-blue); }
+.text-sky-blue { color: var(--sky-blue); }
+.bg-off-white { background-color: var(--off-white); }
+.border-brand { border-color: var(--border-color); }
+.text-muted { color: var(--muted-text); }
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: skewX(-20deg);
+  transition: none;
+}
+.btn-primary:hover::after {
+  left: 150%;
+  transition: left 0.75s ease-in-out;
+}
+.btn-primary:hover {
+  background-color: #0d4a82;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(20, 93, 160, 0.3);
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: var(--primary-blue);
+  border: 1px solid #ffffff;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline {
+  border: 1.5px solid var(--primary-blue);
+  color: var(--primary-blue);
+  background-color: transparent;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-outline:hover {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(20, 93, 160, 0.2);
+}
+
+/* Card Hover Elevation */
+.card-hover {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+}
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 36px -10px rgba(11, 37, 69, 0.14);
+  border-color: rgba(20, 93, 160, 0.3);
+}
+
+/* Image zoom inside cards */
+.img-zoom-container {
+  overflow: hidden;
+}
+.img-zoom-container img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+}
+.card-hover:hover .img-zoom-container img {
+  transform: scale(1.08);
+}
+
+/* Arrow transition on hover */
+.arrow-hover {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-hover:hover .arrow-hover,
+a:hover .arrow-hover,
+button:hover .arrow-hover {
+  transform: translateX(6px);
+}
+
+/* Cinematic Slow Zoom on Hero Image */
+@keyframes heroZoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+.hero-zoom {
+  animation: heroZoom 30s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Light Blue Icon Containers */
+.icon-container-light {
+  width: 52px;
+  height: 52px;
+  border-radius: 9999px;
+  background-color: var(--light-blue);
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-hover:hover .icon-container-light {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  transform: scale(1.08) rotate(4deg);
+}
+
+/* Continuous Floating Micro-animation */
+@keyframes softFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+.animate-float {
+  animation: softFloat 4.5s ease-in-out infinite;
+}
+
+/* Subtle Pulse Glow for Key Badges */
+@keyframes gentlePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.88; transform: scale(1.03); }
+}
+.animate-pulse-gentle {
+  animation: gentlePulse 3s ease-in-out infinite;
+}
+
+/* Floating WhatsApp button removed as requested */
+.whatsapp-float {
+  display: none !important;
+}
+
+/* ========================================================
+   SCROLL REVEAL ANIMATIONS (IntersectionObserver)
+   ======================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-fade.revealed {
+  opacity: 1;
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-scale.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger delay children */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-stagger.revealed > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.revealed > *:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.revealed > *:nth-child(3) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.revealed > *:nth-child(4) { transition-delay: 0.35s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.revealed > *:nth-child(5) { transition-delay: 0.45s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.revealed > *:nth-child(6) { transition-delay: 0.55s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.revealed > *:nth-child(7) { transition-delay: 0.65s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.revealed > *:nth-child(8) { transition-delay: 0.75s; opacity: 1; transform: translateY(0); }
+
+/* Hero Staggered Entrance on Load */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-badge-enter {
+  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+.hero-title-enter {
+  animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+.hero-text-enter {
+  animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+.hero-cta-enter {
+  animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .hero-zoom,
+  .animate-float,
+  .animate-pulse-gentle,
+  .reveal,
+  .reveal-scale,
+  .reveal-stagger > * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Sticky Header transitions */
+#main-header.scrolled {
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 14px rgba(11, 37, 69, 0.08);
+}
+
+/* Accordion FAQ */
+.faq-item .faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.faq-item.active .faq-answer {
+  max-height: 400px;
+}
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+}
+
+/* Modal styling */
+.modal-backdrop {
+  background-color: rgba(11, 37, 69, 0.65);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-content {
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-backdrop.active .modal-content {
+  transform: scale(1);
+}
+
+/* Form input styling */
+.form-input {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 15px;
+  background-color: #ffffff;
+  color: var(--dark-text);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-input:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(20, 93, 160, 0.15);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ========================================================
+   1. KEN-BURNS MULTI-SCENE HERO SLIDER
+   ======================================================== */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.5s ease;
+  overflow: hidden;
+}
+.hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center center;
+}
+.hero-slide.active .kenburns-1 {
+  animation: kenBurns1 10s ease-out infinite alternate;
+}
+.hero-slide.active .kenburns-2 {
+  animation: kenBurns2 10s ease-out infinite alternate;
+}
+.hero-slide.active .kenburns-3 {
+  animation: kenBurns3 10s ease-out infinite alternate;
+}
+
+@keyframes kenBurns1 {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.08) translate(-1%, -1.5%); }
+}
+@keyframes kenBurns2 {
+  0% { transform: scale(1.06) translate(1%, -1%); }
+  100% { transform: scale(1) translate(0, 0); }
+}
+@keyframes kenBurns3 {
+  0% { transform: scale(1) translate(-1%, 0); }
+  100% { transform: scale(1.08) translate(1%, -1%); }
+}
+
+/* Hero Slide Progress Indicator */
+.hero-indicator-bar {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.hero-indicator-fill {
+  width: 0%;
+  height: 100%;
+  background: #60A5FA;
+  transition: width 0.1s linear;
+}
+
+/* ========================================================
+   2. 3D TILT & SPECULAR SHEEN FOR CARDS
+   ======================================================== */
+.card-tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+  position: relative;
+  will-change: transform;
+}
+.card-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.16) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 20;
+}
+.card-tilt:hover .card-sheen {
+  opacity: 1;
+}
+
+/* ========================================================
+   3. ANIMATED ITINERARY TIMELINE (Package Detail Page)
+   ======================================================== */
+.timeline-track {
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  bottom: 0;
+  width: 2px;
+  background: #E2E8F0;
+}
+.timeline-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, #145DA0 0%, #2563EB 100%);
+  transition: height 0.4s ease-out;
+}
+.timeline-dot {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.timeline-node.active .timeline-dot {
+  background-color: #145DA0;
+  color: #ffffff;
+  transform: scale(1.15);
+  box-shadow: 0 0 0 6px rgba(20, 93, 160, 0.2), 0 0 16px rgba(37, 99, 235, 0.4);
+}
+.timeline-node.active .timeline-box {
+  border-color: #93C5FD;
+  box-shadow: 0 8px 24px -6px rgba(20, 93, 160, 0.12);
+}
+
+/* ========================================================
+   4. FLOATING GLASSMORPHISM QUICK-BAR
+   ======================================================== */
+#floatingQuickBar.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+/* ========================================================
+   5. SNOWFALL CANVAS & TOGGLE PILL
+   ======================================================== */
+#snowCanvas {
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.snow-toggle-btn {
+  background: rgba(11, 37, 69, 0.55);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  transition: all 0.25s ease;
+}
+.snow-toggle-btn:hover {
+  background: rgba(20, 93, 160, 0.7);
+  border-color: #60A5FA;
+}
+
+/* ========================================================
+   6. GLOBAL PRINT & PDF GENERATION STYLING
+   ======================================================== */
+@media print {
+  header, footer, .whatsapp-float, #floatingQuickBar, #scrollProgressBar,
+  #enquiryModal, #snowCanvas, .snow-toggle-btn, .ajax-enquiry-form,
+  .hero-indicator-bar, .hero-scene-dot, #confettiCanvas {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  .shadow-md, .shadow-lg, .shadow-xl, .shadow-2xl {
+    box-shadow: none !important;
+  }
+
+  .border {
+    border-color: #cbd5e1 !important;
+  }
+}
+
+/* ========================================================
+   7. HIGH-CONVERTING BUTTON SHIMMER WAVE
+   ======================================================== */
+.btn-primary, .btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after, .btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -70%;
+  width: 45%;
+  height: 220%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  animation: buttonShimmer 5s infinite ease-in-out;
+}
+@keyframes buttonShimmer {
+  0%, 75% {
+    left: -70%;
+  }
+  100% {
+    left: 140%;
+  }
+}
+
+/* ========================================================
+   8. WEATHER & ALPINE MICRO-ANIMATIONS
+   ======================================================== */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+  display: inline-block;
+}
+
+@keyframes snowDrift {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(18deg);
+  }
+}
+.animate-drift {
+  animation: snowDrift 3.2s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes cloudDrift {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+.animate-cloud-drift {
+  animation: cloudDrift 4s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* ========================================================
+   9. ROUTE PATHFINDER TRAIL ANIMATION
+   ======================================================== */
+.route-path-line {
+  stroke-dasharray: 8 6;
+  animation: pathDashMove 1.4s linear infinite;
+}
+@keyframes pathDashMove {
+  from {
+    stroke-dashoffset: 28;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.route-pin-pulse {
+  animation: pinPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pinPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.8;
+  }
+}
+
+/* ========================================================
+   10. SMOOTH ACCORDION TRANSITIONS
+   ======================================================== */
+.faq-item .faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+.faq-item.active .faq-answer {
+  max-height: 400px;
+  opacity: 1;
+}
+.faq-item .faq-icon {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+}
+
+/* ========================================================
+   11. CONFETTI CANVAS
+   ======================================================== */
+#confettiCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ========================================================
+   12. DEVELOPED BY ZTM GOLDEN GLOW EFFECT
+   ======================================================== */
+.ztm-golden-glow {
+  background: linear-gradient(135deg, #FFF3B0 0%, #FFD700 25%, #D4AF37 50%, #FFF5C0 75%, #AA771C 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.75)) drop-shadow(0 0 12px rgba(212, 175, 55, 0.45));
+  animation: goldShimmerText 3s ease-in-out infinite alternate, goldGlowPulse 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes goldShimmerText {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes goldGlowPulse {
+  0% {
+    filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 8px rgba(212, 175, 55, 0.35));
+  }
+  100% {
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.95)) drop-shadow(0 0 18px rgba(212, 175, 55, 0.65));
+  }
+}
+
+/* ========================================================
+   KASHMIR INTERACTIVE MAP HIGHWAY ANIMATION
+   ======================================================== */
+@keyframes dashTravel {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.map-highway-path {
+  animation: dashTravel 2s linear infinite;
+  transition: stroke 0.3s ease, stroke-width 0.3s ease, opacity 0.3s ease;
+}
+
+
+
+

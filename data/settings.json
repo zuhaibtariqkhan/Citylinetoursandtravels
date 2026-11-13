@@ -1,0 +1,33 @@
+{
+  "companyName": "City Line Tours And Travels",
+  "logo": "/images/LOGO.jpeg",
+  "tagline": "Where Your Travel Dreams Take Flight",
+  "shortAbout": "Your premier gateway to exploring the paradise of Kashmir. Thoughtfully planned journeys, personalized itineraries, and authentic Kashmiri hospitality.",
+  "phone": "+91 60067 25007",
+  "secondaryPhone": "+91 99066 76890",
+  "phoneRaw1": "6006725007",
+  "phoneRaw2": "9906676890",
+  "whatsapp": "916006725007",
+  "whatsappDisplay": "+91 60067 25007",
+  "email": "citylinetoursandtravels@gmail.com",
+  "notificationEmail": "citylinetoursandtravels@gmail.com",
+  "address": "Palpora, Srinagar, Jammu & Kashmir, India",
+  "businessHours": "Monday – Saturday: 10:00 AM – 5:00 PM",
+  "socialLinks": {
+    "instagram": "https://www.instagram.com/citylinetoursandtravels",
+    "facebook": "https://www.facebook.com/share/1JE2hRUfsW/?mibextid=wwXIfr",
+    "whatsapp": "https://wa.me/916006725007",
+    "handle": "@citylinetoursandtravels"
+  },
+  "smtp": {
+    "host": "",
+    "port": 587,
+    "secure": false,
+    "user": "",
+    "pass": "",
+    "fromName": "City Line Tours And Travels",
+    "fromEmail": "no-reply@citylinetours.com"
+  },
+  "adminPasswordHash": "admin123"
+}
+

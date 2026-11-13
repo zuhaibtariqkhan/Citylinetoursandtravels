@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body class="bg-brand-offwhite text-brand-text min-h-screen">
+  <%- include('navbar') %>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h1 class="font-serif text-3xl font-bold text-brand-navy">Tour Packages Management</h1>
+        <p class="text-xs sm:text-sm text-brand-muted mt-1">Add, update pricing, itineraries, and manage featured packages.</p>
+      </div>
+
+      <a href="/admin/packages/new" class="btn-primary px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 shadow-sm">
+        <i data-lucide="plus" class="w-4 h-4"></i>
+        <span>Create New Package</span>
+      </a>
+    </div>
+
+    <!-- Packages List Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% packages.forEach(pkg => { %>
+        <div class="bg-white rounded-2xl border border-brand-border overflow-hidden shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="relative h-44">
+              <img src="<%= pkg.featuredImage %>" alt="<%= pkg.title %>" class="w-full h-full object-cover">
+              <div class="absolute top-3 left-3">
+                <span class="bg-white/95 text-brand-navy text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow-sm">
+                  <%= pkg.category %>
+                </span>
+              </div>
+              <div class="absolute top-3 right-3 flex items-center space-x-1">
+                <% if (pkg.featured) { %>
+                  <span class="bg-amber-400 text-amber-950 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                    ★ Featured
+                  </span>
+                <% } %>
+                <span class="<%= pkg.published !== false ? 'bg-emerald-500 text-white' : 'bg-slate-400 text-white' %> text-[10px] font-bold px-2 py-0.5 rounded-full">
+                  <%= pkg.published !== false ? 'Live' : 'Draft' %>
+                </span>
+              </div>
+            </div>
+
+            <div class="p-5">
+              <h3 class="font-serif text-lg font-bold text-brand-navy mb-1 line-clamp-1"><%= pkg.title %></h3>
+              <p class="text-xs text-brand-blue font-semibold mb-2"><%= pkg.duration %></p>
+              <p class="text-xs text-brand-muted line-clamp-2 mb-3"><%= pkg.shortDescription %></p>
+              <div class="font-bold text-sm text-brand-navy">
+                <%= pkg.startingPriceFormatted %>
+                <span class="text-[11px] text-brand-muted font-normal">/ <%= pkg.pricingType || 'person' %></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 bg-brand-offwhite border-t border-slate-100 flex items-center justify-between text-xs">
+            <a href="/packages/<%= pkg.slug %>" target="_blank" class="text-brand-muted hover:text-brand-navy flex items-center space-x-1">
+              <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+              <span>Preview</span>
+            </a>
+
+            <div class="flex items-center space-x-2">
+              <a href="/admin/packages/<%= pkg.id %>/edit" class="btn-outline px-3 py-1 rounded-md font-semibold">
+                Edit
+              </a>
+              <form action="/admin/packages/<%= pkg.id %>/delete" method="POST" onsubmit="return confirm('Delete package <%= pkg.title %>?')">
+                <button type="submit" class="text-rose-600 hover:text-rose-800 p-1">
+                  <i data-lucide="trash-2" class="w-4 h-4"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      <% }) %>
+    </div>
+
+  </div>
+
+  <%- include('../partials/scripts') %>
+</body>
+</html>
+

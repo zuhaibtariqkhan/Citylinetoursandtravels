@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body class="bg-white text-brand-text">
+  <%- include('partials/header') %>
+
+  <!-- Page Hero -->
+  <section class="relative py-20 bg-brand-navy text-white overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1800&q=80" 
+           alt="Gulmarg Kashmir" 
+           class="w-full h-full object-cover brightness-[0.4]">
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+      <span class="text-xs font-bold uppercase tracking-widest text-brand-sky bg-white/10 px-4 py-1.5 rounded-full inline-block mb-3">
+        KASHMIR HOLIDAYS
+      </span>
+      <h1 class="font-serif text-4xl sm:text-5xl font-bold text-white mb-4">
+        Tour Packages & Handcrafted Itineraries
+      </h1>
+      <p class="text-base text-slate-200 max-w-2xl mx-auto leading-relaxed">
+        Discover thoughtfully designed holiday packages covering Srinagar, Gulmarg, Pahalgam, Sonamarg, and offbeat valleys.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter & Packages Section -->
+  <section class="py-16 bg-brand-offwhite">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Category Filter Pills -->
+      <div class="flex items-center justify-center flex-wrap gap-2 mb-12">
+        <a href="/packages" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory === 'all' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
+          All Packages
+        </a>
+        <a href="/packages?category=Family" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'family' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
+          Family
+        </a>
+        <a href="/packages?category=Honeymoon" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'honeymoon' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
+          Honeymoon & Couples
+        </a>
+        <a href="/packages?category=Budget" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'budget' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
+          Budget
+        </a>
+        <a href="/packages?category=Luxury" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'luxury' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
+          Luxury
+        </a>
+        <a href="/packages?category=Group" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'group' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
+          Group & Ski
+        </a>
+        <a href="/packages?category=Customised" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'customised' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
+          Tailor-Made
+        </a>
+      </div>
+
+      <!-- ========================================================
+           PACKAGE BUDGET CALCULATOR SECTION (Requirement 9A)
+           ======================================================== -->
+      <div id="calculator" class="mb-16 bg-white rounded-3xl border border-brand-border shadow-xl p-6 sm:p-10 scroll-mt-28">
+        <div class="max-w-3xl mb-8">
+          <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-light px-3.5 py-1 rounded-full">
+            INSTANT ESTIMATE
+          </span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-navy mt-3 mb-2">
+            Calculate Your Kashmir Trip Budget
+          </h2>
+          <p class="text-sm text-brand-muted">
+            Choose your package and the number of travellers to get an estimated travel budget.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Left 7 Cols: Package & Travellers Selector -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <!-- Package Selector -->
+            <div>
+              <label class="block text-xs uppercase font-bold text-brand-navy tracking-wider mb-2">
+                1. Select Tour Package
+              </label>
+              <select id="pkgCalcSelect" class="form-input text-sm py-2.5 font-medium">
+                <% packages.forEach((p, idx) => { %>
+                  <option value="<%= p.id %>" 
+                          data-price="<%= p.price || 0 %>" 
+                          data-formatted="<%= p.startingPriceFormatted %>"
+                          data-model="<%= p.pricingModel || (p.price ? 'per_person' : 'on_request') %>"
+                          data-type="<%= p.pricingType || 'person' %>"
+                          data-duration="<%= p.duration %>"
+                          data-title="<%= p.title %>"
+                          data-slug="<%= p.slug %>"
+                          <%= idx === 0 ? 'selected' : '' %>>
+                    <%= p.title %> (<%= p.duration %>) - <%= p.startingPriceFormatted %>
+                  </option>
+                <% }) %>
+              </select>
+            </div>
+
+            <!-- Travellers Counter (+ / -) -->
+            <div>
+              <label class="block text-xs uppercase font-bold text-brand-navy tracking-wider mb-2">
+                2. Number of Travellers
+              </label>
+              <div class="bg-brand-offwhite p-4 rounded-2xl border border-brand-border flex items-center justify-between">
+                <div>
+                  <span class="text-sm font-bold text-brand-navy block" id="calcPaxLabel">Number of People</span>
+                  <span class="text-xs text-brand-muted" id="calcPaxNote">Includes private vehicle & hotel accommodation</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <button type="button" id="pkgCalcMinus" class="w-10 h-10 rounded-xl bg-white border border-brand-border text-brand-navy font-bold hover:bg-slate-100 flex items-center justify-center transition shadow-sm select-none text-base">
+                    -
+                  </button>
+                  <span id="pkgCalcCount" class="font-serif font-bold text-xl text-brand-navy w-8 text-center">
+                    2
+                  </span>
+                  <button type="button" id="pkgCalcPlus" class="w-10 h-10 rounded-xl bg-white border border-brand-border text-brand-navy font-bold hover:bg-slate-100 flex items-center justify-center transition shadow-sm select-none text-base">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Package Details Summary Strip -->
+            <div class="grid grid-cols-2 gap-3 text-xs bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+              <div>
+                <span class="text-brand-muted block text-[10px] uppercase">Selected Package</span>
+                <strong class="text-brand-navy line-clamp-1" id="calcSelectedPkgTitle">Glimpse of Paradise</strong>
+              </div>
+              <div>
+                <span class="text-brand-muted block text-[10px] uppercase">Duration</span>
+                <strong class="text-brand-navy" id="calcSelectedDuration">4 Days / 3 Nights</strong>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right 5 Cols: Estimated Total & Actions -->
+          <div class="lg:col-span-5 bg-brand-navy text-white p-6 sm:p-7 rounded-2xl shadow-lg flex flex-col justify-between space-y-6">
+            
+            <div class="space-y-4">
+              <span class="text-[10px] uppercase font-bold tracking-widest text-brand-sky block">ESTIMATED BUDGET</span>
+              
+              <!-- Total Budget -->
+              <div class="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/10">
+                <span class="text-xs text-slate-300 block mb-1">Estimated Total Budget</span>
+                <div class="font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight" id="calcTotalDisplay">
+                  ₹29,998
+                </div>
+                <div class="text-xs text-brand-sky font-semibold mt-1" id="calcPerPersonDisplay">
+                  ₹14,999 per person
+                </div>
+              </div>
+
+              <!-- Breakdown Note -->
+              <p class="text-xs text-slate-300 leading-relaxed" id="calcBreakdownNote">
+                ✓ Includes hotel/houseboat accommodation, daily breakfast & dinner, dedicated private vehicle, and toll taxes.
+              </p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="space-y-2.5 pt-2 border-t border-white/10">
+              <button type="button" id="calcEnquireBtn" class="w-full btn-primary py-3 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>Enquire About This Package</span>
+              </button>
+
+              <a id="calcWhatsAppBtn" href="https://wa.me/916006725007" target="_blank" class="w-full bg-[#25D366] hover:bg-[#20ba59] text-white py-2.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 transition shadow">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>Discuss on WhatsApp (6006725007)</span>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Packages Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <% packages.forEach(pkg => { %>
+          <div class="bg-white rounded-2xl border border-brand-border overflow-hidden card-hover flex flex-col shadow-sm">
+            
+            <!-- Image & Duration Badge -->
+            <div class="relative h-60 img-zoom-container">
+              <img src="<%= pkg.featuredImage %>" alt="<%= pkg.title %>" class="w-full h-full object-cover">
+              <div class="absolute top-4 left-4">
+                <span class="bg-white/95 backdrop-blur text-brand-navy text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                  <%= pkg.category %>
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3 bg-brand-navy/90 text-white text-xs px-2.5 py-1 rounded-md flex items-center space-x-1.5 backdrop-blur-sm">
+                <i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-sky"></i>
+                <span><%= pkg.duration %></span>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-serif text-xl font-bold text-brand-navy mb-2 line-clamp-1 hover:text-brand-blue transition">
+                  <a href="/packages/<%= pkg.slug %>"><%= pkg.title %></a>
+                </h3>
+
+                <!-- Destination Tags -->
+                <div class="flex items-center text-xs text-brand-muted mb-3 space-x-1.5">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-blue shrink-0"></i>
+                  <span class="truncate"><%= (pkg.destinationCoverage || []).join(' • ') %></span>
+                </div>
+
+                <p class="text-xs text-brand-muted leading-relaxed line-clamp-2 mb-4">
+                  <%= pkg.shortDescription %>
+                </p>
+
+                <!-- Information Badges -->
+                <div class="grid grid-cols-2 gap-2 text-[11px] text-slate-600 bg-brand-offwhite p-3 rounded-xl mb-4">
+                  <div class="flex items-center space-x-1.5">
+                    <i data-lucide="bed-double" class="w-3.5 h-3.5 text-brand-blue"></i>
+                    <span class="truncate"><%= pkg.accommodation ? pkg.accommodation.split('+')[0] : 'Deluxe Stay' %></span>
+                  </div>
+                  <div class="flex items-center space-x-1.5">
+                    <i data-lucide="car" class="w-3.5 h-3.5 text-brand-blue"></i>
+                    <span class="truncate">Private Car</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Price & CTAs -->
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] text-brand-muted uppercase block">Starting From</span>
+                  <span class="font-serif text-lg font-bold text-brand-blue">
+                    <%= pkg.startingPriceFormatted %>
+                  </span>
+                  <% if (pkg.price) { %>
+                    <span class="text-[10px] text-brand-muted">/<%= pkg.pricingType || 'person' %></span>
+                  <% } %>
+                </div>
+
+                <div class="flex items-center space-x-2">
+                  <a href="/packages/<%= pkg.slug %>" class="btn-outline px-3.5 py-1.5 rounded-lg text-xs font-semibold">
+                    View
+                  </a>
+                  <button class="enquire-now-btn btn-primary px-3.5 py-1.5 rounded-lg text-xs font-semibold" data-package="<%= pkg.title %>">
+                    Enquire
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        <% }) %>
+      </div>
+
+      <!-- Need Customised package card -->
+      <div class="mt-16 bg-brand-navy rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden">
+        <div class="relative z-10 max-w-2xl">
+          <span class="text-xs font-bold uppercase tracking-widest text-brand-sky bg-white/10 px-3.5 py-1 rounded-full inline-block mb-3">
+            NOT FINDING YOUR EXACT ROUTE?
+          </span>
+          <h3 class="font-serif text-2xl sm:text-3xl font-bold mb-3">
+            We Design 100% Custom Kashmir Itineraries
+          </h3>
+          <p class="text-sm text-slate-200 mb-6 leading-relaxed">
+            Tell us how many days you have, the places you wish to visit, your budget, and whether you want romantic privacy or family convenience. We will curate a proposal within hours.
+          </p>
+          <button class="enquire-now-btn btn-primary px-6 py-3 rounded-xl font-semibold text-sm inline-flex items-center space-x-2" data-package="Custom Kashmir Route">
+            <span>Request Custom Itinerary</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+  <%- include('partials/whatsapp') %>
+  <%- include('partials/enquiry-modal') %>
+  <%- include('partials/scripts') %>
+
+  <!-- Packages Listing Budget Calculator Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const select = document.getElementById('pkgCalcSelect');
+      const countEl = document.getElementById('pkgCalcCount');
+      const minusBtn = document.getElementById('pkgCalcMinus');
+      const plusBtn = document.getElementById('pkgCalcPlus');
+      const titleEl = document.getElementById('calcSelectedPkgTitle');
+      const durEl = document.getElementById('calcSelectedDuration');
+      const totalEl = document.getElementById('calcTotalDisplay');
+      const perPersonEl = document.getElementById('calcPerPersonDisplay');
+      const breakdownEl = document.getElementById('calcBreakdownNote');
+      const enquireBtn = document.getElementById('calcEnquireBtn');
+      const waBtn = document.getElementById('calcWhatsAppBtn');
+      const paxLabel = document.getElementById('calcPaxLabel');
+      const paxNote = document.getElementById('calcPaxNote');
+
+      if (!select || !countEl) return;
+
+      let travellers = 2;
+
+      function calculate() {
+        const opt = select.options[select.selectedIndex];
+        if (!opt) return;
+
+        const price = parseFloat(opt.getAttribute('data-price')) || 0;
+        const model = opt.getAttribute('data-model') || 'per_person';
+        const type = opt.getAttribute('data-type') || 'person';
+        const duration = opt.getAttribute('data-duration') || '';
+        const title = opt.getAttribute('data-title') || '';
+
+        if (titleEl) titleEl.textContent = title;
+        if (durEl) durEl.textContent = duration;
+
+        // On Request (no pricing configured)
+        if (model === 'on_request' || price <= 0) {
+          totalEl.textContent = 'Contact us for a personalised quotation.';
+          totalEl.className = 'font-serif text-lg sm:text-xl font-bold text-brand-sky tracking-tight leading-snug';
+          perPersonEl.textContent = 'Custom tailored according to your dates & group';
+          breakdownEl.textContent = '✓ Exact transparent quotation will be provided with hotel options and private transport.';
+          
+          if (waBtn) {
+            const msg = `Hello City Line Tours And Travels,\nI am interested in getting a personalised quotation for:\n• Package: ${title} (${duration})\n• Travellers: ${travellers} People\n\nPlease share the available dates and best price!`;
+            waBtn.href = `https://wa.me/916006725007?text=${encodeURIComponent(msg)}`;
+          }
+          return;
+        }
+
+        totalEl.className = 'font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight';
+
+        // Per Couple
+        if (model === 'per_couple') {
+          paxLabel.textContent = 'Couple Travellers';
+          paxNote.textContent = 'Honeymoon packages are curated on a 2-person sharing basis';
+          const couples = Math.ceil(travellers / 2);
+          const total = price * couples;
+          const perPerson = Math.round(price / 2);
+
+          totalEl.textContent = '₹' + total.toLocaleString('en-IN');
+          perPersonEl.textContent = `₹${perPerson.toLocaleString('en-IN')} per person (₹${price.toLocaleString('en-IN')} per couple)`;
+          breakdownEl.textContent = '✓ Includes luxury romantic houseboat & hotel stays, candlelit dinner, flower bed decoration, private car & Shikara ride.';
+
+          if (waBtn) {
+            const msg = `Hello City Line Tours And Travels,\nI calculated an estimated honeymoon budget on your website:\n• Package: ${title} (${duration})\n• Travellers: ${travellers} People\n• Estimated Total: ₹${total.toLocaleString('en-IN')}\n\nPlease share the detailed itinerary and seasonal discounts!`;
+            waBtn.href = `https://wa.me/916006725007?text=${encodeURIComponent(msg)}`;
+          }
+          return;
+        }
+
+        // Standard Per-Person Pricing
+        paxLabel.textContent = 'Number of People';
+        paxNote.textContent = 'Includes dedicated vehicle & verified hotel accommodation';
+        const total = price * travellers;
+
+        totalEl.textContent = '₹' + total.toLocaleString('en-IN');
+        perPersonEl.textContent = `₹${price.toLocaleString('en-IN')} per person`;
+        breakdownEl.textContent = '✓ Includes hotel/houseboat accommodation, daily breakfast & dinner, dedicated private vehicle, and toll taxes.';
+
+        if (waBtn) {
+          const msg = `Hello City Line Tours And Travels,\nI calculated an estimated package budget on your website:\n• Package: ${title} (${duration})\n• Travellers: ${travellers} People\n• Estimated Total: ₹${total.toLocaleString('en-IN')} (₹${price.toLocaleString('en-IN')} per person)\n\nPlease share the detailed itinerary and availability!`;
+          waBtn.href = `https://wa.me/916006725007?text=${encodeURIComponent(msg)}`;
+        }
+      }
+
+      // Plus & Minus Event Listeners
+      minusBtn?.addEventListener('click', () => {
+        if (travellers > 1) {
+          travellers--;
+          countEl.textContent = travellers;
+          calculate();
+        }
+      });
+
+      plusBtn?.addEventListener('click', () => {
+        if (travellers < 20) {
+          travellers++;
+          countEl.textContent = travellers;
+          calculate();
+        }
+      });
+
+      select.addEventListener('change', calculate);
+
+      // Enquire Button -> Populates & Opens Reusable Enquiry Modal
+      enquireBtn?.addEventListener('click', () => {
+        const modal = document.getElementById('enquiryModal');
+        if (!modal) return;
+
+        const opt = select.options[select.selectedIndex];
+        const title = opt ? opt.getAttribute('data-title') : 'Kashmir Tour Package';
+        const modalTitle = document.getElementById('modalPackageTitle');
+        const hiddenPkg = document.getElementById('modalPackageInput');
+        const travellersInput = modal.querySelector('select[name="travellers"], input[name="travellers"]');
+        const messageInput = modal.querySelector('textarea[name="message"]');
+
+        if (modalTitle) modalTitle.textContent = title;
+        if (hiddenPkg) hiddenPkg.value = title;
+
+        if (travellersInput) {
+          travellersInput.value = `${travellers} Adults`;
+        }
+
+        if (messageInput) {
+          messageInput.value = `Hi City Line Tours, I calculated an estimated budget for "${title}" on your website for ${travellers} travellers (${totalEl.textContent}). Please share the day-wise itinerary and booking confirmation details.`;
+        }
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      });
+
+      // Initial run
+      calculate();
+    });
+  </script>
+</body>
+</html>
+

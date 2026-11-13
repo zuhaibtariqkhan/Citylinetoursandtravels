@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body class="bg-brand-navy min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white rounded-3xl shadow-2xl p-8 sm:p-10 w-full max-w-md border border-brand-border">
+    
+    <div class="text-center mb-8">
+      <img src="/images/LOGO.jpeg" alt="City Line Tours And Travels" class="w-20 h-20 object-contain rounded-2xl mx-auto mb-4 shadow-md bg-white p-1 border border-brand-border">
+      <h1 class="font-serif text-2xl font-bold text-brand-navy">City Line Admin</h1>
+      <p class="text-xs text-brand-muted mt-1">Authorized Management Portal</p>
+    </div>
+
+    <% if (error) { %>
+      <div class="mb-5 p-3.5 bg-rose-50 border border-rose-200 text-rose-800 text-xs rounded-xl flex items-center space-x-2">
+        <i data-lucide="alert-circle" class="w-4 h-4 text-rose-600 shrink-0"></i>
+        <span><%= error %></span>
+      </div>
+    <% } %>
+
+    <form action="/admin/login" method="POST" class="space-y-5">
+      <div>
+        <label class="block text-xs font-semibold text-brand-navy mb-1.5">Administrator Password</label>
+        <div class="relative">
+          <i data-lucide="key" class="w-4 h-4 text-brand-muted absolute left-3 top-3.5"></i>
+          <input type="password" name="password" required placeholder="Enter password (default: admin123)" class="form-input pl-9 text-sm">
+        </div>
+      </div>
+
+      <button type="submit" class="w-full btn-primary py-3 rounded-xl font-semibold text-sm flex items-center justify-center space-x-2 shadow-md">
+        <span>Sign In to Dashboard</span>
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </button>
+
+      <div class="text-center pt-2">
+        <a href="/" class="text-xs text-brand-muted hover:text-brand-blue">&larr; Back to Public Website</a>
+      </div>
+    </form>
+
+  </div>
+
+  <%- include('../partials/scripts') %>
+</body>
+</html>
+

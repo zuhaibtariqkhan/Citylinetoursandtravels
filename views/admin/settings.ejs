@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body class="bg-brand-offwhite text-brand-text min-h-screen">
+  <%- include('navbar') %>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    
+    <div class="mb-8">
+      <h1 class="font-serif text-3xl font-bold text-brand-navy">Business & Email Notification Settings</h1>
+      <p class="text-xs sm:text-sm text-brand-muted mt-1">
+        Configure your contact phone, WhatsApp numbers, email forwarding, and SMTP delivery credentials.
+      </p>
+    </div>
+
+    <% if (saved) { %>
+      <div class="mb-6 p-4 bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-xl text-xs sm:text-sm flex items-center space-x-2">
+        <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i>
+        <span>Settings updated successfully!</span>
+      </div>
+    <% } %>
+
+    <form action="/admin/settings" method="POST" class="space-y-8">
+      
+      <!-- 1. BUSINESS CONTACT DETAILS -->
+      <div class="bg-white rounded-2xl border border-brand-border shadow-sm p-8 space-y-5">
+        <h2 class="font-serif text-xl font-bold text-brand-navy flex items-center space-x-2 pb-3 border-b border-slate-100">
+          <i data-lucide="building" class="w-5 h-5 text-brand-blue"></i>
+          <span>Company & Contact Details</span>
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-xs font-semibold text-brand-navy mb-1.5">Company Name</label>
+            <input type="text" name="companyName" value="<%= settings.companyName %>" class="form-input">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-brand-navy mb-1.5">Tagline</label>
+            <input type="text" name="tagline" value="<%= settings.tagline %>" class="form-input">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-5">
+          <div>
+            <label class="block text-xs font-semibold text-brand-navy mb-1.5">Primary Phone</label>
+            <input type="text" name="phone" value="<%= settings.phone %>" class="form-input">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-brand-navy mb-1.5">Secondary Phone</label>
+            <input type="text" name="secondaryPhone" value="<%= settings.secondaryPhone || '9906676890' %>" class="form-input">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-brand-navy mb-1.5">WhatsApp (91 + 10 digits)</label>
+            <input type="text" name="whatsapp" value="<%= settings.whatsapp %>" placeholder="916006725007" class="form-input">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-brand-navy mb-1.5">Display Email</label>
+            <input type="email" name="email" value="<%= settings.email %>" class="form-input">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-xs font-semibold text-brand-navy mb-1.5">Office Physical Address</label>
+            <input type="text" name="address" value="<%= settings.address %>" class="form-input">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-brand-navy mb-1.5">Business Hours</label>
+            <input type="text" name="businessHours" value="<%= settings.businessHours %>" class="form-input">
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. EMAIL NOTIFICATION & LEAD FORWARDING -->
+      <div class="bg-white rounded-2xl border border-brand-border shadow-sm p-8 space-y-5">
+        <h2 class="font-serif text-xl font-bold text-brand-navy flex items-center space-x-2 pb-3 border-b border-slate-100">
+          <i data-lucide="mail" class="w-5 h-5 text-brand-blue"></i>
+          <span>Customer Enquiry Email Destination</span>
+        </h2>
+
+        <div>
+          <label class="block text-xs font-semibold text-brand-navy mb-1.5">
+            Forward Customer Enquiries To (Your Email) <span class="text-red-500">*</span>
+          </label>
+          <input type="email" name="notificationEmail" required value="<%= settings.notificationEmail || settings.email %>" class="form-input font-medium text-brand-blue">
+          <p class="text-[11px] text-brand-muted mt-1.5">
+            Every time a customer submits a tour enquiry, quick bar, or custom planner, full details will be dispatched immediately to this address.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3. SMTP SETTINGS FOR LIVE EMAIL DISPATCH -->
+      <div class="bg-white rounded-2xl border border-brand-border shadow-sm p-8 space-y-5">
+        <h2 class="font-serif text-xl font-bold text-brand-navy flex items-center space-x-2 pb-3 border-b border-slate-100">
+          <i data-lucide="send" class="w-5 h-5 text-brand-blue"></i>
+          <span>SMTP Email Server Settings (Nodemailer)</span>
+        </h2>
+
+        <div class="p-4 bg-brand-light rounded-xl text-xs text-brand-navy leading-relaxed">
+          <strong>Tip for Gmail:</strong> Enter <code class="bg-white px-1.5 py-0.5 rounded font-mono">smtp.gmail.com</code>, Port <code class="bg-white px-1.5 py-0.5 rounded font-mono">587</code>, your Gmail address as User, and generate a 16-character <strong>Google App Password</strong> from your Google Account security settings.
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-xs font-semibold text-brand-navy mb-1.5">SMTP Host</label>
+            <input type="text" name="smtpHost" value="<%= settings.smtp ? settings.smtp.host : '' %>" placeholder="e.g. smtp.gmail.com" class="form-input">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-brand-navy mb-1.5">SMTP Port</label>
+            <input type="number" name="smtpPort" value="<%= settings.smtp ? settings.smtp.port : 587 %>" placeholder="587" class="form-input">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-xs font-semibold text-brand-navy mb-1.5">SMTP Username / Email</label>
+            <input type="text" name="smtpUser" value="<%= settings.smtp ? settings.smtp.user : '' %>" placeholder="your-email@gmail.com" class="form-input">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-brand-navy mb-1.5">SMTP Password / App Password</label>
+            <input type="password" name="smtpPass" value="<%= settings.smtp ? settings.smtp.pass : '' %>" placeholder="••••••••••••" class="form-input">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-xs font-semibold text-brand-navy mb-1.5">From Display Name</label>
+            <input type="text" name="smtpFromName" value="<%= settings.smtp ? settings.smtp.fromName : settings.companyName %>" class="form-input">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-brand-navy mb-1.5">From Email Address</label>
+            <input type="email" name="smtpFromEmail" value="<%= settings.smtp ? settings.smtp.fromEmail : settings.email %>" class="form-input">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Save Button -->
+      <div class="flex items-center justify-end space-x-4">
+        <a href="/admin" class="btn-outline px-6 py-3 rounded-xl text-xs font-semibold">
+          Cancel
+        </a>
+        <button type="submit" class="btn-primary px-8 py-3 rounded-xl text-sm font-semibold shadow-md">
+          Save Settings
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+  <%- include('../partials/scripts') %>
+</body>
+</html>
+
