@@ -6,111 +6,456 @@
 <body class="bg-white text-brand-text">
   <%- include('partials/header') %>
 
-  <!-- Page Hero -->
-  <section class="relative py-20 bg-brand-navy text-white overflow-hidden">
+  <!-- ========================================================
+       PAGE HERO BANNER
+       ======================================================== -->
+  <section class="relative py-20 sm:py-24 bg-brand-navy text-white overflow-hidden">
     <div class="absolute inset-0 z-0">
-      <img src="https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=1800&q=80" 
-           alt="Kashmir Houseboats" 
-           class="w-full h-full object-cover brightness-[0.4]">
+      <img src="https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=1920&q=80" 
+           alt="Kashmir Luxury Hotels & Houseboats" 
+           class="w-full h-full object-cover brightness-[0.35]">
+      <div class="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/60 to-brand-navy/40"></div>
     </div>
-    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-      <span class="text-xs font-bold uppercase tracking-widest text-brand-sky bg-white/10 px-4 py-1.5 rounded-full inline-block mb-3">
-        COMFORT & HOSPITALITY
-      </span>
-      <h1 class="font-serif text-4xl sm:text-5xl font-bold text-white mb-4">
+    
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center space-x-2 bg-brand-sky/20 border border-brand-sky/40 text-brand-sky px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4 backdrop-blur-sm shadow-sm">
+        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+        <span>VERIFIED KASHMIR STAYS • 19 CURATED PROPERTIES</span>
+      </div>
+      
+      <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight leading-tight">
         Hotels, Resorts & Heritage Houseboats
       </h1>
-      <p class="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed">
-        We partner with verified, hygienic, and warm accommodations across Kashmir to ensure every night of your journey is comfortable and restful.
-      </p>
-    </div>
-  </section>
-
-  <!-- Accommodation Categories -->
-  <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
       
-      <!-- 1. Heritage Houseboats -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <p class="font-serif italic text-base sm:text-xl text-brand-sky font-medium mb-3">
+        "Comfortable, Warm and Memorable Stays in the Heart of Kashmir"
+      </p>
+      
+      <p class="text-xs sm:text-base text-slate-200 max-w-3xl mx-auto leading-relaxed">
+        From five-star luxury resorts in Srinagar and snow-clad alpine chalets in Gulmarg to tranquil riverside havens in Pahalgam and royal hand-carved houseboats on Dal and Nigeen Lake.
+      </p>
+
+      <!-- Quick Metrics Strip -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-4 max-w-3xl mx-auto mt-8 pt-6 border-t border-white/10 text-center text-xs">
         <div>
-          <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-light px-3.5 py-1 rounded-full">
-            SIGNATURE STAY
-          </span>
-          <h2 class="font-serif text-3xl font-bold text-brand-navy mt-4 mb-4">
-            Heritage Houseboats on Dal & Nigeen Lake
-          </h2>
-          <p class="text-sm sm:text-base text-brand-muted leading-relaxed mb-4">
-            An overnight stay in an intricately hand-carved cedar houseboat is the pinnacle of the Kashmir holiday experience. Adorned with Kashmiri walnut-wood furnishings, hand-knotted carpets, and private verandas facing the placid waters.
-          </p>
-          <ul class="space-y-2 text-xs sm:text-sm text-brand-navy mb-6">
-            <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-brand-blue"></i><span>Handcrafted fragrant Deodar wood interiors</span></li>
-            <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-brand-blue"></i><span>Shikara crossings included to and from the boulevard</span></li>
-            <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-brand-blue"></i><span>Freshly prepared home-cooked Kashmiri & Indian meals</span></li>
-            <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-brand-blue"></i><span>Heating and hot water arrangements</span></li>
-          </ul>
-          <button class="enquire-now-btn btn-primary px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm" data-package="Houseboat Stay Experience">
-            Reserve Houseboat Stay
-          </button>
+          <span class="font-serif text-2xl font-bold text-amber-400">19</span>
+          <span class="block uppercase tracking-wider text-slate-300 font-medium mt-0.5">Curated Properties</span>
         </div>
         <div>
-          <img src="https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=1000&q=80" alt="Houseboat on Dal Lake" class="rounded-2xl shadow-xl w-full h-80 sm:h-96 object-cover">
+          <span class="font-serif text-2xl font-bold text-brand-sky">7</span>
+          <span class="block uppercase tracking-wider text-slate-300 font-medium mt-0.5">5-Star Luxury</span>
+        </div>
+        <div>
+          <span class="font-serif text-2xl font-bold text-emerald-400">6</span>
+          <span class="block uppercase tracking-wider text-slate-300 font-medium mt-0.5">4-Star Deluxe</span>
+        </div>
+        <div>
+          <span class="font-serif text-2xl font-bold text-white">6</span>
+          <span class="block uppercase tracking-wider text-slate-300 font-medium mt-0.5">3-Star Comfort</span>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- 2. Mountain Resorts -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div class="lg:order-2">
-          <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-light px-3.5 py-1 rounded-full">
-            SCENIC HAVENS
-          </span>
-          <h2 class="font-serif text-3xl font-bold text-brand-navy mt-4 mb-4">
-            Mountain & Riverside Resorts (Gulmarg & Pahalgam)
-          </h2>
-          <p class="text-sm sm:text-base text-brand-muted leading-relaxed mb-4">
-            Wake up to panoramic views of snow-clad Apharwat peak in Gulmarg or the soothing melody of the tumbling Lidder River in Pahalgam. Handpicked resorts with central heating, cozy fireplaces, and pine-clad architecture.
-          </p>
-          <ul class="space-y-2 text-xs sm:text-sm text-brand-navy mb-6">
-            <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-brand-blue"></i><span>Spectacular alpine views right from your bedroom window</span></li>
-            <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-brand-blue"></i><span>Winter central heating and electric blankets</span></li>
-            <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-brand-blue"></i><span>Multi-cuisine dining restaurants</span></li>
-          </ul>
-          <button class="enquire-now-btn btn-primary px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm" data-package="Mountain Resort Booking">
-            Request a Quote
+  <!-- ========================================================
+       STICKY FILTER BAR & SEARCH
+       ======================================================== -->
+  <section class="sticky top-20 z-30 bg-white/95 backdrop-blur-md border-b border-brand-border py-4 shadow-sm transition-all" id="hotelFilterBarSection">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+        
+        <!-- Star Tier & Location Filters -->
+        <div class="flex items-center space-x-2 overflow-x-auto w-full lg:w-auto pb-1 scrollbar-thin" id="hotelStarFilterBar">
+          <button type="button" 
+                  class="hotel-filter-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-navy text-white border-brand-navy shadow-sm"
+                  data-filter-star="all">
+            All Properties (19)
+          </button>
+          <button type="button" 
+                  class="hotel-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-offwhite hover:bg-slate-100 text-brand-navy border-slate-200"
+                  data-filter-star="5">
+            ⭐⭐⭐⭐⭐ 5 Star (7)
+          </button>
+          <button type="button" 
+                  class="hotel-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-offwhite hover:bg-slate-100 text-brand-navy border-slate-200"
+                  data-filter-star="4">
+            ⭐⭐⭐⭐ 4 Star (6)
+          </button>
+          <button type="button" 
+                  class="hotel-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-offwhite hover:bg-slate-100 text-brand-navy border-slate-200"
+                  data-filter-star="3">
+            ⭐⭐⭐ 3 Star (6)
           </button>
         </div>
-        <div class="lg:order-1">
-          <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1000&q=80" alt="Gulmarg Resort" class="rounded-2xl shadow-xl w-full h-80 sm:h-96 object-cover">
-        </div>
-      </div>
 
-      <!-- 3. Deluxe City Hotels -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-light px-3.5 py-1 rounded-full">
-            CITY CONVENIENCE
-          </span>
-          <h2 class="font-serif text-3xl font-bold text-brand-navy mt-4 mb-4">
-            Deluxe & Boutique Hotels in Srinagar
-          </h2>
-          <p class="text-sm sm:text-base text-brand-muted leading-relaxed mb-4">
-            Conveniently situated near Dal Lake, Boulevard Road, and the city center. Featuring 3-star, 4-star, and luxury accommodations equipped with modern amenities, round-the-clock room service, and secure parking.
-          </p>
-          <button class="enquire-now-btn btn-primary px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm" data-package="Srinagar Hotel Accommodation">
-            Request a Quote
-          </button>
+        <!-- Location Filter & Search -->
+        <div class="flex items-center space-x-2 w-full lg:w-auto">
+          <!-- Destination Hub Dropdown -->
+          <select id="hotelLocationSelect" class="form-input text-xs py-2 px-3 w-40 shrink-0 bg-brand-offwhite border-brand-border font-medium text-brand-navy">
+            <option value="all">All Locations</option>
+            <option value="Srinagar">Srinagar (12)</option>
+            <option value="Gulmarg">Gulmarg (3)</option>
+            <option value="Pahalgam">Pahalgam (4)</option>
+          </select>
+
+          <!-- Live Search Input -->
+          <div class="relative flex-1 lg:w-64">
+            <i data-lucide="search" class="w-4 h-4 text-brand-muted absolute left-3 top-2.5"></i>
+            <input type="text" 
+                   id="hotelSearchInput" 
+                   placeholder="Search Taj, Khyber, LaLit..." 
+                   class="w-full pl-9 pr-3 py-2 rounded-xl border border-brand-border bg-brand-offwhite text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue">
+          </div>
         </div>
-        <div>
-          <img src="https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=1000&q=80" alt="Srinagar Hotel Stay" class="rounded-2xl shadow-xl w-full h-80 sm:h-96 object-cover">
-        </div>
+
       </div>
 
     </div>
   </section>
+
+  <!-- ========================================================
+       19 HOTELS SHOWCASE GRID
+       ======================================================== -->
+  <main class="py-14 sm:py-16 bg-brand-offwhite">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Introductory Notice -->
+      <div class="mb-10 text-center max-w-3xl mx-auto">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-softsky px-3.5 py-1 rounded-full border border-brand-border">
+          HANDPICKED PARTNER ACCOMMODATIONS
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-navy mt-3 mb-2">
+          Find Your Ideal Kashmir Stay
+        </h2>
+        <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
+          Every property is thoroughly inspected for reliable winter heating, spotless hygiene, prompt hospitality, and prime locations near Kashmir’s premier tourist attractions.
+        </p>
+      </div>
+
+      <!-- Hotels Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="hotelsGrid">
+        <% (hotels || []).forEach(hotel => { %>
+          <div class="hotel-card bg-white rounded-2xl border border-brand-border overflow-hidden card-hover flex flex-col justify-between shadow-sm group"
+               data-star="<%= hotel.stars %>"
+               data-location="<%= hotel.location %>"
+               data-name="<%= hotel.name.toLowerCase() %>"
+               data-desc="<%= hotel.shortDescription.toLowerCase() %>"
+               data-area="<%= (hotel.area || '').toLowerCase() %>">
+            
+            <div>
+              <!-- Hotel Image & Floating Badges -->
+              <div class="relative h-56 img-zoom-container bg-slate-100">
+                <img src="<%= hotel.image %>" 
+                     alt="<%= hotel.name %>" 
+                     loading="lazy" 
+                     decoding="async" 
+                     class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                
+                <!-- Star Rating Badge (Top Left) -->
+                <div class="absolute top-3 left-3 flex items-center space-x-1.5">
+                  <span class="bg-brand-navy/90 backdrop-blur-md text-amber-400 text-xs font-bold px-3 py-1 rounded-full shadow border border-white/20 flex items-center space-x-1">
+                    <span><%= hotel.stars %>★</span>
+                    <span class="text-[10px] text-slate-200 font-semibold">• <%= hotel.ratingLabel %></span>
+                  </span>
+                </div>
+
+                <!-- Category Badge (Top Right) -->
+                <div class="absolute top-3 right-3">
+                  <span class="bg-white/95 backdrop-blur-md text-brand-navy text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+                    <%= hotel.category %>
+                  </span>
+                </div>
+
+                <!-- Location Overlay (Bottom Left) -->
+                <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs">
+                  <span class="flex items-center space-x-1 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px]">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-sky"></i>
+                    <span class="font-medium"><%= hotel.location %> • <%= hotel.area %></span>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Hotel Details Content -->
+              <div class="p-5 sm:p-6">
+                <!-- Stars Display & Category -->
+                <div class="flex items-center justify-between mb-1.5">
+                  <div class="flex items-center space-x-0.5 text-amber-400 text-xs">
+                    <% for (let i = 0; i < hotel.stars; i++) { %>
+                      <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                    <% } %>
+                  </div>
+                  <span class="text-[10px] text-brand-muted uppercase font-semibold tracking-wider">
+                    <%= hotel.badge %>
+                  </span>
+                </div>
+
+                <!-- Hotel Name -->
+                <h3 class="font-serif text-xl font-bold text-brand-navy mb-1.5 group-hover:text-brand-blue transition line-clamp-1">
+                  <%= hotel.name %>
+                </h3>
+
+                <!-- Tagline -->
+                <p class="text-xs italic text-brand-blue font-serif mb-2.5 line-clamp-1">
+                  "<%= hotel.tagline %>"
+                </p>
+
+                <!-- Short Description -->
+                <p class="text-xs text-brand-muted leading-relaxed line-clamp-2 mb-4">
+                  <%= hotel.shortDescription %>
+                </p>
+
+                <!-- Key Amenities Chips -->
+                <% if (hotel.amenities && hotel.amenities.length > 0) { %>
+                  <div class="space-y-1.5 pt-1">
+                    <span class="block text-[10px] font-bold uppercase tracking-wider text-brand-slate">Highlights:</span>
+                    <div class="flex flex-wrap gap-1.5">
+                      <% hotel.amenities.slice(0, 4).forEach(amenity => { %>
+                        <span class="text-[10px] bg-brand-softsky text-brand-navy px-2 py-0.5 rounded-md border border-brand-border font-medium">
+                          <%= amenity %>
+                        </span>
+                      <% }) %>
+                    </div>
+                  </div>
+                <% } %>
+              </div>
+            </div>
+
+            <!-- Card Actions -->
+            <div class="p-5 sm:p-6 pt-0 border-t border-slate-100 mt-2 flex flex-col sm:flex-row items-center justify-between gap-2.5">
+              <button type="button" 
+                      class="enquire-now-btn w-full sm:w-auto flex-1 btn-primary py-2.5 px-3 rounded-xl font-semibold text-xs flex items-center justify-center space-x-1.5 shadow-sm"
+                      data-package="Hotel Booking: <%= hotel.name %> (<%= hotel.stars %> Star)"
+                      data-destination="<%= hotel.location %>">
+                <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                <span>Request a Quote</span>
+              </button>
+
+              <a href="https://wa.me/916006725007?text=<%= encodeURIComponent('Hello City Line Tours And Travels,\nI am inquiring about booking ' + hotel.name + ' (' + hotel.stars + ' Star, ' + hotel.location + '). Please share rates and availability.') %>" 
+                 target="_blank" 
+                 class="w-full sm:w-auto bg-[#25D366] hover:bg-[#20ba59] text-white py-2.5 px-3 rounded-xl text-xs font-semibold flex items-center justify-center space-x-1.5 transition shadow-sm"
+                 title="Discuss on WhatsApp">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                <span>WhatsApp</span>
+              </a>
+            </div>
+
+          </div>
+        <% }) %>
+      </div>
+
+      <!-- No Results Found State -->
+      <div id="noHotelsFound" class="hidden text-center py-16 bg-white rounded-3xl border border-brand-border p-8 mt-6">
+        <i data-lucide="bed-double" class="w-12 h-12 text-brand-muted mx-auto mb-3"></i>
+        <h4 class="font-serif text-xl font-bold text-brand-navy">No Accommodations Found</h4>
+        <p class="text-xs sm:text-sm text-brand-muted mt-1 mb-4">
+          Try clearing your search or choosing a different star tier or destination.
+        </p>
+        <button type="button" id="resetHotelFilterBtn" class="btn-primary px-5 py-2 rounded-xl text-xs font-semibold">
+          View All 19 Properties
+        </button>
+      </div>
+
+      <!-- ========================================================
+           WHY BOOK HOTELS THROUGH CITY LINE TOURS?
+           ======================================================== -->
+      <div class="mt-20 bg-white rounded-3xl p-8 sm:p-12 border border-brand-border shadow-md">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-softsky px-3.5 py-1 rounded-full border border-brand-border">
+            THE CITY LINE GUARANTEE
+          </span>
+          <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-navy mt-3 mb-2">
+            Why Book Your Kashmir Stay Through City Line Tours?
+          </h3>
+          <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
+            Booking directly with a local Srinagar-based company guarantees authentic ground coordination, vetted room standards, and emergency backup that online portals cannot provide.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-brand-offwhite p-5 rounded-2xl border border-brand-border">
+            <div class="w-10 h-10 rounded-xl bg-brand-blue text-white flex items-center justify-center mb-3">
+              <i data-lucide="flame" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-serif font-bold text-base text-brand-navy mb-1">Guaranteed Winter Heating</h4>
+            <p class="text-xs text-brand-muted leading-relaxed">
+              Every partnered property is vetted for reliable central heating, electric blankets, and continuous hot water supply.
+            </p>
+          </div>
+
+          <div class="bg-brand-offwhite p-5 rounded-2xl border border-brand-border">
+            <div class="w-10 h-10 rounded-xl bg-brand-blue text-white flex items-center justify-center mb-3">
+              <i data-lucide="eye" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-serif font-bold text-base text-brand-navy mb-1">Prime View Rooms</h4>
+            <p class="text-xs text-brand-muted leading-relaxed">
+              We secure premium lake-facing and mountain-facing room allocations for our guests without hidden surprise surcharges.
+            </p>
+          </div>
+
+          <div class="bg-brand-offwhite p-5 rounded-2xl border border-brand-border">
+            <div class="w-10 h-10 rounded-xl bg-brand-blue text-white flex items-center justify-center mb-3">
+              <i data-lucide="badge-percent" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-serif font-bold text-base text-brand-navy mb-1">Contracted B2B Rates</h4>
+            <p class="text-xs text-brand-muted leading-relaxed">
+              Enjoy exclusive contracted seasonal rates, complimentary breakfast & dinner meal plans, and customized group discounts.
+            </p>
+          </div>
+
+          <div class="bg-brand-offwhite p-5 rounded-2xl border border-brand-border">
+            <div class="w-10 h-10 rounded-xl bg-brand-blue text-white flex items-center justify-center mb-3">
+              <i data-lucide="headset" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-serif font-bold text-base text-brand-navy mb-1">24/7 Srinagar On-Trip Support</h4>
+            <p class="text-xs text-brand-muted leading-relaxed">
+              Direct ground intervention from our Palpora, Srinagar headquarters if you require room upgrades or itinerary adjustments.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           CUSTOM ACCOMMODATION CONSULTATION BANNER
+           ======================================================== -->
+      <div class="mt-12 bg-brand-navy rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-xl">
+        <div class="relative z-10 max-w-2xl">
+          <span class="text-xs font-bold uppercase tracking-widest text-brand-sky bg-white/10 px-3.5 py-1 rounded-full inline-block mb-3">
+            NEED PERSONAL GUIDANCE?
+          </span>
+          <h3 class="font-serif text-2xl sm:text-3xl font-bold mb-3">
+            Let Us Match the Perfect Stay to Your Budget & Vacation Style
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-200 mb-6 leading-relaxed">
+            Planning a honeymoon, family vacation, or ski expedition? Speak directly with our Kashmir reservation specialists in Srinagar to get personalized recommendations and confirmed quotes within hours.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center gap-3">
+            <button type="button" class="enquire-now-btn w-full sm:w-auto btn-primary px-6 py-3 rounded-xl font-semibold text-xs sm:text-sm inline-flex items-center justify-center space-x-2" data-package="Custom Hotel Consultation">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              <span>Request Hotel Consultation</span>
+            </button>
+            <a href="https://wa.me/916006725007?text=Hello%20City%20Line%20Tours,%20I%20need%20assistance%20choosing%20hotels%20and%20houseboats%20for%20my%20Kashmir%20trip." 
+               target="_blank" 
+               class="w-full sm:w-auto bg-[#25D366] hover:bg-[#20ba59] text-white px-6 py-3 rounded-xl font-semibold text-xs sm:text-sm inline-flex items-center justify-center space-x-2 transition shadow">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              <span>Chat with Specialist (6006725007)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
 
   <%- include('partials/footer') %>
   <%- include('partials/whatsapp') %>
   <%- include('partials/enquiry-modal') %>
   <%- include('partials/scripts') %>
+
+  <!-- Hotels Interactive Client-Side Filter & Search Script -->
+  <script>
+    (function initHotelsFilter() {
+      const starButtons = document.querySelectorAll('.hotel-filter-btn');
+      const locationSelect = document.getElementById('hotelLocationSelect');
+      const searchInput = document.getElementById('hotelSearchInput');
+      const hotelCards = document.querySelectorAll('.hotel-card');
+      const noHotelsFound = document.getElementById('noHotelsFound');
+      const resetBtn = document.getElementById('resetHotelFilterBtn');
+
+      let currentStar = 'all';
+      let currentLocation = 'all';
+      let currentQuery = '';
+
+      function filterHotels() {
+        let visibleCount = 0;
+
+        hotelCards.forEach(card => {
+          const cardStar = card.getAttribute('data-star') || '';
+          const cardLocation = card.getAttribute('data-location') || '';
+          const cardName = card.getAttribute('data-name') || '';
+          const cardDesc = card.getAttribute('data-desc') || '';
+          const cardArea = card.getAttribute('data-area') || '';
+
+          const matchesStar = (currentStar === 'all') || (cardStar === currentStar);
+          const matchesLocation = (currentLocation === 'all') || (cardLocation.toLowerCase() === currentLocation.toLowerCase());
+          const matchesQuery = (!currentQuery) || 
+            cardName.includes(currentQuery) || 
+            cardDesc.includes(currentQuery) || 
+            cardArea.includes(currentQuery);
+
+          if (matchesStar && matchesLocation && matchesQuery) {
+            card.style.display = 'flex';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (noHotelsFound) {
+          if (visibleCount === 0) {
+            noHotelsFound.classList.remove('hidden');
+          } else {
+            noHotelsFound.classList.add('hidden');
+          }
+        }
+      }
+
+      // Star Tier Filter Button Clicks
+      starButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          starButtons.forEach(b => {
+            b.classList.remove('bg-brand-navy', 'text-white', 'border-brand-navy', 'shadow-sm');
+            b.classList.add('bg-brand-offwhite', 'text-brand-navy', 'border-slate-200');
+          });
+          btn.classList.add('bg-brand-navy', 'text-white', 'border-brand-navy', 'shadow-sm');
+          btn.classList.remove('bg-brand-offwhite', 'text-brand-navy', 'border-slate-200');
+
+          currentStar = btn.getAttribute('data-filter-star') || 'all';
+          filterHotels();
+        });
+      });
+
+      // Location Select Change
+      if (locationSelect) {
+        locationSelect.addEventListener('change', (e) => {
+          currentLocation = e.target.value;
+          filterHotels();
+        });
+      }
+
+      // Live Search Input
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentQuery = e.target.value.trim().toLowerCase();
+          filterHotels();
+        });
+      }
+
+      // Reset Button Click
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          currentStar = 'all';
+          currentLocation = 'all';
+          currentQuery = '';
+
+          if (locationSelect) locationSelect.value = 'all';
+          if (searchInput) searchInput.value = '';
+
+          starButtons.forEach((b, idx) => {
+            if (idx === 0) {
+              b.classList.add('bg-brand-navy', 'text-white', 'border-brand-navy', 'shadow-sm');
+              b.classList.remove('bg-brand-offwhite', 'text-brand-navy', 'border-slate-200');
+            } else {
+              b.classList.remove('bg-brand-navy', 'text-white', 'border-brand-navy', 'shadow-sm');
+              b.classList.add('bg-brand-offwhite', 'text-brand-navy', 'border-slate-200');
+            }
+          });
+
+          filterHotels();
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
-

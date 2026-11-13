@@ -207,6 +207,14 @@ module.exports = {
     return filtered.length !== list.length;
   },
 
+  // Hotels & Resorts
+  getHotels() {
+    return readJsonFile('hotels.json', []);
+  },
+  getHotelById(id) {
+    return this.getHotels().find(h => h.id === id);
+  },
+
   // Email Logs
   getEmailLogs() {
     const logs = readJsonFile('email_logs.json', []);

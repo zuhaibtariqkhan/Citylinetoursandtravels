@@ -159,8 +159,10 @@ app.get('/experiences', (req, res) => {
 
 // 8. Hotels & Accommodation
 app.get('/hotels', (req, res) => {
+  const hotels = db.getHotels();
   res.render('hotels', {
-    pageTitle: 'Hotels & Houseboat Stays in Kashmir | City Line Tours',
+    pageTitle: 'Hotels, Resorts & Heritage Houseboats in Kashmir | City Line Tours',
+    hotels
   });
 });
 
