@@ -1,32 +1,32 @@
-<footer class="bg-brand-navy text-white pt-16 pb-8 border-t border-white/10">
+<footer class="bg-brand-navy text-white pt-12 sm:pt-16 pb-8 border-t border-white/10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- 4-Column Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 pb-10 border-b border-white/10">
       
       <!-- Col 1: Brand -->
-      <div class="space-y-4">
+      <div class="space-y-4 flex flex-col items-center md:items-start text-center md:text-left">
         <div class="flex items-center space-x-3">
           <img src="/images/LOGO.jpeg" alt="City Line Tours And Travels Logo" class="w-12 h-12 object-contain rounded-xl bg-white p-0.5 shadow">
-          <div>
+          <div class="text-left">
             <div class="font-serif text-xl font-bold tracking-tight text-white">City Line</div>
             <div class="text-[10px] tracking-widest text-brand-sky uppercase -mt-0.5">Tours And Travels</div>
           </div>
         </div>
-        <p class="text-xs font-serif italic text-brand-sky">
+        <p class="text-xs font-serif italic text-brand-sky text-center md:text-left">
           "<%= settings.tagline || 'Where Your Travel Dreams Take Flight' %>"
         </p>
-        <p class="text-xs text-slate-300 leading-relaxed">
+        <p class="text-xs text-slate-300 leading-relaxed text-center md:text-left max-w-sm md:max-w-none">
           <%= settings.shortAbout || 'Your premier Kashmir travel company offering personalized holiday packages, luxury houseboat stays, Shikara rides, and unforgettable mountain journeys.' %>
         </p>
         <!-- Social Channels with Real Handle -->
-        <div class="pt-3 space-y-2.5">
-          <div class="text-[11px] font-semibold text-slate-300 uppercase tracking-wider flex flex-wrap items-center gap-1.5">
+        <div class="pt-2 space-y-2.5 flex flex-col items-center md:items-start w-full">
+          <div class="text-[11px] font-semibold text-slate-300 uppercase tracking-wider flex flex-wrap items-center justify-center md:justify-start gap-1.5">
             <span>Follow Us:</span>
             <span class="text-brand-sky font-bold normal-case">@citylinetoursandtravels</span>
           </div>
 
-          <div class="flex items-center space-x-3 pt-1">
+          <div class="flex items-center justify-center md:justify-start space-x-3 pt-1">
             <!-- Instagram -->
             <a href="https://www.instagram.com/citylinetoursandtravels" 
                target="_blank" 
@@ -67,9 +67,9 @@
       </div>
 
       <!-- Col 2: Explore Destinations & Packages -->
-      <div>
-        <h4 class="font-serif text-lg font-bold mb-4 text-white">Explore Kashmir</h4>
-        <ul class="space-y-2 text-sm text-slate-300">
+      <div class="flex flex-col items-center md:items-start text-center md:text-left">
+        <h4 class="font-serif text-lg font-bold mb-4 text-white text-center md:text-left">Explore Kashmir</h4>
+        <ul class="space-y-2 text-sm text-slate-300 flex flex-col items-center md:items-start w-full">
           <li><a href="/destinations/srinagar" class="hover:text-brand-sky transition flex items-center"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1.5 text-brand-sky"></i>Srinagar & Dal Lake</a></li>
           <li><a href="/destinations/gulmarg" class="hover:text-brand-sky transition flex items-center"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1.5 text-brand-sky"></i>Gulmarg Skiing & Gondola</a></li>
           <li><a href="/destinations/pahalgam" class="hover:text-brand-sky transition flex items-center"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1.5 text-brand-sky"></i>Pahalgam & Betaab Valley</a></li>
@@ -81,9 +81,9 @@
       </div>
 
       <!-- Col 3: Travel Planning -->
-      <div>
-        <h4 class="font-serif text-lg font-bold mb-4 text-white">Travel Planning</h4>
-        <ul class="space-y-2 text-sm text-slate-300">
+      <div class="flex flex-col items-center md:items-start text-center md:text-left">
+        <h4 class="font-serif text-lg font-bold mb-4 text-white text-center md:text-left">Travel Planning</h4>
+        <ul class="space-y-2 text-sm text-slate-300 flex flex-col items-center md:items-start w-full">
           <li><a href="/packages" class="hover:text-brand-sky transition flex items-center"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1.5 text-brand-sky"></i>Kashmir Tour Packages</a></li>
           <li><a href="/experiences" class="hover:text-brand-sky transition flex items-center"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1.5 text-brand-sky"></i>Kashmir Experiences</a></li>
           <li><a href="/hotels" class="hover:text-brand-sky transition flex items-center"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1.5 text-brand-sky"></i>Houseboats & Hotels</a></li>
@@ -94,30 +94,30 @@
       </div>
 
       <!-- Col 4: Get in Touch -->
-      <div class="space-y-3">
-        <h4 class="font-serif text-lg font-bold mb-4 text-white">Get In Touch</h4>
-        <div class="flex items-start space-x-3 text-sm text-slate-300">
+      <div class="space-y-3 flex flex-col items-center md:items-start text-center md:text-left">
+        <h4 class="font-serif text-lg font-bold mb-4 text-white text-center md:text-left">Get In Touch</h4>
+        <div class="flex flex-col items-center md:flex-row md:items-start space-y-1 md:space-y-0 md:space-x-3 text-sm text-slate-300">
           <i data-lucide="map-pin" class="w-5 h-5 text-brand-sky shrink-0 mt-0.5"></i>
           <span><%= settings.address || 'Palpora, Srinagar, Jammu & Kashmir, India' %></span>
         </div>
-        <div class="flex items-start space-x-3 text-sm text-slate-300">
+        <div class="flex flex-col items-center md:flex-row md:items-start space-y-1 md:space-y-0 md:space-x-3 text-sm text-slate-300">
           <i data-lucide="phone" class="w-5 h-5 text-brand-sky shrink-0 mt-0.5"></i>
-          <div class="flex flex-col space-y-1">
+          <div class="flex flex-col space-y-1 items-center md:items-start">
             <a href="tel:6006725007" class="hover:text-white font-medium">6006725007</a>
             <a href="tel:9906676890" class="hover:text-white font-medium">9906676890</a>
           </div>
         </div>
-        <div class="flex items-center space-x-3 text-sm text-slate-300">
+        <div class="flex flex-col items-center md:flex-row md:items-center space-y-1 md:space-y-0 md:space-x-3 text-sm text-slate-300">
           <i data-lucide="message-circle" class="w-5 h-5 text-emerald-400 shrink-0"></i>
           <a href="https://wa.me/916006725007" target="_blank" class="text-emerald-300 hover:text-white">
             WhatsApp: 6006725007
           </a>
         </div>
-        <div class="flex items-center space-x-3 text-sm text-slate-300">
+        <div class="flex flex-col items-center md:flex-row md:items-center space-y-1 md:space-y-0 md:space-x-3 text-sm text-slate-300">
           <i data-lucide="mail" class="w-5 h-5 text-brand-sky shrink-0"></i>
           <a href="mailto:<%= settings.email %>" class="hover:text-white break-all"><%= settings.email %></a>
         </div>
-        <div class="flex items-center space-x-3 text-sm text-slate-300 pt-1">
+        <div class="flex flex-col items-center md:flex-row md:items-center space-y-1 md:space-y-0 md:space-x-3 text-sm text-slate-300 pt-1">
           <i data-lucide="clock" class="w-5 h-5 text-brand-sky shrink-0"></i>
           <span>Monday – Saturday: 10:00 AM – 5:00 PM</span>
         </div>
@@ -138,4 +138,3 @@
 
   </div>
 </footer>
-
