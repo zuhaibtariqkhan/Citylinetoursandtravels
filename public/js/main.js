@@ -1419,15 +1419,30 @@ document.addEventListener('DOMContentLoaded', () => {
               descEl.textContent = weatherCodes[curr.weather_code].desc;
             }
 
+            const statusBadge = card.querySelector('.weather-status-badge');
+            if (statusBadge) {
+              statusBadge.textContent = 'Live Feed';
+              statusBadge.className = 'weather-status-badge text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold border border-emerald-200';
+            }
+
             const updatedEl = document.getElementById('weatherLastUpdated');
             if (updatedEl) {
+              updatedEl.dataset.updated = 'true';
               const now = new Date();
-              updatedEl.textContent = `Live Satellite Feed • ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+              updatedEl.textContent = `Live Satellite Feed (Open-Meteo) • Updated ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
             }
           }
+        } else {
+          const statusBadge = card.querySelector('.weather-status-badge');
+          if (statusBadge) statusBadge.textContent = 'Seasonal Norm';
         }
       } catch (e) {
-        // Graceful fallback to verified seasonal weather data
+        const statusBadge = card.querySelector('.weather-status-badge');
+        if (statusBadge) statusBadge.textContent = 'Seasonal Norm';
+        const updatedEl = document.getElementById('weatherLastUpdated');
+        if (updatedEl && !updatedEl.dataset.updated) {
+          updatedEl.textContent = 'Seasonal Weather Estimates • Live Feed Reconnecting';
+        }
       }
     });
   }

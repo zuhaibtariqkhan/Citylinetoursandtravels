@@ -1,6 +1,8 @@
 <!-- ========================================================
      INTERACTIVE KASHMIR DESTINATION & ROUTE MAP
      ======================================================== -->
+<% const mappedDestinations = destinations.filter(d => d.mapCoords && d.region === 'Kashmir'); %>
+
 <div class="bg-[#102A43] text-white rounded-3xl p-5 sm:p-7 lg:p-9 shadow-2xl border border-white/10 my-4 sm:my-6" id="kashmirMapContainer">
   
   <!-- Map Section Header -->
@@ -18,19 +20,22 @@
       </p>
     </div>
 
-    <!-- Quick Highway Status Badge -->
-    <div class="flex items-center space-x-2 bg-brand-blue/25 border border-brand-sky/40 text-brand-sky text-xs px-3.5 py-1.5 rounded-xl font-medium shrink-0">
-      <span class="relative flex h-2.5 w-2.5">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-300"></span>
-      </span>
-      <span>All 7 Valley Road Corridors Open</span>
+    <!-- Highway Status Badge & Link to All 29 Destinations -->
+    <div class="flex flex-col items-start lg:items-end gap-2 shrink-0">
+      <div class="flex items-center space-x-2 bg-brand-blue/25 border border-brand-sky/40 text-brand-sky text-xs px-3.5 py-1.5 rounded-xl font-medium">
+        <i data-lucide="info" class="w-3.5 h-3.5 text-cyan-300"></i>
+        <span>Scenic Mountain Corridors • Subject to Weather</span>
+      </div>
+      <a href="/destinations" class="text-xs text-brand-sky hover:text-white transition flex items-center space-x-1 font-semibold">
+        <span>View All 29 Destinations (Kashmir, Jammu & Ladakh)</span>
+        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+      </a>
     </div>
   </div>
 
-  <!-- Quick Destination Selector Chips -->
+  <!-- Quick Destination Selector Chips (7 Signature Kashmir Valleys) -->
   <div class="flex items-center space-x-2 overflow-x-auto pb-3 mb-6 scrollbar-thin" id="mapChipBar">
-    <% destinations.forEach((d, idx) => { %>
+    <% mappedDestinations.forEach((d, idx) => { %>
       <button type="button" 
               class="map-dest-chip px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all flex items-center space-x-2 border <%= idx === 0 ? 'bg-[#145DA0] text-white border-brand-sky shadow-md scale-105' : 'bg-white/10 hover:bg-white/20 text-slate-200 border-white/10' %>" 
               data-slug="<%= d.slug %>">
@@ -182,8 +187,8 @@
                 fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.75"/>
         </svg>
 
-        <!-- HTML Interactive Hotspot Pins Overlay -->
-        <% destinations.forEach((dest, idx) => { 
+        <!-- HTML Interactive Hotspot Pins Overlay (Strictly for Mapped Valleys) -->
+        <% mappedDestinations.forEach((dest, idx) => { 
           const coords = dest.mapCoords || { x: 50, y: 50 };
           const isCapital = dest.slug === 'srinagar';
         %>
@@ -242,8 +247,8 @@
       
       <!-- Card Dynamic Content Wrapper -->
       <div id="destSpotlightContent">
-        <!-- Default destination is loaded dynamically by JS or first in list -->
-        <% const defaultDest = destinations[0] || {}; %>
+        <!-- Default destination is loaded dynamically by JS or first in mapped list -->
+        <% const defaultDest = mappedDestinations[0] || {}; %>
         
         <!-- Header & Category Badge -->
         <div class="flex items-start justify-between gap-3 mb-3">
@@ -355,8 +360,8 @@
 <!-- Interactive Map Client Script -->
 <script>
   (function initKashmirInteractiveMap() {
-    // Destinations data serialized from server
-    const destinationsData = <%- JSON.stringify(destinations) %>;
+    // Destinations data serialized from server (Mapped Kashmir Valleys)
+    const destinationsData = <%- JSON.stringify(mappedDestinations) %>;
     if (!destinationsData || !destinationsData.length) return;
 
     const mapPins = document.querySelectorAll('.map-pin-marker');
