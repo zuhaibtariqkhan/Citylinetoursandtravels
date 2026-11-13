@@ -75,7 +75,7 @@ h3.font-serif {
 .border-brand { border-color: var(--border-color); }
 .text-muted { color: var(--muted-text); }
 
-/* Consistent Button Component System */
+/* Consistent Button Component System (Standardized 200-300ms Luxury Deceleration) */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -89,16 +89,20 @@ h3.font-serif {
   padding: 0.625rem 1.25rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow: 0 1px 3px rgba(16, 42, 67, 0.08);
+  will-change: transform;
 }
 .btn-primary:hover {
   background-color: var(--primary-blue);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(20, 93, 160, 0.2);
+  transform: translate3d(0, -1.5px, 0);
+  box-shadow: 0 4px 14px rgba(20, 93, 160, 0.22);
 }
 .btn-primary:active {
-  transform: translateY(0);
+  transform: scale(0.985);
+  box-shadow: 0 1px 2px rgba(16, 42, 67, 0.08);
 }
 .btn-primary:focus-visible,
 .btn-secondary:focus-visible,
@@ -127,15 +131,23 @@ h3.font-serif {
   padding: 0.625rem 1.25rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow: 0 1px 2px rgba(16, 42, 67, 0.04);
+  will-change: transform;
 }
 .btn-secondary:hover {
   background-color: var(--ice-blue);
   border-color: var(--elegant-blue);
   color: var(--elegant-blue);
-  transform: translateY(-1px);
+  transform: translate3d(0, -1.5px, 0);
   box-shadow: 0 3px 8px rgba(16, 42, 67, 0.06);
+}
+.btn-secondary:active {
+  transform: scale(0.985);
 }
 
 .btn-outline {
@@ -151,54 +163,111 @@ h3.font-serif {
   padding: 0.5625rem 1.25rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 .btn-outline:hover {
   background-color: var(--soft-sky-blue);
   color: var(--primary-blue);
   border-color: var(--primary-blue);
-  transform: translateY(-1px);
+  transform: translate3d(0, -1.5px, 0);
+}
+.btn-outline:active {
+  transform: scale(0.985);
 }
 
-/* Card Hover Elevation - Subtle & Refined */
+/* Card Hover Elevation - Subtle & Refined (Hospitality Standard) */
 .card-hover {
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), 
+              box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1), 
+              border-color 300ms ease;
+  will-change: transform, box-shadow;
 }
 .card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 28px -8px rgba(16, 42, 67, 0.09);
-  border-color: var(--elegant-blue);
+  transform: translate3d(0, -4px, 0);
+  box-shadow: 0 16px 32px -8px rgba(16, 42, 67, 0.08);
+  border-color: #cbd5e1;
 }
 
-/* Image zoom inside cards */
+/* Image zoom inside cards - Constrained to 1.00 - 1.04 range for premium feel */
 .img-zoom-container {
   overflow: hidden;
 }
 .img-zoom-container img {
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 .card-hover:hover .img-zoom-container img {
-  transform: scale(1.08);
+  transform: scale(1.035);
+}
+
+/* Destination Cards - Premium Motion */
+.dest-card {
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), 
+              box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1), 
+              border-color 300ms ease;
+  will-change: transform, box-shadow;
+}
+.dest-card:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: 0 20px 36px -10px rgba(16, 42, 67, 0.10);
+  border-color: #cbd5e1;
+}
+.dest-card img {
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+.dest-card:hover img {
+  transform: scale(1.035);
+}
+
+/* Experiences Page Cards - Premium Motion */
+.exp-card {
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), 
+              box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1), 
+              border-color 300ms ease;
+  will-change: transform, box-shadow;
+}
+.exp-card:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: 0 20px 36px -10px rgba(16, 42, 67, 0.10);
+  border-color: #cbd5e1;
+}
+.exp-card img {
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+.exp-card:hover img {
+  transform: scale(1.035);
 }
 
 /* Arrow transition on hover */
 .arrow-hover {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 .card-hover:hover .arrow-hover,
+.dest-card:hover .arrow-hover,
+.exp-card:hover .arrow-hover,
 a:hover .arrow-hover,
 button:hover .arrow-hover {
-  transform: translateX(6px);
+  transform: translate3d(4px, 0, 0);
 }
 
 /* Cinematic Slow Zoom on Hero Image */
 @keyframes heroZoom {
   0% { transform: scale(1); }
-  50% { transform: scale(1.06); }
+  50% { transform: scale(1.045); }
   100% { transform: scale(1); }
 }
 .hero-zoom {
-  animation: heroZoom 30s ease-in-out infinite alternate;
+  animation: heroZoom 24s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
   will-change: transform;
 }
 
@@ -212,30 +281,25 @@ button:hover .arrow-hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              color 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 .card-hover:hover .icon-container-light {
   background-color: var(--primary-blue);
   color: #ffffff;
-  transform: scale(1.08) rotate(4deg);
+  transform: scale(1.04);
 }
 
-/* Continuous Floating Micro-animation */
+/* Soft Float Micro-animation */
 @keyframes softFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-7px); }
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -5px, 0); }
 }
 .animate-float {
-  animation: softFloat 4.5s ease-in-out infinite;
-}
-
-/* Subtle Pulse Glow for Key Badges */
-@keyframes gentlePulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.88; transform: scale(1.03); }
-}
-.animate-pulse-gentle {
-  animation: gentlePulse 3s ease-in-out infinite;
+  animation: softFloat 5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  will-change: transform;
 }
 
 /* Floating WhatsApp button removed as requested */
@@ -244,22 +308,23 @@ button:hover .arrow-hover {
 }
 
 /* ========================================================
-   SCROLL REVEAL ANIMATIONS (IntersectionObserver)
+   SCROLL REVEAL ANIMATIONS (IntersectionObserver - 600-750ms)
    ======================================================== */
 .reveal {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translate3d(0, 20px, 0);
+  transition: opacity 650ms cubic-bezier(0.22, 1, 0.36, 1), transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 .reveal.revealed {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .reveal-fade {
   opacity: 0;
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 650ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
 }
 .reveal-fade.revealed {
   opacity: 1;
@@ -267,58 +332,92 @@ button:hover .arrow-hover {
 
 .reveal-scale {
   opacity: 0;
-  transform: scale(0.94);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(0.97) translate3d(0, 10px, 0);
+  transition: opacity 650ms cubic-bezier(0.22, 1, 0.36, 1), transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
 .reveal-scale.revealed {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1) translate3d(0, 0, 0);
 }
 
-/* Stagger delay children */
+/* Stagger delay children (80ms natural rhythm) */
 .reveal-stagger > * {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translate3d(0, 18px, 0);
+  transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1), transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
-.reveal-stagger.revealed > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
-.reveal-stagger.revealed > *:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
-.reveal-stagger.revealed > *:nth-child(3) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
-.reveal-stagger.revealed > *:nth-child(4) { transition-delay: 0.35s; opacity: 1; transform: translateY(0); }
-.reveal-stagger.revealed > *:nth-child(5) { transition-delay: 0.45s; opacity: 1; transform: translateY(0); }
-.reveal-stagger.revealed > *:nth-child(6) { transition-delay: 0.55s; opacity: 1; transform: translateY(0); }
-.reveal-stagger.revealed > *:nth-child(7) { transition-delay: 0.65s; opacity: 1; transform: translateY(0); }
-.reveal-stagger.revealed > *:nth-child(8) { transition-delay: 0.75s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.revealed > *:nth-child(1) { transition-delay: 0.04s; opacity: 1; transform: translate3d(0, 0, 0); }
+.reveal-stagger.revealed > *:nth-child(2) { transition-delay: 0.12s; opacity: 1; transform: translate3d(0, 0, 0); }
+.reveal-stagger.revealed > *:nth-child(3) { transition-delay: 0.20s; opacity: 1; transform: translate3d(0, 0, 0); }
+.reveal-stagger.revealed > *:nth-child(4) { transition-delay: 0.28s; opacity: 1; transform: translate3d(0, 0, 0); }
+.reveal-stagger.revealed > *:nth-child(5) { transition-delay: 0.36s; opacity: 1; transform: translate3d(0, 0, 0); }
+.reveal-stagger.revealed > *:nth-child(6) { transition-delay: 0.44s; opacity: 1; transform: translate3d(0, 0, 0); }
+.reveal-stagger.revealed > *:nth-child(7) { transition-delay: 0.52s; opacity: 1; transform: translate3d(0, 0, 0); }
+.reveal-stagger.revealed > *:nth-child(8) { transition-delay: 0.60s; opacity: 1; transform: translate3d(0, 0, 0); }
 
-/* Hero Staggered Entrance on Load */
+/* Hero Staggered Entrance on Load (Premium Hospitality Motion: 500-650ms) */
 @keyframes heroFadeUp {
-  from {
+  0% {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translate3d(0, 16px, 0);
   }
-  to {
+  100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 .hero-badge-enter {
-  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  animation: heroFadeUp 550ms cubic-bezier(0.22, 1, 0.36, 1) 60ms both;
+  will-change: opacity, transform;
 }
 .hero-title-enter {
-  animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  animation: heroFadeUp 620ms cubic-bezier(0.22, 1, 0.36, 1) 140ms both;
+  will-change: opacity, transform;
 }
 .hero-text-enter {
-  animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+  animation: heroFadeUp 600ms cubic-bezier(0.22, 1, 0.36, 1) 220ms both;
+  will-change: opacity, transform;
 }
 .hero-cta-enter {
-  animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+  animation: heroFadeUp 550ms cubic-bezier(0.22, 1, 0.36, 1) 300ms both;
+  will-change: opacity, transform;
+}
+
+/* Page Transition - Lightweight & Immediate (250-300ms) */
+@keyframes pageFadeIn {
+  0% {
+    opacity: 0.94;
+    transform: translate3d(0, 4px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+body > section:first-of-type,
+#heroSection {
+  animation: pageFadeIn 280ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .hero-zoom,
-  .animate-float,
-  .animate-pulse-gentle,
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero-slide {
+    transition: none !important;
+    opacity: 1 !important;
+  }
+  .hero-slide:not(.active) {
+    display: none !important;
+  }
   .reveal,
   .reveal-scale,
   .reveal-stagger > * {
@@ -329,21 +428,63 @@ button:hover .arrow-hover {
   }
 }
 
+/* Mobile Animation Optimization (360px - 640px) */
+@media (max-width: 640px) {
+  .reveal {
+    transform: translate3d(0, 12px, 0);
+    transition-duration: 500ms;
+  }
+  .reveal-stagger > * {
+    transform: translate3d(0, 10px, 0);
+    transition-duration: 450ms;
+  }
+  .reveal-stagger.revealed > *:nth-child(n) {
+    transition-delay: 0.03s !important;
+  }
+  .card-hover:hover,
+  .dest-card:hover,
+  .exp-card:hover {
+    transform: none !important;
+  }
+}
+
 /* Sticky Header transitions */
+#main-header {
+  transition: background-color 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              backdrop-filter 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
 #main-header.scrolled {
-  background-color: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 2px 14px rgba(11, 37, 69, 0.08);
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px -2px rgba(11, 37, 69, 0.08);
+  border-color: rgba(226, 232, 240, 0.8);
+}
+
+/* Mobile Drawer transitions */
+#mobileDrawer {
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+  will-change: transform;
+}
+#mobileDrawerBackdrop {
+  transition: opacity 300ms cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
 /* Accordion FAQ */
 .faq-item .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transition: max-height 380ms cubic-bezier(0.22, 1, 0.36, 1), opacity 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .faq-item.active .faq-answer {
-  max-height: 400px;
+  max-height: 500px;
+  opacity: 1;
+}
+.faq-item .faq-icon {
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .faq-item.active .faq-icon {
   transform: rotate(180deg);
@@ -352,21 +493,24 @@ button:hover .arrow-hover {
 /* Modal styling */
 .modal-backdrop {
   background-color: rgba(11, 37, 69, 0.65);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 280ms cubic-bezier(0.22, 1, 0.36, 1), visibility 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
 }
 .modal-backdrop.active {
   opacity: 1;
   visibility: visible;
 }
 .modal-content {
-  transform: scale(0.95);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translate3d(0, 10px, 0) scale(0.97);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
 }
 .modal-backdrop.active .modal-content {
-  transform: scale(1);
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 /* Form input styling */
@@ -431,33 +575,33 @@ button:hover .arrow-hover {
   will-change: transform;
 }
 .hero-slide.active .kenburns-1 {
-  animation: kenBurns1 12s ease-out infinite alternate;
+  animation: kenBurns1 16s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
 }
 .hero-slide.active .kenburns-2 {
-  animation: kenBurns2 12s ease-out infinite alternate;
+  animation: kenBurns2 16s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
 }
 .hero-slide.active .kenburns-3 {
-  animation: kenBurns3 12s ease-out infinite alternate;
+  animation: kenBurns3 16s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
 }
 .hero-slide.active .kenburns-4 {
-  animation: kenBurns4 12s ease-out infinite alternate;
+  animation: kenBurns4 16s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
 }
 
 @keyframes kenBurns1 {
   0% { transform: scale(1) translate3d(0, 0, 0); }
-  100% { transform: scale(1.07) translate3d(-1%, -1.2%, 0); }
+  100% { transform: scale(1.045) translate3d(-0.6%, -0.8%, 0); }
 }
 @keyframes kenBurns2 {
-  0% { transform: scale(1.06) translate3d(1%, -0.8%, 0); }
+  0% { transform: scale(1.04) translate3d(0.6%, -0.5%, 0); }
   100% { transform: scale(1) translate3d(0, 0, 0); }
 }
 @keyframes kenBurns3 {
-  0% { transform: scale(1) translate3d(-0.8%, 0, 0); }
-  100% { transform: scale(1.07) translate3d(1%, -1%, 0); }
+  0% { transform: scale(1) translate3d(-0.5%, 0, 0); }
+  100% { transform: scale(1.045) translate3d(0.6%, -0.6%, 0); }
 }
 @keyframes kenBurns4 {
-  0% { transform: scale(1.06) translate3d(-1%, 0.8%, 0); }
-  100% { transform: scale(1) translate3d(0.5%, -0.5%, 0); }
+  0% { transform: scale(1.04) translate3d(-0.6%, 0.5%, 0); }
+  100% { transform: scale(1) translate3d(0.3%, -0.3%, 0); }
 }
 
 /* Hero Slide Progress Indicator */
@@ -675,25 +819,6 @@ button:hover .arrow-hover {
   }
 }
 
-/* ========================================================
-   10. SMOOTH ACCORDION TRANSITIONS
-   ======================================================== */
-.faq-item .faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-  opacity: 0;
-}
-.faq-item.active .faq-answer {
-  max-height: 400px;
-  opacity: 1;
-}
-.faq-item .faq-icon {
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.faq-item.active .faq-icon {
-  transform: rotate(180deg);
-}
 
 /* ========================================================
    11. CONFETTI CANVAS
