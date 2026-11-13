@@ -8,10 +8,13 @@
     "shortDescription": "Experience the charm of Srinagar, famous for Dal Lake, traditional houseboats, beautiful Mughal gardens and iconic Shikara rides. Explore Nishat Bagh, Shalimar Bagh, Chashme Shahi, Pari Mahal and Shankaracharya Temple while enjoying the timeless beauty of Kashmir.",
     "fullDescription": "Experience the charm of Srinagar, famous for Dal Lake, traditional houseboats, beautiful Mughal gardens and iconic Shikara rides. Explore Nishat Bagh, Shalimar Bagh, Chashme Shahi, Pari Mahal and Shankaracharya Temple while enjoying the timeless beauty of Kashmir. As the summer capital of Jammu & Kashmir, Srinagar is a living postcard of calm waters, majestic chinars, and snow-kissed Himalayan backdrops.",
     "bestTimeToVisit": "April to October (Pleasant & Blossoms) | December to February (Winter & Snowfall)",
-    "suggestedDuration": "2 - 3 Days",
+    "suggestedDuration": " to  Days",
     "altitude": "1,585 m / 5,200 ft",
     "distanceFromAirport": "12 km • ~25 mins from Srinagar Airport",
-    "mapCoords": { "x": 48, "y": 55 },
+    "mapCoords": {
+      "x": 48,
+      "y": 55
+    },
     "badge": "Crown Capital",
     "icon": "waves",
     "routeHighway": "Central Valley Hub",
@@ -41,10 +44,13 @@
     "shortDescription": "Discover Pahalgam, a beautiful valley surrounded by pine forests, snow-covered mountains and the flowing Lidder River. Explore Betaab Valley, Aru Valley and Chandanwari, and enjoy the peaceful atmosphere of this popular mountain destination.",
     "fullDescription": "Discover Pahalgam, a beautiful valley surrounded by pine forests, snow-covered mountains and the flowing Lidder River. Explore Betaab Valley, Aru Valley and Chandanwari, and enjoy the peaceful atmosphere of this popular mountain destination. Fondly called the Valley of Shepherds, Pahalgam is the quintessential mountain getaway with scenic trails, trout streams, and romantic Bollywood movie backdrops.",
     "bestTimeToVisit": "March to November (Lush Greenery) | December to February (Quiet Winter Magic)",
-    "suggestedDuration": "2 - 3 Days",
+    "suggestedDuration": " to  Days",
     "altitude": "2,130 m / 6,990 ft",
     "distanceFromAirport": "90 km • ~2 hrs 30 mins from Srinagar",
-    "mapCoords": { "x": 74, "y": 72 },
+    "mapCoords": {
+      "x": 74,
+      "y": 72
+    },
     "badge": "Valley of Shepherds",
     "icon": "trees",
     "routeHighway": "NH-44 & Lidder Valley Corridor",
@@ -77,7 +83,10 @@
     "suggestedDuration": "2 Days",
     "altitude": "2,650 m / 8,690 ft",
     "distanceFromAirport": "51 km • ~1 hr 45 mins from Srinagar",
-    "mapCoords": { "x": 24, "y": 52 },
+    "mapCoords": {
+      "x": 24,
+      "y": 52
+    },
     "badge": "Ski Paradise",
     "icon": "snowflake",
     "routeHighway": "Gulmarg Highway via Tangmarg",
@@ -107,10 +116,13 @@
     "shortDescription": "Explore Sonamarg, a magnificent valley surrounded by towering mountains, glaciers and beautiful streams. Visit Thajiwas Glacier, enjoy scenic mountain drives and experience the natural beauty of the Sind River.",
     "fullDescription": "Explore Sonamarg, a magnificent valley surrounded by towering mountains, glaciers and beautiful streams. Visit Thajiwas Glacier, enjoy scenic mountain drives and experience the natural beauty of the Sind River. Sonamarg serves as the historic gateway on the Srinagar-Leh highway, framed by Mount Kolahoi and Sirbal peaks.",
     "bestTimeToVisit": "April to October (Open Highway & Glacier Trekking)",
-    "suggestedDuration": "1 - 2 Days",
+    "suggestedDuration": " to  Days",
     "altitude": "2,730 m / 8,960 ft",
     "distanceFromAirport": "80 km • ~2 hrs 15 mins from Srinagar",
-    "mapCoords": { "x": 70, "y": 35 },
+    "mapCoords": {
+      "x": 70,
+      "y": 35
+    },
     "badge": "Glacier Gateway",
     "icon": "mountain",
     "routeHighway": "NH-1D Srinagar-Leh Highway",
@@ -143,7 +155,10 @@
     "suggestedDuration": "1 Day Excursion",
     "altitude": "2,730 m / 8,960 ft",
     "distanceFromAirport": "42 km • ~1 hr 30 mins from Srinagar",
-    "mapCoords": { "x": 36, "y": 68 },
+    "mapCoords": {
+      "x": 36,
+      "y": 68
+    },
     "badge": "Untouched Velvet",
     "icon": "droplets",
     "routeHighway": "Budgam Pine Route",
@@ -176,7 +191,10 @@
     "suggestedDuration": "1 Day Excursion",
     "altitude": "2,396 m / 7,860 ft",
     "distanceFromAirport": "47 km • ~1 hr 30 mins from Srinagar",
-    "mapCoords": { "x": 46, "y": 80 },
+    "mapCoords": {
+      "x": 46,
+      "y": 80
+    },
     "badge": "Forest Sanctuary",
     "icon": "compass",
     "routeHighway": "Charar-e-Sharief Route",
@@ -235,10 +253,13 @@
     "shortDescription": "Explore Gurez Valley, known for its traditional wooden houses, breathtaking mountain scenery and the beautiful Kishanganga River. Visit Dawar and admire the majestic Habba Khatoon Peak.",
     "fullDescription": "Explore Gurez Valley, known for its traditional wooden houses, breathtaking mountain scenery and the beautiful Kishanganga River. Visit Dawar and admire the majestic Habba Khatoon Peak. Crossing the high Razdan Pass (11,672 ft), Gurez greets travelers with welcoming Dardic culture, emerald waters, and pristine Himalayan solitude.",
     "bestTimeToVisit": "June to September (Pass Open & Glorious Summer)",
-    "suggestedDuration": "2 - 3 Days",
+    "suggestedDuration": " to  Days",
     "altitude": "2,400 m / 7,874 ft",
     "distanceFromAirport": "125 km • ~5 hrs across Razdan Pass",
-    "mapCoords": { "x": 52, "y": 15 },
+    "mapCoords": {
+      "x": 52,
+      "y": 15
+    },
     "badge": "Himalayan Frontier",
     "icon": "shield",
     "routeHighway": "Bandipora & Razdan Pass (11,672 ft)",
@@ -413,7 +434,7 @@
     "shortDescription": "Discover Jammu, known for its rich heritage, historic temples, traditional markets and beautiful surroundings. Explore the region’s cultural attractions and enjoy its distinctive hospitality.",
     "fullDescription": "Discover Jammu, known for its rich heritage, historic temples, traditional markets and beautiful surroundings. Explore the region’s cultural attractions and enjoy its distinctive hospitality. As the winter capital, Jammu stands proudly on the Shivalik hills overlooking the Tawi River, famed for ancient forts, Dogra palaces, and mouthwatering Kaladi kulchas.",
     "bestTimeToVisit": "October to April (Mild, Pleasant Winter Weather)",
-    "suggestedDuration": "1 - 2 Days",
+    "suggestedDuration": " to  Days",
     "altitude": "327 m / 1,073 ft",
     "distanceFromAirport": "5 km from Jammu Airport (IXJ)",
     "attractions": [
@@ -442,7 +463,7 @@
     "shortDescription": "Experience Patnitop, a charming hill destination surrounded by pine forests, green meadows and mountain views. Enjoy peaceful walks, scenic drives and outdoor activities.",
     "fullDescription": "Experience Patnitop, a charming hill destination surrounded by pine forests, green meadows and mountain views. Enjoy peaceful walks, scenic drives and outdoor activities. Situated on a plateau at 2,024 meters in the Ramban/Udhampur district along the Jammu-Srinagar highway, Patnitop is a year-round mountain retreat offering summer greenery and winter snow.",
     "bestTimeToVisit": "May to October (Pleasant Summer) | December to March (Winter Snow)",
-    "suggestedDuration": "1 - 2 Days",
+    "suggestedDuration": " to  Days",
     "altitude": "2,024 m / 6,640 ft",
     "distanceFromAirport": "110 km • ~3 hrs from Jammu Airport",
     "attractions": [
@@ -500,7 +521,7 @@
     "shortDescription": "Discover Ladakh, a spectacular Himalayan destination famous for dramatic mountains, ancient monasteries, high-altitude lakes and extraordinary landscapes. Experience its unique culture, peaceful villages and unforgettable mountain journeys.",
     "fullDescription": "Discover Ladakh, a spectacular Himalayan destination famous for dramatic mountains, ancient monasteries, high-altitude lakes and extraordinary landscapes. Experience its unique culture, peaceful villages and unforgettable mountain journeys. Leh, the capital of Ladakh, rests at 3,500 meters, crowned by the historic Leh Palace, Shanti Stupa, and ancient Gompas.",
     "bestTimeToVisit": "May to October (Pleasant Summer & High Mountain Roads Open)",
-    "suggestedDuration": "3 - 4 Days Base",
+    "suggestedDuration": " to  Days Base",
     "altitude": "3,500 m / 11,480 ft",
     "distanceFromAirport": "4 km from Kushok Bakula Rimpochee Airport (IXL), Leh",
     "attractions": [
@@ -558,7 +579,7 @@
     "shortDescription": "Witness the incredible beauty of Pangong Lake, known for its changing shades of blue and magnificent mountain surroundings. It is one of the most iconic destinations in Ladakh.",
     "fullDescription": "Witness the incredible beauty of Pangong Lake, known for its changing shades of blue and magnificent mountain surroundings. It is one of the most iconic destinations in Ladakh. Extending over 134 km from India into Tibet at an elevation of 4,225 meters, its saline waters shimmer in ethereal gradients of cobalt, turquoise, and emerald.",
     "bestTimeToVisit": "May to September (Unfrozen Brilliant Waters)",
-    "suggestedDuration": "1 - 2 Days",
+    "suggestedDuration": " to  Days",
     "altitude": "4,225 m / 13,860 ft",
     "distanceFromAirport": "160 km from Leh via Chang La Pass",
     "attractions": [
@@ -674,7 +695,7 @@
     "shortDescription": "Explore Turtuk, known for its unique Balti culture, traditional houses, apricot orchards and beautiful mountain landscapes. Experience the warm hospitality and local traditions.",
     "fullDescription": "Explore Turtuk, known for its unique Balti culture, traditional houses, apricot orchards and beautiful mountain landscapes. Experience the warm hospitality and local traditions. As India's northernmost village opened to tourists, Turtuk sits along the Shyok River near the Line of Control, rich in wooden heritage houses and sweet apricots.",
     "bestTimeToVisit": "May to October (Apricot Harvest & Pleasant Temperatures)",
-    "suggestedDuration": "1 - 2 Days from Nubra",
+    "suggestedDuration": " to  Days from Nubra",
     "altitude": "3,000 m / 9,842 ft",
     "distanceFromAirport": "205 km from Leh (80 km from Diskit)",
     "attractions": [
@@ -703,7 +724,7 @@
     "shortDescription": "Discover Zanskar Valley, famous for its remote villages, dramatic mountain landscapes, ancient monasteries and adventurous routes.",
     "fullDescription": "Discover Zanskar Valley, famous for its remote villages, dramatic mountain landscapes, ancient monasteries and adventurous routes. Guarded by the great Zanskar mountain range, this isolated valley is a haven for intrepid travelers, home to the cliff-clinging Phugtal Gompa, Padum, and the frozen winter Chadar route.",
     "bestTimeToVisit": "June to September (Shinkun La & Pensi La Passes Open)",
-    "suggestedDuration": "3 - 5 Days Expedition",
+    "suggestedDuration": " to  Days Expedition",
     "altitude": "3,650 m / 12,000 ft",
     "distanceFromAirport": "230 km from Leh / Kargil",
     "attractions": [

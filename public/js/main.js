@@ -1145,7 +1145,7 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'chk-windbreaker',
       category: 'summer',
       title: 'Light Fleece Jacket or Windcheater',
-      desc: 'Even in May–July, evenings in Pahalgam and Gulmarg drop to 12°C-15°C.',
+      desc: 'Even in May to July, evenings in Pahalgam and Gulmarg drop to 12°C-15°C.',
       badge: 'Summer Essential',
       badgeClass: 'bg-emerald-100 text-emerald-800'
     },

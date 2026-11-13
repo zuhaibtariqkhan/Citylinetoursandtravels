@@ -258,7 +258,7 @@
           <div class="text-right">
             <span class="text-[10px] text-brand-muted uppercase block font-semibold">Suggested Stay</span>
             <span class="text-xs font-bold text-brand-navy bg-brand-offwhite px-2.5 py-1 rounded-lg border border-brand-border inline-block" id="spotlightDuration">
-              <%= defaultDest.suggestedDuration || '2 - 3 Days' %>
+              <%= defaultDest.suggestedDuration || '2 to 3 Days' %>
             </span>
           </div>
         </div>
@@ -422,7 +422,7 @@
       if (nameEl) nameEl.textContent = dest.name;
       if (badgeEl) badgeEl.textContent = dest.badge || 'Kashmir Valley';
       if (taglineEl) taglineEl.textContent = '"' + dest.tagline + '"';
-      if (durationEl) durationEl.textContent = dest.suggestedDuration || '2 - 3 Days';
+      if (durationEl) durationEl.textContent = dest.suggestedDuration || '2 to 3 Days';
       if (imageEl) {
         imageEl.src = dest.image;
         imageEl.alt = dest.name;

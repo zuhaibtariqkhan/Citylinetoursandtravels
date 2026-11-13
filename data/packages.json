@@ -2,7 +2,7 @@
   {
     "id": "pkg-glimpse-paradise",
     "slug": "glimpse-of-paradise-4d3n",
-    "title": "Glimpse of Paradise - Srinagar & Gulmarg",
+    "title": "Glimpse of Paradise: Srinagar & Gulmarg",
     "category": "Family",
     "duration": "4 Days / 3 Nights",
     "durationDays": 4,
@@ -81,7 +81,7 @@
   {
     "id": "pkg-kashmir-honeymoon",
     "slug": "kashmir-classic-honeymoon-6d5n",
-    "title": "Kashmir Classic Honeymoon - Romance in the Valley",
+    "title": "Kashmir Classic Honeymoon: Romance in the Valley",
     "category": "Honeymoon",
     "duration": "6 Days / 5 Nights",
     "durationDays": 6,
@@ -113,7 +113,7 @@
       },
       {
         "day": 2,
-        "title": "Srinagar to Gulmarg - Valley of Lovers",
+        "title": "Srinagar to Gulmarg: Valley of Lovers",
         "description": "Drive from Srinagar to Gulmarg. Check in to your cozy resort overlooking pine ridges. Spend the afternoon taking leisurely walks through the flower-filled meadows, visiting St. Mary's church, and enjoying views of Apharwat peak.",
         "meals": "Breakfast & Dinner Included",
         "stay": "Overnight in Boutique Resort, Gulmarg"
@@ -127,7 +127,7 @@
       },
       {
         "day": 4,
-        "title": "Gulmarg to Pahalgam - Along Saffron Fields & Lidder River",
+        "title": "Gulmarg to Pahalgam: Along Saffron Fields & Lidder River",
         "description": "Drive to Pahalgam (approx. 4 hrs). En route, pause at the historic Pampore saffron fields and the ancient Avantipur ruins. As you reach Pahalgam, check in to a riverside hotel where the melody of the Lidder river serenades you.",
         "meals": "Breakfast & Dinner Included",
         "stay": "Overnight in Riverside Resort, Pahalgam"
@@ -174,7 +174,7 @@
   {
     "id": "pkg-grand-kashmir",
     "slug": "magnificent-kashmir-grand-tour-7d6n",
-    "title": "Magnificent Kashmir Grand Tour - Complete Valley Experience",
+    "title": "Magnificent Kashmir Grand Tour: Complete Valley Experience",
     "category": "Family",
     "duration": "7 Days / 6 Nights",
     "durationDays": 7,
@@ -189,7 +189,7 @@
       "Pahalgam",
       "Betaab Valley"
     ],
-    "shortDescription": "The ultimate comprehensive Kashmir journey. Covers all the golden trio destinations — Sonamarg glaciers, Gulmarg snows, and Pahalgam rivers.",
+    "shortDescription": "The ultimate comprehensive Kashmir journey. Covers all the golden trio destinations: Sonamarg glaciers, Gulmarg snows, and Pahalgam rivers.",
     "fullDescription": "For travelers who want to see it all. This 7-day comprehensive itinerary takes you through the full majesty of Kashmir's landscape: from the crystal waters and floating bazaars of Dal Lake, to the snow bridges of Thajiwas Glacier in Sonamarg, the sky-high Gondola summits of Gulmarg, and the roaring turquoise waters of Pahalgam's Lidder River. Designed for families and groups who want a relaxed, complete, and seamless holiday.",
     "featuredImage": "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=1000&q=80",
     "galleryImages": [
@@ -207,14 +207,14 @@
       },
       {
         "day": 2,
-        "title": "Full Day Excursion to Sonamarg - The Meadow of Gold",
+        "title": "Full Day Excursion to Sonamarg: The Meadow of Gold",
         "description": "Full-day scenic drive through the Sindh Valley to Sonamarg. Hike or pony ride to Thajiwas Glacier, view snow bridges, and marvel at high peaks.",
         "meals": "Breakfast & Dinner Included",
         "stay": "Overnight in Hotel, Srinagar"
       },
       {
         "day": 3,
-        "title": "Srinagar to Gulmarg - Into the High Mountains",
+        "title": "Srinagar to Gulmarg: Into the High Mountains",
         "description": "Drive to Gulmarg. Experience the Gondola cable car ride, walk across lush meadows, and visit Khilanmarg with panoramic Pir Panjal views.",
         "meals": "Breakfast & Dinner Included",
         "stay": "Overnight in Hotel, Gulmarg"
@@ -228,21 +228,21 @@
       },
       {
         "day": 5,
-        "title": "Pahalgam Valley Exploration - Betaab, Aru & Chandanwari",
+        "title": "Pahalgam Valley Exploration: Betaab, Aru & Chandanwari",
         "description": "Explore Betaab Valley, Aru Valley and Chandanwari. Take photos by rushing rapids, indulge in local trout, and enjoy mountain tranquility.",
         "meals": "Breakfast & Dinner Included",
         "stay": "Overnight in Hotel, Pahalgam"
       },
       {
         "day": 6,
-        "title": "Pahalgam to Srinagar - Mughal Heritage & Shopping",
+        "title": "Pahalgam to Srinagar: Mughal Heritage & Shopping",
         "description": "Return to Srinagar. Visit Shalimar Bagh, Nishat Bagh, and the historic Jamia Masjid. Enjoy shopping for Pashmina and saffron.",
         "meals": "Breakfast & Dinner Included",
         "stay": "Overnight in Hotel, Srinagar"
       },
       {
         "day": 7,
-        "title": "Farewell Srinagar - Departure",
+        "title": "Farewell Srinagar: Departure",
         "description": "Breakfast and transfer to Srinagar International Airport for departure with cherished memories of paradise.",
         "meals": "Breakfast Included",
         "stay": "Tour Concludes"
@@ -273,7 +273,7 @@
   {
     "id": "pkg-offbeat-kashmir",
     "slug": "offbeat-kashmir-hidden-valleys-6d5n",
-    "title": "Offbeat Kashmir - Doodhpathri, Yusmarg & Quiet Trails",
+    "title": "Offbeat Kashmir: Doodhpathri, Yusmarg & Quiet Trails",
     "category": "Budget",
     "duration": "6 Days / 5 Nights",
     "durationDays": 6,
@@ -304,21 +304,21 @@
       },
       {
         "day": 2,
-        "title": "Day Excursion to Doodhpathri - The Valley of Milk",
+        "title": "Day Excursion to Doodhpathri: The Valley of Milk",
         "description": "Drive through countryside hamlets to Doodhpathri. Walk along the frothy Shaliganga river, breathe pine air, and picnic on lush slopes.",
         "meals": "Breakfast & Dinner Included",
         "stay": "Overnight in Hotel, Srinagar"
       },
       {
         "day": 3,
-        "title": "Day Excursion to Yusmarg - Meadow of Jesus & Nilnag Lake",
+        "title": "Day Excursion to Yusmarg: Meadow of Jesus & Nilnag Lake",
         "description": "Journey to Yusmarg. Hike through fragrant pine woods down to Doodh Ganga or pony ride up to Nilnag Lake. Visit Charar-e-Sharief shrine.",
         "meals": "Breakfast & Dinner Included",
         "stay": "Overnight in Hotel, Srinagar"
       },
       {
         "day": 4,
-        "title": "Srinagar to Pahalgam - Offbeat Shepherd Hamlets",
+        "title": "Srinagar to Pahalgam: Offbeat Shepherd Hamlets",
         "description": "Drive to Pahalgam. Explore tranquil Aru village, untouched shepherd paths, and scenic Lidder riverside trails.",
         "meals": "Breakfast & Dinner Included",
         "stay": "Overnight in Hotel, Pahalgam"
@@ -363,7 +363,7 @@
   {
     "id": "pkg-gurez-frontier",
     "slug": "enchanting-gurez-valley-5d4n",
-    "title": "Enchanting Gurez Valley - The Frontier Expedition",
+    "title": "Enchanting Gurez Valley: The Frontier Expedition",
     "category": "Luxury",
     "duration": "5 Days / 4 Nights",
     "durationDays": 5,
@@ -444,7 +444,7 @@
   {
     "id": "pkg-winter-wonderland",
     "slug": "winter-wonderland-snow-special-5d4n",
-    "title": "Winter Wonderland - Kashmir Snow & Ski Special",
+    "title": "Winter Wonderland: Kashmir Snow & Ski Special",
     "category": "Group",
     "duration": "5 Days / 4 Nights",
     "durationDays": 5,
@@ -466,7 +466,7 @@
     "itinerary": [
       {
         "day": 1,
-        "title": "Arrive in Snowy Srinagar - Dal Lake in Winter",
+        "title": "Arrive in Snowy Srinagar: Dal Lake in Winter",
         "description": "Arrive at snowy Srinagar Airport. Transfer to your heated hotel/houseboat. Experience a misty winter Shikara ride with hot Kahwa.",
         "meals": "Dinner Included",
         "stay": "Overnight in Heated Hotel, Srinagar"
@@ -525,7 +525,7 @@
   {
     "id": "pkg-customised-odyssey",
     "slug": "customised-kashmir-odyssey",
-    "title": "Customised Kashmir Odyssey - Tailor-Made Journey",
+    "title": "Customised Kashmir Odyssey: Tailor-Made Journey",
     "category": "Customised",
     "duration": "Flexible (3 to 14 Days)",
     "durationDays": 0,
