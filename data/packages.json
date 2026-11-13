@@ -79,97 +79,191 @@
     "maxTravellers": 15
   },
   {
-    "id": "pkg-kashmir-honeymoon",
-    "slug": "kashmir-classic-honeymoon-6d5n",
-    "title": "Kashmir Classic Honeymoon: Romance in the Valley",
+    "id": "kashmir-honeymoon-special",
+    "slug": "kashmir-honeymoon-special-package",
+    "aliases": [
+      "kashmir-classic-honeymoon-6d5n",
+      "kashmir-honeymoon-special",
+      "pkg-kashmir-honeymoon"
+    ],
+    "title": "KASHMIR HONEYMOON SPECIAL PACKAGE",
+    "shortTitle": "Kashmir Honeymoon Special",
+    "tagline": "Where Your Travel Dreams Take Flight.",
+    "additionalTagline": "Respect Every Faith, Embrace Every Journey.",
     "category": "Honeymoon",
-    "duration": "6 Days / 5 Nights",
+    "categoryLabel": "Couple / Honeymoon Package",
+    "duration": "5 Nights / 6 Days",
     "durationDays": 6,
     "durationNights": 5,
-    "price": 24999,
-    "startingPriceFormatted": "₹24,999",
-    "pricingType": "per couple sharing",
+    "baseOccupancy": 2,
+    "minTravellers": 2,
+    "maxTravellers": 2,
+    "occupancyLabel": "2 Persons (Couple)",
+    "price": 40000,
+    "basePrice": 40000,
+    "startingPriceFormatted": "₹40,000",
+    "pricingType": "fixed for couple (2 Persons)",
+    "pricingModel": "fixed_couple",
+    "additionalPersonPricing": false,
+    "currency": "INR",
+    "destinationsCovered": "Srinagar – Pahalgam – Gulmarg – Sonamarg – Srinagar",
     "destinationCoverage": [
       "Srinagar",
-      "Gulmarg",
       "Pahalgam",
-      "Betaab Valley"
+      "Gulmarg",
+      "Sonamarg"
     ],
-    "shortDescription": "Designed for lovers. Candlelit dinner on a luxury houseboat, flower-decorated room, Shikara romance, snow peaks of Gulmarg, and riverside walks in Pahalgam.",
-    "fullDescription": "Begin your journey of togetherness in the most romantic sanctuary on Earth. This handcrafted honeymoon package combines intimate privacy with majestic mountain vistas. Experience a special candle-lit dinner with special cake and flower bed decoration inside a hand-carved heritage houseboat on Dal Lake. Walk hand-in-hand through the verdant pine groves of Betaab Valley and Aru Valley in Pahalgam, and ride into the clouds aboard the Gulmarg Gondola.",
-    "featuredImage": "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=1000&q=80",
+    "shortDescription": "Experience the magic of Kashmir with your loved one! Discover beautiful gardens, romantic Shikara rides, breathtaking valleys, snow-covered mountains, peaceful houseboat stays and unforgettable honeymoon experiences.",
+    "fullDescription": "Experience the magic of Kashmir with your loved one! Discover beautiful gardens, romantic Shikara rides, breathtaking valleys, snow-covered mountains, peaceful houseboat stays and unforgettable honeymoon experiences.\n\nDesigned exclusively as a fixed-price luxury romantic holiday for 2 persons (Couple), complete with deluxe room accommodations in Srinagar, Pahalgam, Gulmarg, and an authentic traditional Dal Lake houseboat, peaceful sunset Shikara ride, dedicated private vehicle, and daily breakfast & dinner.",
+    "featuredImage": "/images/Expriences/HONEYMMON.jpeg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80"
+      "/images/Expriences/HONEYMMON.jpeg",
+      "/images/Expriences/DAL LAKE SHIKARA.jpeg",
+      "/HOTELS/HOUSEBOAT ROYAL STAR.jpeg",
+      "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=800&q=80"
     ],
     "itinerary": [
       {
         "day": 1,
-        "title": "Welcome to Srinagar & Romantic Houseboat Stay",
-        "description": "Arrival at Srinagar Airport with a floral welcome. Transfer to your premium luxury houseboat on Dal Lake. Enjoy authentic Kashmiri Kahwa upon arrival. In the evening, a special romantic Shikara ride followed by a candlelit dinner with honeymoon cake and fresh flower bed decoration.",
-        "meals": "Dinner & Honeymoon Cake Included",
-        "stay": "Overnight in Luxury Houseboat, Dal Lake"
+        "title": "ARRIVAL IN SRINAGAR – LOCAL SIGHTSEEING",
+        "description": "Upon arrival at Srinagar Airport, our representative will warmly welcome guests and assist with their transfer to the hotel. After check-in and relaxation, proceed for Srinagar local sightseeing. Places to Visit: Shankaracharya Temple (hilltop historic temple offering panoramic views of Srinagar city and Dal Lake), Indira Gandhi Memorial Tulip Garden (Asia's largest tulip garden during blooming season), Pari Mahal (beautiful seven-terraced historical garden overlooking Dal Lake), Chrysanthemum Garden, Shalimar Bagh (royal Mughal garden with fountains and traditional architecture), and Nishat Bagh (famous Mughal garden overlooking magnificent Dal Lake). Romantic Experience: Enjoy a peaceful Shikara ride on Dal Lake, surrounded by floating gardens, traditional houseboats and magnificent mountain views.",
+        "places": [
+          "Shankaracharya Temple",
+          "Indira Gandhi Memorial Tulip Garden",
+          "Pari Mahal",
+          "Chrysanthemum Garden",
+          "Shalimar Bagh",
+          "Nishat Bagh",
+          "Romantic Dal Lake Shikara Ride"
+        ],
+        "stay": "Deluxe Room in Srinagar",
+        "meals": "Dinner and Breakfast"
       },
       {
         "day": 2,
-        "title": "Srinagar to Gulmarg: Valley of Lovers",
-        "description": "Drive from Srinagar to Gulmarg. Check in to your cozy resort overlooking pine ridges. Spend the afternoon taking leisurely walks through the flower-filled meadows, visiting St. Mary's church, and enjoying views of Apharwat peak.",
-        "meals": "Breakfast & Dinner Included",
-        "stay": "Overnight in Boutique Resort, Gulmarg"
+        "title": "SRINAGAR TO PAHALGAM – THE VALLEY OF SHEPHERDS",
+        "description": "After breakfast, check out from the hotel and proceed towards Pahalgam (approx. 90–95 KM / 2.5–3.5 Hours excluding sightseeing and traffic). En-route Sightseeing: Pampore Saffron Fields, Dry Fruits Market, and Cricket Bat Factories around Sangam. Pahalgam Sightseeing: Aru Valley (lush green meadows and snow-capped peaks), Betaab Valley (crystal-clear streams and wooden bridges), and Chandanwari (scenic mountain destination). Note: Aru, Betaab Valley and Chandanwari are local Pahalgam excursions and may require separate union cab arrangements.",
+        "distance": "Approximately 90–95 KM (2.5–3.5 Hours)",
+        "enroute": [
+          "Pampore Saffron Fields",
+          "Dry Fruits Market",
+          "Cricket Bat Factories (Sangam)"
+        ],
+        "places": [
+          "Aru Valley",
+          "Betaab Valley",
+          "Chandanwari"
+        ],
+        "stay": "Deluxe Room in Pahalgam",
+        "meals": "Dinner and Breakfast"
       },
       {
         "day": 3,
-        "title": "Gulmarg Gondola Cloud Ride & Alpine Wonders",
-        "description": "Board the famous Gulmarg Gondola up into the high alpine zone. Marvel at snow-clad Himalayan giants, enjoy snow adventures together, and savor warm Kashmiri cuisine at mountain-top cafes. Return to hotel for a warm fireside evening.",
-        "meals": "Breakfast & Dinner Included",
-        "stay": "Overnight in Boutique Resort, Gulmarg"
+        "title": "PAHALGAM – ROMANTIC VALLEY EXPERIENCES",
+        "description": "After breakfast, explore the natural beauty and romantic atmosphere of Pahalgam. Activities and Experiences: Spend peaceful moments beside the beautiful Lidder River, enjoy an exciting pony ride through mountain trails and green meadows, explore charming surroundings, and capture beautiful photographs amidst Himalayan landscapes. Spend the rest of the day at leisure creating unforgettable honeymoon memories.",
+        "places": [
+          "Lidder River",
+          "Romantic Pony Ride Trails",
+          "Pahalgam Valley Exploration",
+          "Photography & Leisure"
+        ],
+        "stay": "Deluxe Room in Pahalgam",
+        "meals": "Dinner and Breakfast"
       },
       {
         "day": 4,
-        "title": "Gulmarg to Pahalgam: Along Saffron Fields & Lidder River",
-        "description": "Drive to Pahalgam (approx. 4 hrs). En route, pause at the historic Pampore saffron fields and the ancient Avantipur ruins. As you reach Pahalgam, check in to a riverside hotel where the melody of the Lidder river serenades you.",
-        "meals": "Breakfast & Dinner Included",
-        "stay": "Overnight in Riverside Resort, Pahalgam"
+        "title": "PAHALGAM TO GULMARG – THE MEADOW OF FLOWERS",
+        "description": "After breakfast, check out and proceed towards Gulmarg (approx. 140–150 KM / 4–5 Hours). Gulmarg Sightseeing: Gulmarg Gondola Cable Car (one of world's highest operating cable cars with Kongdori Phase 1 and Apharwat Peak Phase 2, subject to ticket availability and weather), Khilanmarg meadow, St. Mary's Church, Maharani Temple, and Gulmarg Golf Course. Enjoy the peaceful atmosphere, photography and romantic moments in the beautiful meadows of Gulmarg.",
+        "distance": "Approximately 140–150 KM (4–5 Hours)",
+        "places": [
+          "Gulmarg Gondola Cable Car (Kongdori & Apharwat)",
+          "Khilanmarg",
+          "St. Mary's Church",
+          "Maharani Temple",
+          "Gulmarg Golf Course"
+        ],
+        "stay": "Deluxe Room in Gulmarg",
+        "meals": "Dinner and Breakfast"
       },
       {
         "day": 5,
-        "title": "Exploring Betaab Valley, Aru Valley & Baisaran",
-        "description": "Dedicate the day to Pahalgam's most romantic valleys. Visit Betaab Valley, famed for its emerald carpet and crystal streams, and Aru Valley with its quiet alpine charm. Optional pony ride to Baisaran ('Mini Switzerland'). Return to Srinagar in late afternoon.",
-        "meals": "Breakfast & Dinner Included",
-        "stay": "Overnight in Deluxe Hotel, Srinagar"
+        "title": "GULMARG TO SONAMARG – THE MEADOW OF GOLD – SRINAGAR",
+        "description": "After breakfast, check out and proceed towards Sonamarg (approx. 125–140 KM / 4–5 Hours). Sonamarg Sightseeing: Thajiwas Glacier (popular attraction with snow-covered glacial landscapes) and Zero Point / Zojila Pass (spectacular mountain landscapes, subject to road/weather conditions). After sightseeing, proceed towards Srinagar (approx. 80–85 KM). Upon arrival, check in to a traditional Kashmiri houseboat on Dal Lake. Enjoy peaceful atmosphere, traditional hospitality and lake surroundings.",
+        "distance": "Gulmarg to Sonamarg 125–140 KM, Sonamarg to Srinagar 80–85 KM",
+        "places": [
+          "Thajiwas Glacier",
+          "Zero Point (Zojila Pass)",
+          "Traditional Kashmiri Houseboat Stay (Dal Lake)"
+        ],
+        "stay": "Deluxe Room in Traditional Srinagar Houseboat",
+        "meals": "Dinner and Breakfast"
       },
       {
         "day": 6,
-        "title": "Mughal Gardens & Airport Departure",
-        "description": "Morning visit to Nishat and Shalimar gardens for romantic couple photographs. Transfer to Srinagar Airport with sweet memories and lifelong bond.",
-        "meals": "Breakfast Included",
-        "stay": "Tour Concludes"
+        "title": "DEPARTURE FROM SRINAGAR – MEMORIES FOR A LIFETIME",
+        "description": "Wake up to beautiful views of Dal Lake and enjoy breakfast at the houseboat. If time permits, enjoy free time for sightseeing, shopping for Kashmiri handicrafts or exploring local markets. Later, check out and proceed towards Srinagar Airport (reporting at least 2 hours before scheduled departure). Depart with beautiful memories, romantic moments and love from Paradise on Earth – Kashmir.",
+        "stay": "Tour Concludes (Airport Drop)",
+        "meals": "Breakfast Included"
       }
     ],
     "inclusions": [
-      "5 Nights accommodation (1 Night Houseboat + 2 Nights Gulmarg + 1 Night Pahalgam + 1 Night Srinagar)",
-      "Daily breakfast and dinner throughout the tour",
-      "Special Honeymoon Inclusions: Candlelit dinner, honeymoon cake, flower bed decoration (1 Night)",
-      "1-Hour Romantic Sunset Shikara ride on Dal Lake",
-      "All transfers & sightseeing in a private dedicated Sedan vehicle",
-      "Toll taxes, parking fees, and driver allowances"
+      "5 Nights / 6 Days accommodation in Deluxe Room Category across well-rated hotels and traditional Dal Lake houseboat.",
+      "1 Night Deluxe Houseboat on Dal Lake + 4 Nights Deluxe Hotel Stays (Srinagar, Pahalgam, Gulmarg).",
+      "Daily Breakfast and Dinner throughout the tour.",
+      "Romantic Dal Lake Shikara Ride.",
+      "Dedicated private vehicle for all airport transfers, inter-destination travel, and sightseeing as per itinerary.",
+      "Airport Pickup and Drop-off.",
+      "All applicable toll taxes, parking fees, and driver allowances."
     ],
     "exclusions": [
-      "Airfare / Train tickets",
-      "Gondola ride tickets and pony rides",
-      "Betaab Valley local union taxi charges (if applicable)",
-      "Personal shopping and extra meal orders"
+      "Personal Sightseeing Expenses: Any sightseeing activities, entry tickets or adventure activities chosen by guests are payable directly unless specifically included.",
+      "Gulmarg Gondola Cable Car tickets (both phases).",
+      "Pahalgam local union cabs for Aru Valley, Betaab Valley and Chandanwari.",
+      "Sonamarg local union cabs (Zero Point / Thajiwas Glacier).",
+      "Pony rides in Pahalgam and Sonamarg.",
+      "ATV rides, snow activities, and adventure sports.",
+      "Garden entry tickets and monument admission fees.",
+      "Other personal expenses, room service, laundry, telephone calls, and tips."
     ],
-    "accommodation": "1 Night Luxury Houseboat + 2 Nights Gulmarg Resort + 1 Night Pahalgam Riverside + 1 Night Srinagar Hotel",
-    "transportation": "Private Dedicated Sedan / SUV with courteous driver",
+    "importantNotes": [
+      "Personal Sightseeing Expenses: Any sightseeing activities, entry tickets, or adventure activities chosen by guests will be payable directly by them unless specifically included in the package.",
+      "Transportation and Sightseeing: All sightseeing and transfers are subject to weather conditions, road accessibility, local administration guidelines, and vehicle restrictions.",
+      "Pahalgam & Sonamarg Local Union Cabs: Local sightseeing in Aru Valley, Betaab Valley, Chandanwari, and Zero Point may require separate union cab arrangements.",
+      "Seasonal Attractions: Some attractions, particularly Tulip Garden, snow points, and certain mountain destinations, are seasonal and depend on the time of travel.",
+      "Weather Conditions: Unexpected weather changes, snowfall, rain, or road closures may affect the sightseeing schedule. Guest safety will always remain our priority.",
+      "Gondola Tickets: Gulmarg Gondola Cable Car Phase 1 & Phase 2 tickets are subject to availability. Advance online booking is recommended."
+    ],
+    "responsibleTourism": {
+      "title": "Responsible Tourism – Keep Kashmir Clean & Green",
+      "guidelines": [
+        "Do not throw plastic bottles, wrappers or other waste in public areas, gardens, rivers or tourist destinations.",
+        "Do not spit on roads, public places or sightseeing locations.",
+        "Always use designated dustbins.",
+        "Avoid disturbing wildlife and damaging plants, flowers or natural surroundings.",
+        "Respect local culture, traditions, communities and public property.",
+        "Avoid unnecessary noise.",
+        "Save water and electricity wherever possible.",
+        "Avoid single-use plastics.",
+        "Leave every destination as clean and beautiful as you found it."
+      ],
+      "closingMessage": "YOUR SMALL CONTRIBUTION CAN MAKE A BIG DIFFERENCE.\nTogether, let's keep Kashmir clean, green and beautiful!"
+    },
+    "contactInfo": {
+      "companyName": "CITY LINE TOURS AND TRAVELS",
+      "tagline": "Where Your Travel Dreams Take Flight.",
+      "additionalTagline": "Respect Every Faith, Embrace Every Journey.",
+      "phones": [
+        "6006725007",
+        "99066 76890"
+      ],
+      "email": "askcitylinetravels@gmail.com",
+      "location": "Srinagar, Kashmir",
+      "closingMessage": "Thank You for Choosing Us! We look forward to making your honeymoon in Kashmir truly special and unforgettable."
+    },
+    "accommodation": "5 Nights / 6 Days in Deluxe Room Category (1 Night Dal Lake Houseboat + 4 Nights Deluxe Hotel Stays)",
+    "transportation": "Dedicated private vehicle for all transfers, inter-city travel & sightseeing",
     "featured": true,
-    "published": true,
-    "pricingModel": "per_couple",
-    "pricePerPerson": 12500,
-    "minTravellers": 2,
-    "maxTravellers": 2,
-    "childPrice": null
+    "published": true
   },
   {
     "id": "pkg-grand-kashmir",

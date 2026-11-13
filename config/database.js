@@ -56,7 +56,7 @@ module.exports = {
     return this.getPackages().find(p => p.slug === slug || (p.aliases && p.aliases.includes(slug)));
   },
   getPackageById(id) {
-    return this.getPackages().find(p => p.id === id);
+    return this.getPackages().find(p => p.id === id || (p.aliases && p.aliases.includes(id)));
   },
   savePackage(pkgData) {
     const packages = this.getPackages();

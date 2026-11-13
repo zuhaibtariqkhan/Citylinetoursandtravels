@@ -496,7 +496,13 @@
       <div class="tour-meta-badges">
         <div class="badge-duration"><%= pkg.duration %></div>
         <div class="badge-price">
-          <%= pkg.pricingModel === 'winter_wonderland' ? 'Total: ' + pkg.startingPriceFormatted + ' (5 Persons)' : 'Starting from ' + (pkg.startingPriceFormatted || pkg.priceFormatted) + '/person' %>
+          <% if (pkg.pricingModel === 'fixed_couple') { %>
+            Total: <%= pkg.startingPriceFormatted %> (Couple / 2 Persons)
+          <% } else if (pkg.pricingModel === 'winter_wonderland') { %>
+            Total: <%= pkg.startingPriceFormatted %> (5 Persons)
+          <% } else { %>
+            Starting from <%= pkg.startingPriceFormatted || pkg.priceFormatted %>/person
+          <% } %>
         </div>
       </div>
     </div>
@@ -505,7 +511,7 @@
     <div class="highlights-grid">
       <div class="highlight-item">
         <span>Accommodation</span>
-        <strong><%= pkg.pricingModel === 'winter_wonderland' ? 'Deluxe Room' : 'Houseboat & Hotel' %></strong>
+        <strong><%= (pkg.pricingModel === 'fixed_couple' || pkg.pricingModel === 'winter_wonderland') ? 'Deluxe Room & Houseboat' : 'Houseboat & Hotel' %></strong>
       </div>
       <div class="highlight-item">
         <span>Private Vehicle</span>

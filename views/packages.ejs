@@ -233,7 +233,7 @@
               <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
                 <div>
                   <span class="text-[10px] text-brand-muted uppercase block">
-                    <%= pkg.pricingModel === 'winter_wonderland' ? 'Total Package Price' : 'Starting From' %>
+                    <%= (pkg.pricingModel === 'winter_wonderland' || pkg.pricingModel === 'fixed_couple') ? 'Total Package Price' : 'Starting From' %>
                   </span>
                   <span class="font-serif text-lg font-bold text-brand-blue">
                     <%= pkg.startingPriceFormatted %>
@@ -342,6 +342,8 @@
         if (model !== lastModel) {
           if (model === 'winter_wonderland') {
             travellers = 5;
+          } else if (model === 'fixed_couple') {
+            travellers = 2;
           } else if (lastModel === 'winter_wonderland') {
             travellers = basePax || 2;
           }
@@ -363,6 +365,34 @@
           const atMax = (travellers >= maxPax);
           plusBtn.style.opacity = atMax ? '0.4' : '1';
           plusBtn.style.cursor = atMax ? 'not-allowed' : 'pointer';
+        }
+
+        // 0. Fixed Couple Package Pricing (₹40,000 for 2 Persons)
+        if (model === 'fixed_couple') {
+          travellers = 2;
+          countEl.textContent = '2';
+          paxLabel.textContent = 'Occupancy (Fixed Couple Package)';
+          paxNote.textContent = 'Fixed package price for 2 Persons (Couple) • Dedicated private vehicle & Deluxe stays';
+
+          if (minusBtn) {
+            minusBtn.style.opacity = '0.4';
+            minusBtn.style.cursor = 'not-allowed';
+          }
+          if (plusBtn) {
+            plusBtn.style.opacity = '0.4';
+            plusBtn.style.cursor = 'not-allowed';
+          }
+
+          totalEl.className = 'font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight';
+          totalEl.textContent = '₹' + price.toLocaleString('en-IN');
+          perPersonEl.textContent = `₹${Math.round(price / 2).toLocaleString('en-IN')} / person equivalent • Total Couple Price: ₹${price.toLocaleString('en-IN')} (Fixed)`;
+          breakdownEl.textContent = `✓ Complete fixed package price for 2 persons together. Includes 5 Nights / 6 Days Deluxe hotel & Dal Lake houseboat stays, daily breakfast & dinner, dedicated private vehicle, romantic Shikara ride, airport transfers, toll taxes & driver allowances.`;
+
+          if (waBtn) {
+            const msg = `Hello City Line Tours And Travels,\nI am inquiring about the "${title}" (${duration}):\n• Occupancy: 2 Persons (Couple)\n• Total Package Price: ₹${price.toLocaleString('en-IN')} (Fixed)\n• Inclusions: Deluxe Hotels, Dal Lake Houseboat, Shikara Ride, Breakfast & Dinner\n\nPlease share booking availability and confirmation details!`;
+            waBtn.href = `https://wa.me/916006725007?text=${encodeURIComponent(msg)}`;
+          }
+          return;
         }
 
         // 1. Winter Wonderland Family Package Pricing (5-10 Persons)
@@ -477,16 +507,21 @@
         if (modalHeading) modalHeading.textContent = `Enquire: ${title}`;
         if (hiddenPkg) hiddenPkg.value = title;
 
-        const paxText = (model === 'winter_wonderland') 
-          ? `${travellers} Persons (Family Package)` 
-          : `${travellers} Adults`;
+        let paxText = `${travellers} Adults`;
+        if (model === 'fixed_couple') {
+          paxText = '2 Persons (Couple)';
+        } else if (model === 'winter_wonderland') {
+          paxText = `${travellers} Persons (Family Package)`;
+        }
 
         if (travellersInput) {
           travellersInput.value = paxText;
         }
 
         if (messageInput) {
-          if (model === 'winter_wonderland') {
+          if (model === 'fixed_couple') {
+            messageInput.value = `Hi City Line Tours, I am interested in booking the "${title}" (${duration}) for 2 Persons (Couple) at the fixed package price of ₹40,000. Please share booking availability and quotation.`;
+          } else if (model === 'winter_wonderland') {
             messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalEl.textContent} for ${travellers} persons for the "${title}" (${duration} with Deluxe Toyota Innova). Please share booking availability and quotation.`;
           } else {
             messageInput.value = `Hi City Line Tours, I calculated an estimated budget for "${title}" on your website for ${travellers} travellers (${totalEl.textContent}). Please share the day-wise itinerary and booking confirmation details.`;
