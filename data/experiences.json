@@ -8,7 +8,7 @@
     "title": "Kashmiri Wazwan Experience: A Royal Feast of Kashmir",
     "location": "Srinagar & Across Kashmir Valley",
     "shortDescription": "Discover Kashmir’s legendary Wazwan, a traditional multi-course feast prepared by expert Wazas. Made primarily with tender mutton, aromatic spices and traditional ingredients, its preparation involves skilled meat pounding and slow cooking, often over wood fires. Experience the famous Rista, Rogan Josh, Gushtaba and Tabak Maaz served in a traditional copper Traem.",
-    "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/KASHMIRI WAZWAN.jpeg",
     "tag": "Royal Feast",
     "icon": "utensils"
   },
@@ -20,8 +20,8 @@
     "slug": "kashmiri-harissa-experience",
     "title": "Kashmiri Harissa Experience: The Taste of Winter",
     "location": "Old Srinagar (Downtown) & Kashmir",
-    "shortDescription": "Experience Kashmir’s iconic winter delicacy, Harissa, traditionally prepared using tender mutton, rice and aromatic spices. Slow-cooked overnight for approximately  to  hours, often over a wood-fired flame, it develops a rich, creamy consistency. Enjoy freshly prepared Harissa with traditional Girda bread at a local Kashmiri Harissa shop.",
-    "image": "https://images.unsplash.com/photo-1547496502-affa22d38842?auto=format&fit=crop&w=900&q=80",
+    "shortDescription": "Experience Kashmir’s iconic winter delicacy, Harissa, traditionally prepared using tender mutton, rice and aromatic spices. Slow-cooked overnight for approximately 8 to 12 hours, often over a wood-fired flame, it develops a rich, creamy consistency. Enjoy freshly prepared Harissa with traditional Girda bread at a local Kashmiri Harissa shop.",
+    "image": "/images/Expriences/KASHMIRI HARISSA.jpeg",
     "tag": "Winter Delicacy",
     "icon": "flame"
   },
@@ -34,7 +34,7 @@
     "title": "Kashmiri Kahwa Experience: A Sip of Tradition",
     "location": "Dal Lake & Kashmiri Households",
     "shortDescription": "Enjoy authentic Kashmiri Kahwa, a fragrant green tea infused with saffron, cinnamon, cardamom and almonds. Traditionally prepared in a copper Samovar, this warming beverage represents Kashmir’s hospitality. Experience its preparation, enjoy a cup beside Dal Lake and discover the traditional tea culture that has been cherished across Kashmiri households.",
-    "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/KASHMIRI KAHWA.jpeg",
     "tag": "Saffron Tea Culture",
     "icon": "coffee"
   },
@@ -47,7 +47,7 @@
     "title": "Kashmiri Traditional Cuisine: Beyond Wazwan",
     "location": "Local Homes & Traditional Kitchens",
     "shortDescription": "Discover Kashmir’s everyday culinary heritage through traditional dishes like Dum Aloo, Haak Saag, Nadru Yakhni, Chok Wangun and Modur Pulao. Prepared using seasonal vegetables, regional spices and traditional cooking techniques, these dishes offer an authentic taste of Kashmiri homes. Enjoy a traditional meal and discover generations-old family recipes.",
-    "image": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/KASHMIRI CUISINE.jpeg",
     "tag": "Home Style Dining",
     "icon": "soup"
   },
@@ -73,7 +73,7 @@
     "title": "Jammu Dogra Food Experience: Flavours of Tradition",
     "location": "Jammu City & Dogra Region",
     "shortDescription": "Explore Jammu’s traditional Dogra cuisine through delicious regional specialities like Kaladi Kulcha, Rajma Chawal, Ambal, Khatta Meat, Babru and Patisa. Discover the unique ingredients, spices and cooking techniques that define this culinary heritage. Visit local food markets, enjoy authentic regional meals and experience the warmth of Dogra hospitality.",
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/DOGRA CUISINE.jpeg",
     "tag": "Dogra Heritage",
     "icon": "utensils-crossed"
   },
@@ -86,7 +86,7 @@
     "title": "Ladakhi Food Experience: Taste of the Himalayas",
     "location": "Leh & Ladakhi Mountain Villages",
     "shortDescription": "Discover Ladakh’s unique culinary traditions through local specialities like Thukpa, Skyu, Chhutagi, Momos, Paba and Khambir. Prepared using barley, vegetables and locally available ingredients, these traditional dishes reflect the region’s high-altitude lifestyle. Enjoy authentic Ladakhi meals and discover the distinctive flavours of Himalayan mountain communities.",
-    "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/LADAKHI CUISINE.jpeg",
     "tag": "High Altitude Cuisine",
     "icon": "bowl"
   },
@@ -99,7 +99,7 @@
     "title": "Ladakhi Butter Tea Experience: Gur Gur Chai",
     "location": "Ladakh Monasteries & Homestays",
     "shortDescription": "Experience Gur Gur Chai, Ladakh’s traditional butter tea prepared using tea leaves, salt, butter and water. Traditionally churned together, sometimes using yak butter, this savoury beverage is an essential part of local hospitality. Enjoy freshly prepared butter tea with traditional Khambir bread while discovering the warmth of Ladakhi family traditions.",
-    "image": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/LADAKHI BUTTER TEA.jpeg",
     "tag": "Gur Gur Chai & Khambir",
     "icon": "cup-soda"
   },
@@ -112,7 +112,7 @@
     "title": "Ladakhi Apricot Experience: The Golden Fruit",
     "location": "Sham Valley & Kargil Orchards, Ladakh",
     "shortDescription": "Explore Ladakh’s beautiful apricot orchards and discover the importance of this golden fruit in local life. During harvest season, enjoy fresh apricots, dried fruits, homemade jams and traditional products. Meet local growers, learn about traditional drying methods and experience the agricultural heritage of Ladakh’s beautiful mountain villages.",
-    "image": "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/APRICOT EXPERIENCE.jpeg",
     "tag": "Golden Orchard Harvest",
     "icon": "apple"
   },
@@ -125,7 +125,7 @@
     "title": "Gulmarg Gondola Experience: Ride Above the Clouds",
     "location": "Gulmarg ( to )",
     "shortDescription": "Experience the famous Gulmarg Gondola, one of the world’s highest cable car systems. Enjoy breathtaking views of snow-covered Himalayan mountains, beautiful pine forests and spectacular valleys. Explore both Gondola phases towards Kongdoori and Apharwat Peak, subject to weather conditions and operations. Capture unforgettable photographs from the mountain heights.",
-    "image": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/GULMARG GANDOLA.jpeg",
     "tag": "Phase 1 & 2 Cable Car",
     "icon": "cable-car"
   },
@@ -190,7 +190,7 @@
     "title": "Betaab Valley Experience: A Walk Through Paradise",
     "location": "Betaab Valley, Pahalgam",
     "shortDescription": "Explore the breathtaking beauty of Betaab Valley, surrounded by towering mountains, lush green meadows and flowing streams. Enjoy peaceful nature walks, family picnics and spectacular photography. Discover the valley’s natural charm and spend memorable moments surrounded by some of the most beautiful landscapes of Pahalgam.",
-    "image": "https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/BETAAB VALLEY.jpeg",
     "tag": "Cinematic Mountain Glades",
     "icon": "mountain"
   },
@@ -203,7 +203,7 @@
     "title": "Aru Valley Experience: Nature, Trekking & Camping",
     "location": "Aru Valley, Pahalgam",
     "shortDescription": "Escape into the peaceful surroundings of Aru Valley, famous for its green meadows, mountain landscapes and beautiful forests. Enjoy nature walks, short treks, seasonal camping and outdoor photography. Discover traditional mountain surroundings and experience the quieter side of Kashmir while enjoying fresh air and spectacular Himalayan views.",
-    "image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/ARU VALLEY.jpeg",
     "tag": "Eco Haven & Trailhead",
     "icon": "tent"
   },
@@ -216,7 +216,7 @@
     "title": "Sonamarg Glacier Experience: Discover Thajiwas Glacier",
     "location": "Thajiwas Glacier, Sonamarg",
     "shortDescription": "Discover the spectacular mountain scenery of Sonamarg and its beautiful Thajiwas Glacier surroundings. Enjoy seasonal snow activities, guided walks and pony rides along accessible routes. Surrounded by snow-covered mountains, alpine meadows and refreshing streams, this experience offers wonderful opportunities for adventure, relaxation and unforgettable Himalayan photography.",
-    "image": "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/THAJIWAS GLACIER.jpeg",
     "tag": "Eternal Glacial Ice",
     "icon": "mountain-snow"
   },
@@ -229,7 +229,7 @@
     "title": "Sonamarg River Experience: A Peaceful Escape",
     "location": "Sindh River Gorges, Sonamarg",
     "shortDescription": "Discover Sonamarg’s beautiful rivers and mountain streams through peaceful riverside activities. Enjoy scenic walks, nature photography and relaxing moments surrounded by spectacular Himalayan landscapes. Visitors can also explore permitted trout fishing opportunities where available. Experience the refreshing atmosphere and natural beauty of this magnificent mountain destination.",
-    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/SONAMARG RIVER.jpeg",
     "tag": "Sindh River & Trout Waters",
     "icon": "fish"
   },
@@ -242,7 +242,7 @@
     "title": "Dal Lake Shikara Experience: The Heart of Srinagar",
     "location": "Dal Lake & Nigeen Lake, Srinagar",
     "shortDescription": "Experience Srinagar’s famous Dal Lake through a traditional Shikara ride. Glide across peaceful waters, explore floating gardens and markets, admire beautiful houseboats and enjoy spectacular mountain views. Choose a sunrise or sunset ride for a memorable experience while discovering the traditional lifestyle and timeless beauty of Kashmir’s most iconic lake.",
-    "image": "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/DAL LAKE SHIKARA.jpeg",
     "tag": "Sunset & Floating Markets",
     "icon": "sun"
   },
@@ -268,7 +268,7 @@
     "title": "Srinagar Mughal Gardens Experience: A Walk Through History",
     "location": "Zabarwan Foothills, Srinagar",
     "shortDescription": "Explore Srinagar’s magnificent Mughal gardens, including Nishat Bagh, Shalimar Bagh, Chashme Shahi and Pari Mahal. Discover beautiful terraced lawns, fountains, colourful seasonal flowers and traditional architecture. Enjoy peaceful walks, spectacular views of Dal Lake and memorable photography while exploring the historical gardens of Kashmir.",
-    "image": "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/MUGHAL GARDENS.jpeg",
     "tag": "Terraces & Cascading Fountains",
     "icon": "flower-2"
   },
@@ -281,7 +281,7 @@
     "title": "Kashmir Trekking Experience: Explore Hidden Himalayan Trails",
     "location": "Alpine Lakes & Pristine Valleys",
     "shortDescription": "Discover Kashmir’s beautiful trekking routes through alpine meadows, pine forests, mountain lakes and spectacular Himalayan landscapes. Enjoy guided nature walks, short hikes and challenging mountain adventures according to your fitness level. Explore beautiful destinations, experience mountain camping where permitted and discover the natural beauty beyond popular tourist locations.",
-    "image": "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/TREKKING.jpeg",
     "tag": "Alpine Mountain Trails",
     "icon": "footprints"
   },
@@ -307,7 +307,7 @@
     "title": "Vaishno Devi Yatra Experience: A Journey to the Shrine",
     "location": "Katra & Trikuta Mountains, Jammu",
     "shortDescription": "Discover the beautiful mountain journey to the sacred Shri Mata Vaishno Devi Shrine near Katra. Experience the traditional pilgrimage route, scenic mountain surroundings and local hospitality. Visitors can explore authorised helicopter services, walking routes and available facilities while discovering one of Jammu’s most recognised pilgrimage destinations.",
-    "image": "https://images.unsplash.com/photo-1621847468516-1ed5d0df56fe?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/VAISHNO DEVI YATRA.jpeg",
     "tag": "Sacred Himalayan Yatra",
     "icon": "heart"
   },
@@ -320,7 +320,7 @@
     "title": "Patnitop Mountain Experience: Meadows & Adventure",
     "location": "Patnitop Hill Station, Jammu",
     "shortDescription": "Explore the beautiful hill station of Patnitop, famous for its green meadows, pine forests and spectacular Himalayan views. Enjoy scenic walks, seasonal snow activities and outdoor photography. Visitors can also experience paragliding with authorised operators when available, making Patnitop a wonderful destination for families and adventure enthusiasts.",
-    "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/PATNITOP.jpeg",
     "tag": "Meadows & Sky Adventures",
     "icon": "wind"
   },
@@ -333,7 +333,7 @@
     "title": "Sanasar Adventure Experience: The Adventure Valley of Jammu",
     "location": "Sanasar Valley, Jammu",
     "shortDescription": "Discover Sanasar, a beautiful mountain destination surrounded by lush green meadows and dense forests. Enjoy paragliding, trekking, camping and peaceful nature walks, depending on seasonal availability. Explore spectacular mountain viewpoints, experience fresh Himalayan air and discover the adventure opportunities of this beautiful destination in Jammu.",
-    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/SANASAR ADVENTURE.jpeg",
     "tag": "Paragliding & Treks",
     "icon": "compass"
   },
@@ -346,7 +346,7 @@
     "title": "Shiv Khori Experience: Explore the Sacred Cave",
     "location": "Reasi District, Jammu",
     "shortDescription": "Explore the famous Shiv Khori cave shrine in the Reasi district of Jammu. Surrounded by beautiful hills and natural landscapes, the destination offers a memorable journey through traditional pilgrimage routes. Discover the cave surroundings, enjoy scenic mountain views and experience the cultural and spiritual heritage of Jammu.",
-    "image": "https://images.unsplash.com/photo-1590073844006-33379778ae09?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/SHIV KHORI.jpeg",
     "tag": "Sacred Limestone Cave",
     "icon": "landmark"
   },
@@ -359,7 +359,7 @@
     "title": "Jammu Heritage & Food Experience: Discover Dogra Culture",
     "location": "Jammu City (Bahu Fort & Historic Bazaars)",
     "shortDescription": "Explore Jammu’s cultural heritage through its traditional markets, historic landmarks, local handicrafts and regional cuisine. Discover the architectural beauty of historic forts and palaces, taste authentic Dogra dishes and shop for traditional souvenirs. Experience the region’s welcoming communities and learn about its rich history and traditions.",
-    "image": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/JAMMU HERITAGE.jpeg",
     "tag": "Dogra Forts & Palaces",
     "icon": "shield"
   },
@@ -515,7 +515,7 @@
     "title": "Honeymoon Experiences: Romantic Moments in the Himalayas",
     "location": "Srinagar, Gulmarg & Pahalgam",
     "shortDescription": "Celebrate love in the beautiful surroundings of Jammu, Kashmir and Ladakh. Enjoy private Shikara rides, romantic houseboat stays, scenic mountain resorts and beautiful sunset viewpoints. Couples can also enjoy candlelight dinners, special room decorations and memorable photography sessions, subject to availability and arrangements.",
-    "image": "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/HONEYMMON.jpeg",
     "tag": "Romance & Candlelight",
     "icon": "heart"
   },
@@ -528,7 +528,7 @@
     "title": "Family Experiences: Memories for Every Generation",
     "location": "Across Jammu, Kashmir & Ladakh",
     "shortDescription": "Create wonderful family memories through scenic sightseeing, peaceful gardens, exciting outdoor activities and cultural experiences. Enjoy Shikara rides, houseboat stays, snow activities, traditional food and nature walks. Discover destinations suitable for different age groups and enjoy meaningful moments together across the beautiful Himalayan regions.",
-    "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/FAMILY HOLIDAYS.jpeg",
     "tag": "Multi-Generational Travel",
     "icon": "users"
   },
@@ -541,7 +541,7 @@
     "title": "Photography Experiences: Capture the Beauty of the Himalayas",
     "location": "Scenic Viewpoints Across All 3 Regions",
     "shortDescription": "Discover spectacular photography locations across Jammu, Kashmir and Ladakh. Capture the beauty of Dal Lake, Gulmarg’s snowy mountains, Pahalgam’s green valleys, Pangong Lake’s blue waters and Nubra’s desert landscapes. Enjoy sunrise, sunset, landscape, traditional village and honeymoon photography opportunities throughout your journey.",
-    "image": "https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/PHOTOGRAPHY.jpeg",
     "tag": "Golden Hour & Landscapes",
     "icon": "camera"
   },
@@ -554,7 +554,7 @@
     "title": "Local Handicrafts & Shopping Experience: Take Kashmir Home",
     "location": "Srinagar Old Bazaars & Craft Centers",
     "shortDescription": "Explore the artistic heritage of Kashmir through traditional markets and local handicraft workshops. Discover famous Pashmina shawls, Kashmiri carpets, papier-mâché products, walnut wood carvings and traditional embroidery. Meet local artisans, learn about their craftsmanship and shop for meaningful souvenirs representing the culture and traditions of Kashmir.",
-    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/HANDICRAFTS & SHOPPING.jpeg",
     "tag": "Pashmina, Carpets & Wood Art",
     "icon": "shopping-bag"
   },
@@ -567,7 +567,7 @@
     "title": "Traditional Cultural Experience: Discover Himalayan Heritage",
     "location": "Across Jammu, Kashmir & Ladakh",
     "shortDescription": "Discover the diverse cultural traditions of Jammu, Kashmir and Ladakh through traditional music, festivals, handicrafts, architecture and community celebrations. Meet local artisans, explore regional customs and experience traditional hospitality. Learn about the unique identities and cultural heritage that make each Himalayan region special.",
-    "image": "https://images.unsplash.com/photo-1528164344705-475426879c0d?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/Expriences/CULTURAL HERITAGE.jpeg",
     "tag": "Himalayan Living Heritage",
     "icon": "music"
   }

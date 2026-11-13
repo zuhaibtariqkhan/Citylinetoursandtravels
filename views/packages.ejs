@@ -184,7 +184,7 @@
             
             <!-- Image & Duration Badge -->
             <div class="relative h-60 img-zoom-container">
-              <img src="<%= pkg.featuredImage %>" alt="<%= pkg.title %>" class="w-full h-full object-cover">
+              <img src="<%= pkg.featuredImage %>" alt="<%= pkg.title %>" loading="lazy" decoding="async" class="w-full h-full object-cover">
               <div class="absolute top-4 left-4">
                 <span class="bg-white/95 backdrop-blur text-brand-navy text-xs font-bold px-3 py-1 rounded-full shadow-sm">
                   <%= pkg.category %>

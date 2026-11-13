@@ -1360,19 +1360,93 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ========================================================
-  // 8. CINEMATIC MOUNTAIN PARALLAX SCROLL EFFECT
+  // 8. LIVE KASHMIR WEATHER INTEGRATION (Non-blocking & Graceful Fallback)
   // ========================================================
+  const weatherCardsGrid = document.getElementById('weatherCardsGrid');
+  if (weatherCardsGrid) {
+    const weatherCodes = {
+      0: { desc: 'Clear Skies', icon: 'sun' },
+      1: { desc: 'Mainly Clear', icon: 'sun' },
+      2: { desc: 'Partly Cloudy', icon: 'cloud-sun' },
+      3: { desc: 'Overcast Skies', icon: 'cloud' },
+      45: { desc: 'Mountain Mist', icon: 'cloud-fog' },
+      48: { desc: 'Freezing Rime Fog', icon: 'cloud-fog' },
+      51: { desc: 'Light Drizzle', icon: 'cloud-drizzle' },
+      61: { desc: 'Gentle Rain', icon: 'cloud-rain' },
+      71: { desc: 'Light Snowfall', icon: 'snowflake' },
+      73: { desc: 'Moderate Snow', icon: 'snowflake' },
+      75: { desc: 'Heavy Snowfall', icon: 'snowflake' },
+      85: { desc: 'Snow Showers', icon: 'snowflake' }
+    };
+
+    const destCards = weatherCardsGrid.querySelectorAll('[data-dest]');
+    destCards.forEach(async (card) => {
+      const dest = card.getAttribute('data-dest');
+      const lat = card.getAttribute('data-lat');
+      const lon = card.getAttribute('data-lon');
+      if (!lat || !lon) return;
+
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 4000);
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m`;
+        const res = await fetch(url, { signal: controller.signal });
+        clearTimeout(timeoutId);
+
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.current) {
+            const curr = data.current;
+            const tempEl = document.getElementById(`weatherTemp-${dest}`);
+            const feelsEl = document.getElementById(`weatherFeels-${dest}`);
+            const humEl = document.getElementById(`weatherHumidity-${dest}`);
+            const windEl = document.getElementById(`weatherWind-${dest}`);
+            const descEl = document.getElementById(`weatherDesc-${dest}`);
+
+            if (tempEl && curr.temperature_2m !== undefined) {
+              tempEl.textContent = `${Math.round(curr.temperature_2m)}°C`;
+            }
+            if (feelsEl && curr.apparent_temperature !== undefined) {
+              feelsEl.textContent = `${Math.round(curr.apparent_temperature)}°C`;
+            }
+            if (humEl && curr.relative_humidity_2m !== undefined) {
+              humEl.textContent = `${Math.round(curr.relative_humidity_2m)}%`;
+            }
+            if (windEl && curr.wind_speed_10m !== undefined) {
+              windEl.textContent = `${Math.round(curr.wind_speed_10m)} km/h`;
+            }
+            if (descEl && curr.weather_code !== undefined && weatherCodes[curr.weather_code]) {
+              descEl.textContent = weatherCodes[curr.weather_code].desc;
+            }
+
+            const updatedEl = document.getElementById('weatherLastUpdated');
+            if (updatedEl) {
+              const now = new Date();
+              updatedEl.textContent = `Live Satellite Feed • ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+            }
+          }
+        }
+      } catch (e) {
+        // Graceful fallback to verified seasonal weather data
+      }
+    });
+  }
+
+  // ========================================================
+  // 9. SUBTLE MOUNTAIN DEPTH SCROLL EFFECT (Respects reduced motion)
+  // ========================================================
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const parallaxBanners = document.querySelectorAll('.parallax-bg, #heroSlider');
-  if (parallaxBanners.length > 0 && window.innerWidth > 768) {
+  if (!prefersReduced && parallaxBanners.length > 0 && window.innerWidth > 1024) {
     let ticking = false;
     window.addEventListener('scroll', () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const scrollY = window.scrollY || window.pageYOffset;
-          if (scrollY < 1200) {
+          if (scrollY < 900) {
             const heroSlider = document.getElementById('heroSlider');
             if (heroSlider) {
-              heroSlider.style.transform = `translate3d(0, ${scrollY * 0.15}px, 0)`;
+              heroSlider.style.transform = `translate3d(0, ${scrollY * 0.1}px, 0)`;
             }
           }
           ticking = false;

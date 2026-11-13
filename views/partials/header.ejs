@@ -52,33 +52,40 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation Links -->
-      <nav class="hidden lg:flex items-center space-x-7">
-        <a href="/" class="text-sm font-medium transition <%= currentPath === '/' ? 'text-brand-blue font-semibold' : 'text-brand-navy hover:text-brand-blue' %>">
-          Home
-        </a>
-        <a href="/about" class="text-sm font-medium transition <%= currentPath === '/about' ? 'text-brand-blue font-semibold' : 'text-brand-navy hover:text-brand-blue' %>">
-          About
-        </a>
-        <a href="/destinations" class="text-sm font-medium transition <%= currentPath.startsWith('/destinations') ? 'text-brand-blue font-semibold' : 'text-brand-navy hover:text-brand-blue' %>">
-          Destinations
-        </a>
-        <a href="/packages" class="text-sm font-medium transition <%= currentPath.startsWith('/packages') ? 'text-brand-blue font-semibold' : 'text-brand-navy hover:text-brand-blue' %>">
-          Tour Packages
-        </a>
-        <a href="/experiences" class="text-sm font-medium transition <%= currentPath === '/experiences' ? 'text-brand-blue font-semibold' : 'text-brand-navy hover:text-brand-blue' %>">
-          Experiences
-        </a>
-        <a href="/hotels" class="text-sm font-medium transition <%= currentPath === '/hotels' ? 'text-brand-blue font-semibold' : 'text-brand-navy hover:text-brand-blue' %>">
-          Hotels & Stays
-        </a>
-        <a href="/gallery" class="text-sm font-medium transition <%= currentPath === '/gallery' ? 'text-brand-blue font-semibold' : 'text-brand-navy hover:text-brand-blue' %>">
-          Gallery
-        </a>
-        <a href="/contact" class="text-sm font-medium transition <%= currentPath === '/contact' ? 'text-brand-blue font-semibold' : 'text-brand-navy hover:text-brand-blue' %>">
-          Contact
-        </a>
-      </nav>
+      <!-- Desktop Navigation Links & Action Button -->
+      <div class="hidden lg:flex items-center space-x-6 xl:space-x-7">
+        <nav class="flex items-center space-x-5 xl:space-x-6">
+          <a href="/" class="text-xs xl:text-sm font-medium transition py-1.5 px-2 rounded-lg <%= currentPath === '/' ? 'text-brand-blue bg-brand-softsky font-semibold' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
+            Home
+          </a>
+          <a href="/about" class="text-xs xl:text-sm font-medium transition py-1.5 px-2 rounded-lg <%= currentPath === '/about' ? 'text-brand-blue bg-brand-softsky font-semibold' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
+            About
+          </a>
+          <a href="/destinations" class="text-xs xl:text-sm font-medium transition py-1.5 px-2 rounded-lg <%= currentPath.startsWith('/destinations') ? 'text-brand-blue bg-brand-softsky font-semibold' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
+            Destinations
+          </a>
+          <a href="/packages" class="text-xs xl:text-sm font-medium transition py-1.5 px-2 rounded-lg <%= currentPath.startsWith('/packages') ? 'text-brand-blue bg-brand-softsky font-semibold' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
+            Packages
+          </a>
+          <a href="/experiences" class="text-xs xl:text-sm font-medium transition py-1.5 px-2 rounded-lg <%= currentPath === '/experiences' ? 'text-brand-blue bg-brand-softsky font-semibold' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
+            Experiences
+          </a>
+          <a href="/hotels" class="text-xs xl:text-sm font-medium transition py-1.5 px-2 rounded-lg <%= currentPath === '/hotels' ? 'text-brand-blue bg-brand-softsky font-semibold' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
+            Hotels
+          </a>
+          <a href="/gallery" class="text-xs xl:text-sm font-medium transition py-1.5 px-2 rounded-lg <%= currentPath === '/gallery' ? 'text-brand-blue bg-brand-softsky font-semibold' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
+            Gallery
+          </a>
+          <a href="/contact" class="text-xs xl:text-sm font-medium transition py-1.5 px-2 rounded-lg <%= currentPath === '/contact' ? 'text-brand-blue bg-brand-softsky font-semibold' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
+            Contact
+          </a>
+        </nav>
+
+        <button type="button" class="enquire-now-btn btn-primary text-xs py-2 px-3.5 rounded-xl font-semibold shadow-sm ml-1" data-package="General Enquiry">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          <span>Enquire</span>
+        </button>
+      </div>
 
       <!-- Mobile Hamburger Button -->
       <div class="flex items-center lg:hidden">

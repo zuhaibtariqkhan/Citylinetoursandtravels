@@ -5,16 +5,19 @@
    ======================================================== */
 
 :root {
-  --primary-blue: #145DA0;
-  --deep-navy: #0B2545;
-  --royal-blue: #2563EB;
-  --sky-blue: #60A5FA;
-  --light-blue: #EFF6FF;
-  --white: #FFFFFF;
-  --off-white: #F8FAFC;
-  --dark-text: #172B4D;
-  --muted-text: #64748B;
-  --border-color: #E2E8F0;
+  --deep-navy: #102A43;        /* Main headings and dark sections */
+  --primary-blue: #145DA0;     /* Primary brand colour (Royal Blue) */
+  --royal-blue: #145DA0;
+  --elegant-blue: #2563A6;     /* Buttons and interactive elements */
+  --soft-sky-blue: #EAF3FB;    /* Background highlights */
+  --light-blue: #EAF3FB;
+  --ice-blue: #F4F8FC;         /* Alternate sections */
+  --off-white: #F4F8FC;
+  --white: #FFFFFF;            /* Main backgrounds */
+  --slate-text: #526579;       /* Secondary text */
+  --muted-text: #526579;
+  --dark-text: #172B4D;        /* Body text */
+  --border-color: #DCE6EF;     /* Borders and separators */
   --success: #16A34A;
   --error: #DC2626;
 }
@@ -28,9 +31,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
-/* Georgia Serif Headings as specified in Document 04 */
+::selection {
+  background-color: var(--soft-sky-blue);
+  color: var(--deep-navy);
+}
+
+/* Georgia Serif Headings - Crisp Editorial Typography */
 .font-georgia,
 h1.font-serif,
 h2.font-serif,
@@ -38,7 +47,20 @@ h3.font-serif,
 .heading-georgia {
   font-family: 'Georgia', 'Times New Roman', Times, serif;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+h1.font-serif {
+  line-height: 1.15;
+}
+
+h2.font-serif {
+  line-height: 1.25;
+}
+
+h3.font-serif {
+  line-height: 1.35;
 }
 
 /* Color utility overrides */
@@ -53,68 +75,99 @@ h3.font-serif,
 .border-brand { border-color: var(--border-color); }
 .text-muted { color: var(--muted-text); }
 
-/* Buttons */
+/* Consistent Button Component System */
 .btn-primary {
-  background-color: var(--primary-blue);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--elegant-blue);
   color: #ffffff;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.btn-primary::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-  transform: skewX(-20deg);
-  transition: none;
-}
-.btn-primary:hover::after {
-  left: 150%;
-  transition: left 0.75s ease-in-out;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  border: 1px solid transparent;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(16, 42, 67, 0.08);
 }
 .btn-primary:hover {
-  background-color: #0d4a82;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(20, 93, 160, 0.3);
+  background-color: var(--primary-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(20, 93, 160, 0.2);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-outline:focus-visible {
+  outline: 2px solid var(--elegant-blue);
+  outline-offset: 2px;
+}
+.btn-primary:disabled,
+.btn-secondary:disabled,
+.btn-outline:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   background-color: #ffffff;
-  color: var(--primary-blue);
-  border: 1px solid #ffffff;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--deep-navy);
+  border: 1px solid var(--border-color);
+  font-weight: 600;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 2px rgba(16, 42, 67, 0.04);
 }
 .btn-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.95);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  background-color: var(--ice-blue);
+  border-color: var(--elegant-blue);
+  color: var(--elegant-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(16, 42, 67, 0.06);
 }
 
 .btn-outline {
-  border: 1.5px solid var(--primary-blue);
-  color: var(--primary-blue);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1.5px solid var(--elegant-blue);
+  color: var(--elegant-blue);
   background-color: transparent;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-weight: 600;
+  border-radius: 0.75rem;
+  padding: 0.5625rem 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-outline:hover {
-  background-color: var(--primary-blue);
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(20, 93, 160, 0.2);
+  background-color: var(--soft-sky-blue);
+  color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  transform: translateY(-1px);
 }
 
-/* Card Hover Elevation */
+/* Card Hover Elevation - Subtle & Refined */
 .card-hover {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
 }
 .card-hover:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 36px -10px rgba(11, 37, 69, 0.14);
-  border-color: rgba(20, 93, 160, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px -8px rgba(16, 42, 67, 0.09);
+  border-color: var(--elegant-blue);
 }
 
 /* Image zoom inside cards */
@@ -518,11 +571,12 @@ button:hover .arrow-hover {
 /* ========================================================
    7. HIGH-CONVERTING BUTTON SHIMMER WAVE
    ======================================================== */
-.btn-primary, .btn-shimmer {
+/* Subtle optional shimmer effect for special accent pills */
+.btn-shimmer {
   position: relative;
   overflow: hidden;
 }
-.btn-primary::after, .btn-shimmer::after {
+.btn-shimmer::after {
   content: '';
   position: absolute;
   top: -60%;
@@ -532,20 +586,11 @@ button:hover .arrow-hover {
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0.25) 50%,
     rgba(255, 255, 255, 0) 100%
   );
   transform: rotate(25deg);
   pointer-events: none;
-  animation: buttonShimmer 5s infinite ease-in-out;
-}
-@keyframes buttonShimmer {
-  0%, 75% {
-    left: -70%;
-  }
-  100% {
-    left: 140%;
-  }
 }
 
 /* ========================================================
