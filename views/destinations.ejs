@@ -6,93 +6,433 @@
 <body class="bg-white text-brand-text">
   <%- include('partials/header') %>
 
-  <!-- Page Hero -->
-  <section class="relative py-20 bg-brand-navy text-white overflow-hidden">
+  <!-- ========================================================
+       PAGE HERO BANNER
+       ======================================================== -->
+  <section class="relative py-24 bg-brand-navy text-white overflow-hidden">
     <div class="absolute inset-0 z-0">
-      <img src="https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=1800&q=80" 
-           alt="Kashmir Landscapes" 
-           class="w-full h-full object-cover brightness-[0.4]">
+      <img src="https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=1920&q=80" 
+           alt="Jammu, Kashmir & Ladakh Landscapes" 
+           class="w-full h-full object-cover brightness-[0.35]">
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-navy/60 via-brand-navy/40 to-brand-navy"></div>
     </div>
-    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-      <span class="text-xs font-bold uppercase tracking-widest text-brand-sky bg-white/10 px-4 py-1.5 rounded-full inline-block mb-3">
-        PARADISE ON EARTH
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-flex items-center space-x-2 bg-brand-sky/20 border border-brand-sky/40 text-brand-sky text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4">
+        <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+        <span>29 CROWN DESTINATIONS • THREE HIMALAYAN REALMS</span>
       </span>
-      <h1 class="font-serif text-4xl sm:text-5xl font-bold text-white mb-4">
-        Explore Kashmir's Crown Jewels
+
+      <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
+        Jammu, Kashmir & Ladakh – Discover the Paradise of the Himalayas
       </h1>
-      <p class="text-base text-slate-200 max-w-2xl mx-auto leading-relaxed">
-        From the floating water life of Srinagar to the snowfields of Gulmarg, the pine valleys of Pahalgam, and the untouched frontier of Gurez.
+
+      <p class="text-sm sm:text-base text-slate-200 max-w-3xl mx-auto leading-relaxed mb-8">
+        Welcome to Jammu, Kashmir and Ladakh, a breathtaking region blessed with majestic mountains, beautiful valleys, crystal-clear lakes, lush green meadows, ancient heritage and unforgettable cultural experiences. From the peaceful waters of Dal Lake and the snow-covered mountains of Gulmarg to the golden landscapes of Ladakh, every destination has its own charm. Discover the natural beauty of Pahalgam, experience the scenic charm of Sonamarg, explore the peaceful valleys of Gurez and Doodhpathri, and witness the extraordinary landscapes of Nubra Valley and Pangong Lake. Whether you are looking for adventure, relaxation, family holidays, romantic escapes or cultural exploration, this beautiful Himalayan region offers something special for everyone.
       </p>
+
+      <!-- Quick Metrics Strip -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-6 border-t border-white/10 text-center text-xs">
+        <div>
+          <span class="font-serif text-2xl font-bold text-brand-sky">13</span>
+          <span class="block uppercase tracking-wider text-slate-300 font-medium mt-0.5">Kashmir Valleys</span>
+        </div>
+        <div>
+          <span class="font-serif text-2xl font-bold text-emerald-400">3</span>
+          <span class="block uppercase tracking-wider text-slate-300 font-medium mt-0.5">Jammu Hills & Shrines</span>
+        </div>
+        <div>
+          <span class="font-serif text-2xl font-bold text-amber-400">13</span>
+          <span class="block uppercase tracking-wider text-slate-300 font-medium mt-0.5">Ladakh Passes & Lakes</span>
+        </div>
+        <div>
+          <span class="font-serif text-2xl font-bold text-white">29</span>
+          <span class="block uppercase tracking-wider text-slate-300 font-medium mt-0.5">Total Destinations</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- Destinations Grid Section -->
-  <section class="py-16 bg-brand-offwhite">
+  <!-- ========================================================
+       STICKY REGION FILTER TABS & SEARCH BAR
+       ======================================================== -->
+  <section class="sticky top-20 z-30 bg-white/95 backdrop-blur-md border-b border-brand-border py-4 shadow-sm transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <!-- Interactive Regional Mountain Map -->
-      <div class="mb-14">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+        
+        <!-- Region Filter Pills -->
+        <div class="flex items-center space-x-2 overflow-x-auto w-full lg:w-auto pb-1 scrollbar-thin" id="destFilterBar">
+          <button type="button" 
+                  class="dest-filter-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-navy text-white border-brand-navy shadow-sm"
+                  data-region="all">
+            All Destinations (29)
+          </button>
+          <button type="button" 
+                  class="dest-filter-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-offwhite hover:bg-slate-100 text-brand-navy border-slate-200"
+                  data-region="Kashmir">
+            🏔️ Kashmir (13)
+          </button>
+          <button type="button" 
+                  class="dest-filter-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-offwhite hover:bg-slate-100 text-brand-navy border-slate-200"
+                  data-region="Jammu">
+            🛕 Jammu (3)
+          </button>
+          <button type="button" 
+                  class="dest-filter-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-offwhite hover:bg-slate-100 text-brand-navy border-slate-200"
+                  data-region="Ladakh">
+            ❄️ Ladakh (13)
+          </button>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative w-full lg:w-80 shrink-0">
+          <i data-lucide="search" class="w-4 h-4 text-brand-muted absolute left-3.5 top-3"></i>
+          <input type="text" 
+                 id="destSearchInput" 
+                 placeholder="Search Srinagar, Pahalgam, Nubra, Pangong..." 
+                 class="w-full pl-10 pr-4 py-2 rounded-xl border border-brand-border bg-brand-offwhite text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue">
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       DESTINATIONS SHOWCASE SECTION
+       ======================================================== -->
+  <main class="py-16 bg-brand-offwhite">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+      <!-- Interactive Regional Mountain Map (Kashmir Valley) -->
+      <div class="dest-region-group" data-region-group="Kashmir">
         <%- include('partials/kashmir-map') %>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <% destinations.forEach(dest => { %>
-          <div class="bg-white rounded-2xl border border-brand-border overflow-hidden card-hover flex flex-col shadow-sm">
+      <%
+        const regionMetaList = [
+          {
+            region: "Kashmir",
+            title: "Kashmir – Paradise on Earth",
+            subtitle: "From Dal Lake's calm waters and Gulmarg's snowfields to the untouched wilderness of Gurez, Kokernag springs, and Sinthan Top.",
+            badgeColor: "bg-sky-100 text-sky-800 border-sky-300",
+            icon: "mountain"
+          },
+          {
+            region: "Jammu",
+            title: "Jammu – Heritage, Shrines & Hill Stations",
+            subtitle: "Rich Dogra traditions, the sacred pilgrimage to Mata Vaishno Devi, pine-swathed meadows of Patnitop, and Sanasar adventure valleys.",
+            badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
+            icon: "landmark"
+          },
+          {
+            region: "Ladakh",
+            title: "Ladakh – The Land of High Passes & Azure Lakes",
+            subtitle: "Ever-changing shades of Pangong Lake, Hunder's cold desert sand dunes, ancient monasteries, Hanle dark skies, and the high pass of Umling La.",
+            badgeColor: "bg-purple-100 text-purple-800 border-purple-300",
+            icon: "compass"
+          }
+        ];
+      %>
+
+      <% regionMetaList.forEach(rm => { 
+        const regionDests = destinations.filter(d => d.region === rm.region);
+        if (regionDests.length === 0) return;
+      %>
+
+        <!-- Region Section -->
+        <section class="dest-region-group scroll-mt-36" data-region-group="<%= rm.region %>" id="region-<%= rm.region.toLowerCase() %>">
+          
+          <!-- Region Section Header -->
+          <div class="border-b border-slate-200/80 pb-6 mb-10">
+            <div class="flex items-center space-x-2.5">
+              <span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold border <%= rm.badgeColor %> uppercase tracking-wider">
+                <i data-lucide="<%= rm.icon %>" class="w-3.5 h-3.5"></i>
+                <span><%= rm.region %> Region</span>
+              </span>
+              <span class="text-xs text-brand-muted font-medium"><%= regionDests.length %> Destinations</span>
+            </div>
             
-            <div class="relative h-64 img-zoom-container">
-              <img src="<%= dest.image %>" alt="<%= dest.name %>" class="w-full h-full object-cover">
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-              
-              <div class="absolute top-4 right-4 bg-white/90 backdrop-blur text-brand-navy text-[11px] font-bold px-2.5 py-1 rounded-full">
-                <%= dest.suggestedDuration %>
-              </div>
-
-              <div class="absolute bottom-4 left-4 text-white">
-                <span class="text-xs uppercase tracking-wider text-brand-sky font-semibold block mb-0.5">Destination</span>
-                <h3 class="font-serif text-2xl font-bold text-white"><%= dest.name %></h3>
-              </div>
-            </div>
-
-            <div class="p-6 flex-1 flex flex-col justify-between">
-              <div>
-                <p class="text-xs italic text-brand-blue font-medium mb-2">"<%= dest.tagline %>"</p>
-                <p class="text-sm text-brand-muted leading-relaxed line-clamp-3 mb-4">
-                  <%= dest.shortDescription %>
-                </p>
-
-                <!-- Best time badge -->
-                <div class="bg-brand-light p-3 rounded-xl mb-4 text-xs text-brand-navy">
-                  <div class="flex items-center space-x-1.5 font-semibold text-brand-blue mb-1">
-                    <i data-lucide="sun" class="w-3.5 h-3.5"></i>
-                    <span>Best Time to Visit:</span>
-                  </div>
-                  <p class="text-[11px] text-brand-muted line-clamp-1"><%= dest.bestTimeToVisit %></p>
-                </div>
-              </div>
-
-              <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                <a href="/destinations/<%= dest.slug %>" class="text-xs font-semibold text-brand-navy hover:text-brand-blue flex items-center space-x-1 group">
-                  <span>Explore <%= dest.name %></span>
-                  <i data-lucide="arrow-right" class="w-3.5 h-3.5 arrow-hover"></i>
-                </a>
-                <button class="enquire-now-btn btn-primary px-3 py-1.5 rounded-lg text-xs font-semibold" data-destination="<%= dest.name %>">
-                  Plan Trip
-                </button>
-              </div>
-
-            </div>
-
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-navy mt-2.5 mb-2">
+              <%= rm.title %>
+            </h2>
+            <p class="text-xs sm:text-sm text-brand-muted max-w-3xl leading-relaxed">
+              <%= rm.subtitle %>
+            </p>
           </div>
-        <% }) %>
+
+          <!-- Destinations Grid (3 Columns) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <% regionDests.forEach(dest => { %>
+              <div class="dest-card bg-white rounded-3xl border border-brand-border overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                   data-region="<%= dest.region %>"
+                   data-name="<%= dest.name.toLowerCase() %>"
+                   data-tagline="<%= (dest.tagline || '').toLowerCase() %>"
+                   data-desc="<%= dest.shortDescription.toLowerCase() %>">
+                
+                <div>
+                  <!-- Destination Image & Floating Tags -->
+                  <div class="relative h-64 overflow-hidden bg-slate-100">
+                    <img src="<%= dest.image %>" 
+                         alt="<%= dest.name %>" 
+                         loading="lazy"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    
+                    <!-- Top Left Region & Duration Badges -->
+                    <div class="absolute top-4 left-4 flex items-center space-x-2">
+                      <span class="bg-brand-navy/90 backdrop-blur-md text-brand-sky text-[11px] font-bold px-3 py-1 rounded-full shadow border border-white/20">
+                        <%= dest.region %>
+                      </span>
+                      <% if (dest.suggestedDuration) { %>
+                        <span class="bg-white/95 backdrop-blur-md text-brand-navy text-[10px] font-semibold px-2.5 py-1 rounded-full shadow-sm">
+                          <%= dest.suggestedDuration %>
+                        </span>
+                      <% } %>
+                    </div>
+
+                    <!-- Bottom Elevation / Altitude Badge -->
+                    <div class="absolute bottom-3.5 left-4 right-4 flex items-center justify-between text-white text-xs">
+                      <span class="flex items-center space-x-1.5 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px]">
+                        <i data-lucide="mountain" class="w-3.5 h-3.5 text-brand-sky"></i>
+                        <span><%= dest.altitude || 'Himalayas' %></span>
+                      </span>
+                      <% if (dest.badge) { %>
+                        <span class="bg-brand-blue/90 backdrop-blur-md px-2.5 py-1 rounded-lg text-[10px] font-semibold text-white">
+                          <%= dest.badge %>
+                        </span>
+                      <% } %>
+                    </div>
+                  </div>
+
+                  <!-- Destination Text Content -->
+                  <div class="p-6 sm:p-7">
+                    <div class="flex items-baseline justify-between mb-1">
+                      <h3 class="font-serif text-2xl font-bold text-brand-navy group-hover:text-brand-blue transition">
+                        <%= dest.name %>
+                      </h3>
+                    </div>
+
+                    <p class="text-xs italic text-brand-blue font-serif mb-3">
+                      "<%= dest.tagline %>"
+                    </p>
+
+                    <p class="text-xs sm:text-sm text-brand-muted leading-relaxed mb-5 line-clamp-3">
+                      <%= dest.shortDescription %>
+                    </p>
+
+                    <!-- Key Attractions List Tags -->
+                    <% if (dest.attractions && dest.attractions.length > 0) { %>
+                      <div class="mb-2">
+                        <span class="block text-[10px] font-bold uppercase tracking-wider text-brand-muted mb-1.5">Top Sights:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                          <% dest.attractions.slice(0, 3).forEach(att => { %>
+                            <span class="text-[10px] bg-brand-light text-brand-navy px-2 py-0.5 rounded-md border border-brand-blue/20">
+                              <%= att %>
+                            </span>
+                          <% }) %>
+                        </div>
+                      </div>
+                    <% } %>
+                  </div>
+                </div>
+
+                <!-- Card Actions -->
+                <div class="p-6 sm:p-7 pt-0 border-t border-slate-100 mt-4 flex items-center justify-between gap-2">
+                  <a href="/destinations/<%= dest.slug %>" 
+                     class="btn-outline px-4 py-2 rounded-xl text-xs font-semibold flex items-center space-x-1 text-brand-navy hover:text-brand-blue">
+                    <span>Explore <%= dest.name %></span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                  </a>
+
+                  <a href="https://wa.me/916006725007?text=<%= encodeURIComponent('Hi City Line Tours, I would like to plan a trip to ' + dest.name + ' (' + dest.region + '). Please share recommended tour packages and quote.') %>" 
+                     target="_blank" 
+                     class="bg-[#25D366] hover:bg-[#20ba59] text-white px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center space-x-1.5 transition shadow-sm"
+                     title="Enquire on WhatsApp">
+                    <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                    <span>WhatsApp</span>
+                  </a>
+                </div>
+
+              </div>
+            <% }) %>
+          </div>
+
+        </section>
+
+      <% }) %>
+
+      <!-- No Search Results Found Message -->
+      <div id="noDestFound" class="hidden text-center py-16 bg-white rounded-3xl border border-brand-border p-8">
+        <i data-lucide="map" class="w-12 h-12 text-brand-muted mx-auto mb-3"></i>
+        <h4 class="font-serif text-xl font-bold text-brand-navy">No Destinations Found</h4>
+        <p class="text-xs sm:text-sm text-brand-muted mt-1 mb-4">
+          Try searching for a different keyword like "Srinagar", "Gulmarg", "Pangong", or "Patnitop".
+        </p>
+        <button type="button" id="resetDestSearchBtn" class="btn-primary px-5 py-2 rounded-xl text-xs font-semibold">
+          View All 29 Destinations
+        </button>
       </div>
 
+      <!-- ========================================================
+           CLOSING BRAND SECTION (USER EXACT COPY)
+           ======================================================== -->
+      <section class="bg-gradient-to-r from-brand-navy via-[#0f2d4a] to-brand-navy text-white rounded-3xl p-8 sm:p-12 text-center shadow-xl border border-brand-blue/30">
+        <div class="max-w-3xl mx-auto">
+          <div class="inline-flex items-center space-x-2 bg-white/10 px-3.5 py-1.5 rounded-full text-xs text-brand-sky font-semibold mb-4">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>YOUR LOCAL HIMALAYAN HOSTS</span>
+          </div>
+
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mb-3">
+            Discover More. Experience More. Travel with Us.
+          </h2>
+
+          <p class="text-sm sm:text-base text-slate-200 leading-relaxed mb-4">
+            At City Line Tours and Travels, we bring together the beauty, culture, traditions and unforgettable landscapes of Jammu, Kashmir and Ladakh. From carefully planned holidays to memorable adventures, let us help you discover the extraordinary charm of the Himalayas.
+          </p>
+
+          <p class="font-serif italic text-lg sm:text-xl text-brand-sky mb-8">
+            Where Your Travel Dreams Take Flight.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="https://wa.me/916006725007?text=Hi%20City%20Line%20Tours,%20I%20am%20exploring%20your%20Destinations%20guide%20and%20would%20like%20to%20plan%20a%20customized%20itinerary" 
+               target="_blank" 
+               class="w-full sm:w-auto bg-[#25D366] hover:bg-[#20ba59] text-white px-8 py-3.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md transition">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              <span>Plan on WhatsApp (6006725007)</span>
+            </a>
+
+            <a href="/packages" class="w-full sm:w-auto btn-primary px-8 py-3.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md">
+              <i data-lucide="package" class="w-4 h-4"></i>
+              <span>Explore Tour Packages</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
     </div>
-  </section>
+  </main>
 
   <%- include('partials/footer') %>
   <%- include('partials/whatsapp') %>
   <%- include('partials/enquiry-modal') %>
   <%- include('partials/scripts') %>
+
+  <!-- ========================================================
+       CLIENT-SIDE INTERACTIVE REGION FILTER & SEARCH SCRIPT
+       ======================================================== -->
+  <script>
+    (function initDestinationsPage() {
+      const filterBtns = document.querySelectorAll('.dest-filter-btn');
+      const searchInput = document.getElementById('destSearchInput');
+      const destCards = document.querySelectorAll('.dest-card');
+      const regionGroups = document.querySelectorAll('.dest-region-group');
+      const noFoundEl = document.getElementById('noDestFound');
+      const resetSearchBtn = document.getElementById('resetDestSearchBtn');
+
+      let currentRegion = 'all';
+      let searchQuery = '';
+
+      function applyFilters() {
+        let visibleCount = 0;
+
+        regionGroups.forEach(group => {
+          const groupRegion = group.getAttribute('data-region-group');
+          let groupHasVisibleCards = false;
+
+          const cardsInGroup = group.querySelectorAll('.dest-card');
+          
+          // Special handling if this group is the map container
+          if (cardsInGroup.length === 0) {
+            // It's the map; show it only when 'all' or 'Kashmir' is selected and no search
+            if ((currentRegion === 'all' || currentRegion === 'Kashmir') && !searchQuery) {
+              group.style.display = 'block';
+            } else {
+              group.style.display = 'none';
+            }
+            return;
+          }
+
+          cardsInGroup.forEach(card => {
+            const cardRegion = card.getAttribute('data-region');
+            const name = card.getAttribute('data-name') || '';
+            const tagline = card.getAttribute('data-tagline') || '';
+            const desc = card.getAttribute('data-desc') || '';
+
+            const matchesRegion = (currentRegion === 'all' || currentRegion === cardRegion);
+            const matchesSearch = (!searchQuery || name.includes(searchQuery) || tagline.includes(searchQuery) || desc.includes(searchQuery));
+
+            if (matchesRegion && matchesSearch) {
+              card.style.display = 'flex';
+              groupHasVisibleCards = true;
+              visibleCount++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          // Show or hide whole region section if no cards match
+          if (groupHasVisibleCards) {
+            group.style.display = 'block';
+          } else {
+            group.style.display = 'none';
+          }
+        });
+
+        // Show/hide empty state
+        if (noFoundEl) {
+          noFoundEl.style.display = (visibleCount === 0) ? 'block' : 'none';
+        }
+      }
+
+      // Filter button click handler
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentRegion = btn.getAttribute('data-region');
+
+          // Update active button styles
+          filterBtns.forEach(b => {
+            if (b === btn) {
+              b.className = 'dest-filter-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-navy text-white border-brand-navy shadow-sm';
+            } else {
+              b.className = 'dest-filter-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-offwhite hover:bg-slate-100 text-brand-navy border-slate-200';
+            }
+          });
+
+          applyFilters();
+
+          // Smooth scroll to region section if selected
+          if (currentRegion !== 'all' && !searchQuery) {
+            const targetSection = document.getElementById('region-' + currentRegion.toLowerCase());
+            if (targetSection) {
+              targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        });
+      });
+
+      // Search input handler
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = (e.target.value || '').trim().toLowerCase();
+          applyFilters();
+        });
+      }
+
+      // Reset button in empty state
+      if (resetSearchBtn) {
+        resetSearchBtn.addEventListener('click', () => {
+          if (searchInput) searchInput.value = '';
+          searchQuery = '';
+          currentRegion = 'all';
+          filterBtns[0].click();
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
-
