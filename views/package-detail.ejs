@@ -33,7 +33,7 @@
               <%= (pkg.destinationCoverage || []).join(' • ') %>
             </span>
           </div>
-          <h1 class="font-serif text-3xl sm:text-4xl lg:text-45px font-bold text-brand-navy tracking-tight">
+          <h1 class="font-serif text-3xl sm:text-4xl lg:text-[45px] font-bold text-brand-navy tracking-tight">
             <%= pkg.title %>
           </h1>
         </div>
@@ -596,17 +596,17 @@
         const modal = document.getElementById('enquiryModal');
         if (!modal) return;
 
-        const modalTitle = document.getElementById('modalPackageTitle');
-        const hiddenPkg = document.getElementById('modalPackageInput');
+        const modalHeading = document.getElementById('modalTargetTitle');
+        const hiddenPkg = document.getElementById('modalPackageTitle');
         const travellersInput = modal.querySelector('select[name="travellers"], input[name="travellers"]');
         const messageInput = modal.querySelector('textarea[name="message"]');
-
-        if (modalTitle) modalTitle.textContent = title;
-        if (hiddenPkg) hiddenPkg.value = title;
 
         const totalPax = adults + kids;
         let paxStr = `${adults} Adults`;
         if (kids > 0) paxStr += `, ${kids} Kids`;
+
+        if (modalHeading) modalHeading.textContent = `Enquire: ${title}`;
+        if (hiddenPkg) hiddenPkg.value = title;
 
         if (travellersInput) {
           travellersInput.value = paxStr;
@@ -617,8 +617,8 @@
           messageInput.value = `Hi City Line Tours, I calculated an estimated budget for "${title}" on your website for ${paxStr} (${totalStr}). Please share the day-wise itinerary and quotation.`;
         }
 
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
       });
 
       updateDetailCalc();

@@ -419,20 +419,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ========================================================
-  // 1. TOP SCROLL PROGRESS BAR
+  // 1. TOP SCROLL PROGRESS BAR (THROTTLED)
   // ========================================================
   const progressBar = document.getElementById('scrollProgressBar');
-
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    
-    // Update progress line
-    if (progressBar && scrollHeight > 0) {
-      const percent = Math.min((scrollTop / scrollHeight) * 100, 100);
-      progressBar.style.width = percent + '%';
-    }
-  }, { passive: true });
+  if (progressBar) {
+    let progressTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!progressTicking) {
+        requestAnimationFrame(() => {
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          if (scrollHeight > 0) {
+            const percent = Math.min((scrollTop / scrollHeight) * 100, 100);
+            progressBar.style.width = percent + '%';
+          }
+          progressTicking = false;
+        });
+        progressTicking = true;
+      }
+    }, { passive: true });
+  }
 
   // ========================================================
   // 2. KEN-BURNS MULTI-SCENE HERO SLIDER (OPTIMIZED ZERO-LAG)
@@ -505,7 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ========================================================
-  // 3. AMBIENT GENTLE SNOWFALL EFFECT
+  // 3. AMBIENT GENTLE SNOWFALL EFFECT (OPTIMIZED OFF-SCREEN PAUSE)
   // ========================================================
   const snowCanvas = document.getElementById('snowCanvas');
   const snowToggleBtn = document.getElementById('snowToggleBtn');
@@ -517,13 +523,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let animationFrameId = null;
     let width = 0;
     let height = 0;
+    let isHeroInView = true;
 
     function resizeCanvas() {
-      if (!snowCanvas) return;
+      if (!snowCanvas || !snowCanvas.parentElement) return;
       width = snowCanvas.width = snowCanvas.parentElement.clientWidth;
       height = snowCanvas.height = snowCanvas.parentElement.clientHeight;
     }
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('resize', resizeCanvas, { passive: true });
     resizeCanvas();
 
     // Create 45 organic snowflake particles
@@ -531,8 +538,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const particles = [];
     for (let i = 0; i < particleCount; i++) {
       particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
+        x: Math.random() * (width || 800),
+        y: Math.random() * (height || 600),
         r: Math.random() * 2.2 + 0.8,
         speedY: Math.random() * 0.7 + 0.3,
         speedX: Math.random() * 0.5 - 0.25,
@@ -543,7 +550,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderSnow() {
-      if (!snowActive) return;
+      if (!snowActive || !isHeroInView) {
+        animationFrameId = null;
+        return;
+      }
       ctx.clearRect(0, 0, width, height);
 
       particles.forEach(p => {
@@ -568,7 +578,38 @@ document.addEventListener('DOMContentLoaded', () => {
       animationFrameId = requestAnimationFrame(renderSnow);
     }
 
-    renderSnow();
+    // Pause canvas animation when hero is scrolled off screen to save GPU/CPU cycles
+    const heroSection = document.getElementById('heroSection');
+    if (heroSection && 'IntersectionObserver' in window) {
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          isHeroInView = entry.isIntersecting;
+          if (isHeroInView && snowActive) {
+            if (!animationFrameId) renderSnow();
+          } else {
+            if (animationFrameId) {
+              cancelAnimationFrame(animationFrameId);
+              animationFrameId = null;
+            }
+          }
+        });
+      }, { threshold: 0.05 });
+      heroObserver.observe(heroSection);
+    } else {
+      renderSnow();
+    }
+
+    // Pause canvas when browser tab is hidden
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = null;
+        }
+      } else if (isHeroInView && snowActive) {
+        if (!animationFrameId) renderSnow();
+      }
+    });
 
     // Snow toggle button click
     if (snowToggleBtn) {
@@ -576,10 +617,13 @@ document.addEventListener('DOMContentLoaded', () => {
         snowActive = !snowActive;
         if (snowActive) {
           if (snowStatusText) snowStatusText.textContent = 'Snowfall: Active';
-          renderSnow();
+          if (!animationFrameId && isHeroInView) renderSnow();
         } else {
           ctx.clearRect(0, 0, width, height);
-          if (animationFrameId) cancelAnimationFrame(animationFrameId);
+          if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+          }
           if (snowStatusText) snowStatusText.textContent = 'Snowfall: Paused';
         }
       });
@@ -587,7 +631,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ========================================================
-  // 4. 3D PERSPECTIVE TILT ON TOUR CARDS
+  // 4. 3D PERSPECTIVE TILT ON TOUR CARDS (CACHED BOUNDS)
   // ========================================================
   // Check if non-touch desktop
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
@@ -601,16 +645,21 @@ document.addEventListener('DOMContentLoaded', () => {
         card.appendChild(sheen);
       }
 
+      let cardRect = null;
+      card.addEventListener('mouseenter', () => {
+        cardRect = card.getBoundingClientRect();
+      });
+
       card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+        if (!cardRect) cardRect = card.getBoundingClientRect();
+        const x = e.clientX - cardRect.left;
+        const y = e.clientY - cardRect.top;
 
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+        const centerX = cardRect.width / 2;
+        const centerY = cardRect.height / 2;
 
-        const rotateX = ((y - centerY) / centerY) * -5;
-        const rotateY = ((x - centerX) / centerX) * 5;
+        const rotateX = ((y - centerY) / (centerY || 1)) * -5;
+        const rotateY = ((x - centerX) / (centerX || 1)) * 5;
 
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
 
@@ -621,39 +670,47 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       card.addEventListener('mouseleave', () => {
+        cardRect = null;
         card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
       });
     });
   }
 
   // ========================================================
-  // 5. ANIMATED DAY-BY-DAY ITINERARY TIMELINE
+  // 5. ANIMATED DAY-BY-DAY ITINERARY TIMELINE (THROTTLED)
   // ========================================================
   const itineraryTimeline = document.getElementById('itineraryTimeline');
   const timelineProgress = document.getElementById('timelineProgress');
   const timelineNodes = document.querySelectorAll('.timeline-node');
 
   if (itineraryTimeline && timelineNodes.length > 0) {
+    let timelineTicking = false;
     function updateTimelineOnScroll() {
-      const rect = itineraryTimeline.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
+      if (!timelineTicking) {
+        requestAnimationFrame(() => {
+          const rect = itineraryTimeline.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
 
-      // Calculate progress of timeline in view
-      const visibleDistance = (windowHeight * 0.65) - rect.top;
-      const progressPercent = Math.max(0, Math.min((visibleDistance / rect.height) * 100, 100));
+          // Calculate progress of timeline in view
+          const visibleDistance = (windowHeight * 0.65) - rect.top;
+          const progressPercent = Math.max(0, Math.min((visibleDistance / (rect.height || 1)) * 100, 100));
 
-      if (timelineProgress) {
-        timelineProgress.style.height = progressPercent + '%';
+          if (timelineProgress) {
+            timelineProgress.style.height = progressPercent + '%';
+          }
+
+          timelineNodes.forEach(node => {
+            const nodeRect = node.getBoundingClientRect();
+            if (nodeRect.top < windowHeight * 0.7) {
+              node.classList.add('active');
+            } else {
+              node.classList.remove('active');
+            }
+          });
+          timelineTicking = false;
+        });
+        timelineTicking = true;
       }
-
-      timelineNodes.forEach(node => {
-        const nodeRect = node.getBoundingClientRect();
-        if (nodeRect.top < windowHeight * 0.7) {
-          node.classList.add('active');
-        } else {
-          node.classList.remove('active');
-        }
-      });
     }
 
     window.addEventListener('scroll', updateTimelineOnScroll, { passive: true });

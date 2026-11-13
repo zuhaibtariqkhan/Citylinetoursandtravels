@@ -194,6 +194,12 @@ app.get('/terms', (req, res) => {
   });
 });
 
+app.get('/privacy', (req, res) => {
+  res.render('terms', {
+    pageTitle: 'Privacy Policy & Terms | City Line Tours'
+  });
+});
+
 // ==========================================
 // ENQUIRY & EMAIL SUBMISSION APIS
 // ==========================================

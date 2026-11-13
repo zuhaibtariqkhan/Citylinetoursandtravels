@@ -391,12 +391,12 @@
 
         const opt = select.options[select.selectedIndex];
         const title = opt ? opt.getAttribute('data-title') : 'Kashmir Tour Package';
-        const modalTitle = document.getElementById('modalPackageTitle');
-        const hiddenPkg = document.getElementById('modalPackageInput');
+        const modalHeading = document.getElementById('modalTargetTitle');
+        const hiddenPkg = document.getElementById('modalPackageTitle');
         const travellersInput = modal.querySelector('select[name="travellers"], input[name="travellers"]');
         const messageInput = modal.querySelector('textarea[name="message"]');
 
-        if (modalTitle) modalTitle.textContent = title;
+        if (modalHeading) modalHeading.textContent = `Enquire: ${title}`;
         if (hiddenPkg) hiddenPkg.value = title;
 
         if (travellersInput) {
@@ -407,8 +407,8 @@
           messageInput.value = `Hi City Line Tours, I calculated an estimated budget for "${title}" on your website for ${travellers} travellers (${totalEl.textContent}). Please share the day-wise itinerary and booking confirmation details.`;
         }
 
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
       });
 
       // Initial run
