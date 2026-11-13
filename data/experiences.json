@@ -60,7 +60,7 @@
     "title": "Kashmiri Bakery Experience: Traditional Kandur Culture",
     "location": "Local Bakeries (Kandur Waan) Across Kashmir",
     "shortDescription": "Visit traditional Kashmiri bakeries, locally known as Kandur Waan, and discover the art of preparing freshly baked Girda, Lavasa, Sheermal, Kulcha and Bakarkhani. Enjoy these delicious breads with traditional pink Noon Chai. Experience the warmth of Kashmiri morning traditions and observe local bakers preparing bread in traditional ovens.",
-    "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80",
+    "image": "/EXPERIENCEV2/BAKERY KASHMIRI.jpeg",
     "tag": "Kandur Waan & Noon Chai",
     "icon": "croissant"
   },
@@ -123,7 +123,7 @@
     "partTitle": "Kashmir Adventure & Outdoor Experiences",
     "slug": "gulmarg-gondola-experience",
     "title": "Gulmarg Gondola Experience: Ride Above the Clouds",
-    "location": "Gulmarg ( to )",
+    "location": "Gulmarg (2,650m to 4,390m)",
     "shortDescription": "Experience the famous Gulmarg Gondola, one of the world’s highest cable car systems. Enjoy breathtaking views of snow-covered Himalayan mountains, beautiful pine forests and spectacular valleys. Explore both Gondola phases towards Kongdoori and Apharwat Peak, subject to weather conditions and operations. Capture unforgettable photographs from the mountain heights.",
     "image": "/Experience/GULMARG GANDOLA.jpeg",
     "tag": "Phase 1 & 2 Cable Car",
@@ -138,7 +138,7 @@
     "title": "Gulmarg Snow Experience: A Winter Wonderland",
     "location": "Gulmarg Snow Meadows & Ski Slopes",
     "shortDescription": "Discover the magical winter beauty of Gulmarg, where mountains and meadows transform into spectacular snowy landscapes. Enjoy snowball fights, build snowmen, experience skiing and snowboarding, or simply admire the beautiful surroundings. Whether travelling with family, friends or your partner, create unforgettable memories in Kashmir’s famous winter destination.",
-    "image": "https://images.unsplash.com/photo-1605649487212-47bdab064df8?auto=format&fit=crop&w=900&q=80",
+    "image": "/EXPERIENCEV2/GULMARG SNOW.jpeg",
     "tag": "Powder Snow & Skiing",
     "icon": "snowflake"
   },
@@ -151,7 +151,7 @@
     "title": "Gulmarg ATV Adventure: Explore the Mountains",
     "location": "Gulmarg Designated Mountain Routes",
     "shortDescription": "Experience an exciting ATV ride through designated mountain routes in Gulmarg. Explore beautiful landscapes, pine forests and open meadows while enjoying the thrill of an outdoor adventure. Capture spectacular mountain views and discover a different side of Gulmarg with authorised local operators and appropriate safety equipment.",
-    "image": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=900&q=80",
+    "image": "/EXPERIENCEV2/GULMARG ATV ADVENTURE.jpeg",
     "tag": "All-Terrain Adventure",
     "icon": "navigation"
   },
@@ -164,7 +164,7 @@
     "title": "Pahalgam Pony Ride Experience: Explore the Valley",
     "location": "Baisaran (Mini Switzerland), Pahalgam",
     "shortDescription": "Discover the scenic beauty of Pahalgam through a traditional pony ride. Explore beautiful mountain trails and popular sightseeing areas such as Baisaran, famous for its lush green meadows and surrounding pine forests. Enjoy breathtaking landscapes, peaceful surroundings and memorable photographs while experiencing a traditional way of exploring the mountains.",
-    "image": "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=900&q=80",
+    "image": "/EXPERIENCEV2/PAHALGAM PONY RIDE.jpeg",
     "tag": "Highland Trail & Pine Woods",
     "icon": "trees"
   },
@@ -255,7 +255,7 @@
     "title": "Srinagar Houseboat Experience: Stay on Floating Heritage",
     "location": "Dal Lake & Nigeen Lake, Srinagar",
     "shortDescription": "Enjoy a memorable stay in a traditional Kashmiri houseboat on Dal Lake or Nigeen Lake. Admire beautifully carved wooden interiors, traditional furnishings and peaceful lake surroundings. Wake up to stunning mountain views, enjoy breakfast overlooking the water and experience the warmth of Kashmiri hospitality during your stay.",
-    "image": "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=900&q=80",
+    "image": "/EXPERIENCEV2/SRINAGAR HOUSEBOAT.jpeg",
     "tag": "Carved Cedar Palaces",
     "icon": "bed"
   },
@@ -411,7 +411,7 @@
     "title": "Ladakh Monastery Experience: Discover Buddhist Heritage",
     "location": "Thiksey, Hemis, Diskit, Alchi & Lamayuru",
     "shortDescription": "Explore Ladakh’s ancient monasteries, including Thiksey, Hemis, Diskit, Alchi and Lamayuru. Discover traditional Buddhist architecture, colourful murals, prayer halls and historical artefacts. Observe monastery traditions respectfully, learn about the region’s cultural heritage and experience the peaceful atmosphere of these remarkable Himalayan spiritual centres.",
-    "image": "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=900&q=80",
+    "image": "/EXPERIENCEV2/LADAKH MONASTERY.jpeg",
     "tag": "Gompas & Prayer Wheels",
     "icon": "bell"
   },
@@ -424,7 +424,7 @@
     "title": "Ladakh Mountain Biking Experience: Ride Through the Himalayas",
     "location": "Khardung La to Leh Downhill Trails",
     "shortDescription": "Discover Ladakh through an exciting mountain biking adventure across scenic mountain roads, high-altitude landscapes and traditional villages. Enjoy guided cycling routes suited to your experience level, admire spectacular Himalayan scenery and experience the excitement of exploring this beautiful mountain region on two wheels.",
-    "image": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=900&q=80",
+    "image": "/EXPERIENCEV2/LADAKH MOUNTAIN BIKING.jpeg",
     "tag": "Downhill Mountain Biking",
     "icon": "bike"
   },
@@ -437,7 +437,7 @@
     "title": "Ladakh River Rafting Experience: Adventure on the Zanskar River",
     "location": "Zanskar & Indus River Gorges",
     "shortDescription": "Experience thrilling river rafting on suitable stretches of the Zanskar and Indus rivers. Surrounded by dramatic mountain valleys and spectacular landscapes, this adventure offers unforgettable moments for outdoor enthusiasts. Enjoy guided rafting, appropriate safety equipment and professionally organised experiences during the permitted operating season.",
-    "image": "https://images.unsplash.com/photo-1508873696983-2df5293cb32f?auto=format&fit=crop&w=900&q=80",
+    "image": "/EXPERIENCEV2/LADAKH RIVER RAFTING.jpeg",
     "tag": "Zanskar Canyon Rapids",
     "icon": "waves"
   },
@@ -450,7 +450,7 @@
     "title": "Ladakh Stargazing Experience: A Night Under Himalayan Skies",
     "location": "Hanle Dark Sky Reserve & Nubra Valley",
     "shortDescription": "Discover the magical night skies of Ladakh, where high-altitude landscapes and clear conditions create wonderful opportunities for stargazing. Observe constellations, planets and the Milky Way when visible. Enjoy peaceful mountain evenings, guided sky observation and night-sky photography while experiencing the beauty of the Himalayan universe.",
-    "image": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=900&q=80",
+    "image": "/EXPERIENCEV2/LADAKH STARGAZING.jpeg",
     "tag": "Milky Way & Dark Skies",
     "icon": "star"
   },
@@ -463,7 +463,7 @@
     "title": "Tso Moriri Lake Experience: The Beauty of Remote Ladakh",
     "location": "Changthang Plateau (4,522m), Ladakh",
     "shortDescription": "Explore the spectacular high-altitude Tso Moriri Lake, surrounded by vast mountains and peaceful natural landscapes. Discover nearby traditional villages, observe local birdlife from permitted viewpoints and enjoy beautiful photography. Experience the tranquillity of this remote Himalayan destination while exploring Ladakh’s remarkable natural and cultural heritage.",
-    "image": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=80",
+    "image": "/EXPERIENCEV2/TSO MORIRI LAKE.jpeg",
     "tag": "Remote Alpine Sanctuary",
     "icon": "feather"
   },
@@ -476,7 +476,7 @@
     "title": "Chadar Trek Experience: Walk on the Frozen River",
     "location": "Zanskar Frozen River Gorge (Winter)",
     "shortDescription": "Experience the extraordinary Chadar Trek, a famous winter adventure along sections of the frozen Zanskar River. Surrounded by dramatic icy gorges and towering mountains, this challenging journey offers a unique Himalayan experience. Explore remote landscapes with experienced guides, proper preparation and official permissions when winter conditions allow.",
-    "image": "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&w=900&q=80",
+    "image": "/EXPERIENCEV2/CHADAR TREK.jpeg",
     "tag": "Frozen River Ice Expedition",
     "icon": "snowflake"
   },
@@ -489,7 +489,7 @@
     "title": "Ladakhi Village & Homestay Experience: Live the Local Life",
     "location": "Traditional Mud-Brick Himalayan Hamlets",
     "shortDescription": "Discover Ladakh’s traditional village lifestyle through an authentic homestay experience. Meet local families, explore traditional houses, taste homemade Ladakhi food and learn about local farming and handicrafts. Enjoy the warmth of Himalayan hospitality and discover everyday traditions while experiencing the peaceful atmosphere of Ladakh’s beautiful villages.",
-    "image": "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=900&q=80",
+    "image": "/EXPERIENCEV2/LADAKHI VILLAGE HOMESTAY.jpeg",
     "tag": "Authentic Village Hospitality",
     "icon": "home"
   },
@@ -502,7 +502,7 @@
     "title": "Ladakhi Apricot Orchard Experience: Explore the Golden Harvest",
     "location": "Sham Valley & Dha-Hanu, Ladakh",
     "shortDescription": "Visit beautiful apricot-growing regions of Ladakh and discover the importance of this golden fruit in local life. During harvest season, taste fresh apricots, explore traditional orchards and learn about drying and preservation methods. Discover homemade jams, local products and the agricultural heritage of Ladakh’s mountain communities.",
-    "image": "https://images.unsplash.com/photo-1618897996318-5a901fa6ca71?auto=format&fit=crop&w=900&q=80",
+    "image": "/EXPERIENCEV2/LADAKHI APRICOT ORCHARD.jpeg",
     "tag": "Orchard Walks & Preserves",
     "icon": "tree-pine"
   },
