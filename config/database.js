@@ -53,7 +53,7 @@ module.exports = {
     return this.getPublishedPackages().filter(p => p.featured === true);
   },
   getPackageBySlug(slug) {
-    return this.getPackages().find(p => p.slug === slug);
+    return this.getPackages().find(p => p.slug === slug || (p.aliases && p.aliases.includes(slug)));
   },
   getPackageById(id) {
     return this.getPackages().find(p => p.id === id);

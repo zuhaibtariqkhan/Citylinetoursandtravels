@@ -41,7 +41,9 @@
         <!-- Pricing Summary Box on Desktop with PDF Download -->
         <div class="bg-brand-offwhite border border-brand-border p-4 rounded-2xl flex flex-wrap items-center gap-4 sm:gap-6">
           <div>
-            <span class="text-[11px] text-brand-muted uppercase block">Starting Price</span>
+            <span class="text-[11px] text-brand-muted uppercase block">
+              <%= pkg.pricingModel === 'winter_wonderland' ? 'Total Package Price (5 Persons)' : 'Starting Price' %>
+            </span>
             <div class="font-serif text-2xl font-bold text-brand-blue">
               <%= pkg.startingPriceFormatted %>
             </div>
@@ -111,11 +113,15 @@
             </div>
             <div>
               <span class="text-[11px] text-brand-muted uppercase block">Stay</span>
-              <span class="font-semibold text-xs sm:text-sm text-brand-navy">Houseboat & Hotel</span>
+              <span class="font-semibold text-xs sm:text-sm text-brand-navy">
+                <%= pkg.pricingModel === 'winter_wonderland' ? 'Deluxe Room' : 'Houseboat & Hotel' %>
+              </span>
             </div>
             <div>
               <span class="text-[11px] text-brand-muted uppercase block">Vehicle</span>
-              <span class="font-semibold text-xs sm:text-sm text-brand-navy">Private Dedicated</span>
+              <span class="font-semibold text-xs sm:text-sm text-brand-navy">
+                <%= pkg.transportation ? (pkg.transportation.includes('Innova') ? 'Toyota Innova' : 'Private Car') : 'Private Dedicated' %>
+              </span>
             </div>
             <div>
               <span class="text-[11px] text-brand-muted uppercase block">Meals</span>
@@ -157,7 +163,9 @@
                 <strong class="text-brand-navy block text-sm"><%= pkg.duration %></strong>
               </div>
               <div class="col-span-2 sm:col-span-1">
-                <span class="text-brand-muted block text-[10px] uppercase font-semibold">3. Price Per Person</span>
+                <span class="text-brand-muted block text-[10px] uppercase font-semibold">
+                  <%= pkg.pricingModel === 'winter_wonderland' ? '3. Base Package Price' : '3. Price Per Person' %>
+                </span>
                 <% if (pkg.price && pkg.price > 0) { %>
                   <strong class="text-brand-blue block text-sm">
                     <%= pkg.startingPriceFormatted %> <span class="text-[10px] font-normal text-brand-muted">/<%= pkg.pricingType || 'person' %></span>
@@ -168,7 +176,100 @@
               </div>
             </div>
 
-            <% if (pkg.price && pkg.price > 0) { %>
+            <% if (pkg.pricingModel === 'winter_wonderland') { %>
+              <!-- WINTER WONDERLAND GROUP CALCULATOR CONTROLS (5-10 Persons) -->
+              <div class="space-y-6 mb-6">
+                
+                <!-- Group Occupancy Selector (+ / -) -->
+                <div class="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <span class="text-xs font-bold text-brand-navy block uppercase tracking-wider">4. Group Occupancy (Number of Persons)</span>
+                    <span class="text-[11px] text-brand-muted block mt-0.5">Base occupancy: 5 Persons (min 5, max 10) • Dedicated Deluxe Toyota Innova</span>
+                  </div>
+                  <div class="flex items-center space-x-3 self-start sm:self-auto">
+                    <button type="button" id="wwMinusBtn" class="w-10 h-10 rounded-xl bg-white border border-brand-border text-brand-navy font-bold hover:bg-slate-100 flex items-center justify-center transition shadow-sm select-none text-base">
+                      -
+                    </button>
+                    <span id="wwPersonsCount" class="font-serif font-bold text-2xl text-brand-navy w-10 text-center">
+                      5
+                    </span>
+                    <button type="button" id="wwPlusBtn" class="w-10 h-10 rounded-xl bg-white border border-brand-border text-brand-navy font-bold hover:bg-slate-100 flex items-center justify-center transition shadow-sm select-none text-base">
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Prominent Highlight Total Box -->
+                <div class="bg-gradient-to-r from-brand-navy to-brand-blue text-white p-6 sm:p-7 rounded-2xl shadow-lg">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/15 pb-4 mb-4">
+                    <div>
+                      <span class="text-xs text-brand-sky font-semibold uppercase tracking-wider block">Selected Group Size</span>
+                      <strong class="text-lg text-white font-serif" id="wwGroupSizeDisplay">5 Persons (Base Occupancy)</strong>
+                    </div>
+                    <div class="sm:text-right">
+                      <span class="text-xs text-slate-300 block">Per Person Equivalent</span>
+                      <strong class="text-lg font-bold text-brand-sky" id="wwPerPersonDisplay">₹11,800 / person equivalent</strong>
+                    </div>
+                  </div>
+
+                  <div>
+                    <span class="text-[11px] text-amber-300 font-bold uppercase tracking-wider block mb-1">
+                      TOTAL PACKAGE PRICE FOR GROUP (NOT PER PERSON)
+                    </span>
+                    <div class="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight" id="wwTotalPriceDisplay">
+                      ₹59,000
+                    </div>
+                    <p class="text-xs text-slate-200 mt-2.5 leading-relaxed" id="wwBreakdownNote">
+                      ✓ Complete total package price for all 5 guests. Includes 4 Nights / 5 Days Deluxe Room accommodation in well-rated hotels & comfortable houseboat, daily Breakfast and Dinner, dedicated Deluxe Toyota Innova for all transfers and sightseeing, airport pickup & drop, toll taxes and driver allowances.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Quick Reference Pricing Tier Grid -->
+                <div class="bg-brand-offwhite border border-brand-border rounded-2xl p-4 sm:p-5">
+                  <div class="flex items-center justify-between mb-3">
+                    <h4 class="font-serif text-xs font-bold text-brand-navy uppercase tracking-wider flex items-center space-x-1.5">
+                      <i data-lucide="layers" class="w-3.5 h-3.5 text-brand-blue"></i>
+                      <span>Transparent Group Pricing Table</span>
+                    </h4>
+                    <span class="text-[11px] text-brand-muted">Click any tier to calculate</span>
+                  </div>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 text-center text-xs">
+                    <div class="ww-tier-card p-2.5 rounded-xl border transition cursor-pointer select-none bg-brand-navy text-white border-brand-navy shadow-sm" data-pax="5">
+                      <span class="block text-[10px] text-slate-200 uppercase font-semibold">5 Persons</span>
+                      <strong class="block text-amber-300 font-serif text-sm mt-0.5">₹59,000</strong>
+                      <span class="text-[9px] text-slate-300 block">Base Price</span>
+                    </div>
+                    <div class="ww-tier-card p-2.5 rounded-xl border transition cursor-pointer select-none bg-white text-brand-navy border-brand-border hover:border-brand-blue" data-pax="6">
+                      <span class="block text-[10px] text-brand-muted uppercase font-semibold">6 Persons</span>
+                      <strong class="block text-brand-navy font-serif text-sm mt-0.5">₹70,800</strong>
+                      <span class="text-[9px] text-slate-500 block">+₹11,800</span>
+                    </div>
+                    <div class="ww-tier-card p-2.5 rounded-xl border transition cursor-pointer select-none bg-white text-brand-navy border-brand-border hover:border-brand-blue" data-pax="7">
+                      <span class="block text-[10px] text-brand-muted uppercase font-semibold">7 Persons</span>
+                      <strong class="block text-brand-navy font-serif text-sm mt-0.5">₹85,600</strong>
+                      <span class="text-[9px] text-slate-500 block">+₹14,800</span>
+                    </div>
+                    <div class="ww-tier-card p-2.5 rounded-xl border transition cursor-pointer select-none bg-white text-brand-navy border-brand-border hover:border-brand-blue" data-pax="8">
+                      <span class="block text-[10px] text-brand-muted uppercase font-semibold">8 Persons</span>
+                      <strong class="block text-brand-navy font-serif text-sm mt-0.5">₹1,00,400</strong>
+                      <span class="text-[9px] text-slate-500 block">+₹14,800</span>
+                    </div>
+                    <div class="ww-tier-card p-2.5 rounded-xl border transition cursor-pointer select-none bg-white text-brand-navy border-brand-border hover:border-brand-blue" data-pax="9">
+                      <span class="block text-[10px] text-brand-muted uppercase font-semibold">9 Persons</span>
+                      <strong class="block text-brand-navy font-serif text-sm mt-0.5">₹1,15,200</strong>
+                      <span class="text-[9px] text-slate-500 block">+₹14,800</span>
+                    </div>
+                    <div class="ww-tier-card p-2.5 rounded-xl border transition cursor-pointer select-none bg-white text-brand-navy border-brand-border hover:border-brand-blue" data-pax="10">
+                      <span class="block text-[10px] text-brand-muted uppercase font-semibold">10 Persons</span>
+                      <strong class="block text-brand-navy font-serif text-sm mt-0.5">₹1,30,000</strong>
+                      <span class="text-[9px] text-slate-500 block">+₹14,800</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            <% } else if (pkg.price && pkg.price > 0) { %>
               <!-- Interactive Counter Controls -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                 <!-- 4. Number of Adults -->
@@ -301,6 +402,16 @@
                       <p class="text-sm text-brand-muted leading-relaxed mb-3">
                         <%= day.description %>
                       </p>
+                      <% if (day.places && day.places.length > 0) { %>
+                        <div class="mb-3 flex flex-wrap gap-1.5">
+                          <% day.places.forEach(place => { %>
+                            <span class="text-[11px] bg-white border border-slate-200 text-brand-navy px-2.5 py-0.5 rounded-md font-medium inline-flex items-center space-x-1 shadow-xs">
+                              <i data-lucide="map-pin" class="w-3 h-3 text-brand-blue"></i>
+                              <span><%= place %></span>
+                            </span>
+                          <% }) %>
+                        </div>
+                      <% } %>
                       <% if (day.stay) { %>
                         <div class="text-xs font-medium text-brand-navy flex items-center space-x-1.5 pt-2.5 border-t border-slate-200/50">
                           <i data-lucide="bed-double" class="w-3.5 h-3.5 text-brand-blue"></i>
@@ -365,6 +476,70 @@
               </div>
             </div>
           </div>
+
+          <!-- Important Travel Notes & Exclusions -->
+          <% if (pkg.importantNotes && pkg.importantNotes.length > 0) { %>
+            <div class="bg-amber-50/70 border border-amber-200/90 rounded-2xl p-6 sm:p-7 space-y-4">
+              <div class="flex items-center space-x-2.5">
+                <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-900 flex items-center justify-center shrink-0">
+                  <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <h3 class="font-serif text-lg font-bold text-amber-950">Important Notes & Exclusions</h3>
+                  <span class="text-xs text-amber-800/80">Please review essential guidelines and local transportation requirements</span>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-amber-950/90 leading-relaxed">
+                <% pkg.importantNotes.forEach(note => { %>
+                  <div class="flex items-start space-x-2 bg-white/80 p-3 rounded-xl border border-amber-200/60 shadow-xs">
+                    <i data-lucide="info" class="w-3.5 h-3.5 text-amber-700 shrink-0 mt-0.5"></i>
+                    <span><%= note %></span>
+                  </div>
+                <% }) %>
+              </div>
+            </div>
+          <% } %>
+
+          <!-- Responsible Tourism – Keep Kashmir Clean (Requirement 5) -->
+          <% if (pkg.responsibleTourism) { %>
+            <div class="bg-gradient-to-br from-emerald-50 via-teal-50 to-sky-50 border-2 border-emerald-300/80 rounded-3xl p-6 sm:p-8 shadow-sm space-y-5">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                  <i data-lucide="leaf" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-800 bg-emerald-100 border border-emerald-200 px-2.5 py-0.5 rounded-full inline-block">
+                    RESPONSIBLE TRAVEL COMMITMENT
+                  </span>
+                  <h3 class="font-serif text-xl sm:text-2xl font-bold text-emerald-950 mt-1">
+                    <%= pkg.responsibleTourism.title || 'Responsible Tourism – Keep Kashmir Clean' %>
+                  </h3>
+                </div>
+              </div>
+
+              <p class="text-xs sm:text-sm text-emerald-900/85 leading-relaxed">
+                Kashmir is our sacred home and India's crown jewel. We warmly invite all our travellers to partner with us in keeping Kashmir clean, pristine, and magnificent for generations to come.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <% (pkg.responsibleTourism.guidelines || []).forEach(guide => { %>
+                  <div class="flex items-start space-x-2.5 bg-white/90 p-3 rounded-xl border border-emerald-100 shadow-xs">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                    <span class="text-xs text-emerald-950 font-medium leading-relaxed"><%= guide %></span>
+                  </div>
+                <% }) %>
+              </div>
+
+              <div class="bg-emerald-900 text-white p-5 rounded-2xl text-center shadow-md border border-emerald-800">
+                <p class="font-serif font-bold text-xs sm:text-sm text-amber-300 tracking-wider uppercase mb-1">
+                  LET'S TRAVEL RESPONSIBLY – KEEP KASHMIR CLEAN & BEAUTIFUL!
+                </p>
+                <p class="text-[11px] sm:text-xs text-emerald-100 leading-relaxed max-w-2xl mx-auto">
+                  Thank you for choosing CITY LINE TOURS & TRAVELS. Our commitment is to provide you with a comfortable, safe and memorable travel experience.
+                </p>
+              </div>
+            </div>
+          <% } %>
 
         </div>
 
@@ -504,6 +679,155 @@
       const duration = container.getAttribute('data-pkg-duration') || '';
       const configuredChildPrice = parseFloat(container.getAttribute('data-pkg-child-price')) || 0;
 
+      const enquireBtn = document.getElementById('detailCalcEnquireBtn');
+      const waBtn = document.getElementById('detailCalcWaBtn');
+
+      // 1. Winter Wonderland Group Pricing Structure (5-10 Persons)
+      if (model === 'winter_wonderland') {
+        const wwPersonsCountEl = document.getElementById('wwPersonsCount');
+        const wwMinusBtn = document.getElementById('wwMinusBtn');
+        const wwPlusBtn = document.getElementById('wwPlusBtn');
+        const wwGroupSizeDisplay = document.getElementById('wwGroupSizeDisplay');
+        const wwPerPersonDisplay = document.getElementById('wwPerPersonDisplay');
+        const wwTotalPriceDisplay = document.getElementById('wwTotalPriceDisplay');
+        const wwBreakdownNote = document.getElementById('wwBreakdownNote');
+        const tierCards = document.querySelectorAll('.ww-tier-card');
+
+        let wwPersons = 5;
+
+        function calculateWinterWonderlandPrice(persons) {
+          if (persons < 5 || persons > 10) {
+            return null;
+          }
+          if (persons === 5) {
+            return 59000;
+          }
+          if (persons === 6) {
+            return 70800;
+          }
+          return 70800 + (persons - 6) * 14800;
+        }
+
+        function updateWWCalc() {
+          if (wwPersons < 5) wwPersons = 5;
+          if (wwPersons > 10) wwPersons = 10;
+
+          const total = calculateWinterWonderlandPrice(wwPersons);
+          if (!total) return;
+
+          const perPerson = Math.round(total / wwPersons);
+
+          if (wwPersonsCountEl) wwPersonsCountEl.textContent = wwPersons;
+          if (wwGroupSizeDisplay) {
+            wwGroupSizeDisplay.textContent = `${wwPersons} Persons ${wwPersons === 5 ? '(Base Occupancy)' : ''}`;
+          }
+          if (wwPerPersonDisplay) {
+            wwPerPersonDisplay.textContent = `₹${perPerson.toLocaleString('en-IN')} / person equivalent`;
+          }
+          if (wwTotalPriceDisplay) {
+            wwTotalPriceDisplay.textContent = '₹' + total.toLocaleString('en-IN');
+          }
+          if (wwBreakdownNote) {
+            wwBreakdownNote.textContent = `✓ Complete total package price for all ${wwPersons} guests. Includes 4 Nights / 5 Days Deluxe Room accommodation in well-rated hotels & comfortable houseboat, daily Breakfast and Dinner, dedicated Deluxe Toyota Innova for all transfers and sightseeing, airport pickup & drop, toll taxes and driver allowances.`;
+          }
+
+          // Button states
+          if (wwMinusBtn) {
+            const atMin = (wwPersons <= 5);
+            wwMinusBtn.style.opacity = atMin ? '0.4' : '1';
+            wwMinusBtn.style.cursor = atMin ? 'not-allowed' : 'pointer';
+          }
+          if (wwPlusBtn) {
+            const atMax = (wwPersons >= 10);
+            wwPlusBtn.style.opacity = atMax ? '0.4' : '1';
+            wwPlusBtn.style.cursor = atMax ? 'not-allowed' : 'pointer';
+          }
+
+          // Highlight matching tier card
+          tierCards.forEach(card => {
+            const cardPax = parseInt(card.getAttribute('data-pax')) || 0;
+            const strongEl = card.querySelector('strong');
+            const topSpan = card.querySelector('span:first-child');
+            const botSpan = card.querySelector('span:last-child');
+
+            if (cardPax === wwPersons) {
+              card.classList.add('bg-brand-navy', 'text-white', 'border-brand-navy', 'shadow-sm');
+              card.classList.remove('bg-white', 'text-brand-navy', 'border-brand-border');
+              if (strongEl) strongEl.className = 'block text-amber-300 font-serif text-sm mt-0.5';
+              if (topSpan) topSpan.className = 'block text-[10px] text-slate-200 uppercase font-semibold';
+              if (botSpan) botSpan.className = 'text-[9px] text-slate-300 block';
+            } else {
+              card.classList.remove('bg-brand-navy', 'text-white', 'border-brand-navy', 'shadow-sm');
+              card.classList.add('bg-white', 'text-brand-navy', 'border-brand-border');
+              if (strongEl) strongEl.className = 'block text-brand-navy font-serif text-sm mt-0.5';
+              if (topSpan) topSpan.className = 'block text-[10px] text-brand-muted uppercase font-semibold';
+              if (botSpan) botSpan.className = 'text-[9px] text-slate-500 block';
+            }
+          });
+
+          if (waBtn) {
+            const msg = `Hello City Line Tours And Travels,\nI calculated an estimated package budget on your website for:\n• Package: ${title}\n• Duration: ${duration}\n• Number of Persons: ${wwPersons} Persons\n• Dedicated Vehicle: Deluxe Toyota Innova\n• Total Package Price: ₹${total.toLocaleString('en-IN')}\n\nPlease share the detailed day-wise itinerary and booking availability!`;
+            waBtn.href = `https://wa.me/916006725007?text=${encodeURIComponent(msg)}`;
+          }
+        }
+
+        wwMinusBtn?.addEventListener('click', () => {
+          if (wwPersons > 5) {
+            wwPersons--;
+            updateWWCalc();
+          }
+        });
+
+        wwPlusBtn?.addEventListener('click', () => {
+          if (wwPersons < 10) {
+            wwPersons++;
+            updateWWCalc();
+          }
+        });
+
+        tierCards.forEach(card => {
+          card.addEventListener('click', () => {
+            const p = parseInt(card.getAttribute('data-pax'));
+            if (p >= 5 && p <= 10) {
+              wwPersons = p;
+              updateWWCalc();
+            }
+          });
+        });
+
+        enquireBtn?.addEventListener('click', () => {
+          const modal = document.getElementById('enquiryModal');
+          if (!modal) return;
+
+          const modalHeading = document.getElementById('modalTargetTitle');
+          const hiddenPkg = document.getElementById('modalPackageTitle');
+          const travellersInput = modal.querySelector('select[name="travellers"], input[name="travellers"]');
+          const messageInput = modal.querySelector('textarea[name="message"]');
+
+          const total = calculateWinterWonderlandPrice(wwPersons);
+          const totalStr = '₹' + total.toLocaleString('en-IN');
+          const paxStr = `${wwPersons} Persons (Family Package)`;
+
+          if (modalHeading) modalHeading.textContent = `Enquire: ${title}`;
+          if (hiddenPkg) hiddenPkg.value = title;
+
+          if (travellersInput) {
+            travellersInput.value = paxStr;
+          }
+
+          if (messageInput) {
+            messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalStr} for ${wwPersons} persons for the "${title}" (${duration} with Dedicated Deluxe Toyota Innova). Please share booking availability and quotation.`;
+          }
+
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+
+        updateWWCalc();
+        return;
+      }
+
+      // 2. Standard Per-Person / Couple / On-Request Calculator Logic
       const adultsCountEl = document.getElementById('detailAdultsCount');
       const kidsCountEl = document.getElementById('detailKidsCount');
       const adultsMinusBtn = document.getElementById('detailAdultsMinus');
@@ -513,8 +837,6 @@
       const totalPaxTextEl = document.getElementById('detailTotalPaxText');
       const totalBudgetTextEl = document.getElementById('detailTotalBudgetText');
       const perPersonTextEl = document.getElementById('detailPerPersonText');
-      const enquireBtn = document.getElementById('detailCalcEnquireBtn');
-      const waBtn = document.getElementById('detailCalcWaBtn');
 
       let adults = 2;
       let kids = 0;

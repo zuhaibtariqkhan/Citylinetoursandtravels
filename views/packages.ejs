@@ -91,6 +91,9 @@
                           data-duration="<%= p.duration %>"
                           data-title="<%= p.title %>"
                           data-slug="<%= p.slug %>"
+                          data-min-pax="<%= p.minTravellers || 1 %>"
+                          data-max-pax="<%= p.maxTravellers || 20 %>"
+                          data-base-pax="<%= p.baseOccupancy || (p.pricingModel === 'winter_wonderland' ? 5 : 2) %>"
                           <%= idx === 0 ? 'selected' : '' %>>
                     <%= p.title %> (<%= p.duration %>) • <%= p.startingPriceFormatted %>
                   </option>
@@ -229,7 +232,9 @@
               <!-- Price & CTAs -->
               <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
                 <div>
-                  <span class="text-[10px] text-brand-muted uppercase block">Starting From</span>
+                  <span class="text-[10px] text-brand-muted uppercase block">
+                    <%= pkg.pricingModel === 'winter_wonderland' ? 'Total Package Price' : 'Starting From' %>
+                  </span>
                   <span class="font-serif text-lg font-bold text-brand-blue">
                     <%= pkg.startingPriceFormatted %>
                   </span>
@@ -301,6 +306,21 @@
       if (!select || !countEl) return;
 
       let travellers = 2;
+      let lastModel = '';
+
+      // Modular Pricing Logic for Winter Wonderland Package
+      function calculateWinterWonderlandPrice(persons) {
+        if (persons < 5 || persons > 10) {
+          return null;
+        }
+        if (persons === 5) {
+          return 59000;
+        }
+        if (persons === 6) {
+          return 70800;
+        }
+        return 70800 + (persons - 6) * 14800;
+      }
 
       function calculate() {
         const opt = select.options[select.selectedIndex];
@@ -311,12 +331,64 @@
         const type = opt.getAttribute('data-type') || 'person';
         const duration = opt.getAttribute('data-duration') || '';
         const title = opt.getAttribute('data-title') || '';
+        const minPax = parseInt(opt.getAttribute('data-min-pax')) || 1;
+        const maxPax = parseInt(opt.getAttribute('data-max-pax')) || 20;
+        const basePax = parseInt(opt.getAttribute('data-base-pax')) || 2;
 
         if (titleEl) titleEl.textContent = title;
         if (durEl) durEl.textContent = duration;
 
-        // On Request (no pricing configured)
+        // Reset/clamp travellers when switching pricing models
+        if (model !== lastModel) {
+          if (model === 'winter_wonderland') {
+            travellers = 5;
+          } else if (lastModel === 'winter_wonderland') {
+            travellers = basePax || 2;
+          }
+          lastModel = model;
+        }
+
+        // Clamp travellers to bounds
+        if (travellers < minPax) travellers = minPax;
+        if (travellers > maxPax) travellers = maxPax;
+        countEl.textContent = travellers;
+
+        // Visual button state feedback
+        if (minusBtn) {
+          const atMin = (travellers <= minPax);
+          minusBtn.style.opacity = atMin ? '0.4' : '1';
+          minusBtn.style.cursor = atMin ? 'not-allowed' : 'pointer';
+        }
+        if (plusBtn) {
+          const atMax = (travellers >= maxPax);
+          plusBtn.style.opacity = atMax ? '0.4' : '1';
+          plusBtn.style.cursor = atMax ? 'not-allowed' : 'pointer';
+        }
+
+        // 1. Winter Wonderland Family Package Pricing (5-10 Persons)
+        if (model === 'winter_wonderland') {
+          paxLabel.textContent = 'Group Occupancy (5 to 10 Persons)';
+          paxNote.textContent = 'Family Package includes dedicated Deluxe Toyota Innova & Deluxe Room stays';
+
+          const total = calculateWinterWonderlandPrice(travellers);
+          if (total) {
+            totalEl.className = 'font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight';
+            totalEl.textContent = '₹' + total.toLocaleString('en-IN');
+            perPersonEl.textContent = `₹${Math.round(total / travellers).toLocaleString('en-IN')} / person equivalent • Total Group Price: ₹${total.toLocaleString('en-IN')}`;
+            breakdownEl.textContent = `✓ Total package price for all ${travellers} persons. Includes 4 Nights / 5 Days Deluxe stays, daily breakfast & dinner, dedicated Deluxe Toyota Innova for all transfers & sightseeing, airport pickup & drop, toll taxes & driver allowances.`;
+
+            if (waBtn) {
+              const msg = `Hello City Line Tours And Travels,\nI calculated an estimated package budget on your website:\n• Package: ${title}\n• Duration: ${duration}\n• Number of Persons: ${travellers} Persons\n• Dedicated Vehicle: Deluxe Toyota Innova\n• Total Package Price: ₹${total.toLocaleString('en-IN')}\n\nPlease share the detailed day-wise itinerary and booking availability!`;
+              waBtn.href = `https://wa.me/916006725007?text=${encodeURIComponent(msg)}`;
+            }
+          }
+          return;
+        }
+
+        // 2. On Request (no pricing configured)
         if (model === 'on_request' || price <= 0) {
+          paxLabel.textContent = 'Number of People';
+          paxNote.textContent = 'Tailor-made journey with flexible dates and group sizes';
           totalEl.textContent = 'Contact us for a personalised quotation.';
           totalEl.className = 'font-serif text-lg sm:text-xl font-bold text-brand-sky tracking-tight leading-snug';
           perPersonEl.textContent = 'Custom tailored according to your dates & group';
@@ -331,7 +403,7 @@
 
         totalEl.className = 'font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight';
 
-        // Per Couple
+        // 3. Per Couple
         if (model === 'per_couple') {
           paxLabel.textContent = 'Couple Travellers';
           paxNote.textContent = 'Honeymoon packages are curated on a 2-person sharing basis';
@@ -350,7 +422,7 @@
           return;
         }
 
-        // Standard Per-Person Pricing
+        // 4. Standard Per-Person Pricing
         paxLabel.textContent = 'Number of People';
         paxNote.textContent = 'Includes dedicated vehicle & verified hotel accommodation';
         const total = price * travellers;
@@ -367,7 +439,9 @@
 
       // Plus & Minus Event Listeners
       minusBtn?.addEventListener('click', () => {
-        if (travellers > 1) {
+        const opt = select.options[select.selectedIndex];
+        const minPax = parseInt(opt ? opt.getAttribute('data-min-pax') : '1') || 1;
+        if (travellers > minPax) {
           travellers--;
           countEl.textContent = travellers;
           calculate();
@@ -375,7 +449,9 @@
       });
 
       plusBtn?.addEventListener('click', () => {
-        if (travellers < 20) {
+        const opt = select.options[select.selectedIndex];
+        const maxPax = parseInt(opt ? opt.getAttribute('data-max-pax') : '20') || 20;
+        if (travellers < maxPax) {
           travellers++;
           countEl.textContent = travellers;
           calculate();
@@ -391,6 +467,8 @@
 
         const opt = select.options[select.selectedIndex];
         const title = opt ? opt.getAttribute('data-title') : 'Kashmir Tour Package';
+        const duration = opt ? opt.getAttribute('data-duration') : '';
+        const model = opt ? opt.getAttribute('data-model') : '';
         const modalHeading = document.getElementById('modalTargetTitle');
         const hiddenPkg = document.getElementById('modalPackageTitle');
         const travellersInput = modal.querySelector('select[name="travellers"], input[name="travellers"]');
@@ -399,12 +477,20 @@
         if (modalHeading) modalHeading.textContent = `Enquire: ${title}`;
         if (hiddenPkg) hiddenPkg.value = title;
 
+        const paxText = (model === 'winter_wonderland') 
+          ? `${travellers} Persons (Family Package)` 
+          : `${travellers} Adults`;
+
         if (travellersInput) {
-          travellersInput.value = `${travellers} Adults`;
+          travellersInput.value = paxText;
         }
 
         if (messageInput) {
-          messageInput.value = `Hi City Line Tours, I calculated an estimated budget for "${title}" on your website for ${travellers} travellers (${totalEl.textContent}). Please share the day-wise itinerary and booking confirmation details.`;
+          if (model === 'winter_wonderland') {
+            messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalEl.textContent} for ${travellers} persons for the "${title}" (${duration} with Deluxe Toyota Innova). Please share booking availability and quotation.`;
+          } else {
+            messageInput.value = `Hi City Line Tours, I calculated an estimated budget for "${title}" on your website for ${travellers} travellers (${totalEl.textContent}). Please share the day-wise itinerary and booking confirmation details.`;
+          }
         }
 
         modal.classList.add('active');

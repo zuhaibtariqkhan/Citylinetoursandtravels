@@ -443,84 +443,159 @@
   },
   {
     "id": "pkg-winter-wonderland",
-    "slug": "winter-wonderland-snow-special-5d4n",
-    "title": "Winter Wonderland: Kashmir Snow & Ski Special",
-    "category": "Group",
-    "duration": "5 Days / 4 Nights",
+    "slug": "winter-wonderland-kashmir-package",
+    "title": "WINTER WONDERLAND – KASHMIR PACKAGE",
+    "category": "Family Package",
+    "duration": "4 Nights / 5 Days",
     "durationDays": 5,
     "durationNights": 4,
-    "price": 21999,
-    "startingPriceFormatted": "₹21,999",
-    "pricingType": "per person",
+    "price": 59000,
+    "startingPriceFormatted": "₹59,000",
+    "pricingType": "total for 5 persons",
     "destinationCoverage": [
       "Srinagar",
+      "Pahalgam",
       "Gulmarg",
-      "Pahalgam"
+      "Sonamarg"
     ],
-    "shortDescription": "Experience Kashmir blanketed in pure white snow. Gondola ride, skiing on Apharwat, snowmobiles, frozen waterfalls, and hot Wazwan feasts.",
-    "fullDescription": "Watch Kashmir transform into a fairytale of powdery white snow and frozen crystals. From snow-clad Shikaras on Dal Lake, to the ski slopes of Gulmarg with its deep alpine powder, the frozen Drung waterfall, and snow-draped pine forests of Pahalgam, this winter escape is built for winter sports lovers, snow photographers, and cozy holidaymakers.",
+    "shortDescription": "Discover the Magic of Kashmir – A Journey Through Paradise. Experience the enchanting beauty of Kashmir with our Winter Wonderland Package. Explore breathtaking valleys, magnificent Mughal gardens, snow-covered mountains, pristine lakes and unforgettable Himalayan landscapes.",
+    "fullDescription": "Discover the Magic of Kashmir – A Journey Through Paradise.\n\nExperience the enchanting beauty of Kashmir with our Winter Wonderland Package. Explore breathtaking valleys, magnificent Mughal gardens, snow-covered mountains, pristine lakes and unforgettable Himalayan landscapes.\n\nDesigned specially as a premium Family Package for 5 to 10 persons, featuring dedicated Deluxe Toyota Innova travel, verified deluxe rooms, daily breakfast & dinner, and seamless transfers throughout Kashmir.",
     "featuredImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1000&q=80",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80",
+      "/EXPERIENCEV2/GULMARG SNOW.jpeg",
+      "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=800&q=80"
     ],
     "itinerary": [
       {
         "day": 1,
-        "title": "Arrive in Snowy Srinagar: Dal Lake in Winter",
-        "description": "Arrive at snowy Srinagar Airport. Transfer to your heated hotel/houseboat. Experience a misty winter Shikara ride with hot Kahwa.",
-        "meals": "Dinner Included",
-        "stay": "Overnight in Heated Hotel, Srinagar"
+        "title": "ARRIVAL IN SRINAGAR & LOCAL SIGHTSEEING",
+        "description": "Upon arrival at Srinagar International Airport, our representative will warmly welcome guests. Proceed for local sightseeing. Places to Visit: Shankaracharya Temple (an ancient temple offering panoramic views of Srinagar), Pari Mahal (a beautiful historical monument overlooking Dal Lake), Nishat Bagh (the famous Garden of Bliss), Shalimar Bagh (a magnificent Mughal garden), and Dal Lake Shikara Ride (enjoy a memorable Shikara ride amidst the beautiful surroundings).",
+        "places": [
+          "Shankaracharya Temple",
+          "Pari Mahal",
+          "Nishat Bagh",
+          "Shalimar Bagh",
+          "Dal Lake Shikara Ride"
+        ],
+        "meals": "Dinner and Breakfast",
+        "stay": "Deluxe Room"
       },
       {
         "day": 2,
-        "title": "Gulmarg Powder Snow Paradise & Gondola Ride",
-        "description": "Drive to Gulmarg. Snow chains on vehicles if needed. Ascend to Apharwat peak on the Gondola. Snowboard, ski, or ride snowmobiles.",
-        "meals": "Breakfast & Dinner Included",
-        "stay": "Overnight in Heated Resort, Gulmarg"
+        "title": "SRINAGAR TO PAHALGAM | THE VALLEY OF SHEPHERDS",
+        "description": "After breakfast, proceed towards Pahalgam, enjoying the scenic beauty of Kashmir along the way. En Route Sightseeing: Saffron Fields, Pampore; Dry Fruits Market; Cricket Bat Factories, Sangam. Pahalgam Sightseeing: Aru Valley, Betaab Valley, Chandanwari, and optional Pony Ride.",
+        "enroute": [
+          "Saffron Fields, Pampore",
+          "Dry Fruits Market",
+          "Cricket Bat Factories, Sangam"
+        ],
+        "places": [
+          "Aru Valley",
+          "Betaab Valley",
+          "Chandanwari",
+          "Optional Pony Ride"
+        ],
+        "meals": "Dinner and Breakfast",
+        "stay": "Deluxe Room"
       },
       {
         "day": 3,
-        "title": "Frozen Drung Waterfall & Drive to Pahalgam",
-        "description": "Visit the miraculous frozen waterfall at Drung. Continue through snowy pine valleys to Pahalgam.",
-        "meals": "Breakfast & Dinner Included",
-        "stay": "Overnight in Heated Hotel, Pahalgam"
+        "title": "PAHALGAM TO GULMARG | THE MEADOW OF FLOWERS",
+        "description": "After breakfast, proceed towards Gulmarg, enjoying beautiful mountain views and picturesque landscapes. Gulmarg Sightseeing: Gulmarg Meadows, Gulmarg Gondola (subject to availability), Khilanmarg (subject to accessibility), Snow Activities (including skiing, snowboarding and snow biking, at additional cost), and Gulmarg Golf Course.",
+        "places": [
+          "Gulmarg Meadows",
+          "Gulmarg Gondola (subject to availability)",
+          "Khilanmarg (subject to accessibility)",
+          "Snow Activities (skiing, snowboarding, snow biking)",
+          "Gulmarg Golf Course"
+        ],
+        "meals": "Dinner and Breakfast",
+        "stay": "Deluxe Room"
       },
       {
         "day": 4,
-        "title": "Snowy Betaab Valley & Return to Srinagar",
-        "description": "Explore the snow-laden wonderland of Betaab Valley. Return to Srinagar for evening shopping and an authentic Wazwan dinner.",
-        "meals": "Breakfast & Dinner Included",
-        "stay": "Overnight in Srinagar"
+        "title": "GULMARG TO SONAMARG & RETURN TO SRINAGAR",
+        "description": "After breakfast, proceed towards Sonamarg, famously known as the Meadow of Gold. Enjoy breathtaking views of beautiful valleys, rivers and snow-covered mountains. Sonamarg Sightseeing: Thajiwas Glacier, Optional Snow Biking, and Zero Point via local Union Vehicle (subject to weather and road conditions). After sightseeing, return to Srinagar.",
+        "places": [
+          "Thajiwas Glacier",
+          "Optional Snow Biking",
+          "Zero Point via local Union Vehicle (subject to weather & road conditions)"
+        ],
+        "meals": "Dinner and Breakfast",
+        "stay": "Deluxe Room"
       },
       {
         "day": 5,
-        "title": "Departure from Srinagar",
-        "description": "Morning breakfast and transfer to Srinagar Airport.",
+        "title": "DEPARTURE FROM SRINAGAR",
+        "description": "After breakfast, check out and proceed towards Srinagar International Airport according to the flight schedule. Guests are advised to reach the airport at least 2 hours before departure. Tour ends with beautiful memories!",
         "meals": "Breakfast Included",
-        "stay": "Tour Concludes"
+        "stay": "Tour Concludes (Airport Drop)"
       }
     ],
     "inclusions": [
-      "4 Nights accommodation with central heating / room heaters",
-      "Daily breakfast and dinner",
-      "Winter-equipped private vehicle with chains as required",
-      "1-Hour winter Shikara ride",
-      "24/7 emergency weather and travel assistance"
+      "Accommodation in well-rated hotels and a comfortable houseboat.",
+      "4 Nights / 5 Days accommodation in Deluxe Room Category.",
+      "Daily Breakfast and Dinner throughout the tour.",
+      "Dedicated Deluxe Toyota Innova for transfers and sightseeing as per itinerary.",
+      "Airport Pickup and Drop-off.",
+      "All applicable toll taxes and parking charges.",
+      "Driver allowance and vehicle-related expenses."
     ],
     "exclusions": [
-      "Skiing equipment rental and instructor fees",
-      "Gondola ride tickets and snowmobile charges",
-      "Airfare"
+      "Local Union Cabs (certain destinations, including Aru Valley, Betaab Valley, Chandanwari and Zero Point, may require local Union Vehicles).",
+      "Pony rides and horse riding charges.",
+      "Snow bikes, sledges, and other snow activities.",
+      "Gulmarg Gondola tickets (subject to availability; advance online booking recommended).",
+      "Entry tickets and garden admission charges.",
+      "Adventure activities and instructor charges.",
+      "Personal expenses, room service, laundry, telephone calls, tips and anything not specified in inclusions."
     ],
-    "accommodation": "Deluxe heated hotels in Srinagar, Gulmarg, and Pahalgam",
-    "transportation": "Dedicated private SUV with winter clearance",
-    "featured": false,
+    "accommodation": "4 Nights / 5 Days in Deluxe Room Category across well-rated hotels and comfortable houseboat",
+    "transportation": "Dedicated Deluxe Toyota Innova for all transfers and sightseeing",
+    "featured": true,
     "published": true,
-    "pricingModel": "per_person",
+    "pricingModel": "winter_wonderland",
     "pricePerPerson": 21999,
     "childPrice": 13199,
-    "minTravellers": 1,
-    "maxTravellers": 15
+    "minTravellers": 5,
+    "maxTravellers": 10,
+    "aliases": [
+      "winter-wonderland-snow-special-5d4n",
+      "winter-wonderland-kashmir"
+    ],
+    "baseOccupancy": 5,
+    "tagline": "Discover the Magic of Kashmir – A Journey Through Paradise.",
+    "pricingTiers": {
+      "5": 59000,
+      "6": 70800,
+      "7": 85600,
+      "8": 100400,
+      "9": 115200,
+      "10": 130000
+    },
+    "importantNotes": [
+      "Personal Sightseeing Expenses: Local Union Cabs, Pony rides, Snow bikes, Gondola tickets, and entry tickets are not included and must be paid directly by guests.",
+      "Local Transportation: Certain destinations (Aru Valley, Betaab Valley, Chandanwari, Zero Point) may require local Union Vehicles. These charges are not included.",
+      "Weather and Road Conditions: Sightseeing and transfers are subject to weather conditions, road accessibility, and government regulations. Heavy snowfall or road closures may affect the itinerary.",
+      "Gondola Tickets: Gulmarg Gondola tickets are subject to availability. Advance online booking is recommended.",
+      "Hotel Policies: Standard hotel check-in and check-out timings will apply. Additional room services, meals, and personal expenses are payable directly by guests.",
+      "Itinerary Changes: The itinerary may be adjusted due to traffic, weather conditions, road closures, or unforeseen circumstances."
+    ],
+    "responsibleTourism": {
+      "title": "Responsible Tourism – Keep Kashmir Clean",
+      "guidelines": [
+        "Do not throw plastic bottles, wrappers, tissues or food waste on roads, mountains, rivers or sightseeing spots.",
+        "Always use designated dustbins.",
+        "Avoid spitting on roads and public places.",
+        "Do not damage plants, trees, flowers or natural surroundings.",
+        "Avoid single-use plastics wherever possible.",
+        "Respect local culture, traditions, religious places and the people of Kashmir.",
+        "Follow safety instructions given by drivers and local authorities.",
+        "Help preserve Kashmir's natural beauty for future generations."
+      ],
+      "closingMessage": "LET'S TRAVEL RESPONSIBLY – KEEP KASHMIR CLEAN & BEAUTIFUL!\nThank you for choosing CITY LINE TOURS & TRAVELS.\nOur commitment is to provide you with a comfortable, safe and memorable travel experience."
+    }
   },
   {
     "id": "pkg-customised-odyssey",

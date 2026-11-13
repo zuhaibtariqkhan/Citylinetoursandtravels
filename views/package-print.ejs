@@ -489,13 +489,15 @@
     <div class="tour-hero-box">
       <div>
         <h2 class="tour-title"><%= pkg.title %></h2>
-        <p class="tour-route"><strong>Route:</strong> <%= pkg.route %></p>
-        <p class="tour-route" style="margin-top: 3px;"><strong>Trip Style:</strong> <%= pkg.category %> | <strong>Recommended For:</strong> <%= pkg.idealFor %></p>
+        <p class="tour-route"><strong>Route:</strong> <%= (pkg.destinationCoverage || []).join(' → ') || pkg.route %></p>
+        <p class="tour-route" style="margin-top: 3px;"><strong>Trip Style:</strong> <%= pkg.category %> | <strong>Recommended For:</strong> <%= pkg.idealFor || 'Families, Couples & Groups' %></p>
       </div>
 
       <div class="tour-meta-badges">
         <div class="badge-duration"><%= pkg.duration %></div>
-        <div class="badge-price">Starting from <%= pkg.priceFormatted %>/person</div>
+        <div class="badge-price">
+          <%= pkg.pricingModel === 'winter_wonderland' ? 'Total: ' + pkg.startingPriceFormatted + ' (5 Persons)' : 'Starting from ' + (pkg.startingPriceFormatted || pkg.priceFormatted) + '/person' %>
+        </div>
       </div>
     </div>
 
@@ -503,11 +505,11 @@
     <div class="highlights-grid">
       <div class="highlight-item">
         <span>Accommodation</span>
-        <strong>Houseboat & Hotel</strong>
+        <strong><%= pkg.pricingModel === 'winter_wonderland' ? 'Deluxe Room' : 'Houseboat & Hotel' %></strong>
       </div>
       <div class="highlight-item">
         <span>Private Vehicle</span>
-        <strong>Dedicated Car / SUV</strong>
+        <strong><%= pkg.transportation ? (pkg.transportation.includes('Innova') ? 'Toyota Innova' : 'Dedicated Car / SUV') : 'Dedicated Car / SUV' %></strong>
       </div>
       <div class="highlight-item">
         <span>Meals Plan</span>
@@ -515,7 +517,7 @@
       </div>
       <div class="highlight-item">
         <span>Signature Perk</span>
-        <strong>Sunset Shikara Ride</strong>
+        <strong>Dal Lake Shikara Ride</strong>
       </div>
     </div>
 
@@ -580,6 +582,30 @@
         </ul>
       </div>
     </div>
+
+    <!-- Package Specific Important Notes & Advisories -->
+    <% if (pkg.importantNotes && pkg.importantNotes.length > 0) { %>
+      <div class="advisory-notice" style="margin-bottom: 16px;">
+        <h4>Important Package Notes & Local Regulations:</h4>
+        <% pkg.importantNotes.forEach(note => { %>
+          <p>• <%= note %></p>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <!-- Responsible Tourism Section -->
+    <% if (pkg.responsibleTourism) { %>
+      <div class="advisory-notice" style="background: #f0fdf4; border-color: #bbf7d0; margin-bottom: 20px;">
+        <h4 style="color: #166534;"><%= pkg.responsibleTourism.title %></h4>
+        <p style="color: #14532d; font-size: 11px; margin-bottom: 6px;">Please join us in preserving the natural beauty of Kashmir for future generations:</p>
+        <% (pkg.responsibleTourism.guidelines || []).forEach(guide => { %>
+          <p style="color: #166534; font-size: 11px;">✓ <%= guide %></p>
+        <% }) %>
+        <p style="color: #14532d; font-weight: 700; margin-top: 8px; font-size: 11px;">
+          <%= pkg.responsibleTourism.closingMessage.replace(/\n/g, ' • ') %>
+        </p>
+      </div>
+    <% } %>
 
     <!-- Essential Kashmir Advisory Notice -->
     <div class="advisory-notice">

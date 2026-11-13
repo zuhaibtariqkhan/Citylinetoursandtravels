@@ -80,7 +80,11 @@ app.get('/packages', (req, res) => {
   let packages = db.getPublishedPackages();
 
   if (category && category !== 'all') {
-    packages = packages.filter(p => p.category.toLowerCase() === category.toLowerCase());
+    packages = packages.filter(p => {
+      const pCat = (p.category || '').toLowerCase();
+      const qCat = category.toLowerCase();
+      return pCat === qCat || pCat.includes(qCat) || qCat.includes(pCat);
+    });
   }
 
   res.render('packages', {
