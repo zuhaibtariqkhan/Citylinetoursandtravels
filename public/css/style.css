@@ -75,16 +75,16 @@ h3.font-serif {
 .border-brand { border-color: var(--border-color); }
 .text-muted { color: var(--muted-text); }
 
-/* Consistent Button Component System (Standardized 200-300ms Luxury Deceleration) */
+/* Consistent Button Component System (Standardized 3-Level Luxury Hierarchy) */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: var(--elegant-blue);
+  background-color: var(--royal-blue);
   color: #ffffff;
   font-weight: 600;
-  border-radius: 0.75rem;
+  border-radius: 0.5625rem;
   border: 1px solid transparent;
   padding: 0.625rem 1.25rem;
   font-size: 0.875rem;
@@ -96,7 +96,7 @@ h3.font-serif {
   will-change: transform;
 }
 .btn-primary:hover {
-  background-color: var(--primary-blue);
+  background-color: #0f4a82;
   transform: translate3d(0, -1.5px, 0);
   box-shadow: 0 4px 14px rgba(20, 93, 160, 0.22);
 }
@@ -107,7 +107,7 @@ h3.font-serif {
 .btn-primary:focus-visible,
 .btn-secondary:focus-visible,
 .btn-outline:focus-visible {
-  outline: 2px solid var(--elegant-blue);
+  outline: 2px solid var(--royal-blue);
   outline-offset: 2px;
 }
 .btn-primary:disabled,
@@ -118,17 +118,19 @@ h3.font-serif {
   pointer-events: none;
 }
 
-.btn-secondary {
+/* Secondary Button: White background with blue border */
+.btn-secondary,
+.btn-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   background-color: #ffffff;
-  color: var(--deep-navy);
-  border: 1px solid var(--border-color);
+  color: var(--royal-blue);
+  border: 1.5px solid var(--royal-blue);
   font-weight: 600;
-  border-radius: 0.75rem;
-  padding: 0.625rem 1.25rem;
+  border-radius: 0.5625rem;
+  padding: 0.5625rem 1.25rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   transition: background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -139,48 +141,45 @@ h3.font-serif {
   box-shadow: 0 1px 2px rgba(16, 42, 67, 0.04);
   will-change: transform;
 }
-.btn-secondary:hover {
-  background-color: var(--ice-blue);
-  border-color: var(--elegant-blue);
-  color: var(--elegant-blue);
+.btn-secondary:hover,
+.btn-outline:hover {
+  background-color: var(--soft-sky-blue);
+  border-color: var(--royal-blue);
+  color: var(--deep-navy);
   transform: translate3d(0, -1.5px, 0);
   box-shadow: 0 3px 8px rgba(16, 42, 67, 0.06);
 }
-.btn-secondary:active {
-  transform: scale(0.985);
-}
-
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border: 1.5px solid var(--elegant-blue);
-  color: var(--elegant-blue);
-  background-color: transparent;
-  font-weight: 600;
-  border-radius: 0.75rem;
-  padding: 0.5625rem 1.25rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  transition: background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
-              border-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
-              color 220ms cubic-bezier(0.22, 1, 0.36, 1),
-              transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
-}
-.btn-outline:hover {
-  background-color: var(--soft-sky-blue);
-  color: var(--primary-blue);
-  border-color: var(--primary-blue);
-  transform: translate3d(0, -1.5px, 0);
-}
+.btn-secondary:active,
 .btn-outline:active {
   transform: scale(0.985);
 }
 
-/* Card Hover Elevation - Subtle & Refined (Hospitality Standard) */
+/* Tertiary Button / Text Link */
+.btn-tertiary,
+.link-tertiary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: transparent;
+  color: var(--royal-blue);
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0;
+  border: none;
+  transition: color 180ms ease, transform 180ms ease;
+}
+.btn-tertiary:hover,
+.link-tertiary:hover {
+  color: var(--deep-navy);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Card Hover Elevation - Subtle & Refined (Hospitality Standard: 14-18px Radius, Soft Shadow) */
 .card-hover {
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(16, 42, 67, 0.05);
   transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), 
               box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1), 
               border-color 300ms ease;
@@ -188,7 +187,7 @@ h3.font-serif {
 }
 .card-hover:hover {
   transform: translate3d(0, -4px, 0);
-  box-shadow: 0 16px 32px -8px rgba(16, 42, 67, 0.08);
+  box-shadow: 0 14px 28px -6px rgba(16, 42, 67, 0.08);
   border-color: #cbd5e1;
 }
 
@@ -200,6 +199,8 @@ h3.font-serif {
   transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
   transform: translate3d(0, 0, 0);
+  object-fit: cover;
+  object-position: center;
 }
 .card-hover:hover .img-zoom-container img {
   transform: scale(1.035);
@@ -207,6 +208,9 @@ h3.font-serif {
 
 /* Destination Cards - Premium Motion */
 .dest-card {
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(16, 42, 67, 0.05);
   transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), 
               box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1), 
               border-color 300ms ease;
@@ -214,13 +218,15 @@ h3.font-serif {
 }
 .dest-card:hover {
   transform: translate3d(0, -4px, 0);
-  box-shadow: 0 20px 36px -10px rgba(16, 42, 67, 0.10);
+  box-shadow: 0 14px 28px -6px rgba(16, 42, 67, 0.08);
   border-color: #cbd5e1;
 }
 .dest-card img {
   transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
   transform: translate3d(0, 0, 0);
+  object-fit: cover;
+  object-position: center;
 }
 .dest-card:hover img {
   transform: scale(1.035);
@@ -228,6 +234,9 @@ h3.font-serif {
 
 /* Experiences Page Cards - Premium Motion */
 .exp-card {
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(16, 42, 67, 0.05);
   transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), 
               box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1), 
               border-color 300ms ease;
@@ -235,13 +244,16 @@ h3.font-serif {
 }
 .exp-card:hover {
   transform: translate3d(0, -4px, 0);
-  box-shadow: 0 20px 36px -10px rgba(16, 42, 67, 0.10);
+  box-shadow: 0 14px 28px -6px rgba(16, 42, 67, 0.08);
   border-color: #cbd5e1;
 }
 .exp-card img {
   transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
   transform: translate3d(0, 0, 0);
+  object-fit: cover;
+  object-position: center;
+}
 }
 .exp-card:hover img {
   transform: scale(1.035);
@@ -428,7 +440,7 @@ body > section:first-of-type,
   }
 }
 
-/* Mobile Animation Optimization (360px - 640px) */
+/* Mobile Animation & Visual Polish Optimization (360px - 640px) */
 @media (max-width: 640px) {
   .reveal {
     transform: translate3d(0, 12px, 0);
@@ -445,6 +457,25 @@ body > section:first-of-type,
   .dest-card:hover,
   .exp-card:hover {
     transform: none !important;
+  }
+  /* Form input sizing to prevent iOS Safari auto-zoom */
+  .form-input {
+    font-size: 16px !important;
+  }
+  /* Buttons touch target accessibility */
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline {
+    min-height: 42px;
+  }
+  /* Mobile typography balance */
+  h1.font-serif {
+    font-size: clamp(1.85rem, 7vw, 2.75rem);
+    line-height: 1.2;
+  }
+  h2.font-serif {
+    font-size: clamp(1.5rem, 5.5vw, 2.15rem);
+    line-height: 1.28;
   }
 }
 
