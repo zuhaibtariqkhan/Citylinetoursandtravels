@@ -2115,13 +2115,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const ztmCredit = document.getElementById('ztmCredit');
   if (ztmCredit) {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) {
+    const isMobile = window.innerWidth < 640;
+
+    if (prefersReduced || isMobile) {
+      ztmCredit.classList.remove('ztm-ready');
       ztmCredit.classList.add('ztm-settled');
     } else if ('IntersectionObserver' in window) {
       ztmCredit.classList.add('ztm-ready');
+
+      // Safety timeout: Ensure it always reveals within 1 second regardless of viewport quirks
+      const fallbackTimer = setTimeout(() => {
+        if (ztmCredit.classList.contains('ztm-ready')) {
+          ztmCredit.classList.remove('ztm-ready');
+          ztmCredit.classList.add('ztm-settled');
+        }
+      }, 1000);
+
       const ztmObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
+            clearTimeout(fallbackTimer);
             ztmCredit.classList.remove('ztm-ready');
             ztmCredit.classList.add('ztm-animate');
             // Unobserve so it never replays while scrolling
@@ -2135,8 +2148,8 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -20px 0px'
+        threshold: 0.01,
+        rootMargin: '100px 0px 100px 0px'
       });
       ztmObserver.observe(ztmCredit);
     } else {

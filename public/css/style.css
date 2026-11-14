@@ -986,26 +986,32 @@ body > section:first-of-type,
   font-size: 0.75rem; /* 12px */
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #DFC17B;
-  background: linear-gradient(
-    115deg,
-    #DFC17B 0%,
-    #C5A059 25%,
-    #FFF8E1 48%,
-    #FFFFFF 52%,
-    #DFC17B 70%,
-    #B88E3E 100%
-  );
-  background-size: 260% 100%;
-  background-position: 100% 0;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #E6CA65; /* Vibrant Champagne Gold fallback for all devices */
   padding-bottom: 2px;
+}
+
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .ztm-wordmark {
+    background: linear-gradient(
+      115deg,
+      #DFC17B 0%,
+      #C5A059 25%,
+      #FFF8E1 48%,
+      #FFFFFF 52%,
+      #DFC17B 70%,
+      #B88E3E 100%
+    );
+    background-size: 260% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 .ztm-letter {
   display: inline-block;
+  color: #E6CA65;
   will-change: transform, opacity;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
 }
@@ -1022,18 +1028,20 @@ body > section:first-of-type,
 }
 
 /* --- STATE: PREPARED FOR VIEWPORT REVEAL --- */
-.ztm-credit.ztm-ready .ztm-prefix {
-  opacity: 0;
-  transform: translateX(-4px);
-}
+@media (min-width: 640px) {
+  .ztm-credit.ztm-ready .ztm-prefix {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
 
-.ztm-credit.ztm-ready .ztm-letter {
-  opacity: 0;
-  transform: translateY(6px);
-}
+  .ztm-credit.ztm-ready .ztm-letter {
+    opacity: 0;
+    transform: translateY(6px);
+  }
 
-.ztm-credit.ztm-ready .ztm-underline {
-  transform: scaleX(0);
+  .ztm-credit.ztm-ready .ztm-underline {
+    transform: scaleX(0);
+  }
 }
 
 /* --- STATE: ANIMATING ON VIEWPORT ENTRY --- */
