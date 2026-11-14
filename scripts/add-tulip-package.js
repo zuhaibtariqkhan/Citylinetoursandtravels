@@ -156,7 +156,7 @@ const newPkg = {
       '6006725007',
       '99066 76890'
     ],
-    email: 'citylinetoursandtravels@gmail.com',
+    email: 'askcitylinetravels@gmail.com',
     location: 'Srinagar, Kashmir',
     closingMessage: 'Thank you for choosing City Line Tours and Travels. Respect Every Faith, Embrace Every Journey.'
   },
