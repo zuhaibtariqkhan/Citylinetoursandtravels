@@ -105,12 +105,17 @@
             <!-- Top Overlay Badges & Sound Toggle -->
             <div class="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
               <span class="inline-flex items-center space-x-1.5 bg-brand-navy/80 backdrop-blur-md text-brand-sky text-[11px] font-semibold px-3 py-1 rounded-full border border-white/10 shadow-sm pointer-events-none">
-                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                <span id="activeVideoTitle">Kashmir Moments (Media 1)</span>
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span id="activeVideoTitle">Experience Kashmir</span>
               </span>
 
-              <button type="button" id="videoAudioToggleBtn" class="p-2 bg-brand-navy/80 hover:bg-brand-blue text-white rounded-full backdrop-blur-md transition shadow border border-white/15" title="Toggle Sound">
-                <i data-lucide="volume-x" id="volumeIcon" class="w-4 h-4"></i>
+              <button type="button" id="videoAudioToggleBtn" class="w-10 h-10 min-w-[40px] min-h-[40px] bg-brand-navy/85 hover:bg-brand-blue text-white rounded-full backdrop-blur-md transition-all shadow-lg border border-white/20 flex items-center justify-center cursor-pointer focus:outline-none" title="Unmute Video Sound" aria-label="Toggle Sound">
+                <span id="iconVolumeMuted" class="flex items-center justify-center pointer-events-none">
+                  <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="22" x2="16" y1="9" y2="15"></line><line x1="16" x2="22" y1="9" y2="15"></line></svg>
+                </span>
+                <span id="iconVolumeUnmuted" class="hidden items-center justify-center pointer-events-none">
+                  <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+                </span>
               </button>
             </div>
 
@@ -121,46 +126,50 @@
             </div>
           </div>
 
-          <!-- Video Selector Grid: 4 Videos (Media 1, Media 1_2, Media 1_1, CUTE) -->
+          <!-- Video Selector Grid: 4 Video Moments -->
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-3">
             
-            <!-- Video 1 (media_1.mp4) -->
-            <button type="button" class="about-video-thumb active relative rounded-2xl overflow-hidden border-2 border-brand-blue shadow group text-left h-20 sm:h-22 bg-brand-navy transition-all focus:outline-none" data-video="/images/media_1.mp4" data-title="Kashmir Moments (Media 1)">
+            <!-- Video 1 -->
+            <button type="button" class="about-video-thumb active relative rounded-2xl overflow-hidden border-2 border-brand-blue shadow group text-left h-20 sm:h-22 bg-brand-navy transition-all focus:outline-none cursor-pointer" data-video="/images/media_1.mp4" aria-label="Play Kashmir video clip 1">
               <video src="/images/media_1.mp4" muted loop playsinline preload="metadata" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition"></video>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute bottom-1.5 left-2 right-2 text-white text-[10px] font-bold truncate flex items-center space-x-1 pointer-events-none">
-                <i data-lucide="play" class="w-3 h-3 text-brand-sky shrink-0"></i>
-                <span class="truncate">Media 1</span>
+              <div class="absolute inset-0 bg-black/25 group-hover:bg-black/10 transition pointer-events-none"></div>
+              <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div class="w-7 h-7 rounded-full bg-brand-navy/80 backdrop-blur-sm border border-white/25 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-brand-blue transition shadow">
+                  <svg class="w-3.5 h-3.5 fill-current text-white translate-x-0.5" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
               </div>
             </button>
 
-            <!-- Video 2 (media_1_2.mp4) -->
-            <button type="button" class="about-video-thumb relative rounded-2xl overflow-hidden border-2 border-slate-200 shadow group text-left h-20 sm:h-22 bg-brand-navy transition-all hover:border-brand-blue focus:outline-none" data-video="/images/media_1_2.mp4" data-title="Scenic Mountain Valleys (Media 1_2)">
+            <!-- Video 2 -->
+            <button type="button" class="about-video-thumb relative rounded-2xl overflow-hidden border-2 border-slate-200 shadow group text-left h-20 sm:h-22 bg-brand-navy transition-all hover:border-brand-blue focus:outline-none cursor-pointer" data-video="/images/media_1_2.mp4" aria-label="Play Kashmir video clip 2">
               <video src="/images/media_1_2.mp4" muted loop playsinline preload="none" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition"></video>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute bottom-1.5 left-2 right-2 text-white text-[10px] font-bold truncate flex items-center space-x-1 pointer-events-none">
-                <i data-lucide="play" class="w-3 h-3 text-brand-sky shrink-0"></i>
-                <span class="truncate">Media 1_2</span>
+              <div class="absolute inset-0 bg-black/25 group-hover:bg-black/10 transition pointer-events-none"></div>
+              <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div class="w-7 h-7 rounded-full bg-brand-navy/80 backdrop-blur-sm border border-white/25 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-brand-blue transition shadow">
+                  <svg class="w-3.5 h-3.5 fill-current text-white translate-x-0.5" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
               </div>
             </button>
 
-            <!-- Video 3 (media_1_1.mp4) -->
-            <button type="button" class="about-video-thumb relative rounded-2xl overflow-hidden border-2 border-slate-200 shadow group text-left h-20 sm:h-22 bg-brand-navy transition-all hover:border-brand-blue focus:outline-none" data-video="/images/media_1_1.mp4" data-title="Alpine Tour Moments (Media 1_1)">
+            <!-- Video 3 -->
+            <button type="button" class="about-video-thumb relative rounded-2xl overflow-hidden border-2 border-slate-200 shadow group text-left h-20 sm:h-22 bg-brand-navy transition-all hover:border-brand-blue focus:outline-none cursor-pointer" data-video="/images/media_1_1.mp4" aria-label="Play Kashmir video clip 3">
               <video src="/images/media_1_1.mp4" muted loop playsinline preload="none" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition"></video>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute bottom-1.5 left-2 right-2 text-white text-[10px] font-bold truncate flex items-center space-x-1 pointer-events-none">
-                <i data-lucide="play" class="w-3 h-3 text-brand-sky shrink-0"></i>
-                <span class="truncate">Media 1_1</span>
+              <div class="absolute inset-0 bg-black/25 group-hover:bg-black/10 transition pointer-events-none"></div>
+              <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div class="w-7 h-7 rounded-full bg-brand-navy/80 backdrop-blur-sm border border-white/25 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-brand-blue transition shadow">
+                  <svg class="w-3.5 h-3.5 fill-current text-white translate-x-0.5" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
               </div>
             </button>
 
-            <!-- Video 4 (CUTE.mp4) -->
-            <button type="button" class="about-video-thumb relative rounded-2xl overflow-hidden border-2 border-slate-200 shadow group text-left h-20 sm:h-22 bg-brand-navy transition-all hover:border-brand-blue focus:outline-none" data-video="/images/CUTE.mp4" data-title="Special Travel Memories (CUTE)">
+            <!-- Video 4 -->
+            <button type="button" class="about-video-thumb relative rounded-2xl overflow-hidden border-2 border-slate-200 shadow group text-left h-20 sm:h-22 bg-brand-navy transition-all hover:border-brand-blue focus:outline-none cursor-pointer" data-video="/images/CUTE.mp4" aria-label="Play Kashmir video clip 4">
               <video src="/images/CUTE.mp4" muted loop playsinline preload="none" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition"></video>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute bottom-1.5 left-2 right-2 text-white text-[10px] font-bold truncate flex items-center space-x-1 pointer-events-none">
-                <i data-lucide="play" class="w-3 h-3 text-brand-sky shrink-0"></i>
-                <span class="truncate">CUTE</span>
+              <div class="absolute inset-0 bg-black/25 group-hover:bg-black/10 transition pointer-events-none"></div>
+              <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div class="w-7 h-7 rounded-full bg-brand-navy/80 backdrop-blur-sm border border-white/25 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-brand-blue transition shadow">
+                  <svg class="w-3.5 h-3.5 fill-current text-white translate-x-0.5" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
               </div>
             </button>
 
