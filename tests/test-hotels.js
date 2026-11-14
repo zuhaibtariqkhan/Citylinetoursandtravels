@@ -10,38 +10,40 @@ http.get('http://localhost:3000/hotels', (res) => {
     console.log('HOTEL CARD ELEMENTS COUNT:', cardMatches ? cardMatches.length : 0);
 
     const hotels = [
-      'Taj Dal View',
-      'The LaLit Grand Palace',
-      'Sarovar Premiere',
-      'WelcomHeritage',
-      'Asian Park',
-      'Namrose Resorts',
-      'Comrade Inn',
-      'Ov Boutique',
-      'Midtown Greens',
-      'Pride Inn',
-      'The Khyber Himalayan Resorts',
-      'Hilltop (Gulmarg)',
-      'Apple Tree Resorts',
-      'Welcomhotel by ITC Hotels, Pine N Peak',
-      'Mountnoor Sarovar Premiere',
-      'The Walnut Creek',
-      'Black Pearl',
-      'Houseboat Royal Star',
-      'Macot Houseboats'
+      { name: 'Taj Dal View', loc: 'Kralsangri, Brein, Srinagar' },
+      { name: 'The LaLiT Grand Palace', loc: 'Gupkar Road, Srinagar' },
+      { name: 'Sarovar Premiere', loc: 'M.A. Road, Regal Chowk, Srinagar' },
+      { name: 'WelcomHeritage', loc: 'Airport Road, Srinagar' },
+      { name: 'Asian Park', loc: 'M.A. Link Road, Munawarabad, Srinagar' },
+      { name: 'Namrose Resorts', loc: 'Munawarabad, Srinagar' },
+      { name: 'Comrade Inn', loc: 'Rajbagh, Srinagar' },
+      { name: 'OV Boutique', loc: 'Rajbagh, Srinagar' },
+      { name: 'Midtown Greens', loc: 'Baghat, Srinagar' },
+      { name: 'Pride Inn', loc: 'Rajbagh, Srinagar' },
+      { name: 'The Khyber Himalayan Resorts', loc: 'Hotel Khyber Road, Gulmarg' },
+      { name: 'Hilltop', loc: 'Gulmarg, Gulmarg' },
+      { name: 'Apple Tree Resorts', loc: 'Kunzer, Tangmarg Road, Gulmarg area' },
+      { name: 'Welcomhotel by ITC Hotels, Pine N Peak', loc: 'Aru Road, Pahalgam' },
+      { name: 'Mountnoor Sarovar Premiere', loc: 'Sallar Dalseer, Pahalgam' },
+      { name: 'The Walnut Creek', loc: 'Dewathoo, Pahalgam' },
+      { name: 'Black Pearl Houseboat', loc: 'Dal Lake, Srinagar' },
+      { name: 'Houseboat Royal Star', loc: 'Gate No. 14, Dal Lake, Gagribal, Srinagar' },
+      { name: 'Mascot Houseboats', loc: 'Nigeen Lake, Srinagar' }
     ];
 
     let allFound = true;
     hotels.forEach((h, idx) => {
-      const found = data.includes(h);
-      console.log(`[${found ? 'PASS' : 'FAIL'}] #${idx + 1}: ${h}`);
-      if (!found) allFound = false;
+      const nameFound = data.includes(h.name);
+      const locFound = data.includes(h.loc);
+      const pass = nameFound && locFound;
+      console.log(`[${pass ? 'PASS' : 'FAIL'}] #${idx + 1}: ${h.name} -> ${h.loc}`);
+      if (!pass) allFound = false;
     });
 
     if (allFound && cardMatches && cardMatches.length === 19) {
-      console.log('\n🌟 ALL 19 HOTELS VERIFIED SUCCESSFULLY ON HOTELS PAGE!');
+      console.log('\n🌟 ALL 19 HOTELS AND UPDATED LOCATIONS VERIFIED SUCCESSFULLY ON HOTELS PAGE!');
     } else {
-      console.error('\n❌ SOME HOTELS MISSING OR COUNT MISMATCH');
+      console.error('\n❌ SOME HOTELS OR LOCATIONS MISSING OR COUNT MISMATCH');
       process.exit(1);
     }
   });

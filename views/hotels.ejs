@@ -94,9 +94,9 @@
           <!-- Destination Hub Dropdown -->
           <select id="hotelLocationSelect" class="form-input text-xs py-2 px-3 w-40 shrink-0 bg-brand-offwhite border-brand-border font-medium text-brand-navy">
             <option value="all">All Locations</option>
-            <option value="Srinagar">Srinagar (12)</option>
+            <option value="Srinagar">Srinagar (13)</option>
             <option value="Gulmarg">Gulmarg (3)</option>
-            <option value="Pahalgam">Pahalgam (4)</option>
+            <option value="Pahalgam">Pahalgam (3)</option>
           </select>
 
           <!-- Live Search Input -->
@@ -173,7 +173,7 @@
                 <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs">
                   <span class="flex items-center space-x-1 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px]">
                     <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-sky"></i>
-                    <span class="font-medium"><%= hotel.location %> • <%= hotel.area %></span>
+                    <span class="font-medium"><%= hotel.area || hotel.location %></span>
                   </span>
                 </div>
               </div>
