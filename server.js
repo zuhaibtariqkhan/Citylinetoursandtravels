@@ -14,6 +14,29 @@ const PORT = process.env.PORT || 3000;
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// Trust reverse proxy (Hostinger, Cloudflare, LiteSpeed, NGINX)
+app.enable('trust proxy');
+
+// Force HTTPS & Security Headers Middleware
+app.use((req, res, next) => {
+  const isHttps = req.secure || req.headers['x-forwarded-proto'] === 'https';
+  const isLocal = req.hostname === 'localhost' || req.hostname === '127.0.0.1';
+  
+  if (!isHttps && !isLocal && req.headers.host) {
+    return res.redirect(301, `https://${req.headers.host}${req.url}`);
+  }
+
+  // Security Headers
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  if (isHttps) {
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+  }
+  next();
+});
+
 // Performance: Gzip / Deflate HTTP response compression
 app.use(compression({
   threshold: 1024

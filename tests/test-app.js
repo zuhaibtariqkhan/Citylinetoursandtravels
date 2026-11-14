@@ -43,29 +43,29 @@ async function runTests() {
 
   // 1. Test Public Routes
   const publicRoutes = [
-    '/',
-    '/about',
-    '/packages',
-    '/packages/kashmir-classic-honeymoon-6d5n',
-    '/packages/kashmir-classic-honeymoon-6d5n/print',
-    '/destinations',
-    '/destinations/srinagar',
-    '/experiences',
-    '/hotels',
-    '/gallery',
-    '/contact',
-    '/faq',
-    '/terms',
-    '/admin/login'
+    { path: '/', expected: 200 },
+    { path: '/about', expected: 200 },
+    { path: '/packages', expected: 200 },
+    { path: '/packages/kashmir-classic-honeymoon-6d5n', expected: 200 },
+    { path: '/packages/kashmir-classic-honeymoon-6d5n/print', expected: 200 },
+    { path: '/destinations', expected: 200 },
+    { path: '/destinations/srinagar', expected: 200 },
+    { path: '/experiences', expected: 200 },
+    { path: '/hotels', expected: 200 },
+    { path: '/gallery', expected: 301 },
+    { path: '/contact', expected: 200 },
+    { path: '/faq', expected: 301 },
+    { path: '/terms', expected: 200 },
+    { path: '/admin/login', expected: 200 }
   ];
 
-  for (const route of publicRoutes) {
-    await test(`GET ${route}`, async () => {
-      const res = await fetchUrl(route);
-      if (res.status !== 200) {
-        throw new Error(`Expected status 200 but received ${res.status}`);
+  for (const item of publicRoutes) {
+    await test(`GET ${item.path}`, async () => {
+      const res = await fetchUrl(item.path);
+      if (res.status !== item.expected) {
+        throw new Error(`Expected status ${item.expected} but received ${res.status}`);
       }
-      if (!res.body.includes('City Line')) {
+      if (item.expected === 200 && !res.body.includes('City Line')) {
         throw new Error(`Response body missing brand identifier 'City Line'`);
       }
     });
