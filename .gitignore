@@ -2,5 +2,6 @@ node_modules/
 .env
 npm-debug.log
 public/images/raw_originals/
+data/weather-cache.json
 
 

@@ -504,6 +504,8 @@
             Total: <%= pkg.startingPriceFormatted %> (12 Persons Base)
           <% } else if (pkg.pricingModel === 'tulip_festival') { %>
             Total: <%= pkg.startingPriceFormatted %> (2 Travellers Base)
+          <% } else if (pkg.pricingModel === 'amarnath_yatra') { %>
+            Total: <%= pkg.startingPriceFormatted %> (2 Yatris Base)
           <% } else { %>
             Starting from <%= pkg.startingPriceFormatted || pkg.priceFormatted %>/person
           <% } %>
@@ -515,11 +517,11 @@
     <div class="highlights-grid">
       <div class="highlight-item">
         <span>Accommodation</span>
-        <strong><%= (pkg.pricingModel === 'fixed_couple' || pkg.pricingModel === 'winter_wonderland') ? 'Deluxe Room & Houseboat' : (pkg.pricingModel === 'tulip_festival' ? 'Deluxe Room' : (pkg.pricingModel === 'himalayan_escape' ? 'Deluxe Camps & Hotels' : 'Houseboat & Hotel')) %></strong>
+        <strong><%= (pkg.pricingModel === 'amarnath_yatra') ? 'Deluxe Hotels / Camps' : ((pkg.pricingModel === 'fixed_couple' || pkg.pricingModel === 'winter_wonderland') ? 'Deluxe Room & Houseboat' : (pkg.pricingModel === 'tulip_festival' ? 'Deluxe Room' : (pkg.pricingModel === 'himalayan_escape' ? 'Deluxe Camps & Hotels' : 'Houseboat & Hotel'))) %></strong>
       </div>
       <div class="highlight-item">
         <span>Private Vehicle</span>
-        <strong><%= (pkg.pricingModel === 'tulip_festival') ? 'Comfortable Deluxe Sedan' : ((pkg.pricingModel === 'himalayan_escape') ? 'Expedition Fleet / Tempo' : (pkg.transportation ? (pkg.transportation.includes('Innova') ? 'Toyota Innova' : 'Dedicated Car / SUV') : 'Dedicated Car / SUV')) %></strong>
+        <strong><%= (pkg.pricingModel === 'amarnath_yatra') ? 'Private Dedicated Vehicle' : ((pkg.pricingModel === 'tulip_festival') ? 'Comfortable Deluxe Sedan' : ((pkg.pricingModel === 'himalayan_escape') ? 'Expedition Fleet / Tempo' : (pkg.transportation ? (pkg.transportation.includes('Innova') ? 'Toyota Innova' : 'Dedicated Car / SUV') : 'Dedicated Car / SUV'))) %></strong>
       </div>
       <div class="highlight-item">
         <span>Meals Plan</span>
@@ -527,7 +529,7 @@
       </div>
       <div class="highlight-item">
         <span>Signature Perk</span>
-        <strong>Dal Lake Shikara Ride</strong>
+        <strong><%= (pkg.pricingModel === 'amarnath_yatra') ? 'Sacred Cave Darshan Coordination' : 'Dal Lake Shikara Ride' %></strong>
       </div>
     </div>
 

@@ -1427,90 +1427,243 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ========================================================
-  // 8. LIVE KASHMIR WEATHER INTEGRATION (Non-blocking & Graceful Fallback)
+  // ========================================================
+  // 8. LIVE KASHMIR WEATHER INTEGRATION & INTERACTIVE MODAL
   // ========================================================
   const weatherCardsGrid = document.getElementById('weatherCardsGrid');
-  if (weatherCardsGrid) {
-    const weatherCodes = {
-      0: { desc: 'Clear Skies', icon: 'sun' },
-      1: { desc: 'Mainly Clear', icon: 'sun' },
-      2: { desc: 'Partly Cloudy', icon: 'cloud-sun' },
-      3: { desc: 'Overcast Skies', icon: 'cloud' },
-      45: { desc: 'Mountain Mist', icon: 'cloud-fog' },
-      48: { desc: 'Freezing Rime Fog', icon: 'cloud-fog' },
-      51: { desc: 'Light Drizzle', icon: 'cloud-drizzle' },
-      61: { desc: 'Gentle Rain', icon: 'cloud-rain' },
-      71: { desc: 'Light Snowfall', icon: 'snowflake' },
-      73: { desc: 'Moderate Snow', icon: 'snowflake' },
-      75: { desc: 'Heavy Snowfall', icon: 'snowflake' },
-      85: { desc: 'Snow Showers', icon: 'snowflake' }
-    };
+  const weatherModal = document.getElementById('weatherDetailModal');
+  const closeModalBtn = document.getElementById('closeWeatherModalBtn');
+  const modalTabs = document.querySelectorAll('#modalDestTabs .modal-tab-btn');
+  let cachedWeatherData = null;
+  let activeModalDest = 'srinagar';
 
-    const destCards = weatherCardsGrid.querySelectorAll('[data-dest]');
-    destCards.forEach(async (card) => {
-      const dest = card.getAttribute('data-dest');
-      const lat = card.getAttribute('data-lat');
-      const lon = card.getAttribute('data-lon');
-      if (!lat || !lon) return;
+  async function fetchLiveWeather() {
+    try {
+      const res = await fetch('/api/weather');
+      if (!res.ok) return;
+      const data = await res.json();
+      if (!data || !data.destinations) return;
+      cachedWeatherData = data;
 
-      try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 4000);
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m`;
-        const res = await fetch(url, { signal: controller.signal });
-        clearTimeout(timeoutId);
+      // Update overview cards
+      Object.keys(data.destinations).forEach(destId => {
+        const d = data.destinations[destId];
+        const curr = d.current;
+        if (!curr) return;
 
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.current) {
-            const curr = data.current;
-            const tempEl = document.getElementById(`weatherTemp-${dest}`);
-            const feelsEl = document.getElementById(`weatherFeels-${dest}`);
-            const humEl = document.getElementById(`weatherHumidity-${dest}`);
-            const windEl = document.getElementById(`weatherWind-${dest}`);
-            const descEl = document.getElementById(`weatherDesc-${dest}`);
+        const tempEl = document.getElementById(`weatherTemp-${destId}`);
+        const feelsEl = document.getElementById(`weatherFeels-${destId}`);
+        const humEl = document.getElementById(`weatherHumidity-${destId}`);
+        const windEl = document.getElementById(`weatherWind-${destId}`);
+        const descEl = document.getElementById(`weatherDesc-${destId}`);
+        const precipEl = document.getElementById(`weatherPrecip-${destId}`);
 
-            if (tempEl && curr.temperature_2m !== undefined) {
-              tempEl.textContent = `${Math.round(curr.temperature_2m)}°C`;
-            }
-            if (feelsEl && curr.apparent_temperature !== undefined) {
-              feelsEl.textContent = `${Math.round(curr.apparent_temperature)}°C`;
-            }
-            if (humEl && curr.relative_humidity_2m !== undefined) {
-              humEl.textContent = `${Math.round(curr.relative_humidity_2m)}%`;
-            }
-            if (windEl && curr.wind_speed_10m !== undefined) {
-              windEl.textContent = `${Math.round(curr.wind_speed_10m)} km/h`;
-            }
-            if (descEl && curr.weather_code !== undefined && weatherCodes[curr.weather_code]) {
-              descEl.textContent = weatherCodes[curr.weather_code].desc;
-            }
+        if (tempEl && curr.temperature !== null) tempEl.textContent = `${curr.temperature}°C`;
+        if (feelsEl && curr.apparentTemperature !== null) feelsEl.textContent = `${curr.apparentTemperature}°C`;
+        if (humEl && curr.relativeHumidity !== null) humEl.textContent = `${curr.relativeHumidity}%`;
+        if (windEl && curr.windSpeed !== null) windEl.textContent = `${curr.windSpeed} km/h ${curr.windCardinal || ''}`;
+        if (descEl && curr.condition) descEl.textContent = curr.condition;
+        if (precipEl && d.todaySummary) precipEl.textContent = `${d.todaySummary.precipProbability}%`;
 
-            const statusBadge = card.querySelector('.weather-status-badge');
-            if (statusBadge) {
-              statusBadge.textContent = 'Live Feed';
-              statusBadge.className = 'weather-status-badge text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold border border-emerald-200';
-            }
-
-            const updatedEl = document.getElementById('weatherLastUpdated');
-            if (updatedEl) {
-              updatedEl.dataset.updated = 'true';
-              const now = new Date();
-              updatedEl.textContent = `Live Satellite Feed (Open-Meteo) • Updated ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
-            }
+        const card = document.querySelector(`.weather-card[data-dest="${destId}"]`);
+        if (card) {
+          const badge = card.querySelector('.weather-status-badge');
+          if (badge) {
+            badge.textContent = data.isCached ? 'Cached Feed' : 'Live Feed';
+            badge.className = `weather-status-badge text-[9px] px-1.5 py-0.5 rounded-full font-semibold border ${data.isCached ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-emerald-50 text-emerald-700 border-emerald-200'}`;
           }
-        } else {
-          const statusBadge = card.querySelector('.weather-status-badge');
-          if (statusBadge) statusBadge.textContent = 'Seasonal Norm';
         }
-      } catch (e) {
-        const statusBadge = card.querySelector('.weather-status-badge');
-        if (statusBadge) statusBadge.textContent = 'Seasonal Norm';
-        const updatedEl = document.getElementById('weatherLastUpdated');
-        if (updatedEl && !updatedEl.dataset.updated) {
-          updatedEl.textContent = 'Seasonal Weather Estimates • Live Feed Reconnecting';
-        }
+      });
+
+      const updatedEl = document.getElementById('weatherLastUpdated');
+      if (updatedEl && data.modelTimeIST) {
+        updatedEl.textContent = data.modelTimeIST;
       }
+
+      // If modal is currently open, refresh its content
+      if (weatherModal && !weatherModal.classList.contains('pointer-events-none')) {
+        renderModalDestination(activeModalDest);
+      }
+    } catch (e) {
+      console.warn('Weather fetch error:', e.message);
+    }
+  }
+
+  function renderModalDestination(destId) {
+    if (!cachedWeatherData || !cachedWeatherData.destinations) return;
+    const dest = cachedWeatherData.destinations[destId];
+    if (!dest) return;
+    activeModalDest = destId;
+
+    // Update active tab styles
+    modalTabs.forEach(tab => {
+      const isCurrent = tab.getAttribute('data-dest') === destId;
+      tab.className = `modal-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition border ${isCurrent ? 'bg-brand-blue text-white border-brand-blue shadow-xs' : 'bg-white text-slate-700 hover:bg-slate-100 border-slate-200'}`;
+    });
+
+    // Populate modal titles & metrics
+    const titleEl = document.getElementById('modalDestTitle');
+    if (titleEl) titleEl.textContent = `${dest.name} Weather & Mountain Travel Advisory`;
+
+    const curr = dest.current || {};
+    const sum = dest.todaySummary || {};
+    const adv = dest.travelAdvisory || {};
+
+    const tempEl = document.getElementById('modalCurrentTemp');
+    if (tempEl) tempEl.textContent = `${curr.temperature !== null ? curr.temperature : '--'}°C`;
+
+    const descEl = document.getElementById('modalConditionDesc');
+    if (descEl) descEl.textContent = curr.condition || '--';
+
+    const feelsEl = document.getElementById('modalFeelsLike');
+    if (feelsEl) feelsEl.textContent = `${curr.apparentTemperature !== null ? curr.apparentTemperature : '--'}°C`;
+
+    const maxEl = document.getElementById('modalTempMax');
+    if (maxEl) maxEl.textContent = `${sum.tempMax !== null ? sum.tempMax : '--'}°C`;
+
+    const minEl = document.getElementById('modalTempMin');
+    if (minEl) minEl.textContent = `${sum.tempMin !== null ? sum.tempMin : '--'}°C`;
+
+    const sunrEl = document.getElementById('modalSunrise');
+    if (sunrEl) sunrEl.textContent = sum.sunrise || '--';
+
+    const sunsEl = document.getElementById('modalSunset');
+    if (sunsEl) sunsEl.textContent = sum.sunset || '--';
+
+    const windEl = document.getElementById('modalWind');
+    if (windEl) windEl.textContent = `${curr.windSpeed !== null ? curr.windSpeed : '--'} km/h ${curr.windCardinal || ''}`;
+
+    const humEl = document.getElementById('modalHumidity');
+    if (humEl) humEl.textContent = `${curr.relativeHumidity !== null ? curr.relativeHumidity : '--'}%`;
+
+    const precipEl = document.getElementById('modalPrecipProb');
+    if (precipEl) precipEl.textContent = `${sum.precipProbability !== undefined ? sum.precipProbability : '--'}%`;
+
+    const elevEl = document.getElementById('modalElevation');
+    if (elevEl) elevEl.textContent = dest.altitude || '--';
+
+    // Populate Travel Advisory Card
+    const advBadge = document.getElementById('modalAdvisoryBadge');
+    if (advBadge) {
+      advBadge.textContent = adv.badge || 'Advisory';
+      const colorMap = {
+        emerald: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+        blue: 'bg-blue-50 text-blue-700 border-blue-200',
+        amber: 'bg-amber-50 text-amber-700 border-amber-200',
+        sky: 'bg-sky-50 text-sky-700 border-sky-200',
+        red: 'bg-rose-50 text-rose-700 border-rose-200'
+      };
+      advBadge.className = `px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider border ${colorMap[adv.badgeColor] || colorMap.emerald}`;
+    }
+
+    const advHead = document.getElementById('modalAdvisoryHeadline');
+    if (advHead) advHead.textContent = adv.headline || 'Mountain Travel Guidance';
+
+    const advMsg = document.getElementById('modalAdvisoryMessage');
+    if (advMsg) advMsg.textContent = adv.message || 'Check local guidelines.';
+
+    const actNotice = document.getElementById('modalActivityNotice');
+    if (actNotice) actNotice.textContent = adv.activityNotice ? `⚠️ ${adv.activityNotice}` : '';
+
+    const precipSummary = document.getElementById('modalPrecipSummary');
+    if (precipSummary) precipSummary.textContent = adv.precipSummary || '';
+
+    // Populate 24h Hourly Track
+    const hourlyTrack = document.getElementById('modalHourlyTrack');
+    if (hourlyTrack && dest.next24Hours) {
+      hourlyTrack.innerHTML = dest.next24Hours.map(h => `
+        <div class="flex flex-col items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200 min-w-[75px] shrink-0 text-center">
+          <span class="text-[10px] font-semibold text-slate-500">${h.timeFormatted}</span>
+          <i data-lucide="${h.icon}" class="w-5 h-5 my-1 text-brand-blue"></i>
+          <span class="text-xs font-bold text-brand-navy">${h.temp}°C</span>
+          <span class="text-[9px] font-semibold text-blue-600 mt-0.5">${h.precipProb}% rain</span>
+        </div>
+      `).join('');
+    }
+
+    // Populate 5-Day Outlook Grid
+    const dailyGrid = document.getElementById('modalDailyGrid');
+    if (dailyGrid && dest.fiveDayForecast) {
+      dailyGrid.innerHTML = dest.fiveDayForecast.map(d => `
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+          <div class="flex items-center justify-between text-xs font-bold text-brand-navy mb-1">
+            <span>${d.dayName}</span>
+            <span class="text-[10px] font-normal text-slate-400">${d.dateFormatted}</span>
+          </div>
+          <div class="flex items-center space-x-1.5 my-1">
+            <i data-lucide="${d.icon}" class="w-4 h-4 text-brand-blue shrink-0"></i>
+            <span class="text-[11px] text-slate-600 font-medium truncate">${d.condition}</span>
+          </div>
+          <div class="mt-1 pt-1 border-t border-slate-200/60 flex items-center justify-between text-[11px]">
+            <span class="font-bold text-brand-navy">${d.tempMax}° / <span class="text-slate-400 font-normal">${d.tempMin}°</span></span>
+            <span class="text-[10px] font-semibold text-blue-600">${d.precipProb}%</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Provider Timestamp
+    const provTimestamp = document.getElementById('modalProviderTimestamp');
+    if (provTimestamp && cachedWeatherData) {
+      provTimestamp.textContent = `Model Timestamp: ${cachedWeatherData.modelTimeIST || 'Live'} (Next automated site refresh in 15 min)`;
+    }
+
+    // Re-render Lucide icons inside modal
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
+  }
+
+  function openWeatherModal(destId) {
+    if (!weatherModal) return;
+    activeModalDest = destId || 'srinagar';
+    weatherModal.classList.remove('opacity-0', 'pointer-events-none');
+    renderModalDestination(activeModalDest);
+  }
+
+  function closeWeatherModal() {
+    if (!weatherModal) return;
+    weatherModal.classList.add('opacity-0', 'pointer-events-none');
+  }
+
+  if (weatherCardsGrid) {
+    // Initial fetch to sync any dynamic updates
+    fetchLiveWeather();
+    // 15-minute automatic refresh
+    setInterval(fetchLiveWeather, 15 * 60 * 1000);
+
+    // Event listeners for opening detail modal
+    document.querySelectorAll('.weather-detail-trigger, .weather-card').forEach(elem => {
+      elem.addEventListener('click', (e) => {
+        const targetDest = elem.getAttribute('data-target-dest') || elem.getAttribute('data-dest');
+        if (targetDest) {
+          openWeatherModal(targetDest);
+        }
+      });
+    });
+
+    // Close button
+    if (closeModalBtn) {
+      closeModalBtn.addEventListener('click', closeWeatherModal);
+    }
+
+    // Click outside modal content to close
+    if (weatherModal) {
+      weatherModal.addEventListener('click', (e) => {
+        if (e.target === weatherModal) {
+          closeWeatherModal();
+        }
+      });
+    }
+
+    // Modal destination tabs
+    modalTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const dest = tab.getAttribute('data-dest');
+        if (dest) {
+          renderModalDestination(dest);
+        }
+      });
     });
   }
 

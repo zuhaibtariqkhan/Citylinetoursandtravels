@@ -5,6 +5,7 @@ const path = require('path');
 const compression = require('compression');
 const db = require('./config/database');
 const mailer = require('./config/mailer');
+const weatherService = require('./services/weather');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -67,7 +68,7 @@ function requireAdmin(req, res, next) {
 // ==========================================
 
 // 1. Homepage
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
   const featuredPackages = db.getFeaturedPackages();
   const allPackages = db.getPublishedPackages();
   const destinations = db.getDestinations();
@@ -75,6 +76,13 @@ app.get('/', (req, res) => {
   const faqs = db.getFaqs();
   const testimonials = db.getTestimonials().filter(t => t.approved);
   const travellerMemories = db.getTravellerMemories();
+
+  let weatherData = null;
+  try {
+    weatherData = await weatherService.getAllWeather();
+  } catch (err) {
+    console.warn('Weather service fetch warning:', err.message);
+  }
 
   res.render('index', {
     pageTitle: 'Discover Kashmir | City Line Tours And Travels',
@@ -84,8 +92,32 @@ app.get('/', (req, res) => {
     experiences,
     faqs,
     testimonials,
-    travellerMemories
+    travellerMemories,
+    weatherData
   });
+});
+
+// Weather API Endpoints (Cached 15m server-side with Open-Meteo)
+app.get('/api/weather', async (req, res) => {
+  try {
+    const force = req.query.refresh === 'true';
+    const data = await weatherService.getAllWeather(force);
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to retrieve weather data', message: err.message });
+  }
+});
+
+app.get('/api/weather/:dest', async (req, res) => {
+  try {
+    const data = await weatherService.getDestinationWeather(req.params.dest);
+    if (!data) {
+      return res.status(404).json({ error: 'Destination weather not found' });
+    }
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to retrieve destination weather', message: err.message });
+  }
 });
 
 // 2. About Us
