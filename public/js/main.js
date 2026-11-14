@@ -448,17 +448,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentHeroSlide = 0;
   let heroInterval = null;
 
-  // Preload all hero slide images into memory immediately so there is never a pause or lag
-  if (heroSlides.length > 0) {
-    heroSlides.forEach(slide => {
-      const img = slide.querySelector('img');
-      if (img && img.src) {
-        const preloader = new Image();
-        preloader.src = img.src;
-      }
-    });
-  }
-
   function setHeroSlide(index) {
     if (heroSlides.length === 0) return;
     currentHeroSlide = (index + heroSlides.length) % heroSlides.length;

@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
+const compression = require('compression');
 const db = require('./config/database');
 const mailer = require('./config/mailer');
 
@@ -12,12 +13,30 @@ const PORT = process.env.PORT || 3000;
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// Performance: Gzip / Deflate HTTP response compression
+app.use(compression({
+  threshold: 1024
+}));
+
+// Normalize any HTML entity escaped URLs (e.g. &amp; in file names)
+app.use((req, res, next) => {
+  if (req.url && req.url.includes('&amp;')) {
+    req.url = req.url.replace(/&amp;/g, '&');
+  }
+  next();
+});
+
 // Body parsers
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Static assets
-app.use(express.static(path.join(__dirname, 'public'), { redirect: false }));
+// Static assets with 7-day browser cache headers & ETags
+app.use(express.static(path.join(__dirname, 'public'), {
+  redirect: false,
+  maxAge: '7d',
+  etag: true,
+  lastModified: true
+}));
 
 // Session middleware for admin protection
 app.use(session({

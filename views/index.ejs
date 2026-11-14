@@ -2,11 +2,8 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <%- include('partials/head') %>
-  <!-- Preload All 4 Hero Section Images for Instant Zero-Lag Transitions -->
+  <!-- Prioritize the visible hero image; later slides load when needed. -->
   <link rel="preload" as="image" href="/images/HERO%20SECTION%20(1).jpg" fetchpriority="high">
-  <link rel="preload" as="image" href="/images/HERO%20SECTION%20(2).jpg">
-  <link rel="preload" as="image" href="/images/HERO%20SECTION%20(3).jpg">
-  <link rel="preload" as="image" href="/images/HERO%20SECTION%20(4).jpg">
 </head>
 <body class="bg-white text-brand-text">
 
@@ -56,7 +53,7 @@
         <img src="/images/HERO SECTION (2).jpg" 
              alt="City Line Tours Kashmir Scenic View 2" 
              class="kenburns-2 brightness-[0.70]"
-             loading="eager"
+             loading="lazy"
              decoding="async">
       </div>
 
@@ -65,7 +62,7 @@
         <img src="/images/HERO SECTION (3).jpg" 
              alt="City Line Tours Kashmir Scenic View 3" 
              class="kenburns-3 brightness-[0.75]"
-             loading="eager"
+             loading="lazy"
              decoding="async">
       </div>
 
@@ -74,7 +71,7 @@
         <img src="/images/HERO SECTION (4).jpg" 
              alt="City Line Tours Kashmir Scenic View 4" 
              class="kenburns-4 brightness-[0.75]"
-             loading="eager"
+             loading="lazy"
              decoding="async">
       </div>
 

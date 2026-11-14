@@ -1,5 +1,14 @@
+<!-- Top Loading / Navigation Route Progress Bar -->
+<div id="topLoadingBar" class="top-loading-bar" aria-hidden="true">
+  <div class="top-loading-bar-indicator">
+    <div class="top-loading-bar-glow"></div>
+  </div>
+</div>
+
 <!-- Top Scroll Progress Bar -->
-<div id="scrollProgressBar" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-brand-sky via-brand-blue to-brand-royal z-[100] transition-all duration-75 ease-out w-0 pointer-events-none"></div>
+<div id="scrollProgressBar"
+  class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-brand-sky via-brand-blue to-brand-royal z-[100] transition-all duration-75 ease-out w-0 pointer-events-none">
+</div>
 
 <!-- Top Announcement Bar -->
 <div class="bg-brand-navy text-white text-xs py-2 px-4 border-b border-white/10 hidden md:block">
@@ -21,15 +30,17 @@
         <span class="text-slate-400">/</span>
         <a href="tel:9906676890" class="hover:text-white font-medium transition">9906676890</a>
       </div>
-      <a href="https://wa.me/916006725007" target="_blank" class="flex items-center text-emerald-300 hover:text-emerald-200 transition">
+      <a href="https://wa.me/916006725007" target="_blank"
+        class="flex items-center text-emerald-300 hover:text-emerald-200 transition">
         <i data-lucide="message-circle" class="w-3.5 h-3.5 mr-1.5"></i>
         WhatsApp Us
       </a>
       <% if (isAdmin) { %>
-        <a href="/admin" class="bg-white/10 hover:bg-white/20 text-white px-2.5 py-0.5 rounded text-[11px] font-semibold transition">
+        <a href="/admin"
+          class="bg-white/10 hover:bg-white/20 text-white px-2.5 py-0.5 rounded text-[11px] font-semibold transition">
           Admin Portal
         </a>
-      <% } %>
+        <% } %>
     </div>
   </div>
 </div>
@@ -38,12 +49,14 @@
 <header id="main-header" class="sticky top-0 z-50 bg-white transition-all duration-300 border-b border-brand-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
-      
+
       <!-- Brand Logo & Name -->
       <a href="/" class="flex items-center space-x-3 group">
-        <img src="/images/LOGO.jpeg" alt="City Line Tours And Travels Logo" class="w-11 h-11 sm:w-12 sm:h-12 object-contain rounded-xl shadow-xs border border-slate-100 group-hover:scale-105 transition-transform duration-300">
+        <img src="/images/LOGO.jpeg" alt="City Line Tours And Travels Logo"
+          class="w-11 h-11 sm:w-12 sm:h-12 object-contain rounded-xl shadow-xs border border-slate-100 group-hover:scale-105 transition-transform duration-300">
         <div class="flex flex-col">
-          <span class="font-serif text-xl sm:text-22px font-bold text-brand-navy tracking-tight group-hover:text-brand-blue transition">
+          <span
+            class="font-serif text-xl sm:text-22px font-bold text-brand-navy tracking-tight group-hover:text-brand-blue transition">
             City Line
           </span>
           <span class="text-[10px] sm:text-xs font-medium tracking-widest text-brand-muted uppercase -mt-1">
@@ -55,33 +68,43 @@
       <!-- Desktop Navigation Links & Action Button -->
       <div class="hidden lg:flex items-center space-x-5 xl:space-x-7">
         <nav class="flex items-center space-x-3.5 xl:space-x-5">
-          <a href="/" class="text-xs xl:text-sm font-medium transition py-1.5 px-2.5 rounded-lg <%= currentPath === '/' ? 'text-brand-blue bg-brand-softsky font-semibold shadow-xs' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
+          <a href="/"
+            class="text-xs xl:text-sm font-medium transition py-1.5 px-2.5 rounded-lg <%= currentPath === '/' ? 'text-brand-blue bg-brand-softsky font-semibold shadow-xs' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
             Home
           </a>
-          <a href="/about" class="text-xs xl:text-sm font-medium transition py-1.5 px-2.5 rounded-lg <%= currentPath === '/about' ? 'text-brand-blue bg-brand-softsky font-semibold shadow-xs' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
+          <a href="/about"
+            class="text-xs xl:text-sm font-medium transition py-1.5 px-2.5 rounded-lg <%= currentPath === '/about' ? 'text-brand-blue bg-brand-softsky font-semibold shadow-xs' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
             About
           </a>
-          <a href="/destinations" class="text-xs xl:text-sm font-medium transition py-1.5 px-2.5 rounded-lg <%= currentPath.startsWith('/destinations') ? 'text-brand-blue bg-brand-softsky font-semibold shadow-xs' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
+          <a href="/destinations"
+            class="text-xs xl:text-sm font-medium transition py-1.5 px-2.5 rounded-lg <%= currentPath.startsWith('/destinations') ? 'text-brand-blue bg-brand-softsky font-semibold shadow-xs' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
             Destinations
           </a>
-          <a href="/packages" class="text-xs xl:text-sm font-medium transition py-1.5 px-2.5 rounded-lg <%= currentPath.startsWith('/packages') ? 'text-brand-blue bg-brand-softsky font-semibold shadow-xs' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
+          <a href="/packages"
+            class="text-xs xl:text-sm font-medium transition py-1.5 px-2.5 rounded-lg <%= currentPath.startsWith('/packages') ? 'text-brand-blue bg-brand-softsky font-semibold shadow-xs' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
             Packages
           </a>
-          <a href="/experiences" class="text-xs xl:text-sm font-medium transition py-1.5 px-2.5 rounded-lg <%= currentPath === '/experiences' ? 'text-brand-blue bg-brand-softsky font-semibold shadow-xs' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
+          <a href="/experiences"
+            class="text-xs xl:text-sm font-medium transition py-1.5 px-2.5 rounded-lg <%= currentPath === '/experiences' ? 'text-brand-blue bg-brand-softsky font-semibold shadow-xs' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
             Experiences
           </a>
-          <a href="/hotels" class="text-xs xl:text-sm font-medium transition py-1.5 px-2.5 rounded-lg <%= currentPath === '/hotels' ? 'text-brand-blue bg-brand-softsky font-semibold shadow-xs' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
+          <a href="/hotels"
+            class="text-xs xl:text-sm font-medium transition py-1.5 px-2.5 rounded-lg <%= currentPath === '/hotels' ? 'text-brand-blue bg-brand-softsky font-semibold shadow-xs' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
             Hotels
           </a>
-          <a href="/gallery" class="text-xs xl:text-sm font-medium transition py-1.5 px-2.5 rounded-lg <%= currentPath === '/gallery' ? 'text-brand-blue bg-brand-softsky font-semibold shadow-xs' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
+          <a href="/gallery"
+            class="text-xs xl:text-sm font-medium transition py-1.5 px-2.5 rounded-lg <%= currentPath === '/gallery' ? 'text-brand-blue bg-brand-softsky font-semibold shadow-xs' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
             Gallery
           </a>
-          <a href="/contact" class="text-xs xl:text-sm font-medium transition py-1.5 px-2.5 rounded-lg <%= currentPath === '/contact' ? 'text-brand-blue bg-brand-softsky font-semibold shadow-xs' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
+          <a href="/contact"
+            class="text-xs xl:text-sm font-medium transition py-1.5 px-2.5 rounded-lg <%= currentPath === '/contact' ? 'text-brand-blue bg-brand-softsky font-semibold shadow-xs' : 'text-brand-navy/80 hover:text-brand-blue hover:bg-slate-50' %>">
             Contact
           </a>
         </nav>
 
-        <button type="button" class="enquire-now-btn btn-primary text-xs py-2 px-3.5 rounded-xl font-semibold shadow-sm ml-1" data-package="General Enquiry">
+        <button type="button"
+          class="enquire-now-btn btn-primary text-xs py-2 px-3.5 rounded-xl font-semibold shadow-sm ml-1"
+          data-package="General Enquiry">
           <i data-lucide="send" class="w-3.5 h-3.5"></i>
           <span>Request a Quote</span>
         </button>
@@ -89,7 +112,8 @@
 
       <!-- Mobile Hamburger Button -->
       <div class="flex items-center lg:hidden">
-        <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="p-2 rounded-lg text-brand-navy hover:bg-brand-light focus:outline-none">
+        <button id="mobileMenuBtn" aria-label="Open Navigation Menu"
+          class="p-2 rounded-lg text-brand-navy hover:bg-brand-light focus:outline-none">
           <i data-lucide="menu" class="w-6 h-6"></i>
         </button>
       </div>
@@ -99,58 +123,71 @@
 </header>
 
 <!-- Mobile Navigation Drawer -->
-<div id="mobileDrawerBackdrop" class="fixed inset-0 bg-brand-navy/60 z-50 backdrop-blur-sm hidden transition-opacity"></div>
-<div id="mobileDrawer" class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
-  
+<div id="mobileDrawerBackdrop" class="fixed inset-0 bg-brand-navy/60 z-50 backdrop-blur-sm hidden transition-opacity">
+</div>
+<div id="mobileDrawer"
+  class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+
   <!-- Drawer Header -->
   <div class="p-5 border-b border-brand-border flex items-center justify-between bg-brand-offwhite">
     <div class="flex items-center space-x-3">
-      <img src="/images/LOGO.jpeg" alt="City Line Tours Logo" class="w-10 h-10 object-contain rounded-xl shadow-sm border border-slate-100">
+      <img src="/images/LOGO.jpeg" alt="City Line Tours Logo"
+        class="w-10 h-10 object-contain rounded-xl shadow-sm border border-slate-100">
       <div>
         <div class="font-serif font-bold text-base text-brand-navy">City Line</div>
         <div class="text-[10px] tracking-wider text-brand-muted uppercase">Tours And Travels</div>
       </div>
     </div>
-    <button id="closeMobileMenuBtn" aria-label="Close Navigation Menu" class="p-2 text-brand-muted hover:text-brand-navy rounded-lg">
+    <button id="closeMobileMenuBtn" aria-label="Close Navigation Menu"
+      class="p-2 text-brand-muted hover:text-brand-navy rounded-lg">
       <i data-lucide="x" class="w-5 h-5"></i>
     </button>
   </div>
 
   <!-- Drawer Nav Links -->
   <div class="p-5 flex-1 overflow-y-auto space-y-2">
-    <a href="/" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
+    <a href="/"
+      class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
       <i data-lucide="home" class="w-5 h-5 text-brand-blue"></i>
       <span>Home</span>
     </a>
-    <a href="/about" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
+    <a href="/about"
+      class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
       <i data-lucide="info" class="w-5 h-5 text-brand-blue"></i>
       <span>About Us</span>
     </a>
-    <a href="/destinations" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
+    <a href="/destinations"
+      class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
       <i data-lucide="mountain" class="w-5 h-5 text-brand-blue"></i>
       <span>Destinations</span>
     </a>
-    <a href="/packages" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
+    <a href="/packages"
+      class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
       <i data-lucide="luggage" class="w-5 h-5 text-brand-blue"></i>
       <span>Tour Packages</span>
     </a>
-    <a href="/experiences" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
+    <a href="/experiences"
+      class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
       <i data-lucide="camera" class="w-5 h-5 text-brand-blue"></i>
       <span>Experiences</span>
     </a>
-    <a href="/hotels" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
+    <a href="/hotels"
+      class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
       <i data-lucide="bed-double" class="w-5 h-5 text-brand-blue"></i>
       <span>Hotels & Houseboats</span>
     </a>
-    <a href="/gallery" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
+    <a href="/gallery"
+      class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
       <i data-lucide="image" class="w-5 h-5 text-brand-blue"></i>
       <span>Photo Gallery</span>
     </a>
-    <a href="/faq" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
+    <a href="/faq"
+      class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
       <i data-lucide="circle-help" class="w-5 h-5 text-brand-blue"></i>
       <span>FAQs</span>
     </a>
-    <a href="/contact" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
+    <a href="/contact"
+      class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue">
       <i data-lucide="phone" class="w-5 h-5 text-brand-blue"></i>
       <span>Contact Us</span>
     </a>
@@ -158,14 +195,15 @@
 
   <!-- Drawer Footer CTAs -->
   <div class="p-5 border-t border-brand-border space-y-3 bg-brand-offwhite">
-    <a href="/packages" class="w-full btn-primary py-3 rounded-lg text-center font-semibold text-sm flex items-center justify-center space-x-2">
+    <a href="/packages"
+      class="w-full btn-primary py-3 rounded-lg text-center font-semibold text-sm flex items-center justify-center space-x-2">
       <i data-lucide="compass" class="w-4 h-4"></i>
       <span>Explore Tour Packages</span>
     </a>
-    <a href="https://wa.me/916006725007" target="_blank" class="w-full bg-[#25D366] text-white py-2.5 rounded-lg text-center font-semibold text-sm flex items-center justify-center space-x-2 hover:bg-[#20ba59]">
+    <a href="https://wa.me/916006725007" target="_blank"
+      class="w-full bg-[#25D366] text-white py-2.5 rounded-lg text-center font-semibold text-sm flex items-center justify-center space-x-2 hover:bg-[#20ba59]">
       <i data-lucide="message-circle" class="w-4 h-4"></i>
       <span>Chat on WhatsApp</span>
     </a>
   </div>
 </div>
-

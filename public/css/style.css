@@ -22,8 +22,6 @@
   --error: #DC2626;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: var(--dark-text);
@@ -395,6 +393,55 @@ button:hover .arrow-hover {
 .hero-cta-enter {
   animation: heroFadeUp 550ms cubic-bezier(0.22, 1, 0.36, 1) 300ms both;
   will-change: opacity, transform;
+}
+
+/* ==========================================================================
+   TOP LOADING / NAVIGATION PROGRESS BAR (FAST, ELEGANT, HIGH-Z)
+   ========================================================================== */
+.top-loading-bar,
+.navigation-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 3px;
+  pointer-events: none;
+  z-index: 999999; /* Higher than sticky headers, modals, and drawers */
+  opacity: 0;
+  transition: opacity 250ms ease-out;
+  will-change: opacity;
+}
+
+.top-loading-bar.is-active,
+.navigation-progress.is-loading,
+.navigation-progress.is-complete {
+  opacity: 1;
+}
+
+.top-loading-bar-indicator {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: 0% 50%;
+  background: linear-gradient(90deg, #145DA0 0%, #2563EB 60%, #60A5FA 100%);
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.75), 0 0 4px #60A5FA;
+  transition: transform 200ms cubic-bezier(0.1, 0.85, 0.25, 1);
+  will-change: transform;
+}
+
+.top-loading-bar-glow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 120px;
+  box-shadow: 0 0 12px 2px #60A5FA, 0 0 6px 1px #2563EB;
+  border-radius: 50%;
+  opacity: 0.9;
+  transform: rotate(3deg) translate(0px, -2px);
+  pointer-events: none;
 }
 
 /* Page Transition - Lightweight & Immediate (250-300ms) */
