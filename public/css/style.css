@@ -763,22 +763,28 @@ body > section:first-of-type,
 }
 
 /* ========================================================
-   5. SNOWFALL CANVAS & TOGGLE PILL
+   5. REAL-TIME SRINAGAR WEATHER CANVAS & TOGGLE PILL
    ======================================================== */
 #snowCanvas {
   pointer-events: none;
   mix-blend-mode: screen;
 }
-.snow-toggle-btn {
-  background: rgba(11, 37, 69, 0.55);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+.snow-toggle-btn,
+.hero-weather-pill {
+  background: rgba(11, 37, 69, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
   transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-.snow-toggle-btn:hover {
-  background: rgba(20, 93, 160, 0.7);
+.snow-toggle-btn:hover,
+.hero-weather-pill:hover {
+  background: rgba(20, 93, 160, 0.8);
   border-color: #60A5FA;
+}
+#heroWeatherMenu {
+  box-shadow: 0 16px 36px -4px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.15);
 }
 
 /* ========================================================

@@ -500,19 +500,63 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ========================================================
-  // 3. AMBIENT GENTLE SNOWFALL EFFECT (OPTIMIZED OFF-SCREEN PAUSE)
+  // 3. REAL-TIME SRINAGAR WEATHER ENGINE (RAIN, SNOW, THUNDERSTORM, FOG, CLEAR)
   // ========================================================
   const snowCanvas = document.getElementById('snowCanvas');
+  const heroSection = document.getElementById('heroSection');
   const snowToggleBtn = document.getElementById('snowToggleBtn');
   const snowStatusText = document.getElementById('snowStatusText');
+  const heroWeatherIcon = document.getElementById('heroWeatherIcon');
+  const heroWeatherMenu = document.getElementById('heroWeatherMenu');
+  const heroWeatherOptions = document.querySelectorAll('#heroWeatherOptions button');
+  const heroWeatherPulseDot = document.getElementById('heroWeatherPulseDot');
 
-  if (snowCanvas) {
+  if (snowCanvas && heroSection) {
     const ctx = snowCanvas.getContext('2d');
-    let snowActive = true;
     let animationFrameId = null;
     let width = 0;
     let height = 0;
     let isHeroInView = true;
+
+    // Real-time state
+    let activeMode = 'auto'; // 'auto' | 'rain' | 'thunderstorm' | 'snow' | 'fog' | 'clear' | 'off'
+    let liveSrinagar = {
+      code: parseInt(heroSection.getAttribute('data-srinagar-code') || '1', 10),
+      temp: parseInt(heroSection.getAttribute('data-srinagar-temp') || '10', 10),
+      cond: heroSection.getAttribute('data-srinagar-cond') || 'Mainly Clear',
+      icon: heroSection.getAttribute('data-srinagar-icon') || 'sun'
+    };
+
+    function resolveWeatherType(code, condName) {
+      const c = parseInt(code, 10);
+      const name = (condName || '').toLowerCase();
+
+      // Thunderstorm: WMO 95, 96, 99, 82 or condition includes thunder/lightning
+      if ([95, 96, 99, 82].includes(c) || name.includes('thunder') || name.includes('lightning')) {
+        return 'thunderstorm';
+      }
+      // Snow: WMO 71, 73, 75, 77, 85, 86, 56, 57, 66, 67 or condition includes snow/blizzard/sleet
+      if ([71, 73, 75, 77, 85, 86, 56, 57, 66, 67].includes(c) || name.includes('snow') || name.includes('sleet') || name.includes('blizzard') || name.includes('flurry')) {
+        return 'snow';
+      }
+      // Rain: WMO 51, 53, 55, 61, 63, 65, 80, 81 or condition includes rain/drizzle/shower
+      if ([51, 53, 55, 61, 63, 65, 80, 81].includes(c) || name.includes('rain') || name.includes('drizzle') || name.includes('shower')) {
+        return 'rain';
+      }
+      // Fog: WMO 45, 48 or condition includes fog/mist/haze
+      if ([45, 48].includes(c) || name.includes('fog') || name.includes('mist') || name.includes('haze')) {
+        return 'fog';
+      }
+      // Default / Clear / Partly Cloudy
+      return 'clear';
+    }
+
+    function getEffectiveType() {
+      if (activeMode === 'auto') {
+        return resolveWeatherType(liveSrinagar.code, liveSrinagar.cond);
+      }
+      return activeMode;
+    }
 
     function resizeCanvas() {
       if (!snowCanvas || !snowCanvas.parentElement) return;
@@ -522,59 +566,506 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', resizeCanvas, { passive: true });
     resizeCanvas();
 
-    // Create 45 organic snowflake particles
-    const particleCount = 45;
-    const particles = [];
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * (width || 800),
-        y: Math.random() * (height || 600),
-        r: Math.random() * 2.2 + 0.8,
-        speedY: Math.random() * 0.7 + 0.3,
-        speedX: Math.random() * 0.5 - 0.25,
-        opacity: Math.random() * 0.6 + 0.25,
-        swaySpeed: Math.random() * 0.02 + 0.008,
-        swayAngle: Math.random() * Math.PI * 2
-      });
+    // Particle Pools
+    let rainDrops = [];
+    let rainSplashes = [];
+    let snowFlakes = [];
+    let fogWisps = [];
+    let clearMotes = [];
+
+    // Lightning State for Thunderstorm
+    let lightning = {
+      active: false,
+      flashAlpha: 0,
+      bolts: [],
+      nextStrikeTime: performance.now() + Math.random() * 4000 + 2000
+    };
+
+    function initRainParticles(count = 85) {
+      rainDrops = [];
+      rainSplashes = [];
+      for (let i = 0; i < count; i++) {
+        rainDrops.push({
+          x: Math.random() * (width + 100) - 50,
+          y: Math.random() * height,
+          length: Math.random() * 16 + 14,
+          speedY: Math.random() * 7 + 13,
+          speedX: -2.2, // realistic mountain wind angle
+          opacity: Math.random() * 0.4 + 0.35,
+          width: Math.random() * 0.6 + 1.0
+        });
+      }
     }
 
-    function renderSnow() {
-      if (!snowActive || !isHeroInView) {
+    function initSnowParticles(count = 55) {
+      snowFlakes = [];
+      for (let i = 0; i < count; i++) {
+        snowFlakes.push({
+          x: Math.random() * (width || 800),
+          y: Math.random() * (height || 600),
+          r: Math.random() * 2.4 + 0.8,
+          speedY: Math.random() * 0.8 + 0.4,
+          speedX: Math.random() * 0.5 - 0.25,
+          opacity: Math.random() * 0.6 + 0.25,
+          swaySpeed: Math.random() * 0.02 + 0.008,
+          swayAngle: Math.random() * Math.PI * 2
+        });
+      }
+    }
+
+    function initFogParticles(count = 18) {
+      fogWisps = [];
+      for (let i = 0; i < count; i++) {
+        fogWisps.push({
+          x: Math.random() * (width + 200) - 100,
+          y: Math.random() * height * 0.8 + height * 0.1,
+          r: Math.random() * 100 + 90,
+          speedX: Math.random() * 0.35 + 0.15,
+          opacity: Math.random() * 0.05 + 0.03
+        });
+      }
+    }
+
+    function initClearParticles(count = 32) {
+      clearMotes = [];
+      for (let i = 0; i < count; i++) {
+        clearMotes.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 1.8 + 0.6,
+          speedY: -(Math.random() * 0.4 + 0.1),
+          speedX: Math.random() * 0.4 - 0.2,
+          opacity: Math.random() * 0.5 + 0.2,
+          pulseSpeed: Math.random() * 0.03 + 0.01,
+          pulseAngle: Math.random() * Math.PI * 2
+        });
+      }
+    }
+
+    function generateLightningBolt(startX, startY, endY) {
+      const bolt = [];
+      let curX = startX;
+      let curY = startY;
+      bolt.push({ x: curX, y: curY });
+
+      while (curY < endY) {
+        curY += Math.random() * 28 + 14;
+        curX += (Math.random() - 0.5) * 45;
+        bolt.push({ x: curX, y: curY });
+
+        // Occasional branch
+        if (Math.random() < 0.25 && bolt.length < 12) {
+          const branch = [];
+          let bX = curX;
+          let bY = curY;
+          for (let j = 0; j < 4; j++) {
+            bY += Math.random() * 20 + 10;
+            bX += (Math.random() - 0.3) * 35;
+            branch.push({ x: bX, y: bY });
+          }
+          bolt.branch = branch;
+        }
+      }
+      return bolt;
+    }
+
+    function triggerLightning() {
+      lightning.active = true;
+      lightning.flashAlpha = Math.random() * 0.35 + 0.45;
+      const startX = Math.random() * (width * 0.6) + width * 0.2;
+      lightning.bolts = [
+        generateLightningBolt(startX, 0, height * (Math.random() * 0.4 + 0.5))
+      ];
+      lightning.nextStrikeTime = performance.now() + Math.random() * 5000 + 3500;
+    }
+
+    function renderActiveWeather(timestamp) {
+      if (!isHeroInView) {
         animationFrameId = null;
         return;
       }
+
+      const type = getEffectiveType();
+      if (type === 'off') {
+        ctx.clearRect(0, 0, width, height);
+        animationFrameId = null;
+        return;
+      }
+
       ctx.clearRect(0, 0, width, height);
 
-      particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
-        ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
-        ctx.fill();
+      // ----------------------------------------------------
+      // A. SNOW EFFECT
+      // ----------------------------------------------------
+      if (type === 'snow') {
+        if (snowFlakes.length === 0) initSnowParticles();
 
-        p.swayAngle += p.swaySpeed;
-        p.x += Math.sin(p.swayAngle) * 0.4 + p.speedX;
-        p.y += p.speedY;
+        snowFlakes.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+          ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+          ctx.fill();
 
-        // Wrap around borders
-        if (p.y > height + 5) {
-          p.y = -5;
-          p.x = Math.random() * width;
+          p.swayAngle += p.swaySpeed;
+          p.x += Math.sin(p.swayAngle) * 0.5 + p.speedX;
+          p.y += p.speedY;
+
+          if (p.y > height + 5) {
+            p.y = -5;
+            p.x = Math.random() * width;
+          }
+          if (p.x > width + 5) p.x = -5;
+          if (p.x < -5) p.x = width + 5;
+        });
+      }
+
+      // ----------------------------------------------------
+      // B. RAIN EFFECT
+      // ----------------------------------------------------
+      else if (type === 'rain') {
+        if (rainDrops.length === 0) initRainParticles(85);
+
+        ctx.lineWidth = 1.2;
+        rainDrops.forEach(p => {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p.x + p.speedX * (p.length / 10), p.y + p.length);
+          ctx.strokeStyle = `rgba(186, 224, 255, ${p.opacity})`;
+          ctx.stroke();
+
+          p.x += p.speedX;
+          p.y += p.speedY;
+
+          // Splash on hitting bottom ground
+          if (p.y >= height - 20) {
+            if (rainSplashes.length < 25 && Math.random() < 0.4) {
+              rainSplashes.push({
+                x: p.x,
+                y: height - Math.random() * 15,
+                radius: 1,
+                maxRadius: Math.random() * 8 + 6,
+                opacity: 0.6
+              });
+            }
+            p.y = -p.length;
+            p.x = Math.random() * (width + 100) - 50;
+          }
+        });
+
+        // Draw and update splashes
+        for (let i = rainSplashes.length - 1; i >= 0; i--) {
+          const sp = rainSplashes[i];
+          ctx.beginPath();
+          ctx.ellipse(sp.x, sp.y, sp.radius * 1.5, sp.radius * 0.6, 0, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(200, 230, 255, ${sp.opacity})`;
+          ctx.stroke();
+
+          sp.radius += 0.7;
+          sp.opacity -= 0.045;
+          if (sp.opacity <= 0 || sp.radius >= sp.maxRadius) {
+            rainSplashes.splice(i, 1);
+          }
         }
-        if (p.x > width + 5) p.x = -5;
-        if (p.x < -5) p.x = width + 5;
-      });
+      }
 
-      animationFrameId = requestAnimationFrame(renderSnow);
+      // ----------------------------------------------------
+      // C. THUNDERSTORM EFFECT (HEAVY RAIN + LIGHTNING)
+      // ----------------------------------------------------
+      else if (type === 'thunderstorm') {
+        if (rainDrops.length === 0) initRainParticles(115);
+
+        // Thunderstorm rain is heavier & faster
+        ctx.lineWidth = 1.4;
+        rainDrops.forEach(p => {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p.x + p.speedX * 1.8, p.y + p.length * 1.2);
+          ctx.strokeStyle = `rgba(195, 225, 255, ${p.opacity * 1.1})`;
+          ctx.stroke();
+
+          p.x += p.speedX * 1.3;
+          p.y += p.speedY * 1.25;
+
+          if (p.y >= height - 20) {
+            if (rainSplashes.length < 35 && Math.random() < 0.5) {
+              rainSplashes.push({
+                x: p.x,
+                y: height - Math.random() * 18,
+                radius: 1,
+                maxRadius: Math.random() * 11 + 8,
+                opacity: 0.75
+              });
+            }
+            p.y = -p.length * 1.2;
+            p.x = Math.random() * (width + 120) - 60;
+          }
+        });
+
+        // Splashes
+        for (let i = rainSplashes.length - 1; i >= 0; i--) {
+          const sp = rainSplashes[i];
+          ctx.beginPath();
+          ctx.ellipse(sp.x, sp.y, sp.radius * 1.6, sp.radius * 0.7, 0, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(220, 240, 255, ${sp.opacity})`;
+          ctx.stroke();
+
+          sp.radius += 0.9;
+          sp.opacity -= 0.05;
+          if (sp.opacity <= 0 || sp.radius >= sp.maxRadius) {
+            rainSplashes.splice(i, 1);
+          }
+        }
+
+        // Lightning strike trigger
+        if (timestamp >= lightning.nextStrikeTime) {
+          triggerLightning();
+        }
+
+        // Draw Lightning Flash & Bolt
+        if (lightning.active) {
+          // Ambient sky illumination
+          ctx.fillStyle = `rgba(220, 235, 255, ${lightning.flashAlpha})`;
+          ctx.fillRect(0, 0, width, height);
+
+          // Draw jagged bolt
+          if (lightning.bolts && lightning.bolts.length > 0) {
+            ctx.save();
+            ctx.shadowColor = '#60a5fa';
+            ctx.shadowBlur = 16;
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 2.2;
+
+            lightning.bolts.forEach(bolt => {
+              ctx.beginPath();
+              bolt.forEach((pt, idx) => {
+                if (idx === 0) ctx.moveTo(pt.x, pt.y);
+                else ctx.lineTo(pt.x, pt.y);
+              });
+              ctx.stroke();
+
+              // Branch
+              if (bolt.branch) {
+                ctx.beginPath();
+                ctx.lineWidth = 1.2;
+                bolt.branch.forEach((bpt, bidx) => {
+                  if (bidx === 0) ctx.moveTo(bpt.x, bpt.y);
+                  else ctx.lineTo(bpt.x, bpt.y);
+                });
+                ctx.stroke();
+              }
+            });
+            ctx.restore();
+          }
+
+          // Fade out lightning flash
+          lightning.flashAlpha *= 0.82;
+          if (lightning.flashAlpha < 0.02) {
+            lightning.active = false;
+            lightning.flashAlpha = 0;
+            lightning.bolts = [];
+          }
+        }
+      }
+
+      // ----------------------------------------------------
+      // D. FOG / MOUNTAIN MIST EFFECT
+      // ----------------------------------------------------
+      else if (type === 'fog') {
+        if (fogWisps.length === 0) initFogParticles(18);
+
+        fogWisps.forEach(f => {
+          const grad = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.r);
+          grad.addColorStop(0, `rgba(235, 245, 255, ${f.opacity})`);
+          grad.addColorStop(0.6, `rgba(225, 240, 255, ${f.opacity * 0.5})`);
+          grad.addColorStop(1, 'rgba(220, 235, 255, 0)');
+
+          ctx.beginPath();
+          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+          ctx.fillStyle = grad;
+          ctx.fill();
+
+          f.x += f.speedX;
+          if (f.x - f.r > width) {
+            f.x = -f.r;
+            f.y = Math.random() * height * 0.8 + height * 0.1;
+          }
+        });
+      }
+
+      // ----------------------------------------------------
+      // E. CLEAR SKIES / SHIMMERING MOUNTAIN SUNSHINE
+      // ----------------------------------------------------
+      else if (type === 'clear') {
+        if (clearMotes.length === 0) initClearParticles(32);
+
+        clearMotes.forEach(m => {
+          m.pulseAngle += m.pulseSpeed;
+          const currentOpacity = m.opacity * (0.65 + Math.sin(m.pulseAngle) * 0.35);
+
+          ctx.beginPath();
+          ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(254, 243, 199, ${currentOpacity})`;
+          ctx.shadowColor = '#fef08a';
+          ctx.shadowBlur = 6;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          m.x += m.speedX;
+          m.y += m.speedY;
+
+          if (m.y < -5) {
+            m.y = height + 5;
+            m.x = Math.random() * width;
+          }
+          if (m.x > width + 5) m.x = -5;
+          if (m.x < -5) m.x = width + 5;
+        });
+      }
+
+      animationFrameId = requestAnimationFrame(renderActiveWeather);
     }
 
+    function switchWeatherMode(newMode) {
+      activeMode = newMode;
+      // Reset particle caches
+      rainDrops = [];
+      rainSplashes = [];
+      snowFlakes = [];
+      fogWisps = [];
+      clearMotes = [];
+      lightning.active = false;
+
+      // Update pill UI
+      updateWeatherPillUI();
+
+      // Ensure render loop is active if in view
+      if (activeMode !== 'off' && isHeroInView) {
+        if (!animationFrameId) {
+          animationFrameId = requestAnimationFrame(renderActiveWeather);
+        }
+      } else if (activeMode === 'off') {
+        ctx.clearRect(0, 0, width, height);
+      }
+    }
+
+    function updateWeatherPillUI() {
+      const type = getEffectiveType();
+
+      // Update options active styling
+      if (heroWeatherOptions) {
+        heroWeatherOptions.forEach(opt => {
+          const optMode = opt.getAttribute('data-mode');
+          if (optMode === activeMode) {
+            opt.classList.add('bg-white/15', 'text-white', 'active-mode');
+            opt.classList.remove('text-slate-200', 'text-slate-400');
+          } else {
+            opt.classList.remove('bg-white/15', 'text-white', 'active-mode');
+            if (optMode === 'off') opt.classList.add('text-slate-400');
+            else opt.classList.add('text-slate-200');
+          }
+        });
+      }
+
+      // Update text and icon
+      if (snowStatusText) {
+        if (activeMode === 'auto') {
+          snowStatusText.textContent = `Srinagar: ${liveSrinagar.cond} (${liveSrinagar.temp}°C)`;
+        } else if (activeMode === 'rain') {
+          snowStatusText.textContent = 'FX: Rain Active';
+        } else if (activeMode === 'thunderstorm') {
+          snowStatusText.textContent = 'FX: Thunderstorm Active';
+        } else if (activeMode === 'snow') {
+          snowStatusText.textContent = 'FX: Snowfall Active';
+        } else if (activeMode === 'fog') {
+          snowStatusText.textContent = 'FX: Mountain Fog Active';
+        } else if (activeMode === 'clear') {
+          snowStatusText.textContent = 'FX: Mountain Sunshine';
+        } else if (activeMode === 'off') {
+          snowStatusText.textContent = 'Weather FX: Paused';
+        }
+      }
+
+      if (heroWeatherPulseDot) {
+        if (activeMode === 'off') {
+          heroWeatherPulseDot.className = 'relative inline-flex rounded-full h-2 w-2 bg-slate-500';
+          const ping = heroWeatherPulseDot.previousElementSibling;
+          if (ping) ping.style.display = 'none';
+        } else {
+          heroWeatherPulseDot.className = 'relative inline-flex rounded-full h-2 w-2 bg-cyan-400';
+          const ping = heroWeatherPulseDot.previousElementSibling;
+          if (ping) ping.style.display = '';
+        }
+      }
+
+      // Update icon dynamically
+      if (heroWeatherIcon) {
+        let iconName = 'sun';
+        let iconColor = 'text-amber-300';
+
+        if (type === 'snow') {
+          iconName = 'snowflake';
+          iconColor = 'text-cyan-200';
+        } else if (type === 'rain') {
+          iconName = 'cloud-rain';
+          iconColor = 'text-cyan-300';
+        } else if (type === 'thunderstorm') {
+          iconName = 'cloud-lightning';
+          iconColor = 'text-amber-400';
+        } else if (type === 'fog') {
+          iconName = 'cloud-fog';
+          iconColor = 'text-slate-300';
+        } else if (type === 'off') {
+          iconName = 'eye-off';
+          iconColor = 'text-slate-400';
+        }
+
+        heroWeatherIcon.setAttribute('data-lucide', iconName);
+        heroWeatherIcon.className = `w-3.5 h-3.5 ${iconColor}`;
+        if (window.lucide) window.lucide.createIcons();
+      }
+    }
+
+    // Toggle Menu on Pill Button Click
+    if (snowToggleBtn) {
+      snowToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (heroWeatherMenu) {
+          heroWeatherMenu.classList.toggle('hidden');
+        }
+      });
+    }
+
+    // Option Selection
+    if (heroWeatherOptions) {
+      heroWeatherOptions.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const mode = btn.getAttribute('data-mode') || 'auto';
+          switchWeatherMode(mode);
+          if (heroWeatherMenu) heroWeatherMenu.classList.add('hidden');
+        });
+      });
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (heroWeatherMenu && !heroWeatherMenu.classList.contains('hidden')) {
+        const control = document.getElementById('heroWeatherControl');
+        if (control && !control.contains(e.target)) {
+          heroWeatherMenu.classList.add('hidden');
+        }
+      }
+    });
+
     // Pause canvas animation when hero is scrolled off screen to save GPU/CPU cycles
-    const heroSection = document.getElementById('heroSection');
-    if (heroSection && 'IntersectionObserver' in window) {
+    if ('IntersectionObserver' in window) {
       const heroObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           isHeroInView = entry.isIntersecting;
-          if (isHeroInView && snowActive) {
-            if (!animationFrameId) renderSnow();
+          if (isHeroInView && activeMode !== 'off') {
+            if (!animationFrameId) {
+              animationFrameId = requestAnimationFrame(renderActiveWeather);
+            }
           } else {
             if (animationFrameId) {
               cancelAnimationFrame(animationFrameId);
@@ -585,7 +1076,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }, { threshold: 0.05 });
       heroObserver.observe(heroSection);
     } else {
-      renderSnow();
+      animationFrameId = requestAnimationFrame(renderActiveWeather);
     }
 
     // Pause canvas when browser tab is hidden
@@ -595,28 +1086,40 @@ document.addEventListener('DOMContentLoaded', () => {
           cancelAnimationFrame(animationFrameId);
           animationFrameId = null;
         }
-      } else if (isHeroInView && snowActive) {
-        if (!animationFrameId) renderSnow();
+      } else if (isHeroInView && activeMode !== 'off') {
+        if (!animationFrameId) {
+          animationFrameId = requestAnimationFrame(renderActiveWeather);
+        }
       }
     });
 
-    // Snow toggle button click
-    if (snowToggleBtn) {
-      snowToggleBtn.addEventListener('click', () => {
-        snowActive = !snowActive;
-        if (snowActive) {
-          if (snowStatusText) snowStatusText.textContent = 'Snowfall: Active';
-          if (!animationFrameId && isHeroInView) renderSnow();
-        } else {
-          ctx.clearRect(0, 0, width, height);
-          if (animationFrameId) {
-            cancelAnimationFrame(animationFrameId);
-            animationFrameId = null;
+    // Asynchronously refresh live Srinagar weather from /api/weather/srinagar
+    async function syncSrinagarWeather() {
+      try {
+        const res = await fetch('/api/weather/srinagar');
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.current) {
+            liveSrinagar.code = data.current.weatherCode;
+            liveSrinagar.temp = data.current.temperature;
+            liveSrinagar.cond = data.current.condition;
+            liveSrinagar.icon = data.current.icon || 'sun';
+
+            if (activeMode === 'auto') {
+              switchWeatherMode('auto');
+            }
           }
-          if (snowStatusText) snowStatusText.textContent = 'Snowfall: Paused';
         }
-      });
+      } catch (e) {
+        // Silent background fallback to pre-rendered server attributes
+      }
     }
+
+    // Initial trigger & 10-minute background sync
+    updateWeatherPillUI();
+    animationFrameId = requestAnimationFrame(renderActiveWeather);
+    setTimeout(syncSrinagarWeather, 2000);
+    setInterval(syncSrinagarWeather, 10 * 60 * 1000);
   }
 
   // ========================================================
