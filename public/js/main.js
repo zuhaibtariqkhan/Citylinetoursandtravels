@@ -1537,6 +1537,41 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, { passive: true });
   }
+
+  // ========================================================
+  // 10. CRAFTED & DEVELOPED BY ZTM — SIGNATURE MICRO-ANIMATION
+  // ========================================================
+  const ztmCredit = document.getElementById('ztmCredit');
+  if (ztmCredit) {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      ztmCredit.classList.add('ztm-settled');
+    } else if ('IntersectionObserver' in window) {
+      ztmCredit.classList.add('ztm-ready');
+      const ztmObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            ztmCredit.classList.remove('ztm-ready');
+            ztmCredit.classList.add('ztm-animate');
+            // Unobserve so it never replays while scrolling
+            observer.unobserve(entry.target);
+
+            // Settle into final clean, sharp, stationary state
+            setTimeout(() => {
+              ztmCredit.classList.remove('ztm-animate');
+              ztmCredit.classList.add('ztm-settled');
+            }, 1800);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -20px 0px'
+      });
+      ztmObserver.observe(ztmCredit);
+    } else {
+      ztmCredit.classList.add('ztm-settled');
+    }
+  }
 });
 
 
