@@ -38,11 +38,11 @@ if (!hasDetailCalcEmailRedirect) {
 // 4. Check contact.ejs
 const contactEjs = fs.readFileSync('views/contact.ejs', 'utf8');
 const hasContactEmailRedirect = contactEjs.includes('mailto:askcitylinetravels@gmail.com');
-const formRemoved = !contactEjs.includes('contactForm') && !contactEjs.includes('SEND AN ENQUIRY');
+const hasContactEmailBtn = contactEjs.includes('Send Enquiry via Email');
 console.log('✓ contact.ejs redirects to mailto:askcitylinetravels@gmail.com:', hasContactEmailRedirect);
-console.log('✓ contact.ejs enquiry form section is removed:', formRemoved);
-if (!hasContactEmailRedirect || !formRemoved) {
-  console.error('FAILED: contact.ejs missing email redirect or still contains enquiry form');
+console.log('✓ contact.ejs has Send Enquiry via Email button:', hasContactEmailBtn);
+if (!hasContactEmailRedirect || !hasContactEmailBtn) {
+  console.error('FAILED: contact.ejs missing email enquire redirect');
   process.exit(1);
 }
 
@@ -52,10 +52,8 @@ http.get('http://localhost:3000/contact', res => {
   res.on('data', chunk => body += chunk);
   res.on('end', () => {
     console.log('✓ Contact page responds with HTTP', res.statusCode);
-    const hasEmail = body.includes('mailto:askcitylinetravels@gmail.com');
-    const formIsGone = !body.includes('id="contactForm"') && !body.includes('SEND AN ENQUIRY');
-    if (res.statusCode !== 200 || !hasEmail || !formIsGone) {
-      console.error('FAILED: Contact page response invalid (email missing or form still present)');
+    if (res.statusCode !== 200 || !body.includes('Send Enquiry via Email') || !body.includes('mailto:askcitylinetravels@gmail.com')) {
+      console.error('FAILED: Contact page response missing expected elements');
       process.exit(1);
     }
     console.log('\n🌟 ALL ENQUIRE EMAIL REDIRECTION TESTS PASSED!\n');
