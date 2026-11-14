@@ -35,23 +35,20 @@
         <a href="/packages" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory === 'all' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
           All Packages
         </a>
-        <a href="/packages?category=Family" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'family' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
-          Family
-        </a>
         <a href="/packages?category=Honeymoon" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'honeymoon' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
           Honeymoon & Couples
         </a>
-        <a href="/packages?category=Budget" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'budget' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
-          Budget
+        <a href="/packages?category=Seasonal" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'seasonal' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
+          Seasonal & Festivals
         </a>
-        <a href="/packages?category=Luxury" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'luxury' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
-          Luxury
+        <a href="/packages?category=Family" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'family' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
+          Family & Winter
         </a>
         <a href="/packages?category=Group" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'group' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
-          Group & Ski
+          Group & Ladakh
         </a>
-        <a href="/packages?category=Customised" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'customised' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
-          Tailor-Made
+        <a href="/packages?category=Pilgrimage" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'pilgrimage' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
+          Amarnath Pilgrimage
         </a>
       </div>
 
@@ -129,11 +126,11 @@
             <div class="grid grid-cols-2 gap-3 text-xs bg-slate-50 p-3.5 rounded-xl border border-slate-200">
               <div>
                 <span class="text-brand-muted block text-[10px] uppercase">Selected Package</span>
-                <strong class="text-brand-navy line-clamp-1" id="calcSelectedPkgTitle">Glimpse of Paradise</strong>
+                <strong class="text-brand-navy line-clamp-1" id="calcSelectedPkgTitle"><%= packages[0] ? packages[0].title : 'KASHMIR HONEYMOON SPECIAL PACKAGE' %></strong>
               </div>
               <div>
                 <span class="text-brand-muted block text-[10px] uppercase">Duration</span>
-                <strong class="text-brand-navy" id="calcSelectedDuration">4 Days / 3 Nights</strong>
+                <strong class="text-brand-navy" id="calcSelectedDuration"><%= packages[0] ? packages[0].duration : '5 Nights / 6 Days' %></strong>
               </div>
             </div>
 
@@ -149,10 +146,10 @@
               <div class="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/10">
                 <span class="text-xs text-slate-300 block mb-1">Estimated Total Budget</span>
                 <div class="font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight" id="calcTotalDisplay">
-                  ₹29,998
+                  <%= packages[0] ? packages[0].startingPriceFormatted : '₹40,000' %>
                 </div>
                 <div class="text-xs text-brand-sky font-semibold mt-1" id="calcPerPersonDisplay">
-                  ₹14,999 per person
+                  <%= packages[0] && packages[0].pricingModel === 'fixed_couple' ? 'Fixed Couple Price' : '' %>
                 </div>
               </div>
 

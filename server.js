@@ -149,6 +149,17 @@ app.get('/packages', (req, res) => {
 
 // 4. Tour Package Details
 app.get('/packages/:slug', (req, res) => {
+  const legacyBuiltInSlugs = [
+    'glimpse-of-paradise-4d3n',
+    'magnificent-kashmir-grand-tour-7d6n',
+    'offbeat-kashmir-hidden-valleys-6d5n',
+    'enchanting-gurez-valley-5d4n',
+    'customised-kashmir-odyssey'
+  ];
+  if (legacyBuiltInSlugs.includes(req.params.slug)) {
+    return res.redirect(301, '/packages');
+  }
+
   const pkg = db.getPackageBySlug(req.params.slug);
   if (!pkg) {
     return res.status(404).render('404', { pageTitle: 'Package Not Found' });
@@ -167,6 +178,17 @@ app.get('/packages/:slug', (req, res) => {
 
 // 4b. Printable Branded PDF Itinerary
 app.get('/packages/:slug/print', (req, res) => {
+  const legacyBuiltInSlugs = [
+    'glimpse-of-paradise-4d3n',
+    'magnificent-kashmir-grand-tour-7d6n',
+    'offbeat-kashmir-hidden-valleys-6d5n',
+    'enchanting-gurez-valley-5d4n',
+    'customised-kashmir-odyssey'
+  ];
+  if (legacyBuiltInSlugs.includes(req.params.slug)) {
+    return res.redirect(301, '/packages');
+  }
+
   const pkg = db.getPackageBySlug(req.params.slug);
   if (!pkg) {
     return res.status(404).render('404', { pageTitle: 'Package Not Found' });
