@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "photoUrl": "",
+    "placeholderLabel": "Traveller Photo 01",
+    "caption": "Kashmir Memory 01",
+    "location": "Dal Lake, Srinagar"
+  },
+  {
+    "id": 2,
+    "photoUrl": "",
+    "placeholderLabel": "Traveller Photo 02",
+    "caption": "Kashmir Memory 02",
+    "location": "Apharwat Peak, Gulmarg"
+  },
+  {
+    "id": 3,
+    "photoUrl": "",
+    "placeholderLabel": "Traveller Photo 03",
+    "caption": "Kashmir Memory 03",
+    "location": "Betaab Valley, Pahalgam"
+  },
+  {
+    "id": 4,
+    "photoUrl": "",
+    "placeholderLabel": "Traveller Photo 04",
+    "caption": "Kashmir Memory 04",
+    "location": "Thajiwas Glacier, Sonamarg"
+  },
+  {
+    "id": 5,
+    "photoUrl": "",
+    "placeholderLabel": "Traveller Photo 05",
+    "caption": "Kashmir Memory 05",
+    "location": "Pine Meadows, Doodhpathri"
+  },
+  {
+    "id": 6,
+    "photoUrl": "",
+    "placeholderLabel": "Traveller Photo 06",
+    "caption": "Kashmir Memory 06",
+    "location": "Habba Khatoon, Gurez"
+  },
+  {
+    "id": 7,
+    "photoUrl": "",
+    "placeholderLabel": "Traveller Photo 07",
+    "caption": "Kashmir Memory 07",
+    "location": "Pangong Lake, Ladakh"
+  },
+  {
+    "id": 8,
+    "photoUrl": "",
+    "placeholderLabel": "Traveller Photo 08",
+    "caption": "Kashmir Memory 08",
+    "location": "Mughal Gardens, Srinagar"
+  }
+]

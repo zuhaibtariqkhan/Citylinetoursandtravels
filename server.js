@@ -74,6 +74,7 @@ app.get('/', (req, res) => {
   const experiences = db.getExperiences();
   const faqs = db.getFaqs();
   const testimonials = db.getTestimonials().filter(t => t.approved);
+  const travellerMemories = db.getTravellerMemories();
 
   res.render('index', {
     pageTitle: 'Discover Kashmir | City Line Tours And Travels',
@@ -82,7 +83,8 @@ app.get('/', (req, res) => {
     destinations,
     experiences,
     faqs,
-    testimonials
+    testimonials,
+    travellerMemories
   });
 });
 
@@ -189,11 +191,9 @@ app.get('/hotels', (req, res) => {
   });
 });
 
-// 10. Photo Gallery
+// 10. Photo Gallery (Redirected to Homepage)
 app.get('/gallery', (req, res) => {
-  res.render('gallery', {
-    pageTitle: 'Kashmir Photo Gallery | City Line Tours And Travels'
-  });
+  res.redirect(301, '/');
 });
 
 // 11. Contact Us
@@ -203,13 +203,9 @@ app.get('/contact', (req, res) => {
   });
 });
 
-// 12. FAQs
+// 12. FAQs (Redirected to Homepage)
 app.get('/faq', (req, res) => {
-  const faqs = db.getFaqs();
-  res.render('faq', {
-    pageTitle: 'Frequently Asked Questions | City Line Tours And Travels',
-    faqs
-  });
+  res.redirect(301, '/');
 });
 
 // 13. Terms & Privacy

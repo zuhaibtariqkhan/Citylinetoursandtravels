@@ -22,9 +22,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Package Header Title & Meta -->
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8 text-center lg:text-left">
         <div>
-          <div class="flex items-center space-x-2 mb-2">
+          <div class="flex items-center justify-center lg:justify-start space-x-2 mb-2">
             <span class="bg-brand-light text-brand-blue text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
               <%= pkg.category %> Special
             </span>
@@ -33,7 +33,7 @@
               <%= (pkg.destinationCoverage || []).join(' • ') %>
             </span>
           </div>
-          <h1 class="font-serif text-3xl sm:text-4xl lg:text-[45px] font-bold text-brand-navy tracking-tight">
+          <h1 class="font-serif text-3xl sm:text-4xl lg:text-[45px] font-bold text-brand-navy tracking-tight text-center lg:text-left">
             <%= pkg.title %>
           </h1>
         </div>
@@ -101,7 +101,7 @@
           
           <!-- Package Overview -->
           <div>
-            <h2 class="font-serif text-2xl font-bold text-brand-navy mb-4">Tour Overview</h2>
+            <h2 class="font-serif text-2xl font-bold text-brand-navy mb-4 text-center sm:text-left">Tour Overview</h2>
             <p class="text-base text-brand-muted leading-relaxed">
               <%= pkg.fullDescription %>
             </p>

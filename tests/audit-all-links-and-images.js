@@ -13,9 +13,7 @@ const pagesToCrawl = [
   '/destinations/sonamarg',
   '/experiences',
   '/hotels',
-  '/gallery',
   '/contact',
-  '/faq',
   '/terms',
   '/privacy'
 ];

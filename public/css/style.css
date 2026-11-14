@@ -958,3 +958,152 @@ body > section:first-of-type,
 
 
 
+
+/* ========================================================
+   SECTION: MOUNTAIN CLIMATE & ADVISORY (MOBILE REDESIGN)
+   Strictly scoped to mobile screens (< 640px)
+   ======================================================== */
+@media (max-width: 639.98px) {
+  .weather-mobile-container {
+    display: grid !important;
+    grid-template-columns: 135px 1fr !important;
+    gap: 12px !important;
+    align-items: start !important;
+  }
+
+  .weather-mobile-header {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    height: 100% !important;
+    min-height: 220px !important;
+  }
+
+  .weather-mobile-scroll-container {
+    max-height: 230px !important;
+    overflow-y: auto !important;
+    overscroll-behavior-y: contain !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    padding-right: 4px !important;
+    scrollbar-width: thin;
+    scrollbar-color: #145DA0 #EAF3FB;
+  }
+
+  .weather-mobile-scroll-container::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .weather-mobile-scroll-container::-webkit-scrollbar-track {
+    background: #EAF3FB;
+    border-radius: 4px;
+  }
+
+  .weather-mobile-scroll-container::-webkit-scrollbar-thumb {
+    background: #145DA0;
+    border-radius: 4px;
+  }
+
+  .weather-mobile-scroll-container .weather-card {
+    padding: 8px 10px !important;
+    border-radius: 12px !important;
+  }
+
+  .weather-mobile-scroll-container .weather-card .text-2xl {
+    font-size: 1.15rem !important;
+    line-height: 1.25rem !important;
+  }
+}
+
+/* ========================================================
+   CUSTOMER PHOTO CAROUSEL COMPONENT STYLES
+   Desktop & Mobile Smooth Sliding
+   ======================================================== */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.traveller-photo-card {
+  will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .traveller-photo-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* ========================================================
+   REQUIREMENT 4: MOBILE HEADING & SUBHEADING CENTRE-ALIGNMENT
+   Applies across EVERY PAGE of the website strictly on mobile (< 640px)
+   Desktop and tablet layouts remain 100% untouched
+   ======================================================== */
+@media (max-width: 639.98px) {
+  /* Main Hero Headings & Subheadings on every page */
+  h1,
+  .hero-title,
+  .page-hero h1,
+  .page-hero p,
+  .page-title,
+  .page-hero-subtitle {
+    text-align: center !important;
+  }
+
+  /* Section Headings on every page */
+  h2,
+  .section-title,
+  .section-heading {
+    text-align: center !important;
+  }
+
+  /* Section introductory subtitles & descriptive introductory text */
+  section > div > div > p.text-brand-muted,
+  section > div > div > p.text-brand-slate,
+  section > div > div > p.text-slate-200,
+  section > div > div > p.text-slate-300,
+  .section-subtitle,
+  .section-intro,
+  .section-desc,
+  .section-header p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Badges and pills accompanying section headings */
+  section > div > div > .inline-flex,
+  section > div > div > span[class*="uppercase tracking-widest"],
+  .section-badge,
+  .section-badge-pill {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* Page Hero badge alignment */
+  .page-hero span[class*="uppercase tracking-widest"],
+  .page-hero .inline-flex {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+  }
+
+  /* Ensure natural heading text wrap on mobile */
+  h1, h2, h3 {
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: manual;
+  }
+}

@@ -1,0 +1,221 @@
+<!-- ========================================================
+     CUSTOMER PHOTO CAROUSEL: MEMORIES BY OUR TRAVELLERS
+     ======================================================== -->
+<section class="py-10 sm:py-16 bg-brand-offwhite border-t border-brand-border overflow-hidden select-none" id="travellerMemoriesSection">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header & Carousel Controls -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8 text-center sm:text-left">
+      <div>
+        <div class="inline-flex items-center space-x-2 bg-brand-light text-brand-blue border border-brand-border text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 mx-auto sm:mx-0">
+          <i data-lucide="camera" class="w-3.5 h-3.5 text-brand-blue"></i>
+          <span>CUSTOMER MOMENTS</span>
+        </div>
+        <h2 class="font-serif text-xl sm:text-3xl font-bold text-brand-navy tracking-tight text-center sm:text-left">
+          Memories by Our Travellers
+        </h2>
+        <p class="text-xs sm:text-sm text-brand-muted mt-1 max-w-2xl text-center sm:text-left">
+          Real journeys, genuine smiles and unforgettable Kashmir memories.
+        </p>
+      </div>
+
+      <!-- Desktop Arrow Navigation -->
+      <div class="hidden sm:flex items-center space-x-2 shrink-0 justify-center">
+        <button type="button" id="travellerCarouselPrev" 
+                class="w-10 h-10 rounded-xl bg-white border border-brand-border hover:border-brand-blue hover:text-brand-blue text-brand-navy flex items-center justify-center transition shadow-xs cursor-pointer active:scale-95"
+                aria-label="Previous customer photo">
+          <i data-lucide="chevron-left" class="w-5 h-5"></i>
+        </button>
+        <button type="button" id="travellerCarouselNext" 
+                class="w-10 h-10 rounded-xl bg-white border border-brand-border hover:border-brand-blue hover:text-brand-blue text-brand-navy flex items-center justify-center transition shadow-xs cursor-pointer active:scale-95"
+                aria-label="Next customer photo">
+          <i data-lucide="chevron-right" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Carousel Container -->
+    <div class="relative">
+      <div id="travellerCarouselTrack" 
+           class="flex gap-3 sm:gap-5 overflow-x-auto scroll-smooth overscroll-x-contain pb-4 pt-1 snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing"
+           style="scrollbar-width: none; -ms-overflow-style: none;">
+        
+        <% const memories = (typeof travellerMemories !== 'undefined' && travellerMemories && travellerMemories.length > 0) ? travellerMemories : [
+          { id: 1, photoUrl: '', placeholderLabel: 'Traveller Photo 01', caption: 'Kashmir Memory 01', location: 'Dal Lake, Srinagar' },
+          { id: 2, photoUrl: '', placeholderLabel: 'Traveller Photo 02', caption: 'Kashmir Memory 02', location: 'Apharwat Peak, Gulmarg' },
+          { id: 3, photoUrl: '', placeholderLabel: 'Traveller Photo 03', caption: 'Kashmir Memory 03', location: 'Betaab Valley, Pahalgam' },
+          { id: 4, photoUrl: '', placeholderLabel: 'Traveller Photo 04', caption: 'Kashmir Memory 04', location: 'Thajiwas Glacier, Sonamarg' },
+          { id: 5, photoUrl: '', placeholderLabel: 'Traveller Photo 05', caption: 'Kashmir Memory 05', location: 'Pine Meadows, Doodhpathri' },
+          { id: 6, photoUrl: '', placeholderLabel: 'Traveller Photo 06', caption: 'Kashmir Memory 06', location: 'Habba Khatoon, Gurez' },
+          { id: 7, photoUrl: '', placeholderLabel: 'Traveller Photo 07', caption: 'Kashmir Memory 07', location: 'Pangong Lake, Ladakh' },
+          { id: 8, photoUrl: '', placeholderLabel: 'Traveller Photo 08', caption: 'Kashmir Memory 08', location: 'Mughal Gardens, Srinagar' }
+        ]; %>
+
+        <% memories.forEach(item => { %>
+          <!-- Carousel Card: Item <%= item.id %> -->
+          <div class="traveller-photo-card shrink-0 w-[200px] sm:w-[260px] lg:w-[280px] aspect-[4/5] snap-start relative rounded-2xl overflow-hidden border border-brand-border bg-white shadow-xs hover:shadow-lg transition-all duration-300 group">
+            <% if (item.photoUrl && item.photoUrl.trim() !== '') { %>
+              <!-- Actual Customer Photograph (Renders when photoUrl is populated) -->
+              <img src="<%= item.photoUrl %>" 
+                   alt="<%= item.caption || item.placeholderLabel %>"
+                   loading="lazy"
+                   decoding="async"
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-black/10 to-transparent flex flex-col justify-end p-3.5 sm:p-4 text-white">
+                <span class="text-xs font-serif font-bold text-white leading-tight"><%= item.caption %></span>
+                <span class="text-[10px] text-brand-sky flex items-center space-x-1 mt-0.5">
+                  <i data-lucide="map-pin" class="w-3 h-3"></i>
+                  <span><%= item.location %></span>
+                </span>
+              </div>
+            <% } else { %>
+              <!-- Travel-Inspired Elegant Empty Placeholder (Ready for user upload) -->
+              <div class="w-full h-full bg-gradient-to-b from-brand-ice via-white to-slate-50 border-2 border-dashed border-brand-border hover:border-brand-blue/50 flex flex-col items-center justify-between p-4 sm:p-5 text-center transition-colors">
+                
+                <!-- Top Badge -->
+                <div class="w-full flex items-center justify-between">
+                  <span class="text-[9px] uppercase tracking-wider font-bold text-brand-blue bg-brand-softsky px-2 py-0.5 rounded-md">
+                    Slot <%= item.id %>
+                  </span>
+                  <span class="text-[9px] text-slate-400 font-medium">Customer Photo</span>
+                </div>
+
+                <!-- Center Placeholder Icon & Instruction -->
+                <div class="my-auto flex flex-col items-center py-2">
+                  <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-brand-softsky text-brand-blue flex items-center justify-center mb-2.5 shadow-xs group-hover:scale-110 transition-transform">
+                    <i data-lucide="image" class="w-6 h-6 sm:w-7 sm:h-7 text-brand-blue"></i>
+                  </div>
+                  <strong class="font-serif text-xs sm:text-sm font-bold text-brand-navy block">
+                    <%= item.placeholderLabel %>
+                  </strong>
+                  <span class="text-[10px] sm:text-[11px] text-brand-muted mt-1 block">
+                    Placeholder ready for upload
+                  </span>
+                </div>
+
+                <!-- Bottom Location Tag -->
+                <div class="w-full pt-2 border-t border-slate-100 flex items-center justify-center space-x-1 text-[10px] text-slate-500">
+                  <i data-lucide="map-pin" class="w-3 h-3 text-brand-blue"></i>
+                  <span class="truncate"><%= item.location %></span>
+                </div>
+
+              </div>
+            <% } %>
+          </div>
+        <% }) %>
+
+      </div>
+
+      <!-- Mobile Swipe Instruction / Carousel Dots Indicator -->
+      <div class="flex items-center justify-between pt-3 text-[11px] text-brand-muted">
+        <span class="sm:hidden inline-flex items-center space-x-1 text-slate-500">
+          <i data-lucide="hand" class="w-3.5 h-3.5 text-brand-blue animate-pulse"></i>
+          <span>Swipe horizontally to browse</span>
+        </span>
+        <span class="hidden sm:inline-block text-slate-400 text-xs">
+          Auto-sliding • Drag or use arrows to navigate
+        </span>
+        <div class="flex items-center space-x-1.5 ml-auto" id="travellerCarouselDots"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Customer Photo Carousel Interactive Script -->
+<script>
+  (function() {
+    const track = document.getElementById('travellerCarouselTrack');
+    const prevBtn = document.getElementById('travellerCarouselPrev');
+    const nextBtn = document.getElementById('travellerCarouselNext');
+    const dotsContainer = document.getElementById('travellerCarouselDots');
+    if (!track) return;
+
+    const cards = track.querySelectorAll('.traveller-photo-card');
+    if (cards.length === 0) return;
+
+    // Create subtle dots indicators
+    if (dotsContainer) {
+      dotsContainer.innerHTML = '';
+      cards.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = `w-1.5 h-1.5 rounded-full transition-all duration-300 ${idx === 0 ? 'w-4 bg-brand-blue' : 'bg-slate-300'}`;
+        dot.setAttribute('aria-label', `Slide ${idx + 1}`);
+        dot.addEventListener('click', () => {
+          const cardWidth = cards[0].offsetWidth + (window.innerWidth < 640 ? 12 : 20);
+          track.scrollTo({ left: idx * cardWidth, behavior: 'smooth' });
+        });
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    function updateActiveDot() {
+      if (!dotsContainer) return;
+      const cardWidth = cards[0].offsetWidth + (window.innerWidth < 640 ? 12 : 20);
+      const activeIdx = Math.min(cards.length - 1, Math.round(track.scrollLeft / cardWidth));
+      const dots = dotsContainer.querySelectorAll('button');
+      dots.forEach((dot, idx) => {
+        if (idx === activeIdx) {
+          dot.className = 'w-4 h-1.5 rounded-full bg-brand-blue transition-all duration-300';
+        } else {
+          dot.className = 'w-1.5 h-1.5 rounded-full bg-slate-300 transition-all duration-300';
+        }
+      });
+    }
+
+    track.addEventListener('scroll', updateActiveDot, { passive: true });
+
+    function scrollNext() {
+      const cardWidth = cards[0].offsetWidth + (window.innerWidth < 640 ? 12 : 20);
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (track.scrollLeft >= maxScroll - 10) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      }
+    }
+
+    function scrollPrev() {
+      const cardWidth = cards[0].offsetWidth + (window.innerWidth < 640 ? 12 : 20);
+      if (track.scrollLeft <= 10) {
+        track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      }
+    }
+
+    nextBtn?.addEventListener('click', scrollNext);
+    prevBtn?.addEventListener('click', scrollPrev);
+
+    // Auto-slide every 4 seconds, pausing when user hovers or interacts
+    let autoSlideInterval = null;
+
+    function startAutoSlide() {
+      stopAutoSlide();
+      autoSlideInterval = setInterval(scrollNext, 4000);
+    }
+
+    function stopAutoSlide() {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+      }
+    }
+
+    track.addEventListener('mouseenter', stopAutoSlide);
+    track.addEventListener('mouseleave', startAutoSlide);
+    track.addEventListener('touchstart', stopAutoSlide, { passive: true });
+    track.addEventListener('touchend', () => {
+      setTimeout(startAutoSlide, 2000);
+    }, { passive: true });
+
+    prevBtn?.addEventListener('mouseenter', stopAutoSlide);
+    prevBtn?.addEventListener('mouseleave', startAutoSlide);
+    nextBtn?.addEventListener('mouseenter', stopAutoSlide);
+    nextBtn?.addEventListener('mouseleave', startAutoSlide);
+
+    // Initial start
+    startAutoSlide();
+  })();
+</script>

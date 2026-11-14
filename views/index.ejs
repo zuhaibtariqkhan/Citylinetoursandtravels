@@ -219,34 +219,42 @@
   <!-- ========================================================
        SECTION 03: LIVE MOUNTAIN CLIMATE & VALLEY TRAVEL ADVISORY
        ======================================================== -->
-  <section class="py-10 sm:py-12 bg-brand-ice border-y border-brand-border reveal" id="liveWeatherSection">
+  <section class="py-6 sm:py-12 bg-brand-ice border-y border-brand-border reveal" id="liveWeatherSection">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <!-- Component Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-5 border-b border-brand-border mb-6">
-        <div>
-          <div class="inline-flex items-center space-x-2 bg-white border border-brand-border text-brand-blue text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 shadow-sm">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
-            </span>
-            <span>MOUNTAIN CLIMATE & TRAVEL ADVISORY</span>
+      <!-- Component Header (Desktop Standard, Mobile 2-Col Split) -->
+      <div class="weather-mobile-container sm:block">
+        
+        <!-- Left Side on Mobile / Top on Desktop -->
+        <div class="weather-mobile-header flex flex-col sm:flex-row sm:items-end justify-between gap-2 sm:gap-4 pb-0 sm:pb-5 border-b-0 sm:border-b border-brand-border mb-0 sm:mb-6">
+          <div>
+            <div class="inline-flex items-center space-x-1.5 sm:space-x-2 bg-white border border-brand-border text-brand-blue text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full uppercase tracking-wider mb-1.5 sm:mb-2 shadow-xs">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
+              </span>
+              <span>MOUNTAIN CLIMATE & TRAVEL ADVISORY</span>
+            </div>
+            <h2 class="font-serif text-sm sm:text-3xl font-bold text-brand-navy tracking-tight leading-snug sm:leading-normal">
+              Live Kashmir Mountain Weather & Valley Status
+            </h2>
+            <p class="text-[10px] sm:text-xs text-brand-slate mt-1 max-w-2xl leading-tight sm:leading-normal">
+              Live mountain readings via Open-Meteo. High-altitude operations, Gondola rides, and passes operate subject to daily local safety clearance.
+            </p>
+            <!-- Mobile Scroll Indicator (only visible on mobile) -->
+            <div class="sm:hidden mt-2 inline-flex items-center space-x-1 text-[9px] font-semibold text-brand-blue bg-white border border-brand-blue/20 px-2 py-0.5 rounded-full shadow-xs">
+              <i data-lucide="chevrons-down" class="w-2.5 h-2.5 animate-bounce text-brand-blue"></i>
+              <span>Scroll Valleys</span>
+            </div>
           </div>
-          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-navy tracking-tight">
-            Live Kashmir Mountain Weather & Valley Status
-          </h2>
-          <p class="text-xs text-brand-slate mt-1 max-w-2xl">
-            Live mountain readings via Open-Meteo. High-altitude operations, Gondola rides, and passes operate subject to daily local safety clearance.
-          </p>
+          <div class="text-[10px] sm:text-xs text-brand-slate flex items-center space-x-1.5 shrink-0 mt-1 sm:mt-0">
+            <i data-lucide="clock" class="w-3 sm:w-3.5 h-3 sm:h-3.5 text-brand-blue"></i>
+            <span id="weatherLastUpdated">Live Satellite Feed (Open-Meteo API)</span>
+          </div>
         </div>
-        <div class="text-xs text-brand-slate flex items-center space-x-2 shrink-0">
-          <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-blue"></i>
-          <span id="weatherLastUpdated">Live Satellite Feed (Open-Meteo API)</span>
-        </div>
-      </div>
 
-      <!-- 6-Valley Weather Live Grid (Direct Open-Meteo Hooks) -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3.5" id="weatherCardsGrid">
+        <!-- 6-Valley Weather Live Grid (Right Side on Mobile with smooth vertical scroll, standard grid on desktop) -->
+        <div class="weather-mobile-scroll-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 sm:gap-3.5" id="weatherCardsGrid">
         
         <!-- 1. Srinagar -->
         <div class="weather-card bg-white rounded-2xl p-4 border border-brand-border shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
@@ -399,6 +407,7 @@
         </div>
 
       </div>
+      </div><!-- End weather-mobile-container -->
 
     </div>
   </section>
@@ -422,7 +431,7 @@
           <!-- Floating Experience Badge: Serving Since 2016 -->
           <div class="absolute -bottom-5 -right-5 bg-brand-navy text-white p-4 sm:p-5 rounded-2xl shadow-xl hidden sm:flex items-center space-x-4 border border-white/10 max-w-xs animate-float">
             <div class="w-11 h-11 rounded-xl bg-brand-blue flex items-center justify-center text-white shrink-0">
-              <i data-lucide="shield-check" class="w-5 h-5"></i>
+              <i data-lucide="shield-check" class="w-4 h-4 sm:w-5 sm:h-5"></i>
             </div>
             <div>
               <div class="text-xs font-semibold text-brand-sky">Serving Since 2016</div>
@@ -432,11 +441,11 @@
         </div>
 
         <!-- Right Column: Editorial Intro Text & Heritage Statement -->
-        <div class="space-y-5 reveal">
-          <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-softsky px-3 py-1 rounded-full border border-brand-border">
+        <div class="space-y-5 reveal text-center lg:text-left">
+          <span class="inline-flex items-center text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-softsky px-3 py-1 rounded-full border border-brand-border mx-auto lg:mx-0">
             LOCAL KASHMIR HOST • SERVING SINCE 2016
           </span>
-          <h2 class="font-serif text-2xl sm:text-3xl lg:text-[36px] font-bold text-brand-navy leading-tight">
+          <h2 class="font-serif text-2xl sm:text-3xl lg:text-[36px] font-bold text-brand-navy leading-tight text-center lg:text-left">
             A Decade of Kashmiri Hospitality & Trust
           </h2>
           <p class="text-sm sm:text-base text-brand-slate leading-relaxed">
@@ -536,19 +545,19 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 reveal">
-        <div>
-          <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-light px-3.5 py-1 rounded-full">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 text-center md:text-left reveal">
+        <div class="flex flex-col items-center md:items-start text-center md:text-left">
+          <span class="inline-flex items-center text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-light px-3.5 py-1 rounded-full mx-auto md:mx-0">
             FEATURED HOLIDAYS
           </span>
-          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-navy mt-3 mb-2">
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-navy mt-3 mb-2 text-center md:text-left">
             Find Your Perfect Kashmir Escape
           </h2>
-          <p class="text-sm sm:text-base text-brand-muted max-w-xl">
+          <p class="text-sm sm:text-base text-brand-muted max-w-xl text-center md:text-left">
             Thoughtfully organized packages with confirmed stays, private transfers, and day-wise itineraries.
           </p>
         </div>
-        <div class="mt-3 md:mt-0">
+        <div class="mt-3 md:mt-0 flex justify-center md:justify-start">
           <a href="/packages" class="text-sm font-semibold text-brand-blue hover:text-brand-navy flex items-center space-x-1 group">
             <span>Browse All Packages</span>
             <i data-lucide="arrow-right" class="w-4 h-4 arrow-hover"></i>
@@ -647,87 +656,87 @@
   <!-- ========================================================
        SECTION 08: WHY CHOOSE US
        ======================================================== -->
-  <section class="py-12 sm:py-16 bg-brand-offwhite" id="whyChooseUsSection">
+  <section class="py-6 sm:py-16 bg-brand-offwhite" id="whyChooseUsSection">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12 reveal">
-        <span class="text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-light px-3.5 py-1 rounded-full">
+      <div class="text-center max-w-3xl mx-auto mb-5 sm:mb-12 reveal">
+        <span class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-light px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full">
           OUR COMMITMENT
         </span>
-        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-navy mt-3 mb-3">
+        <h2 class="font-serif text-xl sm:text-3xl font-bold text-brand-navy mt-1.5 sm:mt-3 mb-1.5 sm:mb-3">
           Travel With Confidence
         </h2>
-        <p class="text-sm sm:text-base text-brand-muted">
+        <p class="text-xs sm:text-base text-brand-muted leading-snug sm:leading-relaxed">
           We believe in honest travel guidance, seamless ground coordination, and creating memories you will cherish for a lifetime.
         </p>
       </div>
 
-      <!-- 6 Icon-Oriented Feature Cards (Staggered Animation) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 reveal-stagger">
+      <!-- 6 Icon-Oriented Feature Cards (Compact on Mobile, Staggered Animation) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-7 reveal-stagger">
         
         <!-- Card 1 -->
-        <div class="bg-white p-6 rounded-2xl border border-brand-border card-hover">
-          <div class="icon-container-light mb-4 w-11 h-11 flex items-center justify-center rounded-xl bg-brand-softsky text-brand-blue">
-            <i data-lucide="compass" class="w-5 h-5"></i>
+        <div class="bg-white p-3.5 sm:p-6 rounded-xl sm:rounded-2xl border border-brand-border card-hover">
+          <div class="icon-container-light mb-2 sm:mb-4 w-8 h-8 sm:w-11 sm:h-11 flex items-center justify-center rounded-lg sm:rounded-xl bg-brand-softsky text-brand-blue">
+            <i data-lucide="compass" class="w-4 h-4 sm:w-5 sm:h-5"></i>
           </div>
-          <h3 class="font-serif text-lg font-bold text-brand-navy mb-2">Personalised Travel Planning</h3>
-          <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
+          <h3 class="font-serif text-sm sm:text-lg font-bold text-brand-navy mb-1 sm:mb-2">Personalised Travel Planning</h3>
+          <p class="text-[11px] sm:text-sm text-brand-muted leading-normal sm:leading-relaxed">
             Every traveler is unique. We customize your itinerary to match your personal pace, family needs, and holiday vision.
           </p>
         </div>
 
         <!-- Card 2 -->
-        <div class="bg-white p-6 rounded-2xl border border-brand-border card-hover">
-          <div class="icon-container-light mb-4 w-11 h-11 flex items-center justify-center rounded-xl bg-brand-softsky text-brand-blue">
-            <i data-lucide="calendar" class="w-5 h-5"></i>
+        <div class="bg-white p-3.5 sm:p-6 rounded-xl sm:rounded-2xl border border-brand-border card-hover">
+          <div class="icon-container-light mb-2 sm:mb-4 w-8 h-8 sm:w-11 sm:h-11 flex items-center justify-center rounded-lg sm:rounded-xl bg-brand-softsky text-brand-blue">
+            <i data-lucide="calendar" class="w-4 h-4 sm:w-5 sm:h-5"></i>
           </div>
-          <h3 class="font-serif text-lg font-bold text-brand-navy mb-2">Beautifully Planned Journeys</h3>
-          <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
+          <h3 class="font-serif text-sm sm:text-lg font-bold text-brand-navy mb-1 sm:mb-2">Beautifully Planned Journeys</h3>
+          <p class="text-[11px] sm:text-sm text-brand-muted leading-normal sm:leading-relaxed">
             Thoughtfully timed sightseeing schedules so you spend less time waiting in traffic and more time enjoying breathtaking vistas.
           </p>
         </div>
 
         <!-- Card 3 -->
-        <div class="bg-white p-6 rounded-2xl border border-brand-border card-hover">
-          <div class="icon-container-light mb-4 w-11 h-11 flex items-center justify-center rounded-xl bg-brand-softsky text-brand-blue">
-            <i data-lucide="sliders" class="w-5 h-5"></i>
+        <div class="bg-white p-3.5 sm:p-6 rounded-xl sm:rounded-2xl border border-brand-border card-hover">
+          <div class="icon-container-light mb-2 sm:mb-4 w-8 h-8 sm:w-11 sm:h-11 flex items-center justify-center rounded-lg sm:rounded-xl bg-brand-softsky text-brand-blue">
+            <i data-lucide="sliders" class="w-4 h-4 sm:w-5 sm:h-5"></i>
           </div>
-          <h3 class="font-serif text-lg font-bold text-brand-navy mb-2">Flexible Travel Options</h3>
-          <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
+          <h3 class="font-serif text-sm sm:text-lg font-bold text-brand-navy mb-1 sm:mb-2">Flexible Travel Options</h3>
+          <p class="text-[11px] sm:text-sm text-brand-muted leading-normal sm:leading-relaxed">
             From budget-conscious family holidays to luxury honeymoon suites and boutique stays, we adapt to your budget.
           </p>
         </div>
 
         <!-- Card 4 -->
-        <div class="bg-white p-6 rounded-2xl border border-brand-border card-hover">
-          <div class="icon-container-light mb-4 w-11 h-11 flex items-center justify-center rounded-xl bg-brand-softsky text-brand-blue">
-            <i data-lucide="mountain" class="w-5 h-5"></i>
+        <div class="bg-white p-3.5 sm:p-6 rounded-xl sm:rounded-2xl border border-brand-border card-hover">
+          <div class="icon-container-light mb-2 sm:mb-4 w-8 h-8 sm:w-11 sm:h-11 flex items-center justify-center rounded-lg sm:rounded-xl bg-brand-softsky text-brand-blue">
+            <i data-lucide="mountain" class="w-4 h-4 sm:w-5 sm:h-5"></i>
           </div>
-          <h3 class="font-serif text-lg font-bold text-brand-navy mb-2">Local Destination Knowledge</h3>
-          <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
+          <h3 class="font-serif text-sm sm:text-lg font-bold text-brand-navy mb-1 sm:mb-2">Local Destination Knowledge</h3>
+          <p class="text-[11px] sm:text-sm text-brand-muted leading-normal sm:leading-relaxed">
             Born and raised in Kashmir, our team knows the hidden viewpoints, the best seasonal timings, and authentic local artisans.
           </p>
         </div>
 
         <!-- Card 5 -->
-        <div class="bg-white p-6 rounded-2xl border border-brand-border card-hover">
-          <div class="icon-container-light mb-4 w-11 h-11 flex items-center justify-center rounded-xl bg-brand-softsky text-brand-blue">
-            <i data-lucide="shield-check" class="w-5 h-5"></i>
+        <div class="bg-white p-3.5 sm:p-6 rounded-xl sm:rounded-2xl border border-brand-border card-hover">
+          <div class="icon-container-light mb-2 sm:mb-4 w-8 h-8 sm:w-11 sm:h-11 flex items-center justify-center rounded-lg sm:rounded-xl bg-brand-softsky text-brand-blue">
+            <i data-lucide="shield-check" class="w-4 h-4 sm:w-5 sm:h-5"></i>
           </div>
-          <h3 class="font-serif text-lg font-bold text-brand-navy mb-2">Dedicated Travel Assistance</h3>
-          <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
+          <h3 class="font-serif text-sm sm:text-lg font-bold text-brand-navy mb-1 sm:mb-2">Dedicated Travel Assistance</h3>
+          <p class="text-[11px] sm:text-sm text-brand-muted leading-normal sm:leading-relaxed">
             Direct 24/7 on-trip assistance from your dedicated Kashmir coordinator to ensure peace of mind throughout your stay.
           </p>
         </div>
 
         <!-- Card 6 -->
-        <div class="bg-white p-6 rounded-2xl border border-brand-border card-hover">
-          <div class="icon-container-light mb-4 w-11 h-11 flex items-center justify-center rounded-xl bg-brand-softsky text-brand-blue">
-            <i data-lucide="car" class="w-5 h-5"></i>
+        <div class="bg-white p-3.5 sm:p-6 rounded-xl sm:rounded-2xl border border-brand-border card-hover">
+          <div class="icon-container-light mb-2 sm:mb-4 w-8 h-8 sm:w-11 sm:h-11 flex items-center justify-center rounded-lg sm:rounded-xl bg-brand-softsky text-brand-blue">
+            <i data-lucide="car" class="w-4 h-4 sm:w-5 sm:h-5"></i>
           </div>
-          <h3 class="font-serif text-lg font-bold text-brand-navy mb-2">Comfortable Arrangements</h3>
-          <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
+          <h3 class="font-serif text-sm sm:text-lg font-bold text-brand-navy mb-1 sm:mb-2">Comfortable Arrangements</h3>
+          <p class="text-[11px] sm:text-sm text-brand-muted leading-normal sm:leading-relaxed">
             Clean, sanitized vehicles with experienced mountain drivers, plus handpicked hotels with reliable winter heating.
           </p>
         </div>
@@ -741,6 +750,11 @@
        SECTION 09: GENUINE GUEST REVIEWS & TRAVELER STORIES
        ======================================================== -->
   <%- include('partials/verified-reviews') %>
+
+  <!-- ========================================================
+       SECTION 09B: CUSTOMER PHOTO CAROUSEL — MEMORIES BY OUR TRAVELLERS
+       ======================================================== -->
+  <%- include('partials/customer-photos-carousel') %>
 
   <!-- ========================================================
        SECTION 10: FINAL CTA

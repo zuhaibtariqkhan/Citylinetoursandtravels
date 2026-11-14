@@ -141,6 +141,11 @@ module.exports = {
     return readJsonFile('testimonials.json', []);
   },
 
+  // Traveller Photo Memories
+  getTravellerMemories() {
+    return readJsonFile('traveller-memories.json', []);
+  },
+
   // Enquiries
   getEnquiries() {
     const list = readJsonFile('enquiries.json', []);
