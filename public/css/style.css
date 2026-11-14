@@ -768,7 +768,6 @@ body > section:first-of-type,
   pointer-events: none;
   mix-blend-mode: screen;
 }
-.snow-toggle-btn,
 .hero-weather-pill {
   background: rgba(11, 37, 69, 0.65);
   backdrop-filter: blur(8px);
@@ -777,13 +776,9 @@ body > section:first-of-type,
   transition: all 0.25s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-.snow-toggle-btn:hover,
 .hero-weather-pill:hover {
   background: rgba(20, 93, 160, 0.8);
   border-color: #60A5FA;
-}
-#heroWeatherMenu {
-  box-shadow: 0 16px 36px -4px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.15);
 }
 
 /* ========================================================

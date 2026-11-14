@@ -504,11 +504,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // ========================================================
   const snowCanvas = document.getElementById('snowCanvas');
   const heroSection = document.getElementById('heroSection');
-  const snowToggleBtn = document.getElementById('snowToggleBtn');
   const snowStatusText = document.getElementById('snowStatusText');
   const heroWeatherIcon = document.getElementById('heroWeatherIcon');
-  const heroWeatherMenu = document.getElementById('heroWeatherMenu');
-  const heroWeatherOptions = document.querySelectorAll('#heroWeatherOptions button');
   const heroWeatherPulseDot = document.getElementById('heroWeatherPulseDot');
 
   if (snowCanvas && heroSection) {
@@ -951,50 +948,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateWeatherPillUI() {
       const type = getEffectiveType();
 
-      // Update options active styling
-      if (heroWeatherOptions) {
-        heroWeatherOptions.forEach(opt => {
-          const optMode = opt.getAttribute('data-mode');
-          if (optMode === activeMode) {
-            opt.classList.add('bg-white/15', 'text-white', 'active-mode');
-            opt.classList.remove('text-slate-200', 'text-slate-400');
-          } else {
-            opt.classList.remove('bg-white/15', 'text-white', 'active-mode');
-            if (optMode === 'off') opt.classList.add('text-slate-400');
-            else opt.classList.add('text-slate-200');
-          }
-        });
-      }
-
       // Update text and icon
       if (snowStatusText) {
-        if (activeMode === 'auto') {
-          snowStatusText.textContent = `Srinagar: ${liveSrinagar.cond} (${liveSrinagar.temp}°C)`;
-        } else if (activeMode === 'rain') {
-          snowStatusText.textContent = 'FX: Rain Active';
-        } else if (activeMode === 'thunderstorm') {
-          snowStatusText.textContent = 'FX: Thunderstorm Active';
-        } else if (activeMode === 'snow') {
-          snowStatusText.textContent = 'FX: Snowfall Active';
-        } else if (activeMode === 'fog') {
-          snowStatusText.textContent = 'FX: Mountain Fog Active';
-        } else if (activeMode === 'clear') {
-          snowStatusText.textContent = 'FX: Mountain Sunshine';
-        } else if (activeMode === 'off') {
-          snowStatusText.textContent = 'Weather FX: Paused';
-        }
+        snowStatusText.textContent = `Srinagar: ${liveSrinagar.cond} (${liveSrinagar.temp}°C)`;
       }
 
       if (heroWeatherPulseDot) {
-        if (activeMode === 'off') {
-          heroWeatherPulseDot.className = 'relative inline-flex rounded-full h-2 w-2 bg-slate-500';
-          const ping = heroWeatherPulseDot.previousElementSibling;
-          if (ping) ping.style.display = 'none';
-        } else {
-          heroWeatherPulseDot.className = 'relative inline-flex rounded-full h-2 w-2 bg-cyan-400';
-          const ping = heroWeatherPulseDot.previousElementSibling;
-          if (ping) ping.style.display = '';
-        }
+        heroWeatherPulseDot.className = 'relative inline-flex rounded-full h-2 w-2 bg-cyan-400';
+        const ping = heroWeatherPulseDot.previousElementSibling;
+        if (ping) ping.style.display = '';
       }
 
       // Update icon dynamically
@@ -1014,9 +976,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (type === 'fog') {
           iconName = 'cloud-fog';
           iconColor = 'text-slate-300';
-        } else if (type === 'off') {
-          iconName = 'eye-off';
-          iconColor = 'text-slate-400';
         }
 
         heroWeatherIcon.setAttribute('data-lucide', iconName);
@@ -1024,38 +983,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.lucide) window.lucide.createIcons();
       }
     }
-
-    // Toggle Menu on Pill Button Click
-    if (snowToggleBtn) {
-      snowToggleBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (heroWeatherMenu) {
-          heroWeatherMenu.classList.toggle('hidden');
-        }
-      });
-    }
-
-    // Option Selection
-    if (heroWeatherOptions) {
-      heroWeatherOptions.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const mode = btn.getAttribute('data-mode') || 'auto';
-          switchWeatherMode(mode);
-          if (heroWeatherMenu) heroWeatherMenu.classList.add('hidden');
-        });
-      });
-    }
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (heroWeatherMenu && !heroWeatherMenu.classList.contains('hidden')) {
-        const control = document.getElementById('heroWeatherControl');
-        if (control && !control.contains(e.target)) {
-          heroWeatherMenu.classList.add('hidden');
-        }
-      }
-    });
 
     // Pause canvas animation when hero is scrolled off screen to save GPU/CPU cycles
     if ('IntersectionObserver' in window) {

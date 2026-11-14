@@ -135,59 +135,16 @@
     <!-- Bottom Controls: Live Weather Effect Pill & Scene Indicators -->
     <div class="absolute bottom-4 sm:bottom-5 inset-x-0 z-20 px-4 sm:px-8 flex items-center justify-between text-xs">
       
-      <!-- Live Srinagar Weather Dynamic Effect Control -->
+      <!-- Live Srinagar Weather Dynamic Effect Indicator -->
       <div class="relative inline-block" id="heroWeatherControl">
-        <button id="snowToggleBtn" type="button" 
-                class="snow-toggle-btn px-3 py-1.5 rounded-full text-[11px] font-medium flex items-center space-x-1.5 bg-black/40 hover:bg-black/60 text-white backdrop-blur-md border border-white/20 transition-all shadow-md group cursor-pointer"
-                title="Live Srinagar weather effect (Click to customize or preview)">
+        <div class="hero-weather-pill px-3 py-1.5 rounded-full text-[11px] font-medium flex items-center space-x-1.5 backdrop-blur-md shadow-md select-none"
+             title="Live Srinagar weather status">
           <span class="relative flex h-2 w-2">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" id="heroWeatherPulseDot"></span>
           </span>
           <i id="heroWeatherIcon" data-lucide="<%= srinagarIcon || 'sun' %>" class="w-3.5 h-3.5 text-amber-300"></i>
           <span id="snowStatusText">Srinagar: <%= srinagarCond %> (<%= srinagarTemp %>°C)</span>
-          <i data-lucide="chevron-up" class="w-3 h-3 text-slate-300 group-hover:text-white transition"></i>
-        </button>
-
-        <!-- Weather Effect Mode Selector Dropdown -->
-        <div id="heroWeatherMenu" class="hidden absolute bottom-full left-0 mb-2 w-56 bg-brand-navy/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-1.5 text-xs text-white z-50">
-          <div class="px-2.5 py-1.5 border-b border-white/10 text-[10px] uppercase font-bold text-brand-sky tracking-wider flex items-center justify-between">
-            <span>Srinagar Weather FX</span>
-            <span class="text-[9px] text-emerald-400 bg-emerald-950/60 px-1.5 py-0.5 rounded border border-emerald-500/30 font-mono">LIVE API</span>
-          </div>
-          <div class="py-1 space-y-0.5" id="heroWeatherOptions">
-            <button type="button" data-mode="auto" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl hover:bg-white/10 transition text-left text-[11px] font-medium text-white active-mode bg-white/15">
-              <span class="flex items-center space-x-2">
-                <i data-lucide="radio" class="w-3.5 h-3.5 text-emerald-400"></i>
-                <span>Live Srinagar Real-Time</span>
-              </span>
-              <span class="text-[9px] text-emerald-400 font-bold uppercase tracking-wider">LIVE</span>
-            </button>
-            <button type="button" data-mode="rain" class="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-xl hover:bg-white/10 transition text-left text-[11px] font-medium text-slate-200 hover:text-white">
-              <i data-lucide="cloud-rain" class="w-3.5 h-3.5 text-cyan-300"></i>
-              <span>Rain Effect</span>
-            </button>
-            <button type="button" data-mode="thunderstorm" class="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-xl hover:bg-white/10 transition text-left text-[11px] font-medium text-slate-200 hover:text-white">
-              <i data-lucide="cloud-lightning" class="w-3.5 h-3.5 text-amber-300"></i>
-              <span>Thunderstorm &amp; Lightning</span>
-            </button>
-            <button type="button" data-mode="snow" class="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-xl hover:bg-white/10 transition text-left text-[11px] font-medium text-slate-200 hover:text-white">
-              <i data-lucide="snowflake" class="w-3.5 h-3.5 text-white"></i>
-              <span>Snowfall Effect</span>
-            </button>
-            <button type="button" data-mode="fog" class="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-xl hover:bg-white/10 transition text-left text-[11px] font-medium text-slate-200 hover:text-white">
-              <i data-lucide="cloud-fog" class="w-3.5 h-3.5 text-slate-300"></i>
-              <span>Mountain Mist &amp; Fog</span>
-            </button>
-            <button type="button" data-mode="clear" class="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-xl hover:bg-white/10 transition text-left text-[11px] font-medium text-slate-200 hover:text-white">
-              <i data-lucide="sun" class="w-3.5 h-3.5 text-amber-400"></i>
-              <span>Clear Mountain Skies</span>
-            </button>
-            <button type="button" data-mode="off" class="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-xl hover:bg-white/10 transition text-left text-[11px] font-medium text-slate-400 hover:text-slate-200 border-t border-white/10 mt-1 pt-1.5">
-              <i data-lucide="eye-off" class="w-3.5 h-3.5"></i>
-              <span>Pause / Off</span>
-            </button>
-          </div>
         </div>
       </div>
 
