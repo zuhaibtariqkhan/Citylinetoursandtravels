@@ -2159,31 +2159,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ========================================================
   // 10. CRAFTED & DEVELOPED BY ZTM — SIGNATURE MICRO-ANIMATION
+  // Guaranteed 100% instant visibility across all devices & browsers
   // ========================================================
   const ztmCredit = document.getElementById('ztmCredit');
   if (ztmCredit) {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isMobile = window.innerWidth < 640;
 
-    if (prefersReduced || isMobile) {
-      ztmCredit.classList.remove('ztm-ready');
-      ztmCredit.classList.add('ztm-settled');
-    } else if ('IntersectionObserver' in window) {
-      ztmCredit.classList.add('ztm-ready');
+    // Guarantee instant visibility on every screen without relying on observer
+    ztmCredit.classList.remove('ztm-ready');
+    ztmCredit.classList.add('ztm-settled');
 
-      // Safety timeout: Ensure it always reveals within 1 second regardless of viewport quirks
-      const fallbackTimer = setTimeout(() => {
-        if (ztmCredit.classList.contains('ztm-ready')) {
-          ztmCredit.classList.remove('ztm-ready');
-          ztmCredit.classList.add('ztm-settled');
-        }
-      }, 1000);
-
+    if (!prefersReduced && 'IntersectionObserver' in window) {
       const ztmObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            clearTimeout(fallbackTimer);
-            ztmCredit.classList.remove('ztm-ready');
             ztmCredit.classList.add('ztm-animate');
             // Unobserve so it never replays while scrolling
             observer.unobserve(entry.target);
@@ -2192,7 +2181,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
               ztmCredit.classList.remove('ztm-animate');
               ztmCredit.classList.add('ztm-settled');
-            }, 1800);
+            }, 1200);
           }
         });
       }, {

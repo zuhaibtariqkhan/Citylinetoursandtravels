@@ -949,6 +949,7 @@ body > section:first-of-type,
 
 /* ========================================================
    12. CRAFTED & DEVELOPED BY ZTM — SIGNATURE MICRO-ANIMATION
+   Guaranteed 100% visibility across all devices and browsers
    ======================================================== */
 .ztm-credit {
   display: inline-flex;
@@ -957,6 +958,9 @@ body > section:first-of-type,
   font-size: 0.75rem;
   line-height: 1;
   vertical-align: middle;
+  text-decoration: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .ztm-prefix {
@@ -965,7 +969,9 @@ body > section:first-of-type,
   letter-spacing: 0.03em;
   color: #94A3B8; /* Slate 400 */
   display: inline-block;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: opacity 0.3s ease, color 0.3s ease;
 }
 
 .ztm-brand {
@@ -986,100 +992,89 @@ body > section:first-of-type,
   font-size: 0.75rem; /* 12px */
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #E6CA65; /* Vibrant Champagne Gold fallback for all devices */
+  color: #DFC17B !important; /* Solid vibrant champagne gold - 100% visible on every device */
+  opacity: 1 !important;
+  visibility: visible !important;
   padding-bottom: 2px;
-}
-
-@supports (-webkit-background-clip: text) or (background-clip: text) {
-  .ztm-wordmark {
-    background: linear-gradient(
-      115deg,
-      #DFC17B 0%,
-      #C5A059 25%,
-      #FFF8E1 48%,
-      #FFFFFF 52%,
-      #DFC17B 70%,
-      #B88E3E 100%
-    );
-    background-size: 260% 100%;
-    background-position: 100% 0;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
 }
 
 .ztm-letter {
   display: inline-block;
-  color: #E6CA65;
-  will-change: transform, opacity;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+  color: #DFC17B !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  will-change: transform;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
 }
 
 .ztm-underline {
   display: block;
   width: 100%;
-  height: 1px;
+  height: 1.5px;
   margin-top: 1px;
-  background: linear-gradient(90deg, rgba(212, 175, 55, 0.2) 0%, #D4AF37 50%, rgba(212, 175, 55, 0.2) 100%);
+  background: #DFC17B !important;
   border-radius: 9999px;
-  transform-origin: left center;
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, height 0.3s ease;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform-origin: center center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* --- STATE: PREPARED FOR VIEWPORT REVEAL --- */
-@media (min-width: 640px) {
-  .ztm-credit.ztm-ready .ztm-prefix {
-    opacity: 0;
-    transform: translateX(-4px);
-  }
+/* --- STATE: PREPARED FOR VIEWPORT REVEAL (Never hides the element) --- */
+.ztm-credit.ztm-ready .ztm-prefix {
+  opacity: 1 !important;
+}
 
-  .ztm-credit.ztm-ready .ztm-letter {
-    opacity: 0;
-    transform: translateY(6px);
-  }
+.ztm-credit.ztm-ready .ztm-letter {
+  opacity: 1 !important;
+  color: #DFC17B !important;
+}
 
-  .ztm-credit.ztm-ready .ztm-underline {
-    transform: scaleX(0);
-  }
+.ztm-credit.ztm-ready .ztm-underline {
+  opacity: 1 !important;
 }
 
 /* --- STATE: ANIMATING ON VIEWPORT ENTRY --- */
 .ztm-credit.ztm-animate .ztm-letter {
-  animation: ztmLetterReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: calc(var(--l-idx, 0) * 0.1s + 0.05s);
+  animation: ztmLetterReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--l-idx, 0) * 0.08s);
 }
 
 .ztm-credit.ztm-animate .ztm-underline {
-  animation: ztmDrawUnderline 0.55s cubic-bezier(0.25, 1, 0.5, 1) 0.35s forwards;
+  animation: ztmDrawUnderline 0.5s ease-out 0.25s forwards;
 }
 
 .ztm-credit.ztm-animate .ztm-prefix {
-  animation: ztmPrefixFadeIn 0.55s ease-out 0.45s forwards;
+  animation: ztmPrefixFadeIn 0.4s ease-out forwards;
 }
 
 .ztm-credit.ztm-animate .ztm-wordmark {
-  animation: ztmLightSweep 0.85s cubic-bezier(0.4, 0, 0.2, 1) 0.8s forwards;
+  animation: ztmLightSweep 0.6s ease-in-out forwards;
 }
 
 @keyframes ztmLetterReveal {
   0% {
-    opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(2px);
+    color: #DFC17B;
+  }
+  50% {
+    color: #FFF3C4;
+    text-shadow: 0 0 6px rgba(223, 193, 123, 0.7);
   }
   100% {
-    opacity: 1;
     transform: translateY(0);
+    color: #DFC17B;
   }
 }
 
 @keyframes ztmDrawUnderline {
   0% {
-    transform: scaleX(0);
-    opacity: 0;
+    transform: scaleX(0.7);
+    opacity: 0.9;
   }
   50% {
-    opacity: 1;
+    transform: scaleX(1.15);
+    box-shadow: 0 0 6px rgba(223, 193, 123, 0.8);
   }
   100% {
     transform: scaleX(1);
@@ -1089,42 +1084,43 @@ body > section:first-of-type,
 
 @keyframes ztmPrefixFadeIn {
   0% {
-    opacity: 0;
-    transform: translateX(-4px);
+    opacity: 0.85;
   }
   100% {
     opacity: 1;
-    transform: translateX(0);
   }
 }
 
 @keyframes ztmLightSweep {
   0% {
-    background-position: 100% 0;
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.25);
   }
   100% {
-    background-position: 0% 0;
+    filter: brightness(1);
   }
 }
 
 /* --- STATE: SETTLED / COMPLETED (Static, sharp, performant) --- */
 .ztm-credit.ztm-settled .ztm-prefix {
-  opacity: 1;
+  opacity: 1 !important;
   transform: none;
 }
 
 .ztm-credit.ztm-settled .ztm-letter {
-  opacity: 1;
+  opacity: 1 !important;
   transform: none;
 }
 
 .ztm-credit.ztm-settled .ztm-underline {
+  opacity: 1 !important;
   transform: scaleX(1);
-  opacity: 1;
 }
 
 .ztm-credit.ztm-settled .ztm-wordmark {
-  background-position: 0% 0;
+  filter: none;
 }
 
 /* --- DESKTOP HOVER INTERACTION --- */
@@ -1140,15 +1136,14 @@ body > section:first-of-type,
 
   .ztm-credit:hover .ztm-wordmark,
   .ztm-brand:hover .ztm-wordmark {
-    filter: drop-shadow(0 0 6px rgba(223, 193, 123, 0.45));
-    transition: filter 0.28s ease;
+    color: #FFF3C4 !important;
+    text-shadow: 0 0 8px rgba(223, 193, 123, 0.6);
   }
 
   .ztm-credit:hover .ztm-underline,
   .ztm-brand:hover .ztm-underline {
-    height: 1.5px;
-    background: linear-gradient(90deg, #D4AF37 0%, #FFF5D0 50%, #D4AF37 100%);
-    box-shadow: 0 0 8px rgba(212, 175, 55, 0.65);
+    background: #FFF3C4 !important;
+    box-shadow: 0 0 8px rgba(223, 193, 123, 0.7);
     transform: scaleX(1.1);
   }
 }
