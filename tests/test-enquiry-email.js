@@ -35,15 +35,30 @@ if (!hasDetailCalcEmailRedirect) {
   process.exit(1);
 }
 
-// 4. Check server response
-http.get('http://localhost:3000/packages/kashmir-honeymoon-special-package', res => {
-  console.log('✓ Package detail page responds with HTTP', res.statusCode);
-  if (res.statusCode !== 200) {
-    console.error('FAILED: server returned non-200');
-    process.exit(1);
-  }
-  console.log('\n🌟 ALL ENQUIRE EMAIL REDIRECTION TESTS PASSED!\n');
-  process.exit(0);
+// 4. Check contact.ejs
+const contactEjs = fs.readFileSync('views/contact.ejs', 'utf8');
+const hasContactEmailRedirect = contactEjs.includes('mailto:askcitylinetravels@gmail.com');
+const hasContactEmailBtn = contactEjs.includes('Send Enquiry via Email');
+console.log('✓ contact.ejs redirects to mailto:askcitylinetravels@gmail.com:', hasContactEmailRedirect);
+console.log('✓ contact.ejs has Send Enquiry via Email button:', hasContactEmailBtn);
+if (!hasContactEmailRedirect || !hasContactEmailBtn) {
+  console.error('FAILED: contact.ejs missing email enquire redirect');
+  process.exit(1);
+}
+
+// 5. Check server response
+http.get('http://localhost:3000/contact', res => {
+  let body = '';
+  res.on('data', chunk => body += chunk);
+  res.on('end', () => {
+    console.log('✓ Contact page responds with HTTP', res.statusCode);
+    if (res.statusCode !== 200 || !body.includes('Send Enquiry via Email') || !body.includes('mailto:askcitylinetravels@gmail.com')) {
+      console.error('FAILED: Contact page response missing expected elements');
+      process.exit(1);
+    }
+    console.log('\n🌟 ALL ENQUIRE EMAIL REDIRECTION TESTS PASSED!\n');
+    process.exit(0);
+  });
 }).on('error', err => {
   console.error('Server request error:', err);
   process.exit(1);

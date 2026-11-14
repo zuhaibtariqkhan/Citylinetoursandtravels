@@ -112,11 +112,11 @@
                 Send Us a Message
               </h2>
               <p class="text-xs sm:text-sm text-brand-muted mt-1">
-                Your message will be delivered immediately to our operations team by email.
+                Your enquiry will be sent directly to our team at <strong>askcitylinetravels@gmail.com</strong>.
               </p>
             </div>
 
-            <form id="contactForm" class="ajax-enquiry-form space-y-4 sm:space-y-5">
+            <form id="contactForm" class="space-y-4 sm:space-y-5">
               <input type="hidden" name="source" value="Contact Us Page Form">
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-5">
@@ -146,13 +146,21 @@
                 <textarea id="contactMessage" name="message" rows="4" required placeholder="Please describe your planned dates, number of guests, or questions you have..." class="form-input"></textarea>
               </div>
 
-              <div>
-                <button type="submit" class="w-full sm:w-auto btn-primary px-8 py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center space-x-2 shadow-md min-h-[44px]">
-                  <i data-lucide="send" class="w-4 h-4"></i>
-                  <span>Send My Enquiry</span>
-                </button>
-                <p class="text-xs text-brand-muted mt-2 text-center sm:text-left">
-                  🔒 We typically respond within 2-4 hours during business hours.
+              <div class="pt-1">
+                <div class="flex flex-col sm:flex-row items-center gap-3">
+                  <button type="submit" id="contactSubmitBtn" class="w-full sm:w-auto btn-primary px-8 py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center space-x-2 shadow-md min-h-[44px]">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                    <span>Send Enquiry via Email</span>
+                  </button>
+                  <a href="mailto:askcitylinetravels@gmail.com?subject=Travel%20Enquiry%20-%20City%20Line%20Tours%20And%20Travels&body=Hello%20City%20Line%20Tours%20And%20Travels,%0A%0AI%20would%20like%20to%20enquire%20about%20a%20tour%20package.%20Please%20share%20details.%0A%0AThank%20you!" 
+                     class="w-full sm:w-auto btn-outline px-6 py-3.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 min-h-[44px]"
+                     title="Email askcitylinetravels@gmail.com directly">
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                    <span>Direct Email</span>
+                  </a>
+                </div>
+                <p class="text-xs text-brand-muted mt-2.5 text-center sm:text-left">
+                  🔒 Enquiries are forwarded directly to <strong>askcitylinetravels@gmail.com</strong>.
                 </p>
               </div>
 
@@ -169,6 +177,64 @@
   <%- include('partials/whatsapp') %>
   <%- include('partials/enquiry-modal') %>
   <%- include('partials/scripts') %>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const name = document.getElementById('contactName')?.value.trim() || '';
+          const phone = document.getElementById('contactPhone')?.value.trim() || '';
+          const email = document.getElementById('contactEmail')?.value.trim() || '';
+          const destination = document.getElementById('contactDestination')?.value.trim() || '';
+          const message = document.getElementById('contactMessage')?.value.trim() || '';
+
+          const subject = encodeURIComponent(
+            destination ? `Trip Enquiry: ${destination} - ${name || 'Customer'}` :
+            `Travel Enquiry from ${name || 'Website Customer'} - City Line Tours And Travels`
+          );
+
+          const bodyLines = [
+            'Hello City Line Tours And Travels,',
+            '',
+            'I would like to enquire about travel planning with City Line Tours And Travels:',
+            name ? `• Full Name: ${name}` : '',
+            phone ? `• Mobile / WhatsApp: ${phone}` : '',
+            email ? `• Email: ${email}` : '',
+            destination ? `• Interested Destination / Tour: ${destination}` : '',
+            '',
+            'Travel Details & Message:',
+            message,
+            '',
+            'Please share itinerary options, availability, and pricing quotation.',
+            '',
+            'Thank you!'
+          ].filter(Boolean).join('\n');
+
+          // Asynchronously record enquiry in the backend
+          try {
+            fetch('/api/enquiries', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                name,
+                phone,
+                email,
+                destination,
+                message,
+                source: 'Contact Us Page Form'
+              })
+            }).catch(() => {});
+          } catch (err) {}
+
+          // Immediately redirect to user email client
+          window.location.href = `mailto:askcitylinetravels@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyLines)}`;
+        });
+      }
+    });
+  </script>
 </body>
 </html>
 
