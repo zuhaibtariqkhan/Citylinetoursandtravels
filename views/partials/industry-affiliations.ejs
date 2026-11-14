@@ -1,0 +1,89 @@
+<!-- ========================================================
+     SECTION 09B: INDUSTRY RECOGNITION & AFFILIATIONS
+     Distinctive, Compact Editorial Affiliations Showcase
+     ======================================================== -->
+<section class="py-8 sm:py-12 bg-brand-navy text-white relative overflow-hidden border-t border-brand-border/20" id="industryAffiliationsSection">
+  <!-- Subtle decorative ambient glow -->
+  <div class="absolute -top-24 -left-24 w-72 h-72 bg-brand-blue/15 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute -bottom-24 -right-24 w-72 h-72 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+      
+      <!-- Left Editorial Column: Intro & Trust Statement (5 cols on Desktop) -->
+      <div class="lg:col-span-5 text-center lg:text-left reveal">
+        <!-- Eyebrow Badge with Champagne Gold Accent -->
+        <div class="inline-flex items-center space-x-2 bg-white/5 border border-[#D4AF37]/40 px-3.5 py-1.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#E6CA65] mb-3 backdrop-blur-sm">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse"></span>
+          <span>OUR INDUSTRY CONNECTIONS</span>
+        </div>
+
+        <!-- Main Heading -->
+        <h2 class="font-serif text-2xl sm:text-3xl lg:text-[34px] font-bold text-white tracking-tight leading-snug mb-2 sm:mb-3">
+          Connected Through Trust.
+        </h2>
+
+        <!-- Champagne-Gold Accent Divider Line -->
+        <div class="w-12 h-0.5 bg-gradient-to-r from-[#D4AF37] to-transparent mx-auto lg:mx-0 mb-3"></div>
+
+        <!-- Supporting Text -->
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-lg mx-auto lg:mx-0">
+          Our industry affiliations and professional associations reflect our connection with the wider tourism and travel community.
+        </p>
+
+        <!-- Subtle Quality Anchor -->
+        <div class="mt-4 hidden sm:flex items-center justify-center lg:justify-start space-x-2 text-[11px] text-slate-400">
+          <i data-lucide="shield-check" class="w-4 h-4 text-[#D4AF37]"></i>
+          <span>Committed to Ethical Tourism, Transparency & Guest Care</span>
+        </div>
+      </div>
+
+      <!-- Right Column: Institutional Recognition Gallery (7 cols on Desktop) -->
+      <div class="lg:col-span-7">
+        <% if (typeof trustedLogos !== 'undefined' && trustedLogos && trustedLogos.length > 0) { %>
+          <!-- Logo Display Grid: 2-col on Mobile, 3 or 4-col on Tablet/Desktop -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-<%= Math.min(Math.max(trustedLogos.length, 2), 4) %> gap-3 sm:gap-4 items-center">
+            <% trustedLogos.forEach(logo => { %>
+              <div class="group bg-white/95 hover:bg-white rounded-2xl p-4 sm:p-5 border border-white/20 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center min-h-[86px] sm:min-h-[100px]">
+                <img src="<%= logo.url %>" 
+                     alt="<%= logo.name %>" 
+                     title="<%= logo.name %>"
+                     loading="lazy" 
+                     decoding="async" 
+                     class="max-h-12 sm:max-h-14 w-auto max-w-full object-contain filter-none transition-transform duration-300 group-hover:scale-105">
+              </div>
+            <% }) %>
+          </div>
+        <% } else { %>
+          <!-- Elegant Institutional Frame Awaiting User Logo Files in public/Trusted -->
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-7 text-center backdrop-blur-sm">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/10 text-[#D4AF37] mb-3 mx-auto border border-[#D4AF37]/30">
+              <i data-lucide="award" class="w-6 h-6 text-[#D4AF37]"></i>
+            </div>
+            <h3 class="font-serif text-base sm:text-lg font-bold text-white mb-1">
+              Industry Recognition & Affiliations
+            </h3>
+            <p class="text-xs text-slate-300 max-w-md mx-auto leading-relaxed">
+              Serving Kashmir travelers with licensed excellence since 2016 in association with recognized hospitality and travel networks.
+            </p>
+            <div class="mt-4 pt-4 border-t border-white/10 flex flex-wrap items-center justify-center gap-4 text-[11px] text-slate-400">
+              <span class="inline-flex items-center space-x-1.5">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>Registered Travel Host</span>
+              </span>
+              <span class="inline-flex items-center space-x-1.5">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>Verified Local Network</span>
+              </span>
+              <span class="inline-flex items-center space-x-1.5">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>Direct Ground Support</span>
+              </span>
+            </div>
+          </div>
+        <% } %>
+      </div>
+
+    </div>
+  </div>
+</section>

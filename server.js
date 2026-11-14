@@ -99,6 +99,7 @@ app.get('/', async (req, res) => {
   const faqs = db.getFaqs();
   const testimonials = db.getTestimonials().filter(t => t.approved);
   const travellerMemories = db.getTravellerMemories();
+  const trustedLogos = typeof db.getTrustedLogos === 'function' ? db.getTrustedLogos() : [];
 
   let weatherData = null;
   try {
@@ -116,7 +117,8 @@ app.get('/', async (req, res) => {
     faqs,
     testimonials,
     travellerMemories,
-    weatherData
+    weatherData,
+    trustedLogos
   });
 });
 

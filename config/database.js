@@ -237,6 +237,32 @@ module.exports = {
     if (logs.length > 150) logs.length = 150;
     writeJsonFile('email_logs.json', logs);
     return newLog;
+  },
+
+  // Industry Recognition & Affiliations Logos
+  getTrustedLogos() {
+    const trustedDirUpper = path.join(__dirname, '..', 'public', 'Trusted');
+    const trustedDirLower = path.join(__dirname, '..', 'public', 'trusted');
+    const targetDir = fs.existsSync(trustedDirUpper) ? trustedDirUpper : (fs.existsSync(trustedDirLower) ? trustedDirLower : null);
+    if (!targetDir) return [];
+    try {
+      const files = fs.readdirSync(targetDir);
+      return files
+        .filter(f => /\.(png|jpe?g|svg|webp)$/i.test(f))
+        .map(f => {
+          const folderName = path.basename(targetDir);
+          const rawName = path.parse(f).name;
+          const cleanName = rawName.replace(/[-_]+/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+          return {
+            filename: f,
+            url: `/${folderName}/${encodeURIComponent(f)}`,
+            name: cleanName
+          };
+        });
+    } catch (err) {
+      console.warn('Error reading trusted logos directory:', err.message);
+      return [];
+    }
   }
 };
 
