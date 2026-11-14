@@ -1144,58 +1144,58 @@ body > section:first-of-type,
    ======================================================== */
 @media (max-width: 639.98px) {
   .weather-mobile-container {
-    display: grid !important;
-    grid-template-columns: 135px 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
     gap: 12px !important;
-    align-items: start !important;
   }
 
   .weather-mobile-header {
-    border-bottom: none !important;
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
+    width: 100% !important;
+    min-height: auto !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: flex-start !important;
-    height: 100% !important;
-    min-height: 220px !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .weather-mobile-header h2 {
+    font-size: 1.125rem !important;
+    line-height: 1.35 !important;
+    text-align: center !important;
+  }
+
+  .weather-mobile-header p {
+    text-align: center !important;
+    font-size: 0.72rem !important;
+    line-height: 1.45 !important;
   }
 
   .weather-mobile-scroll-container {
-    max-height: 230px !important;
-    overflow-y: auto !important;
-    overscroll-behavior-y: contain !important;
-    -webkit-overflow-scrolling: touch !important;
     display: flex !important;
-    flex-direction: column !important;
-    gap: 8px !important;
-    padding-right: 4px !important;
-    scrollbar-width: thin;
-    scrollbar-color: #145DA0 #EAF3FB;
-  }
-
-  .weather-mobile-scroll-container::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  .weather-mobile-scroll-container::-webkit-scrollbar-track {
-    background: #EAF3FB;
-    border-radius: 4px;
-  }
-
-  .weather-mobile-scroll-container::-webkit-scrollbar-thumb {
-    background: #145DA0;
-    border-radius: 4px;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 12px !important;
+    padding: 4px 4px 10px 4px !important;
+    max-height: none !important;
   }
 
   .weather-mobile-scroll-container .weather-card {
-    padding: 8px 10px !important;
-    border-radius: 12px !important;
+    min-width: 205px !important;
+    max-width: 205px !important;
+    width: 205px !important;
+    flex-shrink: 0 !important;
+    scroll-snap-align: start !important;
+    padding: 14px !important;
+    border-radius: 16px !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05) !important;
   }
 
   .weather-mobile-scroll-container .weather-card .text-2xl {
-    font-size: 1.15rem !important;
-    line-height: 1.25rem !important;
+    font-size: 1.35rem !important;
+    line-height: 1.45rem !important;
   }
 }
 

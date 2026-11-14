@@ -1572,6 +1572,78 @@ document.addEventListener('DOMContentLoaded', () => {
       ztmCredit.classList.add('ztm-settled');
     }
   }
+
+  // ----------------------------------------------------
+  // Testimonials / Verified Reviews Mobile Carousel & Filtering
+  // ----------------------------------------------------
+  const reviewsGrid = document.getElementById('reviewsGrid');
+  const reviewDots = document.querySelectorAll('#reviewsMobileDots .review-dot');
+  const filterBtns = document.querySelectorAll('.review-filter-btn');
+
+  if (reviewsGrid) {
+    if (reviewDots.length > 0) {
+      let reviewTicking = false;
+      reviewsGrid.addEventListener('scroll', () => {
+        if (!reviewTicking) {
+          requestAnimationFrame(() => {
+            const scrollLeft = reviewsGrid.scrollLeft;
+            const visibleCards = Array.from(reviewsGrid.querySelectorAll('.review-card:not(.hidden)'));
+            if (visibleCards.length > 0) {
+              const cardWidth = visibleCards[0].offsetWidth;
+              const activeIndex = Math.min(
+                reviewDots.length - 1,
+                Math.max(0, Math.round(scrollLeft / (cardWidth + 12)))
+              );
+              reviewDots.forEach((dot, i) => {
+                if (i === activeIndex) {
+                  dot.className = 'review-dot h-1.5 rounded-full transition-all duration-300 w-5 bg-brand-blue';
+                } else {
+                  dot.className = 'review-dot h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300';
+                }
+              });
+            }
+            reviewTicking = false;
+          });
+          reviewTicking = true;
+        }
+      }, { passive: true });
+
+      reviewDots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => {
+          const visibleCards = Array.from(reviewsGrid.querySelectorAll('.review-card:not(.hidden)'));
+          if (visibleCards[idx]) {
+            reviewsGrid.scrollTo({
+              left: visibleCards[idx].offsetLeft - reviewsGrid.offsetLeft,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    }
+
+    if (filterBtns.length > 0) {
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const category = btn.getAttribute('data-category');
+          filterBtns.forEach(b => {
+            b.className = 'review-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-white hover:bg-slate-50 text-slate-600 border-slate-200';
+          });
+          btn.className = 'review-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border bg-brand-blue text-white border-brand-blue shadow-sm';
+
+          const cards = reviewsGrid.querySelectorAll('.review-card');
+          cards.forEach(card => {
+            const cardCat = card.getAttribute('data-category');
+            if (category === 'all' || cardCat === category) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          });
+          reviewsGrid.scrollTo({ left: 0, behavior: 'smooth' });
+        });
+      });
+    }
+  }
 });
 
 
