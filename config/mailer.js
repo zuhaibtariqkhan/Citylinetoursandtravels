@@ -183,7 +183,7 @@ function generateCustomerEmailHtml(enquiry, settings) {
       <div class="footer">
         City Line Tours And Travels • Palpora, Srinagar, Jammu & Kashmir, India<br>
         Phone: ${settings.phone || '6006725007'} / ${settings.secondaryPhone || '9906676890'} | Email: ${settings.email || 'askcitylinetravels@gmail.com'}<br>
-        <a href="https://citylinetours.com">Visit Website</a>
+        <a href="https://www.citylinetravels.com">Visit Website</a>
       </div>
     </div>
   </body>

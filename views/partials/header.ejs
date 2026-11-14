@@ -140,42 +140,91 @@
     </button>
   </div>
 
-  <!-- Drawer Nav Links -->
+  <!-- Drawer Nav Links with Active Highlight Effect -->
   <div class="p-4 sm:p-5 flex-1 overflow-y-auto space-y-1.5">
+    
+    <!-- Home -->
     <a href="/"
-      class="flex items-center space-x-3 px-3.5 py-3 rounded-xl text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue min-h-[44px]">
-      <i data-lucide="home" class="w-5 h-5 text-brand-blue shrink-0"></i>
-      <span>Home</span>
+      class="flex items-center justify-between px-3.5 py-3 rounded-xl text-base transition-all min-h-[44px] <%= currentPath === '/' ? 'bg-brand-softsky text-brand-blue font-bold border-l-4 border-l-brand-blue border border-brand-border shadow-xs' : 'text-brand-navy font-medium hover:bg-slate-100/70 hover:text-brand-blue border border-transparent' %>">
+      <div class="flex items-center space-x-3">
+        <i data-lucide="home" class="w-5 h-5 text-brand-blue shrink-0"></i>
+        <span>Home</span>
+      </div>
+      <% if (currentPath === '/') { %>
+        <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-brand-blue text-white shadow-xs">Active</span>
+      <% } %>
     </a>
+
+    <!-- About Us -->
     <a href="/about"
-      class="flex items-center space-x-3 px-3.5 py-3 rounded-xl text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue min-h-[44px]">
-      <i data-lucide="info" class="w-5 h-5 text-brand-blue shrink-0"></i>
-      <span>About Us</span>
+      class="flex items-center justify-between px-3.5 py-3 rounded-xl text-base transition-all min-h-[44px] <%= currentPath === '/about' ? 'bg-brand-softsky text-brand-blue font-bold border-l-4 border-l-brand-blue border border-brand-border shadow-xs' : 'text-brand-navy font-medium hover:bg-slate-100/70 hover:text-brand-blue border border-transparent' %>">
+      <div class="flex items-center space-x-3">
+        <i data-lucide="info" class="w-5 h-5 text-brand-blue shrink-0"></i>
+        <span>About Us</span>
+      </div>
+      <% if (currentPath === '/about') { %>
+        <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-brand-blue text-white shadow-xs">Active</span>
+      <% } %>
     </a>
+
+    <!-- Destinations -->
     <a href="/destinations"
-      class="flex items-center space-x-3 px-3.5 py-3 rounded-xl text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue min-h-[44px]">
-      <i data-lucide="mountain" class="w-5 h-5 text-brand-blue shrink-0"></i>
-      <span>Destinations</span>
+      class="flex items-center justify-between px-3.5 py-3 rounded-xl text-base transition-all min-h-[44px] <%= currentPath.startsWith('/destinations') ? 'bg-brand-softsky text-brand-blue font-bold border-l-4 border-l-brand-blue border border-brand-border shadow-xs' : 'text-brand-navy font-medium hover:bg-slate-100/70 hover:text-brand-blue border border-transparent' %>">
+      <div class="flex items-center space-x-3">
+        <i data-lucide="mountain" class="w-5 h-5 text-brand-blue shrink-0"></i>
+        <span>Destinations</span>
+      </div>
+      <% if (currentPath.startsWith('/destinations')) { %>
+        <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-brand-blue text-white shadow-xs">Active</span>
+      <% } %>
     </a>
+
+    <!-- Tour Packages -->
     <a href="/packages"
-      class="flex items-center space-x-3 px-3.5 py-3 rounded-xl text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue min-h-[44px]">
-      <i data-lucide="luggage" class="w-5 h-5 text-brand-blue shrink-0"></i>
-      <span>Tour Packages</span>
+      class="flex items-center justify-between px-3.5 py-3 rounded-xl text-base transition-all min-h-[44px] <%= currentPath.startsWith('/packages') ? 'bg-brand-softsky text-brand-blue font-bold border-l-4 border-l-brand-blue border border-brand-border shadow-xs' : 'text-brand-navy font-medium hover:bg-slate-100/70 hover:text-brand-blue border border-transparent' %>">
+      <div class="flex items-center space-x-3">
+        <i data-lucide="luggage" class="w-5 h-5 text-brand-blue shrink-0"></i>
+        <span>Tour Packages</span>
+      </div>
+      <% if (currentPath.startsWith('/packages')) { %>
+        <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-brand-blue text-white shadow-xs">Active</span>
+      <% } %>
     </a>
+
+    <!-- Experiences -->
     <a href="/experiences"
-      class="flex items-center space-x-3 px-3.5 py-3 rounded-xl text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue min-h-[44px]">
-      <i data-lucide="camera" class="w-5 h-5 text-brand-blue shrink-0"></i>
-      <span>Experiences</span>
+      class="flex items-center justify-between px-3.5 py-3 rounded-xl text-base transition-all min-h-[44px] <%= currentPath.startsWith('/experiences') ? 'bg-brand-softsky text-brand-blue font-bold border-l-4 border-l-brand-blue border border-brand-border shadow-xs' : 'text-brand-navy font-medium hover:bg-slate-100/70 hover:text-brand-blue border border-transparent' %>">
+      <div class="flex items-center space-x-3">
+        <i data-lucide="camera" class="w-5 h-5 text-brand-blue shrink-0"></i>
+        <span>Experiences</span>
+      </div>
+      <% if (currentPath.startsWith('/experiences')) { %>
+        <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-brand-blue text-white shadow-xs">Active</span>
+      <% } %>
     </a>
+
+    <!-- Hotels & Houseboats -->
     <a href="/hotels"
-      class="flex items-center space-x-3 px-3.5 py-3 rounded-xl text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue min-h-[44px]">
-      <i data-lucide="bed-double" class="w-5 h-5 text-brand-blue shrink-0"></i>
-      <span>Hotels & Houseboats</span>
+      class="flex items-center justify-between px-3.5 py-3 rounded-xl text-base transition-all min-h-[44px] <%= currentPath.startsWith('/hotels') ? 'bg-brand-softsky text-brand-blue font-bold border-l-4 border-l-brand-blue border border-brand-border shadow-xs' : 'text-brand-navy font-medium hover:bg-slate-100/70 hover:text-brand-blue border border-transparent' %>">
+      <div class="flex items-center space-x-3">
+        <i data-lucide="bed-double" class="w-5 h-5 text-brand-blue shrink-0"></i>
+        <span>Hotels & Houseboats</span>
+      </div>
+      <% if (currentPath.startsWith('/hotels')) { %>
+        <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-brand-blue text-white shadow-xs">Active</span>
+      <% } %>
     </a>
+
+    <!-- Contact Us -->
     <a href="/contact"
-      class="flex items-center space-x-3 px-3.5 py-3 rounded-xl text-base font-medium text-brand-navy hover:bg-brand-light hover:text-brand-blue min-h-[44px]">
-      <i data-lucide="phone" class="w-5 h-5 text-brand-blue shrink-0"></i>
-      <span>Contact Us</span>
+      class="flex items-center justify-between px-3.5 py-3 rounded-xl text-base transition-all min-h-[44px] <%= currentPath === '/contact' ? 'bg-brand-softsky text-brand-blue font-bold border-l-4 border-l-brand-blue border border-brand-border shadow-xs' : 'text-brand-navy font-medium hover:bg-slate-100/70 hover:text-brand-blue border border-transparent' %>">
+      <div class="flex items-center space-x-3">
+        <i data-lucide="phone" class="w-5 h-5 text-brand-blue shrink-0"></i>
+        <span>Contact Us</span>
+      </div>
+      <% if (currentPath === '/contact') { %>
+        <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-brand-blue text-white shadow-xs">Active</span>
+      <% } %>
     </a>
   </div>
 
