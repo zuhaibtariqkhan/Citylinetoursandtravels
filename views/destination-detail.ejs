@@ -18,30 +18,30 @@
   </div>
 
   <!-- Destination Hero Banner -->
-  <section class="relative py-24 bg-brand-navy text-white overflow-hidden">
+  <section class="relative py-12 sm:py-24 bg-brand-navy text-white overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img src="<%= destination.image %>" alt="<%= destination.name %>" fetchpriority="high" class="w-full h-full object-cover object-center brightness-[0.45]">
     </div>
     <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-      <span class="text-xs font-bold uppercase tracking-widest text-brand-sky bg-white/10 px-4 py-1.5 rounded-full inline-block mb-3">
+      <span class="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-brand-sky bg-white/10 px-3.5 sm:px-4 py-1.5 rounded-full inline-block mb-3">
         <%= destination.region ? destination.region.toUpperCase() : 'HIMALAYAN' %> DESTINATION GUIDE
       </span>
-      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-3">
+      <h1 class="font-serif text-2xl sm:text-4xl lg:text-6xl font-bold text-white mb-2.5 sm:mb-3 leading-tight">
         <%= destination.name %>
       </h1>
-      <p class="font-serif italic text-lg sm:text-xl text-brand-sky max-w-2xl mx-auto mb-6">
+      <p class="font-serif italic text-base sm:text-xl text-brand-sky max-w-2xl mx-auto mb-4 sm:mb-6">
         "<%= destination.tagline %>"
       </p>
-      <div class="flex flex-wrap items-center justify-center gap-3 text-xs font-semibold">
-        <span class="bg-white/20 backdrop-blur px-3.5 py-1.5 rounded-full">Suggested Duration: <%= destination.suggestedDuration %></span>
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-semibold">
+        <span class="bg-white/20 backdrop-blur px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[11px] sm:text-xs">Suggested Duration: <%= destination.suggestedDuration %></span>
         <% if (destination.altitude) { %>
-          <span class="bg-white/20 backdrop-blur px-3.5 py-1.5 rounded-full flex items-center space-x-1">
+          <span class="bg-white/20 backdrop-blur px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full flex items-center space-x-1 text-[11px] sm:text-xs">
             <i data-lucide="mountain" class="w-3.5 h-3.5 text-brand-sky"></i>
             <span>Elevation: <%= destination.altitude %></span>
           </span>
         <% } %>
         <% if (destination.distanceFromAirport) { %>
-          <span class="bg-white/20 backdrop-blur px-3.5 py-1.5 rounded-full flex items-center space-x-1">
+          <span class="bg-white/20 backdrop-blur px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full flex items-center space-x-1 text-[11px] sm:text-xs">
             <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-sky"></i>
             <span><%= destination.distanceFromAirport %></span>
           </span>
@@ -51,24 +51,24 @@
   </section>
 
   <!-- Destination Details & Information -->
-  <section class="py-16 bg-white">
+  <section class="py-10 sm:py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12">
         
         <!-- Left 2 Columns: Overview, Attractions, Things to Do -->
-        <div class="lg:col-span-2 space-y-12">
+        <div class="lg:col-span-2 space-y-6 sm:space-y-12">
           
           <div>
-            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-navy mb-4">
+            <h2 class="font-serif text-xl sm:text-3xl font-bold text-brand-navy mb-3 sm:mb-4 text-center sm:text-left">
               About <%= destination.name %>
             </h2>
-            <p class="text-base text-brand-muted leading-relaxed mb-6">
+            <p class="text-sm sm:text-base text-brand-muted leading-relaxed mb-6">
               <%= destination.fullDescription %>
             </p>
 
             <!-- Featured Destination Landscape Showcase -->
-            <div class="rounded-2xl overflow-hidden border border-brand-border shadow-md h-72 sm:h-96 relative group">
+            <div class="rounded-2xl overflow-hidden border border-brand-border shadow-md h-56 sm:h-96 relative group">
               <img src="<%= destination.image %>" 
                    alt="<%= destination.name %> Scenic Landscape" 
                    loading="lazy" 
@@ -131,11 +131,11 @@
 
         <!-- Right 1 Column: Plan a Trip to this destination -->
         <div>
-          <div class="sticky top-28 bg-brand-offwhite border border-brand-border rounded-2xl p-6 sm:p-7 shadow-lg space-y-6">
+          <div class="sticky top-28 bg-brand-offwhite border border-brand-border rounded-2xl p-4 sm:p-7 shadow-lg space-y-4 sm:space-y-6">
             
-            <div class="border-b border-slate-200 pb-4">
+            <div class="border-b border-slate-200 pb-3 sm:pb-4 text-center sm:text-left">
               <span class="text-xs uppercase font-bold text-brand-blue tracking-wider block mb-1">Trip Planner</span>
-              <h3 class="font-serif text-xl font-bold text-brand-navy">Visit <%= destination.name %></h3>
+              <h3 class="font-serif text-lg sm:text-xl font-bold text-brand-navy">Visit <%= destination.name %></h3>
               <p class="text-xs text-brand-muted mt-1">Include <%= destination.name %> in your personalized Kashmir itinerary.</p>
             </div>
 
@@ -179,7 +179,7 @@
                 <textarea id="destLeadMessage" name="message" rows="2" placeholder="Tell us if you want to combine <%= destination.name %> with other places..." class="form-input text-xs sm:text-sm py-2"></textarea>
               </div>
 
-              <button type="submit" class="w-full btn-primary py-3 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md">
+              <button type="submit" class="w-full btn-primary py-3 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md min-h-[44px]">
                 <i data-lucide="send" class="w-4 h-4"></i>
                 <span>Request a Quote</span>
               </button>
@@ -188,7 +188,7 @@
             <div class="pt-2 border-t border-slate-200 text-center">
               <a href="https://wa.me/916006725007?text=Hello%20City%20Line%20Tours,%20I%20am%20planning%20a%20trip%20to%20<%= encodeURIComponent(destination.name) %>.%20Please%20share%20details." 
                  target="_blank" 
-                 class="w-full bg-[#25D366] hover:bg-[#20ba59] text-white py-2.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 transition">
+                 class="w-full bg-[#25D366] hover:bg-[#20ba59] text-white py-3 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 transition min-h-[44px]">
                 <i data-lucide="message-circle" class="w-4 h-4"></i>
                 <span>Chat with Kashmir Expert (6006725007)</span>
               </a>
@@ -201,7 +201,7 @@
 
       <!-- Related Packages Covering This Destination -->
       <% if (relatedPackages && relatedPackages.length > 0) { %>
-        <div class="mt-20 pt-12 border-t border-brand-border">
+        <div class="mt-12 sm:mt-20 pt-8 sm:pt-12 border-t border-brand-border">
           <div class="flex items-center justify-between mb-8">
             <h3 class="font-serif text-2xl font-bold text-brand-navy">
               Packages Featuring <%= destination.name %>

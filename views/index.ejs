@@ -98,34 +98,34 @@
     <canvas id="snowCanvas" class="absolute inset-0 pointer-events-none z-10 w-full h-full"></canvas>
 
     <!-- Hero Content -->
-    <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-12 sm:pt-16 pb-16 sm:pb-20">
+    <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8 sm:pt-16 pb-12 sm:pb-20">
       
       <!-- Small Introductory Label -->
-      <div class="hero-badge-enter inline-flex items-center space-x-2 bg-white/15 backdrop-blur-md px-3.5 py-1.5 rounded-full text-brand-sky text-xs font-semibold uppercase tracking-widest mb-4 border border-white/20 shadow-sm">
+      <div class="hero-badge-enter inline-flex items-center space-x-2 bg-white/15 backdrop-blur-md px-3 sm:px-3.5 py-1.5 rounded-full text-brand-sky text-[11px] sm:text-xs font-semibold uppercase tracking-widest mb-3 sm:mb-4 border border-white/20 shadow-sm">
         <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-sky"></i>
         <span>KASHMIR • INDIA</span>
       </div>
 
       <!-- Main Georgia Bold Heading -->
-      <h1 class="hero-title-enter font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold text-white tracking-tight leading-[1.15] mb-4 drop-shadow-md">
+      <h1 class="hero-title-enter font-serif text-2xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold text-white tracking-tight leading-[1.2] sm:leading-[1.15] mb-3 sm:mb-4 drop-shadow-md">
         Discover the Paradise on Earth
       </h1>
 
       <!-- Supporting Text -->
-      <p class="hero-text-enter max-w-xl mx-auto text-sm sm:text-base text-slate-200 font-normal leading-relaxed mb-7">
+      <p class="hero-text-enter max-w-xl mx-auto text-xs sm:text-base text-slate-200 font-normal leading-relaxed mb-6 sm:mb-7">
         Explore the breathtaking beauty of Kashmir with thoughtfully planned journeys, unforgettable experiences and personalised travel arrangements.
       </p>
 
       <!-- Primary Hero CTA -->
-      <div class="hero-cta-enter flex items-center justify-center space-x-3">
-        <a href="/packages" class="btn-primary px-7 py-3 rounded-xl text-sm font-semibold shadow-md hover:shadow-lg flex items-center justify-center space-x-2">
+      <div class="hero-cta-enter flex items-center justify-center">
+        <a href="/packages" class="w-full max-w-xs sm:w-auto btn-primary px-7 py-3 rounded-xl text-sm font-semibold shadow-md hover:shadow-lg flex items-center justify-center space-x-2 min-h-[44px]">
           <span>Explore Tour Packages</span>
           <i data-lucide="arrow-right" class="w-4 h-4 arrow-hover"></i>
         </a>
       </div>
 
       <!-- Scroll to explore indicator -->
-      <div class="mt-6 sm:mt-8 flex flex-col items-center justify-center text-slate-300 text-[11px] font-medium space-y-1 opacity-75 animate-bounce">
+      <div class="mt-5 sm:mt-8 flex flex-col items-center justify-center text-slate-300 text-[11px] font-medium space-y-1 opacity-75 animate-bounce">
         <span>Scroll to Explore</span>
         <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
       </div>
@@ -133,7 +133,7 @@
     </div>
 
     <!-- Bottom Controls: Live Weather Effect Pill -->
-    <div class="absolute bottom-4 sm:bottom-5 inset-x-0 z-20 px-4 sm:px-8 flex items-center justify-start text-xs">
+    <div class="absolute bottom-3 sm:bottom-5 inset-x-0 z-20 px-3 sm:px-8 flex items-center justify-start text-xs">
       
       <!-- Live Srinagar Weather Dynamic Effect Indicator -->
       <div class="relative inline-block" id="heroWeatherControl">
@@ -155,7 +155,7 @@
   <!-- ========================================================
        SECTION 02: QUICK TRIP CONSULTATION BAR
        ======================================================== -->
-  <section class="relative z-20 pt-6 pb-6 sm:pt-8 sm:pb-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal" id="quickConsultationBar">
+  <section class="relative z-20 pt-4 pb-4 sm:pt-8 sm:pb-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal" id="quickConsultationBar">
     <div class="bg-white rounded-2xl shadow-lg border border-brand-border p-4 sm:p-5 lg:p-6">
       <div class="mb-3.5 flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-3 gap-2">
         <div class="flex items-center space-x-2 text-brand-navy">
@@ -164,7 +164,7 @@
           </div>
           <span class="text-xs sm:text-sm font-bold uppercase tracking-wider">Quick Travel Consultation</span>
         </div>
-        <span class="text-xs text-brand-slate">Direct local itinerary & custom quotation delivered to your phone</span>
+        <span class="text-xs text-brand-slate text-center sm:text-left">Direct local itinerary & custom quotation delivered to your phone</span>
       </div>
 
       <form id="quickEnquiryForm" class="ajax-enquiry-form grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
@@ -174,8 +174,8 @@
         <div>
           <label for="quickConsultDest" class="block text-[11px] font-semibold text-brand-slate mb-1 uppercase tracking-wider">Destination</label>
           <div class="relative">
-            <i data-lucide="map-pin" class="w-4 h-4 text-brand-blue absolute left-3 top-2.5"></i>
-            <select id="quickConsultDest" name="destination" class="form-input pl-9 text-xs sm:text-sm py-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-brand-blue absolute left-3 top-3"></i>
+            <select id="quickConsultDest" name="destination" class="form-input pl-9 text-xs sm:text-sm py-2.5 min-h-[44px]">
               <option value="All Kashmir (Classic Tour)">All Kashmir (Classic)</option>
               <option value="Srinagar & Dal Lake">Srinagar & Dal Lake</option>
               <option value="Gulmarg Ski & Gondola">Gulmarg Ski & Gondola</option>
@@ -190,8 +190,8 @@
         <div>
           <label for="quickConsultDate" class="block text-[11px] font-semibold text-brand-slate mb-1 uppercase tracking-wider">Travel Date</label>
           <div class="relative">
-            <i data-lucide="calendar" class="w-4 h-4 text-brand-blue absolute left-3 top-2.5"></i>
-            <input type="date" id="quickConsultDate" name="travelDate" class="form-input pl-9 text-xs sm:text-sm py-2">
+            <i data-lucide="calendar" class="w-4 h-4 text-brand-blue absolute left-3 top-3"></i>
+            <input type="date" id="quickConsultDate" name="travelDate" class="form-input pl-9 text-xs sm:text-sm py-2.5 min-h-[44px]">
           </div>
         </div>
 
@@ -199,8 +199,8 @@
         <div>
           <label for="quickConsultTravellers" class="block text-[11px] font-semibold text-brand-slate mb-1 uppercase tracking-wider">Travellers</label>
           <div class="relative">
-            <i data-lucide="users" class="w-4 h-4 text-brand-blue absolute left-3 top-2.5"></i>
-            <select id="quickConsultTravellers" name="travellers" class="form-input pl-9 text-xs sm:text-sm py-2">
+            <i data-lucide="users" class="w-4 h-4 text-brand-blue absolute left-3 top-3"></i>
+            <select id="quickConsultTravellers" name="travellers" class="form-input pl-9 text-xs sm:text-sm py-2.5 min-h-[44px]">
               <option value="Couple (2 Adults)">Couple (2 Adults)</option>
               <option value="Family (3-4 Pax)">Family (3-4 Pax)</option>
               <option value="Group (5+ Pax)">Group (5+ Pax)</option>
@@ -213,14 +213,14 @@
         <div>
           <label for="quickConsultPhone" class="block text-[11px] font-semibold text-brand-slate mb-1 uppercase tracking-wider">Mobile Number <span class="text-rose-500">*</span></label>
           <div class="relative">
-            <i data-lucide="phone" class="w-4 h-4 text-brand-blue absolute left-3 top-2.5"></i>
-            <input type="tel" id="quickConsultPhone" name="phone" required placeholder="Phone / WhatsApp" class="form-input pl-9 text-xs sm:text-sm py-2">
+            <i data-lucide="phone" class="w-4 h-4 text-brand-blue absolute left-3 top-3"></i>
+            <input type="tel" id="quickConsultPhone" name="phone" required placeholder="Phone / WhatsApp" class="form-input pl-9 text-xs sm:text-sm py-2.5 min-h-[44px]">
           </div>
         </div>
 
         <!-- Submit Button -->
         <div class="flex items-end">
-          <button type="submit" class="w-full btn-primary h-[38px] rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-sm">
+          <button type="submit" class="w-full btn-primary h-[44px] sm:h-[38px] rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-sm min-h-[44px]">
             <span>Send My Enquiry</span>
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </button>
@@ -491,7 +491,7 @@
   <!-- ========================================================
        SECTION 04: INTRODUCTION
        ======================================================== -->
-  <section class="py-12 sm:py-16 bg-white" id="introSection">
+  <section class="py-10 sm:py-16 bg-white" id="introSection">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
         
@@ -502,7 +502,7 @@
                  alt="City Line Tours - A Decade of Kashmiri Hospitality & Trust" 
                  loading="lazy"
                  decoding="async"
-                 class="w-full h-[380px] sm:h-[420px] object-cover hover:scale-105 transition-transform duration-700">
+                 class="w-full h-[260px] sm:h-[420px] object-cover hover:scale-105 transition-transform duration-700">
           </div>
           <!-- Floating Experience Badge: Serving Since 2016 -->
           <div class="absolute -bottom-5 -right-5 bg-brand-navy text-white p-4 sm:p-5 rounded-2xl shadow-xl hidden sm:flex items-center space-x-4 border border-white/10 max-w-xs animate-float">
@@ -551,12 +551,12 @@
             </div>
           </div>
 
-          <div class="pt-3 flex items-center space-x-4">
-            <a href="/about" class="btn-primary px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center space-x-2">
+          <div class="pt-2 sm:pt-3 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-0 sm:space-x-4">
+            <a href="/about" class="w-full sm:w-auto btn-primary px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 min-h-[44px]">
               <span>Our Story</span>
               <i data-lucide="arrow-right" class="w-4 h-4 arrow-hover"></i>
             </a>
-            <a href="/contact" class="btn-outline px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm">
+            <a href="/contact" class="w-full sm:w-auto btn-outline px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center min-h-[44px]">
               Talk to Our Travel Team
             </a>
           </div>
@@ -617,11 +617,11 @@
   <!-- ========================================================
        SECTION 07: FEATURED TOUR PACKAGES
        ======================================================== -->
-  <section class="py-12 sm:py-16 bg-brand-offwhite" id="featuredPackagesSection">
+  <section class="py-10 sm:py-16 bg-brand-offwhite" id="featuredPackagesSection">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 text-center md:text-left reveal">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-10 text-center md:text-left reveal">
         <div class="flex flex-col items-center md:items-start text-center md:text-left">
           <span class="inline-flex items-center text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-light px-3.5 py-1 rounded-full mx-auto md:mx-0">
             FEATURED HOLIDAYS
@@ -642,12 +642,12 @@
       </div>
 
       <!-- Packages Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 reveal-stagger">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 reveal-stagger">
         <% (featuredPackages.length > 0 ? featuredPackages : allPackages).slice(0, 12).forEach(pkg => { %>
           <div class="bg-white rounded-2xl border border-brand-border overflow-hidden card-hover flex flex-col shadow-sm">
             
             <!-- Image & Category Tag -->
-            <div class="relative h-56 sm:h-60 img-zoom-container">
+            <div class="relative h-48 sm:h-60 img-zoom-container">
               <img src="<%= pkg.featuredImage %>" alt="<%= pkg.title %>" loading="lazy" decoding="async" class="w-full h-full object-cover">
               <div class="absolute top-3 left-3">
                 <span class="bg-white/95 backdrop-blur text-brand-navy text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">
@@ -661,7 +661,7 @@
             </div>
 
             <!-- Card Content -->
-            <div class="p-5 flex-1 flex flex-col justify-between">
+            <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between">
               <div>
                 <h3 class="font-serif text-lg font-bold text-brand-navy mb-1.5 line-clamp-1 hover:text-brand-blue transition">
                   <a href="/packages/<%= pkg.slug %>"><%= pkg.title %></a>
@@ -691,7 +691,7 @@
               </div>
 
               <!-- Price & Actions -->
-              <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+              <div class="pt-3 border-t border-slate-100 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2.5">
                 <div>
                   <span class="text-[10px] text-brand-muted uppercase block">
                     <%= (pkg.pricingModel === 'winter_wonderland' || pkg.pricingModel === 'fixed_couple' || pkg.pricingModel === 'himalayan_escape' || pkg.pricingModel === 'tulip_festival' || pkg.pricingModel === 'amarnath_yatra' || pkg.pricingModel === 'autumn_chinar') ? 'Total Package' : 'Starting From' %>
@@ -716,11 +716,11 @@
                   <% } %>
                 </div>
 
-                <div class="flex items-center space-x-2">
-                  <a href="/packages/<%= pkg.slug %>" class="btn-outline px-3 py-1.5 rounded-lg text-xs font-semibold">
+                <div class="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
+                  <a href="/packages/<%= pkg.slug %>" class="btn-outline px-2.5 sm:px-3 py-2 rounded-lg text-xs font-semibold min-h-[40px] sm:min-h-0 flex items-center justify-center">
                     View Details
                   </a>
-                  <button class="enquire-now-btn btn-primary px-3 py-1.5 rounded-lg text-xs font-semibold" data-package="<%= pkg.title %>">
+                  <button class="enquire-now-btn btn-primary px-2.5 sm:px-3 py-2 rounded-lg text-xs font-semibold min-h-[40px] sm:min-h-0 flex items-center justify-center" data-package="<%= pkg.title %>">
                     Request a Quote
                   </button>
                 </div>
@@ -841,19 +841,19 @@
   <!-- ========================================================
        SECTION 10: FINAL CTA
        ======================================================== -->
-  <section class="py-12 sm:py-14 bg-brand-light/60 border-t border-brand-border text-center reveal-scale" id="finalCtaSection">
+  <section class="py-8 sm:py-14 bg-brand-light/60 border-t border-brand-border text-center reveal-scale" id="finalCtaSection">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-navy mb-3">
         Let's Make Your Kashmir Journey Memorable
       </h2>
-      <p class="text-sm sm:text-base text-brand-muted mb-6 leading-relaxed max-w-xl mx-auto">
+      <p class="text-xs sm:text-base text-brand-muted mb-6 leading-relaxed max-w-xl mx-auto">
         Speak directly with our local Kashmir travel experts in Srinagar to start planning your dream holiday today.
       </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-        <a href="/contact" class="w-full sm:w-auto btn-outline px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3">
+        <a href="/contact" class="w-full sm:w-auto btn-outline px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm min-h-[44px] flex items-center justify-center">
           Talk to Our Travel Team
         </a>
-        <a href="/packages" class="w-full sm:w-auto btn-primary px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2">
+        <a href="/packages" class="w-full sm:w-auto btn-primary px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 min-h-[44px]">
           <span>Explore Tour Packages</span>
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </a>

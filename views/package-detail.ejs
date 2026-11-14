@@ -18,57 +18,57 @@
   </div>
 
   <!-- Package Hero & Main Visual -->
-  <section class="py-10 bg-white">
+  <section class="py-6 sm:py-10 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Package Header Title & Meta -->
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8 text-center lg:text-left">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 sm:mb-8 text-center lg:text-left">
         <div>
           <div class="flex items-center justify-center lg:justify-start space-x-2 mb-2">
-            <span class="bg-brand-light text-brand-blue text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+            <span class="bg-brand-light text-brand-blue text-[11px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
               <%= pkg.category %> Special
             </span>
-            <span class="text-xs text-brand-muted flex items-center">
-              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-blue mr-1"></i>
-              <%= (pkg.destinationCoverage || []).join(' • ') %>
+            <span class="text-[11px] sm:text-xs text-brand-muted flex items-center">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-blue mr-1 shrink-0"></i>
+              <span class="truncate max-w-[200px] sm:max-w-none"><%= (pkg.destinationCoverage || []).join(' • ') %></span>
             </span>
           </div>
-          <h1 class="font-serif text-3xl sm:text-4xl lg:text-[45px] font-bold text-brand-navy tracking-tight text-center lg:text-left">
+          <h1 class="font-serif text-2xl sm:text-4xl lg:text-[45px] font-bold text-brand-navy tracking-tight text-center lg:text-left leading-tight">
             <%= pkg.title %>
           </h1>
         </div>
 
         <!-- Pricing Summary Box on Desktop with PDF Download -->
-        <div class="bg-brand-offwhite border border-brand-border p-4 rounded-2xl flex flex-wrap items-center gap-4 sm:gap-6">
+        <div class="bg-brand-offwhite border border-brand-border p-3.5 sm:p-4 rounded-xl sm:rounded-2xl flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-6">
           <div>
-            <span class="text-[11px] text-brand-muted uppercase block">
+            <span class="text-[10px] sm:text-[11px] text-brand-muted uppercase block">
               <%= pkg.pricingModel === 'autumn_chinar' ? 'Starting Package Price (2 Persons)' : (pkg.pricingModel === 'amarnath_yatra' ? 'Starting Package Price (2 Yatris)' : (pkg.pricingModel === 'tulip_festival' ? 'Starting Package Price (2 Travellers)' : (pkg.pricingModel === 'winter_wonderland' ? 'Total Package Price (5 Persons)' : (pkg.pricingModel === 'himalayan_escape' ? 'Starting Package Price (12 Travellers)' : (pkg.pricingModel === 'fixed_couple' ? 'Total Fixed Price (Couple)' : 'Starting Price'))))) %>
             </span>
-            <div class="font-serif text-2xl font-bold text-brand-blue">
+            <div class="font-serif text-xl sm:text-2xl font-bold text-brand-blue">
               <%= pkg.startingPriceFormatted %>
             </div>
             <% if (pkg.price && pkg.pricingModel !== 'fixed_couple' && pkg.pricingModel !== 'winter_wonderland' && pkg.pricingModel !== 'himalayan_escape' && pkg.pricingModel !== 'tulip_festival' && pkg.pricingModel !== 'amarnath_yatra' && pkg.pricingModel !== 'autumn_chinar') { %>
-              <span class="text-[11px] text-brand-muted">/<%= pkg.pricingType || 'person' %></span>
+              <span class="text-[10px] sm:text-[11px] text-brand-muted">/<%= pkg.pricingType || 'person' %></span>
             <% } else if (pkg.pricingModel === 'himalayan_escape') { %>
-              <span class="text-[11px] text-brand-muted">for 12 Travellers Base</span>
+              <span class="text-[10px] sm:text-[11px] text-brand-muted">for 12 Travellers Base</span>
             <% } else if (pkg.pricingModel === 'tulip_festival') { %>
-              <span class="text-[11px] text-brand-muted">for 2 Travellers Base (₹13,500/person)</span>
+              <span class="text-[10px] sm:text-[11px] text-brand-muted">for 2 Travellers Base (₹13,500/person)</span>
             <% } else if (pkg.pricingModel === 'amarnath_yatra') { %>
-              <span class="text-[11px] text-brand-muted">for 2 Yatris Base (₹17,500/Yatri)</span>
+              <span class="text-[10px] sm:text-[11px] text-brand-muted">for 2 Yatris Base (₹17,500/Yatri)</span>
             <% } else if (pkg.pricingModel === 'autumn_chinar') { %>
-              <span class="text-[11px] text-brand-muted">for 2 Persons Base (₹33,000/person)</span>
+              <span class="text-[10px] sm:text-[11px] text-brand-muted">for 2 Persons Base (₹33,000/person)</span>
             <% } %>
           </div>
-          <div class="border-l border-slate-200 pl-4 sm:pl-6">
-            <span class="text-[11px] text-brand-muted uppercase block">Duration</span>
-            <div class="font-bold text-sm text-brand-navy flex items-center space-x-1 mt-1">
+          <div class="border-t pt-2.5 sm:border-t-0 sm:pt-0 sm:border-l sm:border-slate-200 sm:pl-4 lg:pl-6 text-center sm:text-left">
+            <span class="text-[10px] sm:text-[11px] text-brand-muted uppercase block">Duration</span>
+            <div class="font-bold text-xs sm:text-sm text-brand-navy flex items-center justify-center sm:justify-start space-x-1 mt-0.5 sm:mt-1">
               <i data-lucide="calendar" class="w-4 h-4 text-brand-blue"></i>
               <span><%= pkg.duration %></span>
             </div>
           </div>
-          <div class="border-l border-slate-200 pl-4 sm:pl-6">
+          <div class="w-full sm:w-auto border-t pt-2.5 sm:border-t-0 sm:pt-0 sm:border-l sm:border-slate-200 sm:pl-4 lg:pl-6">
             <a href="/packages/<%= pkg.slug %>/print?autoprint=1" target="_blank" 
-               class="inline-flex items-center space-x-1.5 bg-white border border-brand-border hover:border-brand-blue hover:text-brand-blue text-brand-navy text-xs font-semibold px-3.5 py-2 rounded-xl transition shadow-sm">
+               class="w-full sm:w-auto inline-flex items-center justify-center space-x-1.5 bg-white border border-brand-border hover:border-brand-blue hover:text-brand-blue text-brand-navy text-xs font-semibold px-3.5 py-2.5 rounded-xl transition shadow-sm min-h-[44px]">
               <i data-lucide="file-down" class="w-4 h-4 text-brand-blue"></i>
               <span>Download PDF Itinerary</span>
             </a>
@@ -77,8 +77,8 @@
       </div>
 
       <!-- Main Image & Mini Gallery Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 rounded-2xl overflow-hidden mb-12 shadow-md">
-        <div class="lg:col-span-2 h-[380px] sm:h-[460px]">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 rounded-2xl overflow-hidden mb-6 sm:mb-12 shadow-md">
+        <div class="lg:col-span-2 h-[250px] sm:h-[460px]">
           <img src="<%= pkg.featuredImage %>" alt="<%= pkg.title %>" class="w-full h-full object-cover">
         </div>
         <div class="hidden lg:grid grid-rows-2 gap-4 h-[460px]">
@@ -101,21 +101,21 @@
       </div>
 
       <!-- Main Two-Column Content & Sticky Enquiry Form -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12">
         
         <!-- Left 2 Cols: Overview, Itinerary, Inclusions, Accommodation -->
-        <div class="lg:col-span-2 space-y-12">
+        <div class="lg:col-span-2 space-y-6 sm:space-y-12">
           
           <!-- Package Overview -->
           <div>
-            <h2 class="font-serif text-2xl font-bold text-brand-navy mb-4 text-center sm:text-left">Tour Overview</h2>
-            <p class="text-base text-brand-muted leading-relaxed">
+            <h2 class="font-serif text-xl sm:text-2xl font-bold text-brand-navy mb-3 sm:mb-4 text-center sm:text-left">Tour Overview</h2>
+            <p class="text-sm sm:text-base text-brand-muted leading-relaxed">
               <%= pkg.fullDescription %>
             </p>
           </div>
 
           <!-- Key Quick Highlights Bar -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-brand-light/60 border border-brand-border p-5 rounded-2xl">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 bg-brand-light/60 border border-brand-border p-3.5 sm:p-5 rounded-2xl">
             <div>
               <span class="text-[11px] text-brand-muted uppercase block">Duration</span>
               <span class="font-semibold text-xs sm:text-sm text-brand-navy"><%= pkg.duration %></span>
@@ -1254,43 +1254,43 @@
 
         <!-- Right 1 Col: Direct Enquiry & Booking Box -->
         <div>
-          <div class="sticky top-28 bg-white border border-brand-border rounded-2xl shadow-xl p-6 sm:p-7 space-y-6">
+          <div class="sticky top-28 bg-white border border-brand-border rounded-2xl shadow-xl p-4 sm:p-7 space-y-4 sm:space-y-6">
             
-            <div class="border-b border-slate-100 pb-4">
+            <div class="border-b border-slate-100 pb-3 sm:pb-4 text-center sm:text-left">
               <span class="text-xs uppercase font-bold text-brand-blue tracking-wider block mb-1">Direct Package Enquiry</span>
-              <h3 class="font-serif text-xl font-bold text-brand-navy">Book or Customize This Trip</h3>
+              <h3 class="font-serif text-lg sm:text-xl font-bold text-brand-navy">Book or Customize This Trip</h3>
               <p class="text-xs text-brand-muted mt-1">Get an official detailed quotation sent straight to your email & WhatsApp.</p>
             </div>
 
             <!-- Direct Enquiry Form -->
-            <form class="ajax-enquiry-form space-y-3.5">
+            <form class="ajax-enquiry-form space-y-3 sm:space-y-3.5">
               <input type="hidden" name="source" value="Package Page: <%= pkg.title %>">
               <input type="hidden" name="packageTitle" value="<%= pkg.title %>">
               <input type="hidden" name="packageId" value="<%= pkg.id %>">
 
               <div>
                 <label for="pkgLeadName" class="block text-xs font-semibold text-brand-navy mb-1">Full Name <span class="text-red-500">*</span></label>
-                <input type="text" id="pkgLeadName" name="name" required placeholder="Your Name" class="form-input text-xs sm:text-sm py-2">
+                <input type="text" id="pkgLeadName" name="name" required placeholder="Your Name" class="form-input text-xs sm:text-sm py-2.5 min-h-[44px]">
               </div>
 
               <div>
                 <label for="pkgLeadPhone" class="block text-xs font-semibold text-brand-navy mb-1">Phone / Mobile <span class="text-red-500">*</span></label>
-                <input type="tel" id="pkgLeadPhone" name="phone" required placeholder="Your Phone Number" class="form-input text-xs sm:text-sm py-2">
+                <input type="tel" id="pkgLeadPhone" name="phone" required placeholder="Your Phone Number" class="form-input text-xs sm:text-sm py-2.5 min-h-[44px]">
               </div>
 
               <div>
                 <label for="pkgLeadEmail" class="block text-xs font-semibold text-brand-navy mb-1">Email Address <span class="text-slate-400 font-normal">(For Itinerary PDF)</span></label>
-                <input type="email" id="pkgLeadEmail" name="email" placeholder="Your Email Address" class="form-input text-xs sm:text-sm py-2">
+                <input type="email" id="pkgLeadEmail" name="email" placeholder="Your Email Address" class="form-input text-xs sm:text-sm py-2.5 min-h-[44px]">
               </div>
 
-              <div class="grid grid-cols-2 gap-2">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-2">
                 <div>
                   <label for="pkgLeadDate" class="block text-xs font-semibold text-brand-navy mb-1">Travel Date</label>
-                  <input type="date" id="pkgLeadDate" name="travelDate" class="form-input text-xs sm:text-sm py-2">
+                  <input type="date" id="pkgLeadDate" name="travelDate" class="form-input text-xs sm:text-sm py-2.5 min-h-[44px]">
                 </div>
                 <div>
                   <label for="pkgLeadTravellers" class="block text-xs font-semibold text-brand-navy mb-1">Guests</label>
-                  <select id="pkgLeadTravellers" name="travellers" class="form-input text-xs sm:text-sm py-2">
+                  <select id="pkgLeadTravellers" name="travellers" class="form-input text-xs sm:text-sm py-2.5 min-h-[44px]">
                     <option value="2 Persons (Couple)" <%= (pkg.pricingModel === 'fixed_couple') ? 'selected' : '' %>>2 Persons (Couple)</option>
                     <option value="Family (3-4)" <%= (pkg.pricingModel === 'winter_wonderland') ? 'selected' : '' %>>Family (3-4)</option>
                     <option value="Group (5+)" <%= (pkg.pricingModel === 'himalayan_escape') ? 'selected' : '' %>>Group (5+)</option>
@@ -1304,7 +1304,7 @@
                 <textarea id="pkgLeadMessage" name="message" rows="2" placeholder="Any special requests or questions?" class="form-input text-xs sm:text-sm py-2"></textarea>
               </div>
 
-              <button type="submit" class="w-full btn-primary py-3 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md">
+              <button type="submit" class="w-full btn-primary py-3 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md min-h-[44px]">
                 <i data-lucide="send" class="w-4 h-4"></i>
                 <span>Send My Enquiry</span>
               </button>
@@ -1314,13 +1314,13 @@
             <div class="pt-2 border-t border-slate-100 space-y-2 text-center">
               <a href="https://wa.me/916006725007?text=Hello%20City%20Line%20Tours,%20I%20am%20interested%20in%20the%20package:%20<%= encodeURIComponent(pkg.title) %>.%20Please%20share%20quotation." 
                  target="_blank" 
-                 class="w-full bg-[#25D366] hover:bg-[#20ba59] text-white py-2.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 transition shadow-sm">
+                 class="w-full bg-[#25D366] hover:bg-[#20ba59] text-white py-3 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 transition shadow-sm min-h-[44px]">
                 <i data-lucide="message-circle" class="w-4 h-4"></i>
                 <span>Quick WhatsApp Enquiry</span>
               </a>
 
               <a href="/packages/<%= pkg.slug %>/print?autoprint=1" target="_blank"
-                 class="w-full bg-brand-light hover:bg-brand-blue/10 text-brand-blue border border-blue-200 py-2.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 transition">
+                 class="w-full bg-brand-light hover:bg-brand-blue/10 text-brand-blue border border-blue-200 py-3 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 transition min-h-[44px]">
                 <i data-lucide="printer" class="w-4 h-4"></i>
                 <span>Download / Print PDF Itinerary</span>
               </a>

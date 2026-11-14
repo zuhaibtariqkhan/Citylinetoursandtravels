@@ -9,7 +9,7 @@
   <!-- ========================================================
        PAGE HERO BANNER
        ======================================================== -->
-  <section class="relative py-24 bg-brand-navy text-white overflow-hidden">
+  <section class="relative py-12 sm:py-24 bg-brand-navy text-white overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img src="/Pages/Destination.jpg" 
            alt="Jammu, Kashmir & Ladakh Landscapes" 
@@ -18,35 +18,35 @@
     </div>
 
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="inline-flex items-center space-x-2 bg-brand-sky/20 border border-brand-sky/40 text-brand-sky text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4">
+      <span class="inline-flex items-center space-x-2 bg-brand-sky/20 border border-brand-sky/40 text-brand-sky text-[11px] sm:text-xs font-bold px-3.5 sm:px-4 py-1.5 rounded-full uppercase tracking-widest mb-3 sm:mb-4">
         <i data-lucide="compass" class="w-3.5 h-3.5"></i>
         <span>29 CROWN DESTINATIONS • THREE HIMALAYAN REALMS</span>
       </span>
 
-      <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
+      <h1 class="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-6 tracking-tight leading-tight">
         Jammu, Kashmir & Ladakh: Discover the Paradise of the Himalayas
       </h1>
 
-      <p class="text-sm sm:text-base text-slate-200 max-w-3xl mx-auto leading-relaxed mb-8">
+      <p class="text-xs sm:text-base text-slate-200 max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-8">
         Welcome to Jammu, Kashmir and Ladakh, a breathtaking region blessed with majestic mountains, beautiful valleys, crystal-clear lakes, lush green meadows, ancient heritage and unforgettable cultural experiences. From the peaceful waters of Dal Lake and the snow-covered mountains of Gulmarg to the golden landscapes of Ladakh, every destination has its own charm. Discover the natural beauty of Pahalgam, experience the scenic charm of Sonamarg, explore the peaceful valleys of Gurez and Doodhpathri, and witness the extraordinary landscapes of Nubra Valley and Pangong Lake. Whether you are looking for adventure, relaxation, family holidays, romantic escapes or cultural exploration, this beautiful Himalayan region offers something special for everyone.
       </p>
 
       <!-- Quick Metrics Strip -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-6 border-t border-white/10 text-center text-xs">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto pt-5 sm:pt-6 border-t border-white/10 text-center text-xs">
         <div>
-          <span class="font-serif text-2xl font-bold text-brand-sky">13</span>
+          <span class="font-serif text-xl sm:text-2xl font-bold text-brand-sky">13</span>
           <span class="block uppercase tracking-wider text-slate-300 font-medium mt-0.5">Kashmir Valleys</span>
         </div>
         <div>
-          <span class="font-serif text-2xl font-bold text-emerald-400">3</span>
+          <span class="font-serif text-xl sm:text-2xl font-bold text-emerald-400">3</span>
           <span class="block uppercase tracking-wider text-slate-300 font-medium mt-0.5">Jammu Hills & Shrines</span>
         </div>
         <div>
-          <span class="font-serif text-2xl font-bold text-amber-400">13</span>
+          <span class="font-serif text-xl sm:text-2xl font-bold text-amber-400">13</span>
           <span class="block uppercase tracking-wider text-slate-300 font-medium mt-0.5">Ladakh Passes & Lakes</span>
         </div>
         <div>
-          <span class="font-serif text-2xl font-bold text-white">29</span>
+          <span class="font-serif text-xl sm:text-2xl font-bold text-white">29</span>
           <span class="block uppercase tracking-wider text-slate-300 font-medium mt-0.5">Total Destinations</span>
         </div>
       </div>
@@ -57,10 +57,10 @@
   <!-- ========================================================
        STICKY REGION FILTER TABS & SEARCH BAR
        ======================================================== -->
-  <section class="sticky top-20 z-30 bg-white/95 backdrop-blur-md border-b border-brand-border py-4 shadow-sm transition-all">
+  <section class="sticky top-16 sm:top-20 z-30 bg-white/95 backdrop-blur-md border-b border-brand-border py-2.5 sm:py-4 shadow-sm transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-3 sm:gap-4">
         
         <!-- Region Filter Pills -->
         <div class="flex items-center space-x-2 overflow-x-auto w-full lg:w-auto pb-1 scrollbar-thin" id="destFilterBar">
@@ -104,8 +104,8 @@
   <!-- ========================================================
        DESTINATIONS SHOWCASE SECTION
        ======================================================== -->
-  <main class="py-16 bg-brand-offwhite">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+  <main class="py-10 sm:py-16 bg-brand-offwhite">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-16">
 
       <!-- Interactive Regional Mountain Map (Kashmir Valley) -->
       <div class="dest-region-group" data-region-group="Kashmir">
@@ -165,9 +165,9 @@
           </div>
 
           <!-- Destinations Grid (3 Columns) -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
             <% regionDests.forEach(dest => { %>
-              <div class="dest-card bg-white rounded-3xl border border-brand-border overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+              <div class="dest-card bg-white rounded-2xl sm:rounded-3xl border border-brand-border overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
                    data-region="<%= dest.region %>"
                    data-name="<%= dest.name.toLowerCase() %>"
                    data-tagline="<%= (dest.tagline || '').toLowerCase() %>"
@@ -175,7 +175,7 @@
                 
                 <div>
                   <!-- Destination Image & Floating Tags -->
-                  <div class="relative h-64 overflow-hidden bg-slate-100">
+                  <div class="relative h-48 sm:h-64 overflow-hidden bg-slate-100">
                     <img src="<%= dest.image %>" 
                          alt="<%= dest.name %>" 
                          loading="lazy"
@@ -210,7 +210,7 @@
                   </div>
 
                   <!-- Destination Text Content -->
-                  <div class="p-6 sm:p-7">
+                  <div class="p-4 sm:p-7">
                     <div class="flex items-baseline justify-between mb-1">
                       <h3 class="font-serif text-2xl font-bold text-brand-navy group-hover:text-brand-blue transition">
                         <%= dest.name %>
@@ -242,16 +242,16 @@
                 </div>
 
                 <!-- Card Actions -->
-                <div class="p-6 sm:p-7 pt-0 border-t border-slate-100 mt-4 flex items-center justify-between gap-2">
+                <div class="p-4 sm:p-7 pt-0 border-t border-slate-100 mt-3 sm:mt-4 flex items-center justify-between gap-2">
                   <a href="/destinations/<%= dest.slug %>" 
-                     class="btn-outline px-4 py-2 rounded-xl text-xs font-semibold flex items-center space-x-1 text-brand-navy hover:text-brand-blue">
+                     class="btn-outline px-3 sm:px-4 py-2 rounded-xl text-xs font-semibold flex items-center space-x-1 text-brand-navy hover:text-brand-blue min-h-[40px] sm:min-h-0 justify-center">
                     <span>Explore <%= dest.name %></span>
                     <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                   </a>
 
                   <a href="https://wa.me/916006725007?text=<%= encodeURIComponent('Hi City Line Tours, I would like to plan a trip to ' + dest.name + ' (' + dest.region + '). Please share recommended tour packages and quote.') %>" 
                      target="_blank" 
-                     class="bg-[#25D366] hover:bg-[#20ba59] text-white px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center space-x-1.5 transition shadow-sm"
+                     class="bg-[#25D366] hover:bg-[#20ba59] text-white px-3 sm:px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center space-x-1.5 transition shadow-sm min-h-[40px] sm:min-h-0 justify-center"
                      title="Enquire on WhatsApp">
                     <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
                     <span>WhatsApp</span>

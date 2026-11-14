@@ -3,16 +3,16 @@
      ======================================================== -->
 <% const mappedDestinations = destinations.filter(d => d.mapCoords && d.region === 'Kashmir'); %>
 
-<div class="bg-[#102A43] text-white rounded-3xl p-5 sm:p-7 lg:p-9 shadow-2xl border border-white/10 my-4 sm:my-6" id="kashmirMapContainer">
+<div class="bg-[#102A43] text-white rounded-2xl sm:rounded-3xl p-4 sm:p-7 lg:p-9 shadow-2xl border border-white/10 my-3 sm:my-6" id="kashmirMapContainer">
   
   <!-- Map Section Header -->
-  <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-6 border-b border-white/10 mb-6">
-    <div>
-      <div class="inline-flex items-center space-x-2 bg-brand-blue/30 border border-brand-sky/40 text-brand-sky text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">
+  <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-3 sm:gap-4 pb-4 sm:pb-6 border-b border-white/10 mb-4 sm:mb-6 text-center lg:text-left">
+    <div class="flex flex-col items-center lg:items-start">
+      <div class="inline-flex items-center space-x-2 bg-brand-blue/30 border border-brand-sky/40 text-brand-sky text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 mx-auto lg:mx-0">
         <i data-lucide="map" class="w-3.5 h-3.5"></i>
         <span>INTERACTIVE DESTINATION MAP</span>
       </div>
-      <h3 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
+      <h3 class="font-serif text-xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
         Navigate Kashmir's Crown Valleys
       </h3>
       <p class="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
@@ -21,7 +21,7 @@
     </div>
 
     <!-- Highway Status Badge & Link to All 29 Destinations -->
-    <div class="flex flex-col items-start lg:items-end gap-2 shrink-0">
+    <div class="flex flex-col items-center lg:items-end gap-2 shrink-0">
       <div class="flex items-center space-x-2 bg-brand-blue/25 border border-brand-sky/40 text-brand-sky text-xs px-3.5 py-1.5 rounded-xl font-medium">
         <i data-lucide="info" class="w-3.5 h-3.5 text-cyan-300"></i>
         <span>Scenic Mountain Corridors • Subject to Weather</span>
@@ -34,7 +34,7 @@
   </div>
 
   <!-- Quick Destination Selector Chips (7 Signature Kashmir Valleys) -->
-  <div class="flex items-center space-x-2 overflow-x-auto pb-3 mb-6 scrollbar-thin" id="mapChipBar">
+  <div class="flex items-center space-x-2 overflow-x-auto pb-2 sm:pb-3 mb-4 sm:mb-6 scrollbar-thin" id="mapChipBar">
     <% mappedDestinations.forEach((d, idx) => { %>
       <button type="button" 
               class="map-dest-chip px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all flex items-center space-x-2 border <%= idx === 0 ? 'bg-[#145DA0] text-white border-brand-sky shadow-md scale-105' : 'bg-white/10 hover:bg-white/20 text-slate-200 border-white/10' %>" 
@@ -47,10 +47,10 @@
   </div>
 
   <!-- Interactive 2-Column Split: Vector Topographic Map + Live Destination Spotlight Card -->
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-stretch">
     
     <!-- LEFT: Interactive Vector Topographic Mountain Map (7 Cols) -->
-    <div class="lg:col-span-7 bg-[#0B1B2B] rounded-2xl p-4 sm:p-5 border border-white/10 relative overflow-hidden flex flex-col justify-between shadow-inner min-h-[440px] sm:min-h-[500px]">
+    <div class="lg:col-span-7 bg-[#0B1B2B] rounded-2xl p-3.5 sm:p-5 border border-white/10 relative overflow-hidden flex flex-col justify-between shadow-inner min-h-[340px] sm:min-h-[500px]">
       
       <!-- Top Map Legend & Compass -->
       <div class="relative z-10 flex items-center justify-between text-[11px] text-slate-300 pb-2">
@@ -71,7 +71,7 @@
       </div>
 
       <!-- SVG Map Canvas with Mountain Ridges, Rivers & Animated Roads -->
-      <div class="relative w-full h-[360px] sm:h-[420px] my-auto select-none" id="kashmirMapSvgWrapper">
+      <div class="relative w-full h-[300px] sm:h-[420px] my-auto select-none" id="kashmirMapSvgWrapper">
         <svg viewBox="0 0 1000 650" class="w-full h-full preserve-3d" style="filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));">
           <defs>
             <!-- Background Gradients -->
@@ -243,7 +243,7 @@
     </div>
 
     <!-- RIGHT: Dynamic Destination Spotlight Card (5 Cols) -->
-    <div class="lg:col-span-5 bg-white text-brand-navy rounded-2xl p-5 sm:p-6 shadow-xl border border-slate-200 flex flex-col justify-between" id="destSpotlightCard">
+    <div class="lg:col-span-5 bg-white text-brand-navy rounded-2xl p-4 sm:p-6 shadow-xl border border-slate-200 flex flex-col justify-between" id="destSpotlightCard">
       
       <!-- Card Dynamic Content Wrapper -->
       <div id="destSpotlightContent">

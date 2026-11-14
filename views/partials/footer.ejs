@@ -1,8 +1,8 @@
-<footer class="bg-brand-navy text-white pt-12 sm:pt-16 pb-8 border-t border-white/10">
+<footer class="bg-brand-navy text-white pt-10 sm:pt-16 pb-6 sm:pb-8 border-t border-white/10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- 4-Column Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 pb-10 border-b border-white/10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10 pb-8 sm:pb-10 border-b border-white/10">
       
       <!-- Col 1: Brand -->
       <div class="space-y-4 flex flex-col items-center md:items-start text-center md:text-left">
@@ -31,7 +31,7 @@
             <a href="https://www.instagram.com/citylinetoursandtravels" 
                target="_blank" 
                rel="noopener noreferrer" 
-               class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] hover:scale-110 flex items-center justify-center text-white transition-all shadow-md" 
+               class="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] hover:scale-110 flex items-center justify-center text-white transition-all shadow-md" 
                title="Follow @citylinetoursandtravels on Instagram"
                aria-label="Instagram">
               <svg class="w-5 h-5 fill-current text-white" viewBox="0 0 24 24" aria-hidden="true">
@@ -43,7 +43,7 @@
             <a href="https://wa.me/916006725007" 
                target="_blank" 
                rel="noopener noreferrer" 
-               class="w-10 h-10 rounded-xl bg-[#25D366] hover:bg-[#20ba59] hover:scale-110 flex items-center justify-center text-white transition-all shadow-md" 
+               class="w-11 h-11 rounded-xl bg-[#25D366] hover:bg-[#20ba59] hover:scale-110 flex items-center justify-center text-white transition-all shadow-md" 
                title="Chat on WhatsApp: 6006725007"
                aria-label="WhatsApp">
               <svg class="w-5 h-5 fill-current text-white" viewBox="0 0 24 24" aria-hidden="true">
@@ -55,7 +55,7 @@
             <a href="https://www.facebook.com/share/1JE2hRUfsW/?mibextid=wwXIfr" 
                target="_blank" 
                rel="noopener noreferrer" 
-               class="w-10 h-10 rounded-xl bg-[#1877F2] hover:bg-[#166fe5] hover:scale-110 flex items-center justify-center text-white transition-all shadow-md" 
+               class="w-11 h-11 rounded-xl bg-[#1877F2] hover:bg-[#166fe5] hover:scale-110 flex items-center justify-center text-white transition-all shadow-md" 
                title="Follow City Line Tours on Facebook"
                aria-label="Facebook">
               <svg class="w-5 h-5 fill-current text-white" viewBox="0 0 24 24" aria-hidden="true">
@@ -102,19 +102,19 @@
         <div class="flex items-start justify-center md:justify-start space-x-3 text-sm text-slate-300 text-center md:text-left">
           <i data-lucide="phone" class="w-4 h-4 text-brand-sky shrink-0 mt-0.5"></i>
           <div class="flex flex-col space-y-1 items-center md:items-start">
-            <a href="tel:6006725007" class="hover:text-white font-medium transition">6006725007</a>
-            <a href="tel:9906676890" class="hover:text-white font-medium transition">9906676890</a>
+            <a href="tel:6006725007" class="hover:text-white font-medium transition py-0.5 inline-block">6006725007</a>
+            <a href="tel:9906676890" class="hover:text-white font-medium transition py-0.5 inline-block">9906676890</a>
           </div>
         </div>
         <div class="flex items-center justify-center md:justify-start space-x-3 text-sm text-slate-300 text-center md:text-left">
           <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400 shrink-0"></i>
-          <a href="https://wa.me/916006725007" target="_blank" class="text-emerald-300 hover:text-white transition">
+          <a href="https://wa.me/916006725007" target="_blank" class="text-emerald-300 hover:text-white transition py-0.5 inline-block">
             WhatsApp: 6006725007
           </a>
         </div>
         <div class="flex items-center justify-center md:justify-start space-x-3 text-sm text-slate-300 text-center md:text-left">
           <i data-lucide="mail" class="w-4 h-4 text-brand-sky shrink-0"></i>
-          <a href="mailto:<%= settings.email %>" class="hover:text-white break-all transition"><%= settings.email %></a>
+          <a href="mailto:<%= settings.email %>" class="hover:text-white break-all transition py-0.5 inline-block"><%= settings.email %></a>
         </div>
         <div class="flex items-center justify-center md:justify-start space-x-3 text-sm text-slate-300 pt-1 text-center md:text-left">
           <i data-lucide="clock" class="w-4 h-4 text-brand-sky shrink-0"></i>
@@ -125,7 +125,26 @@
     </div>
 
     <!-- Bottom Copyright & Developer Credit -->
-    <div class="pt-8 flex items-center justify-center text-center text-xs text-slate-400">
+    <div class="pt-6 sm:pt-8 flex items-center justify-center text-center text-xs text-slate-400">
+      <div class="flex flex-wrap items-center justify-center gap-y-2 gap-x-2.5">
+        <span>&copy; <%= new Date().getFullYear() %> <strong>City Line Tours And Travels</strong>. All rights reserved.</span>
+        <span class="text-slate-600 hidden sm:inline" aria-hidden="true">•</span>
+        <div id="ztmCredit" class="ztm-credit inline-flex items-center gap-1.5" aria-label="Crafted and Developed by ZTM">
+          <span class="ztm-prefix text-[11px] font-normal tracking-wide text-slate-400">Crafted &amp; Developed by</span>
+          <span class="ztm-brand relative inline-flex flex-col items-center cursor-default">
+            <span class="ztm-wordmark font-bold text-xs tracking-wider uppercase inline-flex items-center">
+              <span class="ztm-letter" style="--l-idx: 0;">Z</span>
+              <span class="ztm-letter" style="--l-idx: 1;">T</span>
+              <span class="ztm-letter" style="--l-idx: 2;">M</span>
+            </span>
+            <span class="ztm-underline" aria-hidden="true"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</footer>
       <div class="flex flex-wrap items-center justify-center gap-y-2 gap-x-2.5">
         <span>&copy; <%= new Date().getFullYear() %> <strong>City Line Tours And Travels</strong>. All rights reserved.</span>
         <span class="text-slate-600 hidden sm:inline" aria-hidden="true">•</span>

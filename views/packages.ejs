@@ -7,47 +7,47 @@
   <%- include('partials/header') %>
 
   <!-- Page Hero -->
-  <section class="relative py-20 bg-brand-navy text-white overflow-hidden">
+  <section class="relative py-12 sm:py-20 bg-brand-navy text-white overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img src="/Pages/TOUR PACKAGES.jpeg" 
            alt="City Line Tours - Kashmir Tour Packages" 
            class="w-full h-full object-cover brightness-[0.4]">
     </div>
     <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-      <span class="text-xs font-bold uppercase tracking-widest text-brand-sky bg-white/10 px-4 py-1.5 rounded-full inline-block mb-3">
+      <span class="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-brand-sky bg-white/10 px-3.5 py-1.5 rounded-full inline-block mb-3">
         KASHMIR HOLIDAYS
       </span>
-      <h1 class="font-serif text-4xl sm:text-5xl font-bold text-white mb-4">
+      <h1 class="font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
         Tour Packages & Handcrafted Itineraries
       </h1>
-      <p class="text-base text-slate-200 max-w-2xl mx-auto leading-relaxed">
+      <p class="text-xs sm:text-base text-slate-200 max-w-2xl mx-auto leading-relaxed">
         Discover thoughtfully designed holiday packages covering Srinagar, Gulmarg, Pahalgam, Sonamarg, and offbeat valleys.
       </p>
     </div>
   </section>
 
   <!-- Filter & Packages Section -->
-  <section class="py-16 bg-brand-offwhite">
+  <section class="py-10 sm:py-16 bg-brand-offwhite">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Category Filter Pills -->
-      <div class="flex items-center justify-center flex-wrap gap-2 mb-12">
-        <a href="/packages" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory === 'all' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
+      <div class="flex items-center justify-center flex-wrap gap-1.5 sm:gap-2 mb-8 sm:mb-12">
+        <a href="/packages" class="px-3.5 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory === 'all' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
           All Packages
         </a>
-        <a href="/packages?category=Honeymoon" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'honeymoon' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
+        <a href="/packages?category=Honeymoon" class="px-3.5 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'honeymoon' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
           Honeymoon & Couples
         </a>
-        <a href="/packages?category=Seasonal" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'seasonal' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
+        <a href="/packages?category=Seasonal" class="px-3.5 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'seasonal' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
           Seasonal & Festivals
         </a>
-        <a href="/packages?category=Family" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'family' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
+        <a href="/packages?category=Family" class="px-3.5 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'family' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
           Family & Winter
         </a>
-        <a href="/packages?category=Group" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'group' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
+        <a href="/packages?category=Group" class="px-3.5 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'group' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
           Group & Ladakh
         </a>
-        <a href="/packages?category=Pilgrimage" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'pilgrimage' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
+        <a href="/packages?category=Pilgrimage" class="px-3.5 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition <%= selectedCategory.toLowerCase() === 'pilgrimage' ? 'bg-brand-blue text-white shadow' : 'bg-white text-brand-navy hover:bg-brand-light border border-brand-border' %>">
           Amarnath Pilgrimage
         </a>
       </div>
@@ -55,8 +55,8 @@
       <!-- ========================================================
            PACKAGE BUDGET CALCULATOR SECTION (Requirement 9A)
            ======================================================== -->
-      <div id="calculator" class="mb-16 bg-white rounded-3xl border border-brand-border shadow-xl p-6 sm:p-10 scroll-mt-28">
-        <div class="max-w-3xl mb-8 text-center sm:text-left">
+      <div id="calculator" class="mb-10 sm:mb-16 bg-white rounded-2xl sm:rounded-3xl border border-brand-border shadow-xl p-4 sm:p-10 scroll-mt-28">
+        <div class="max-w-3xl mb-6 sm:mb-8 text-center sm:text-left">
           <span class="inline-flex items-center text-xs font-bold uppercase tracking-widest text-brand-blue bg-brand-light px-3.5 py-1 rounded-full mx-auto sm:mx-0">
             INSTANT ESTIMATE
           </span>
@@ -68,10 +68,10 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           
           <!-- Left 7 Cols: Package & Travellers Selector -->
-          <div class="lg:col-span-7 space-y-6">
+          <div class="lg:col-span-7 space-y-4 sm:space-y-6">
             
             <!-- Package Selector -->
             <div>
@@ -161,12 +161,12 @@
 
             <!-- Action Buttons -->
             <div class="space-y-2.5 pt-2 border-t border-white/10">
-              <button type="button" id="calcEnquireBtn" class="w-full btn-primary py-3 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md">
+              <button type="button" id="calcEnquireBtn" class="w-full btn-primary py-3 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md min-h-[44px]">
                 <i data-lucide="send" class="w-4 h-4"></i>
                 <span>Request a Quote</span>
               </button>
 
-              <a id="calcWhatsAppBtn" href="https://wa.me/916006725007" target="_blank" class="w-full bg-[#25D366] hover:bg-[#20ba59] text-white py-2.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 transition shadow">
+              <a id="calcWhatsAppBtn" href="https://wa.me/916006725007" target="_blank" class="w-full bg-[#25D366] hover:bg-[#20ba59] text-white py-3 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 transition shadow min-h-[44px]">
                 <i data-lucide="message-circle" class="w-4 h-4"></i>
                 <span>Discuss on WhatsApp (6006725007)</span>
               </a>
@@ -178,26 +178,26 @@
       </div>
 
       <!-- Packages Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
         <% packages.forEach(pkg => { %>
           <div class="bg-white rounded-2xl border border-brand-border overflow-hidden card-hover flex flex-col shadow-sm">
             
             <!-- Image & Duration Badge -->
-            <div class="relative h-56 sm:h-60 img-zoom-container">
+            <div class="relative h-48 sm:h-60 img-zoom-container">
               <img src="<%= pkg.featuredImage %>" alt="<%= pkg.title %>" loading="lazy" decoding="async" class="w-full h-full object-cover">
-              <div class="absolute top-4 left-4">
-                <span class="bg-white/95 backdrop-blur text-brand-navy text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+              <div class="absolute top-3 left-3 sm:top-4 sm:left-4">
+                <span class="bg-white/95 backdrop-blur text-brand-navy text-[11px] sm:text-xs font-bold px-3 py-1 rounded-full shadow-sm">
                   <%= pkg.category %>
                 </span>
               </div>
-              <div class="absolute bottom-3 right-3 bg-brand-navy/90 text-white text-xs px-2.5 py-1 rounded-md flex items-center space-x-1.5 backdrop-blur-sm">
+              <div class="absolute bottom-2.5 right-2.5 sm:bottom-3 sm:right-3 bg-brand-navy/90 text-white text-[11px] sm:text-xs px-2.5 py-1 rounded-md flex items-center space-x-1.5 backdrop-blur-sm">
                 <i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-sky"></i>
                 <span><%= pkg.duration %></span>
               </div>
             </div>
 
             <!-- Content -->
-            <div class="p-6 flex-1 flex flex-col justify-between">
+            <div class="p-4 sm:p-6 flex-1 flex flex-col justify-between">
               <div>
                 <h3 class="font-serif text-xl font-bold text-brand-navy mb-2 line-clamp-1 hover:text-brand-blue transition">
                   <a href="/packages/<%= pkg.slug %>"><%= pkg.title %></a>
@@ -269,18 +269,18 @@
       </div>
 
       <!-- Need Customised package card -->
-      <div class="mt-16 bg-brand-navy rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden">
+      <div class="mt-10 sm:mt-16 bg-brand-navy rounded-2xl sm:rounded-3xl p-5 sm:p-12 text-white relative overflow-hidden text-center sm:text-left">
         <div class="relative z-10 max-w-2xl">
-          <span class="text-xs font-bold uppercase tracking-widest text-brand-sky bg-white/10 px-3.5 py-1 rounded-full inline-block mb-3">
+          <span class="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-brand-sky bg-white/10 px-3.5 py-1 rounded-full inline-block mb-3">
             NOT FINDING YOUR EXACT ROUTE?
           </span>
-          <h3 class="font-serif text-2xl sm:text-3xl font-bold mb-3">
+          <h3 class="font-serif text-xl sm:text-3xl font-bold mb-2.5 sm:mb-3">
             We Design 100% Custom Kashmir Itineraries
           </h3>
-          <p class="text-sm text-slate-200 mb-6 leading-relaxed">
+          <p class="text-xs sm:text-sm text-slate-200 mb-5 sm:mb-6 leading-relaxed">
             Tell us how many days you have, the places you wish to visit, your budget, and whether you want romantic privacy or family convenience. We will curate a proposal within hours.
           </p>
-          <button class="enquire-now-btn btn-primary px-6 py-3 rounded-xl font-semibold text-sm inline-flex items-center space-x-2" data-package="Custom Kashmir Route">
+          <button class="w-full sm:w-auto enquire-now-btn btn-primary px-6 py-3 rounded-xl font-semibold text-sm inline-flex items-center justify-center space-x-2 min-h-[44px]" data-package="Custom Kashmir Route">
             <span>Request Custom Itinerary</span>
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </button>
