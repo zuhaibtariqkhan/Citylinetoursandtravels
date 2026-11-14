@@ -896,8 +896,8 @@
             <!-- Action Buttons -->
             <div class="flex flex-col sm:flex-row items-center gap-3">
               <button type="button" id="detailCalcEnquireBtn" class="w-full sm:w-auto flex-1 btn-primary py-3 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md">
-                <i data-lucide="send" class="w-4 h-4"></i>
-                <span>Request a Quote</span>
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                <span>Enquire via Email</span>
               </button>
 
               <a id="detailCalcWaBtn" 
@@ -1399,27 +1399,9 @@
         }
 
         enquireBtn?.addEventListener('click', () => {
-          const modal = document.getElementById('enquiryModal');
-          if (!modal) return;
-
-          const modalHeading = document.getElementById('modalTargetTitle');
-          const hiddenPkg = document.getElementById('modalPackageTitle');
-          const travellersInput = modal.querySelector('select[name="travellers"], input[name="travellers"]');
-          const messageInput = modal.querySelector('textarea[name="message"]');
-
-          if (modalHeading) modalHeading.textContent = `Enquire: ${title}`;
-          if (hiddenPkg) hiddenPkg.value = title;
-
-          if (travellersInput) {
-            travellersInput.value = '2 Persons (Couple)';
-          }
-
-          if (messageInput) {
-            messageInput.value = `Hi City Line Tours, I am interested in booking the "${title}" (${duration}) for 2 Persons (Couple) at the fixed package price of ₹40,000. Please share booking availability and quotation.`;
-          }
-
-          modal.classList.add('active');
-          document.body.style.overflow = 'hidden';
+          const emailMsg = `Hi City Line Tours And Travels,\n\nI am interested in booking the "${title}" (${duration}) for 2 Persons (Couple) at the fixed package price of ₹40,000.\n\nPlease share booking availability and confirmation quotation.\n\nThank you!`;
+          const subject = encodeURIComponent(`Trip Enquiry: ${title} - City Line Tours And Travels`);
+          window.location.href = `mailto:askcitylinetravels@gmail.com?subject=${subject}&body=${encodeURIComponent(emailMsg)}`;
         });
 
         return;
@@ -1539,31 +1521,11 @@
         });
 
         enquireBtn?.addEventListener('click', () => {
-          const modal = document.getElementById('enquiryModal');
-          if (!modal) return;
-
-          const modalHeading = document.getElementById('modalTargetTitle');
-          const hiddenPkg = document.getElementById('modalPackageTitle');
-          const travellersInput = modal.querySelector('select[name="travellers"], input[name="travellers"]');
-          const messageInput = modal.querySelector('textarea[name="message"]');
-
           const total = calculateWinterWonderlandPrice(wwPersons);
           const totalStr = '₹' + total.toLocaleString('en-IN');
-          const paxStr = `${wwPersons} Persons (Family Package)`;
-
-          if (modalHeading) modalHeading.textContent = `Enquire: ${title}`;
-          if (hiddenPkg) hiddenPkg.value = title;
-
-          if (travellersInput) {
-            travellersInput.value = paxStr;
-          }
-
-          if (messageInput) {
-            messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalStr} for ${wwPersons} persons for the "${title}" (${duration} with Dedicated Deluxe Toyota Innova). Please share booking availability and quotation.`;
-          }
-
-          modal.classList.add('active');
-          document.body.style.overflow = 'hidden';
+          const emailMsg = `Hi City Line Tours And Travels,\n\nI calculated an estimated total budget of ${totalStr} for ${wwPersons} persons for the "${title}" (${duration} with Dedicated Deluxe Toyota Innova).\n\nPlease share booking availability and quotation.\n\nThank you!`;
+          const subject = encodeURIComponent(`Trip Enquiry: ${title} - City Line Tours And Travels`);
+          window.location.href = `mailto:askcitylinetravels@gmail.com?subject=${subject}&body=${encodeURIComponent(emailMsg)}`;
         });
 
         updateWWCalc();
@@ -1698,31 +1660,11 @@ Please share booking availability and quotation!`;
         });
 
         enquireBtn?.addEventListener('click', () => {
-          const modal = document.getElementById('enquiryModal');
-          if (!modal) return;
-
-          const modalHeading = document.getElementById('modalTargetTitle');
-          const hiddenPkg = document.getElementById('modalPackageTitle');
-          const travellersInput = modal.querySelector('select[name="travellers"], input[name="travellers"]');
-          const messageInput = modal.querySelector('textarea[name="message"]');
-
           const calc = calculateHimalayanPrice(heTravellers);
           const totalStr = '₹' + calc.total.toLocaleString('en-IN');
-          const paxStr = `${calc.travellers} Travellers (Expedition Group)`;
-
-          if (modalHeading) modalHeading.textContent = `Enquire: ${title}`;
-          if (hiddenPkg) hiddenPkg.value = title;
-
-          if (travellersInput) {
-            travellersInput.value = paxStr;
-          }
-
-          if (messageInput) {
-            messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalStr} for ${calc.travellers} travellers for "${title}" (${duration} - Starting Price: ₹3,25,000 for 12 pax, Additional Charges: ₹${calc.additionalCharge.toLocaleString('en-IN')}). Please share booking availability and quotation.`;
-          }
-
-          modal.classList.add('active');
-          document.body.style.overflow = 'hidden';
+          const emailMsg = `Hi City Line Tours And Travels,\n\nI calculated an estimated total budget of ${totalStr} for ${calc.travellers} travellers for "${title}" (${duration} - Starting Price: ₹3,25,000 for 12 pax, Additional Charges: ₹${calc.additionalCharge.toLocaleString('en-IN')}).\n\nPlease share booking availability and quotation.\n\nThank you!`;
+          const subject = encodeURIComponent(`Trip Enquiry: ${title} - City Line Tours And Travels`);
+          window.location.href = `mailto:askcitylinetravels@gmail.com?subject=${subject}&body=${encodeURIComponent(emailMsg)}`;
         });
 
         updateHECalc();
@@ -1858,31 +1800,11 @@ Please share booking availability and quotation!`;
         });
 
         enquireBtn?.addEventListener('click', () => {
-          const modal = document.getElementById('enquiryModal');
-          if (!modal) return;
-
-          const modalHeading = document.getElementById('modalTargetTitle');
-          const hiddenPkg = document.getElementById('modalPackageTitle');
-          const travellersInput = modal.querySelector('select[name="travellers"], input[name="travellers"]');
-          const messageInput = modal.querySelector('textarea[name="message"]');
-
           const calc = calculateTulipPrice(tulipTravellers);
           const totalStr = '₹' + calc.total.toLocaleString('en-IN');
-          const paxStr = `${calc.travellers} Travellers (Tulip Festival)`;
-
-          if (modalHeading) modalHeading.textContent = `Enquire: ${title}`;
-          if (hiddenPkg) hiddenPkg.value = title;
-
-          if (travellersInput) {
-            travellersInput.value = paxStr;
-          }
-
-          if (messageInput) {
-            messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalStr} for ${calc.travellers} travellers for "${title}" (${duration} - Starting Price: ₹27,000 for 2 pax, Additional Charges: ₹${calc.additionalCharge.toLocaleString('en-IN')}). Please share booking availability and quotation.`;
-          }
-
-          modal.classList.add('active');
-          document.body.style.overflow = 'hidden';
+          const emailMsg = `Hi City Line Tours And Travels,\n\nI calculated an estimated total budget of ${totalStr} for ${calc.travellers} travellers for "${title}" (${duration} - Starting Price: ₹27,000 for 2 pax, Additional Charges: ₹${calc.additionalCharge.toLocaleString('en-IN')}).\n\nPlease share booking availability and quotation.\n\nThank you!`;
+          const subject = encodeURIComponent(`Trip Enquiry: ${title} - City Line Tours And Travels`);
+          window.location.href = `mailto:askcitylinetravels@gmail.com?subject=${subject}&body=${encodeURIComponent(emailMsg)}`;
         });
 
         updateTulipCalc();
@@ -2018,31 +1940,11 @@ Please share Yatra coordination availability, dates, and quotation!`;
         });
 
         enquireBtn?.addEventListener('click', () => {
-          const modal = document.getElementById('enquiryModal');
-          if (!modal) return;
-
-          const modalHeading = document.getElementById('modalTargetTitle');
-          const hiddenPkg = document.getElementById('modalPackageTitle');
-          const travellersInput = modal.querySelector('select[name="travellers"], input[name="travellers"]');
-          const messageInput = modal.querySelector('textarea[name="message"]');
-
           const calc = calculateAmarnathPrice(amarnathYatris);
           const totalStr = '₹' + calc.total.toLocaleString('en-IN');
-          const paxStr = `${calc.yatris} Yatris (Amarnath Yatra)`;
-
-          if (modalHeading) modalHeading.textContent = `Enquire: ${title}`;
-          if (hiddenPkg) hiddenPkg.value = title;
-
-          if (travellersInput) {
-            travellersInput.value = paxStr;
-          }
-
-          if (messageInput) {
-            messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalStr} for ${calc.yatris} Yatris for "${title}" (${duration} - Starting Price: ₹35,000 for 2 Yatris, Additional Charges: ₹${calc.additionalCharge.toLocaleString('en-IN')}). Please share booking availability, Yatra guidelines, and quotation.`;
-          }
-
-          modal.classList.add('active');
-          document.body.style.overflow = 'hidden';
+          const emailMsg = `Hi City Line Tours And Travels,\n\nI calculated an estimated total budget of ${totalStr} for ${calc.yatris} Yatris for "${title}" (${duration} - Starting Price: ₹35,000 for 2 Yatris, Additional Charges: ₹${calc.additionalCharge.toLocaleString('en-IN')}).\n\nPlease share booking availability, Yatra guidelines, and quotation.\n\nThank you!`;
+          const subject = encodeURIComponent(`Trip Enquiry: ${title} - City Line Tours And Travels`);
+          window.location.href = `mailto:askcitylinetravels@gmail.com?subject=${subject}&body=${encodeURIComponent(emailMsg)}`;
         });
 
         updateAmarnathCalc();
@@ -2178,31 +2080,11 @@ Please share booking availability, autumn season details, and quotation!`;
         });
 
         enquireBtn?.addEventListener('click', () => {
-          const modal = document.getElementById('enquiryModal');
-          if (!modal) return;
-
-          const modalHeading = document.getElementById('modalTargetTitle');
-          const hiddenPkg = document.getElementById('modalPackageTitle');
-          const travellersInput = modal.querySelector('select[name="travellers"], input[name="travellers"]');
-          const messageInput = modal.querySelector('textarea[name="message"]');
-
           const calc = calculateAutumnPrice(autumnTravellers);
           const totalStr = '₹' + calc.total.toLocaleString('en-IN');
-          const paxStr = `${calc.travellers} Persons (Golden Autumn)`;
-
-          if (modalHeading) modalHeading.textContent = `Enquire: ${title}`;
-          if (hiddenPkg) hiddenPkg.value = title;
-
-          if (travellersInput) {
-            travellersInput.value = paxStr;
-          }
-
-          if (messageInput) {
-            messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalStr} for ${calc.travellers} travellers for "${title}" (${duration} - Starting Price: ₹66,000 for 2 persons, Additional Charges: ₹${calc.additionalCharge.toLocaleString('en-IN')}). Please share booking availability, autumn foliage updates, and quotation.`;
-          }
-
-          modal.classList.add('active');
-          document.body.style.overflow = 'hidden';
+          const emailMsg = `Hi City Line Tours And Travels,\n\nI calculated an estimated total budget of ${totalStr} for ${calc.travellers} travellers for "${title}" (${duration} - Starting Price: ₹66,000 for 2 persons, Additional Charges: ₹${calc.additionalCharge.toLocaleString('en-IN')}).\n\nPlease share booking availability, autumn foliage updates, and quotation.\n\nThank you!`;
+          const subject = encodeURIComponent(`Trip Enquiry: ${title} - City Line Tours And Travels`);
+          window.location.href = `mailto:askcitylinetravels@gmail.com?subject=${subject}&body=${encodeURIComponent(emailMsg)}`;
         });
 
         updateAutumnCalc();
@@ -2297,32 +2179,14 @@ Please share booking availability, autumn season details, and quotation!`;
       });
 
       enquireBtn?.addEventListener('click', () => {
-        const modal = document.getElementById('enquiryModal');
-        if (!modal) return;
-
-        const modalHeading = document.getElementById('modalTargetTitle');
-        const hiddenPkg = document.getElementById('modalPackageTitle');
-        const travellersInput = modal.querySelector('select[name="travellers"], input[name="travellers"]');
-        const messageInput = modal.querySelector('textarea[name="message"]');
-
         const totalPax = adults + kids;
         let paxStr = `${adults} Adults`;
         if (kids > 0) paxStr += `, ${kids} Kids`;
+        const totalStr = totalBudgetTextEl ? totalBudgetTextEl.textContent : '';
 
-        if (modalHeading) modalHeading.textContent = `Enquire: ${title}`;
-        if (hiddenPkg) hiddenPkg.value = title;
-
-        if (travellersInput) {
-          travellersInput.value = paxStr;
-        }
-
-        if (messageInput) {
-          const totalStr = totalBudgetTextEl ? totalBudgetTextEl.textContent : '';
-          messageInput.value = `Hi City Line Tours, I calculated an estimated budget for "${title}" on your website for ${paxStr} (${totalStr}). Please share the day-wise itinerary and quotation.`;
-        }
-
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        const emailMsg = `Hi City Line Tours And Travels,\n\nI calculated an estimated budget for "${title}" on your website for ${paxStr} (${totalStr}).\n\nPlease share the day-wise itinerary, availability, and final booking quotation.\n\nThank you!`;
+        const subject = encodeURIComponent(`Trip Enquiry: ${title} - City Line Tours And Travels`);
+        window.location.href = `mailto:askcitylinetravels@gmail.com?subject=${subject}&body=${encodeURIComponent(emailMsg)}`;
       });
 
       updateDetailCalc();

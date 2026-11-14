@@ -162,8 +162,8 @@
             <!-- Action Buttons -->
             <div class="space-y-2.5 pt-2 border-t border-white/10">
               <button type="button" id="calcEnquireBtn" class="w-full btn-primary py-3 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md min-h-[44px]">
-                <i data-lucide="send" class="w-4 h-4"></i>
-                <span>Request a Quote</span>
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                <span>Enquire via Email</span>
               </button>
 
               <a id="calcWhatsAppBtn" href="https://wa.me/916006725007" target="_blank" class="w-full bg-[#25D366] hover:bg-[#20ba59] text-white py-3 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center space-x-2 transition shadow min-h-[44px]">
@@ -256,8 +256,9 @@
                   <a href="/packages/<%= pkg.slug %>" class="btn-outline px-3.5 py-1.5 rounded-lg text-xs font-semibold">
                     View Details
                   </a>
-                  <button class="enquire-now-btn btn-primary px-3.5 py-1.5 rounded-lg text-xs font-semibold" data-package="<%= pkg.title %>">
-                    Request a Quote
+                  <button class="enquire-now-btn btn-primary px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1" data-package="<%= pkg.title %>">
+                    <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                    <span>Enquire</span>
                   </button>
                 </div>
               </div>
@@ -281,8 +282,8 @@
             Tell us how many days you have, the places you wish to visit, your budget, and whether you want romantic privacy or family convenience. We will curate a proposal within hours.
           </p>
           <button class="w-full sm:w-auto enquire-now-btn btn-primary px-6 py-3 rounded-xl font-semibold text-sm inline-flex items-center justify-center space-x-2 min-h-[44px]" data-package="Custom Kashmir Route">
-            <span>Request Custom Itinerary</span>
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            <span>Enquire Custom Itinerary</span>
           </button>
         </div>
       </div>
@@ -686,70 +687,41 @@ Please share booking availability, autumn season details, and confirmation quota
 
       select.addEventListener('change', calculate);
 
-      // Enquire Button -> Populates & Opens Reusable Enquiry Modal
+      // Enquire Button -> Redirects to Email with full calculated details
       enquireBtn?.addEventListener('click', () => {
-        const modal = document.getElementById('enquiryModal');
-        if (!modal) return;
-
         const opt = select.options[select.selectedIndex];
         const title = opt ? opt.getAttribute('data-title') : 'Kashmir Tour Package';
         const duration = opt ? opt.getAttribute('data-duration') : '';
         const model = opt ? opt.getAttribute('data-model') : '';
-        const modalHeading = document.getElementById('modalTargetTitle');
-        const hiddenPkg = document.getElementById('modalPackageTitle');
-        const travellersInput = modal.querySelector('select[name="travellers"], input[name="travellers"]');
-        const messageInput = modal.querySelector('textarea[name="message"]');
 
-        if (modalHeading) modalHeading.textContent = `Enquire: ${title}`;
-        if (hiddenPkg) hiddenPkg.value = title;
-
-        let paxText = `${travellers} Adults`;
+        let emailMsg = '';
         if (model === 'fixed_couple') {
-          paxText = '2 Persons (Couple)';
+          emailMsg = `Hi City Line Tours And Travels,\n\nI am interested in booking the "${title}" (${duration}) for 2 Persons (Couple) at the fixed package price of ₹40,000.\n\nPlease share booking availability and confirmation details.`;
         } else if (model === 'winter_wonderland') {
-          paxText = `${travellers} Persons (Family Package)`;
+          emailMsg = `Hi City Line Tours And Travels,\n\nI calculated an estimated total budget of ${totalEl.textContent} for ${travellers} persons for the "${title}" (${duration} with Deluxe Toyota Innova).\n\nPlease share booking availability and quotation.`;
         } else if (model === 'himalayan_escape') {
-          paxText = `${travellers} Travellers (Expedition Group)`;
+          const addl = travellers - 12;
+          const addlCharge = Math.round(addl * (325000 / 12));
+          emailMsg = `Hi City Line Tours And Travels,\n\nI calculated an estimated total budget of ${totalEl.textContent} for ${travellers} travellers for "${title}" (${duration} - Starting Price: ₹3,25,000 for 12 pax, Additional Charges: ₹${addlCharge.toLocaleString('en-IN')}).\n\nPlease share booking availability and quotation.`;
         } else if (model === 'tulip_festival') {
-          paxText = `${travellers} Travellers (Tulip Festival)`;
+          const addl = travellers - 2;
+          const addlCharge = addl * 13500;
+          emailMsg = `Hi City Line Tours And Travels,\n\nI calculated an estimated total budget of ${totalEl.textContent} for ${travellers} travellers for "${title}" (${duration} - Starting Price: ₹27,000 for 2 pax, Additional Charges: ₹${addlCharge.toLocaleString('en-IN')}).\n\nPlease share booking availability and quotation.`;
         } else if (model === 'amarnath_yatra') {
-          paxText = `${travellers} Yatris (Amarnath Yatra)`;
+          const addl = travellers - 2;
+          const addlCharge = addl * 17500;
+          emailMsg = `Hi City Line Tours And Travels,\n\nI calculated an estimated total budget of ${totalEl.textContent} for ${travellers} Yatris for "${title}" (${duration} - Starting Price: ₹35,000 for 2 Yatris, Additional Charges: ₹${addlCharge.toLocaleString('en-IN')}).\n\nPlease share booking availability, Yatra guidelines, and quotation.`;
         } else if (model === 'autumn_chinar') {
-          paxText = `${travellers} Persons (Golden Autumn)`;
+          const addl = travellers - 2;
+          const addlCharge = addl * 33000;
+          emailMsg = `Hi City Line Tours And Travels,\n\nI calculated an estimated total budget of ${totalEl.textContent} for ${travellers} persons for "${title}" (${duration} - Starting Price: ₹66,000 for 2 persons base, Additional Charges: ₹${addlCharge.toLocaleString('en-IN')}).\n\nPlease share booking availability and quotation.`;
+        } else {
+          emailMsg = `Hi City Line Tours And Travels,\n\nI calculated an estimated budget for "${title}" on your website for ${travellers} travellers (${totalEl.textContent}).\n\nPlease share the day-wise itinerary and booking confirmation details.`;
         }
 
-        if (travellersInput) {
-          travellersInput.value = paxText;
-        }
-
-        if (messageInput) {
-          if (model === 'fixed_couple') {
-            messageInput.value = `Hi City Line Tours, I am interested in booking the "${title}" (${duration}) for 2 Persons (Couple) at the fixed package price of ₹40,000. Please share booking availability and quotation.`;
-          } else if (model === 'winter_wonderland') {
-            messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalEl.textContent} for ${travellers} persons for the "${title}" (${duration} with Deluxe Toyota Innova). Please share booking availability and quotation.`;
-          } else if (model === 'himalayan_escape') {
-            const addl = travellers - 12;
-            const addlCharge = Math.round(addl * (325000 / 12));
-            messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalEl.textContent} for ${travellers} travellers for "${title}" (${duration} - Starting Price: ₹3,25,000 for 12 pax, Additional Charges: ₹${addlCharge.toLocaleString('en-IN')}). Please share booking availability and quotation.`;
-          } else if (model === 'tulip_festival') {
-            const addl = travellers - 2;
-            const addlCharge = addl * 13500;
-            messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalEl.textContent} for ${travellers} travellers for "${title}" (${duration} - Starting Price: ₹27,000 for 2 pax, Additional Charges: ₹${addlCharge.toLocaleString('en-IN')}). Please share booking availability and quotation.`;
-          } else if (model === 'amarnath_yatra') {
-            const addl = travellers - 2;
-            const addlCharge = addl * 17500;
-            messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalEl.textContent} for ${travellers} Yatris for "${title}" (${duration} - Starting Price: ₹35,000 for 2 Yatris, Additional Charges: ₹${addlCharge.toLocaleString('en-IN')}). Please share booking availability, Yatra guidelines, and quotation.`;
-          } else if (model === 'autumn_chinar') {
-            const addl = travellers - 2;
-            const addlCharge = addl * 33000;
-            messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalEl.textContent} for ${travellers} persons for "${title}" (${duration} - Starting Price: ₹66,000 for 2 persons base, Additional Charges: ₹${addlCharge.toLocaleString('en-IN')}). Please share booking availability and quotation.`;
-          } else {
-            messageInput.value = `Hi City Line Tours, I calculated an estimated budget for "${title}" on your website for ${travellers} travellers (${totalEl.textContent}). Please share the day-wise itinerary and booking confirmation details.`;
-          }
-        }
-
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        const subject = encodeURIComponent(`Trip Enquiry: ${title} - City Line Tours And Travels`);
+        const body = encodeURIComponent(emailMsg);
+        window.location.href = `mailto:askcitylinetravels@gmail.com?subject=${subject}&body=${body}`;
       });
 
       // Initial run

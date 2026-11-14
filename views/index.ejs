@@ -720,8 +720,9 @@
                   <a href="/packages/<%= pkg.slug %>" class="btn-outline px-2.5 sm:px-3 py-2 rounded-lg text-xs font-semibold min-h-[40px] sm:min-h-0 flex items-center justify-center">
                     View Details
                   </a>
-                  <button class="enquire-now-btn btn-primary px-2.5 sm:px-3 py-2 rounded-lg text-xs font-semibold min-h-[40px] sm:min-h-0 flex items-center justify-center" data-package="<%= pkg.title %>">
-                    Request a Quote
+                  <button class="enquire-now-btn btn-primary px-2.5 sm:px-3 py-2 rounded-lg text-xs font-semibold min-h-[40px] sm:min-h-0 flex items-center justify-center space-x-1" data-package="<%= pkg.title %>" title="Enquire via Email">
+                    <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                    <span>Enquire</span>
                   </button>
                 </div>
               </div>

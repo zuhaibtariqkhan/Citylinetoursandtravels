@@ -68,22 +68,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Modal Management
+  // Universal Email Enquiry Redirector
+  window.redirectToEmailEnquiry = function(packageTitle = '', destination = '', customNotes = '') {
+    const email = 'askcitylinetravels@gmail.com';
+    const subject = encodeURIComponent(
+      packageTitle ? `Trip Enquiry: ${packageTitle} - City Line Tours And Travels` :
+      destination ? `Destination Enquiry: ${destination} - City Line Tours And Travels` :
+      'Travel Enquiry - City Line Tours And Travels'
+    );
+
+    const bodyLines = [
+      'Hello City Line Tours And Travels,',
+      '',
+      'I am reaching out from your website to enquire about travel planning:',
+      packageTitle ? `• Package / Service: ${packageTitle}` : '',
+      destination ? `• Destination: ${destination}` : '',
+      customNotes ? `• Details / Notes: ${customNotes}` : '',
+      '',
+      'Please share available travel dates, customized options, and pricing quotation.',
+      '',
+      'Looking forward to your response.',
+      '',
+      'Thank you!'
+    ].filter(Boolean).join('\n');
+
+    window.location.href = `mailto:${email}?subject=${subject}&body=${encodeURIComponent(bodyLines)}`;
+  };
+
+  // Modal Management (Preserved with direct email fallback)
   const enquiryModal = document.getElementById('enquiryModal');
   const closeModalBtns = document.querySelectorAll('.close-modal-btn');
   const modalPackageInput = document.getElementById('modalPackageTitle');
   const modalDestinationInput = document.getElementById('modalDestination');
   const modalTitleSpan = document.getElementById('modalTargetTitle');
 
-  window.openEnquiryModal = function(packageTitle = '', destination = '') {
-    if (!enquiryModal) return;
-    if (modalPackageInput) modalPackageInput.value = packageTitle;
-    if (modalDestinationInput) modalDestinationInput.value = destination;
-    if (modalTitleSpan) {
-      modalTitleSpan.textContent = packageTitle || destination ? `Enquiry for ${packageTitle || destination}` : 'Plan Your Kashmir Trip';
-    }
-    enquiryModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+  window.openEnquiryModal = function(packageTitle = '', destination = '', customNotes = '') {
+    window.redirectToEmailEnquiry(packageTitle, destination, customNotes);
   };
 
   window.closeEnquiryModal = function() {
@@ -104,13 +124,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Bind clicks for all "enquire-now-btn" buttons
+  // Bind clicks for all "enquire-now-btn" buttons -> Redirect to email
   document.querySelectorAll('.enquire-now-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const pkg = btn.getAttribute('data-package') || '';
       const dest = btn.getAttribute('data-destination') || '';
-      window.openEnquiryModal(pkg, dest);
+      const notes = btn.getAttribute('data-notes') || '';
+      window.redirectToEmailEnquiry(pkg, dest, notes);
     });
   });
 
