@@ -91,7 +91,7 @@
                           data-duration="<%= p.duration %>"
                           data-title="<%= p.title %>"
                           data-slug="<%= p.slug %>"
-                          data-min-pax="<%= p.minTravellers || (p.pricingModel === 'himalayan_escape' ? 12 : 1) %>"
+                          data-min-pax="<%= p.minTravellers || (p.pricingModel === 'himalayan_escape' ? 12 : (p.pricingModel === 'tulip_festival' ? 2 : 1)) %>"
                           data-max-pax="<%= p.maxTravellers || 20 %>"
                           data-base-pax="<%= p.baseOccupancy || (p.pricingModel === 'winter_wonderland' ? 5 : (p.pricingModel === 'himalayan_escape' ? 12 : 2)) %>"
                           <%= idx === 0 ? 'selected' : '' %>>
@@ -233,7 +233,7 @@
               <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
                 <div>
                   <span class="text-[10px] text-brand-muted uppercase block">
-                    <%= (pkg.pricingModel === 'winter_wonderland' || pkg.pricingModel === 'fixed_couple' || pkg.pricingModel === 'himalayan_escape') ? 'Total Package Price' : 'Starting From' %>
+                    <%= (pkg.pricingModel === 'winter_wonderland' || pkg.pricingModel === 'fixed_couple' || pkg.pricingModel === 'himalayan_escape' || pkg.pricingModel === 'tulip_festival') ? 'Total Package Price' : 'Starting From' %>
                   </span>
                   <span class="font-serif text-lg font-bold text-brand-blue">
                     <%= pkg.startingPriceFormatted %>
@@ -346,7 +346,9 @@
             travellers = 2;
           } else if (model === 'himalayan_escape') {
             travellers = 12;
-          } else if (lastModel === 'winter_wonderland' || lastModel === 'himalayan_escape') {
+          } else if (model === 'tulip_festival') {
+            travellers = 2;
+          } else if (lastModel === 'winter_wonderland' || lastModel === 'himalayan_escape' || lastModel === 'tulip_festival') {
             travellers = basePax || 2;
           }
           lastModel = model;
@@ -462,6 +464,52 @@ Please share booking availability and quotation!`;
           return;
         }
 
+        // 1C. Tulip Festival Package Pricing (2+ Travellers)
+        if (model === 'tulip_festival') {
+          paxLabel.textContent = 'Travellers (Minimum 2 Travellers)';
+          paxNote.textContent = 'Starting price covers 2 travellers • Comfortable Deluxe Sedan';
+
+          if (travellers < 2) travellers = 2;
+          countEl.textContent = travellers;
+
+          const additional = travellers - 2;
+          const additionalCharges = additional * 13500;
+          const total = 27000 + additionalCharges;
+          const perPerson = Math.round(total / travellers); // 13500
+
+          totalEl.className = 'font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight';
+          totalEl.textContent = '₹' + total.toLocaleString('en-IN');
+          perPersonEl.textContent = `₹${perPerson.toLocaleString('en-IN')} / person • Base Price: ₹27,000 (2 pax)${additional > 0 ? ` + ₹${additionalCharges.toLocaleString('en-IN')} (${additional} addl)` : ''}`;
+          breakdownEl.textContent = `✓ Total package price for ${travellers} travellers: Base covers 2 travellers (₹27,000)${additional > 0 ? ` plus ₹${additionalCharges.toLocaleString('en-IN')} for ${additional} additional traveller(s) at ₹13,500/person` : ''}. Includes 3 Nights / 4 Days Deluxe accommodation across Srinagar, Pahalgam & Gulmarg, daily breakfast & dinner, comfortable Deluxe Sedan for all sightseeing & transfers, airport pickup & drop, toll taxes & driver allowances.`;
+
+          if (minusBtn) {
+            const atMin = (travellers <= 2);
+            minusBtn.style.opacity = atMin ? '0.4' : '1';
+            minusBtn.style.cursor = atMin ? 'not-allowed' : 'pointer';
+          }
+          if (plusBtn) {
+            const atMax = (travellers >= maxPax);
+            plusBtn.style.opacity = atMax ? '0.4' : '1';
+            plusBtn.style.cursor = atMax ? 'not-allowed' : 'pointer';
+          }
+
+          if (waBtn) {
+            const msg = `Hello City Line Tours And Travels,
+I would like to enquire about "Tulip Festival – The Blooming Paradise of Kashmir":
+• Package Name: ${title}
+• Travel Duration: ${duration}
+• Route: Srinagar – Pahalgam – Gulmarg – Srinagar
+• Number of Travellers: ${travellers} Travellers
+• Starting Package Price: ₹27,000 (covers 2 travellers)
+• Additional Traveller Charges: ₹${additionalCharges.toLocaleString('en-IN')} (${additional} Additional Person${additional === 1 ? '' : 's'})
+• Total Calculated Package Price: ₹${total.toLocaleString('en-IN')} (₹${perPerson.toLocaleString('en-IN')}/person)
+
+Please share booking availability and quotation!`;
+            waBtn.href = `https://wa.me/916006725007?text=${encodeURIComponent(msg)}`;
+          }
+          return;
+        }
+
         // 2. On Request (no pricing configured)
         if (model === 'on_request' || price <= 0) {
           paxLabel.textContent = 'Number of People';
@@ -561,6 +609,8 @@ Please share booking availability and quotation!`;
           paxText = `${travellers} Persons (Family Package)`;
         } else if (model === 'himalayan_escape') {
           paxText = `${travellers} Travellers (Expedition Group)`;
+        } else if (model === 'tulip_festival') {
+          paxText = `${travellers} Travellers (Tulip Festival)`;
         }
 
         if (travellersInput) {
@@ -576,6 +626,10 @@ Please share booking availability and quotation!`;
             const addl = travellers - 12;
             const addlCharge = Math.round(addl * (325000 / 12));
             messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalEl.textContent} for ${travellers} travellers for "${title}" (${duration} - Starting Price: ₹3,25,000 for 12 pax, Additional Charges: ₹${addlCharge.toLocaleString('en-IN')}). Please share booking availability and quotation.`;
+          } else if (model === 'tulip_festival') {
+            const addl = travellers - 2;
+            const addlCharge = addl * 13500;
+            messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalEl.textContent} for ${travellers} travellers for "${title}" (${duration} - Starting Price: ₹27,000 for 2 pax, Additional Charges: ₹${addlCharge.toLocaleString('en-IN')}). Please share booking availability and quotation.`;
           } else {
             messageInput.value = `Hi City Line Tours, I calculated an estimated budget for "${title}" on your website for ${travellers} travellers (${totalEl.textContent}). Please share the day-wise itinerary and booking confirmation details.`;
           }
