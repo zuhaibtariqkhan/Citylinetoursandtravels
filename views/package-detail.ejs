@@ -83,17 +83,18 @@
         </div>
         <div class="hidden lg:grid grid-rows-2 gap-4 h-[460px]">
           <% if (pkg.galleryImages && pkg.galleryImages.length > 0) { %>
-            <% pkg.galleryImages.slice(0, 2).forEach(img => { %>
+            <% const sideImages = pkg.galleryImages.filter(img => img !== pkg.featuredImage).slice(0, 2); %>
+            <% (sideImages.length > 0 ? sideImages : pkg.galleryImages.slice(0, 2)).forEach(img => { %>
               <div class="h-full overflow-hidden">
                 <img src="<%= img %>" alt="Kashmir Landscape" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
               </div>
             <% }) %>
           <% } else { %>
             <div class="h-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=800&q=80" alt="Dal Lake" class="w-full h-full object-cover">
+              <img src="/DESTINATIONS/SRINAGAR.jpeg" alt="Dal Lake" class="w-full h-full object-cover">
             </div>
             <div class="h-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80" alt="Gulmarg" class="w-full h-full object-cover">
+              <img src="/DESTINATIONS/GULMARG.jpeg" alt="Gulmarg" class="w-full h-full object-cover">
             </div>
           <% } %>
         </div>

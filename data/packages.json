@@ -41,7 +41,7 @@
       "/images/Expriences/HONEYMMON.jpeg",
       "/images/Expriences/DAL LAKE SHIKARA.jpeg",
       "/HOTELS/HOUSEBOAT ROYAL STAR.jpeg",
-      "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=800&q=80"
+      "/images/Expriences/GULMARG GANDOLA.jpeg"
     ],
     "itinerary": [
       {
@@ -208,9 +208,9 @@
     "featuredImage": "/Packages/WINTER WONDERLAND.jpeg",
     "galleryImages": [
       "/Packages/WINTER WONDERLAND.jpeg",
-      "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80",
       "/EXPERIENCEV2/GULMARG SNOW.jpeg",
-      "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=800&q=80"
+      "/DESTINATIONS/GULMARG.jpeg",
+      "/images/Expriences/DAL LAKE SHIKARA.jpeg"
     ],
     "itinerary": [
       {
@@ -383,12 +383,12 @@
     ],
     "shortDescription": "The ultimate May special trans-Himalayan expedition from Kashmir's verdant valleys across legendary high-altitude passes to the dramatic cold desert and azure lakes of Ladakh. Specially configured for group departures of 12+ travellers with dedicated expedition fleet.",
     "fullDescription": "The Himalayan Grand Escape is an extraordinary 10 Days / 9 Nights overland expedition connecting the emerald paradise of Kashmir with the majestic Trans-Himalayan kingdom of Ladakh during the scenic May season. Beginning with Srinagar's Dal Lake and Sonamarg's alpine meadows, cross the dramatic Zojila Pass into Drass and Kargil. Traverse high passes into Leh, explore ancient cliffside monasteries, cross the legendary Khardung La (18,380 ft) into the sand dunes of Nubra Valley, marvel at the shifting turquoise hues of Pangong Tso, and experience the cultural heritage of the Himalayas with dedicated premium vehicles, comfortable stays, and seasoned local expedition captains.",
-    "featuredImage": "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/DESTINATIONS/LADAKH.jpeg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80"
+      "/DESTINATIONS/LADAKH.jpeg",
+      "/DESTINATIONS/PANGONG LAKE.jpeg",
+      "/DESTINATIONS/NUBRA VALLEY.jpeg",
+      "/DESTINATIONS/SONAMARG.jpeg"
     ],
     "itinerary": [
       {
@@ -530,7 +530,6 @@
     "featuredImage": "/Packages/TULIP FESTIVAL.jpeg",
     "galleryImages": [
       "/Packages/TULIP FESTIVAL.jpeg",
-      "https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=1000&q=80",
       "/images/Expriences/MUGHAL GARDENS.jpeg",
       "/images/Expriences/DAL LAKE SHIKARA.jpeg",
       "/images/Expriences/GULMARG GANDOLA.jpeg",
@@ -698,11 +697,10 @@
     "featuredImage": "/Packages/AMARNATH YATRA.jpeg",
     "galleryImages": [
       "/Packages/AMARNATH YATRA.jpeg",
-      "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1000&q=80",
-      "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=1000&q=80",
+      "/DESTINATIONS/SONAMARG.jpeg",
+      "/DESTINATIONS/PAHALGAM.jpeg",
       "/images/Expriences/DAL LAKE SHIKARA.jpeg",
-      "/images/Expriences/MUGHAL GARDENS.jpeg",
-      "/images/Expriences/GULMARG GANDOLA.jpeg"
+      "/images/Expriences/MUGHAL GARDENS.jpeg"
     ],
     "itinerary": [
       {
@@ -941,11 +939,10 @@
     "featuredImage": "/Packages/KASHMIR AUTUMN.jpeg",
     "galleryImages": [
       "/Packages/KASHMIR AUTUMN.jpeg",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80",
+      "/DESTINATIONS/AHARBAL.jpeg",
       "/images/Expriences/MUGHAL GARDENS.jpeg",
       "/images/Expriences/DAL LAKE SHIKARA.jpeg",
-      "/images/Expriences/GULMARG GANDOLA.jpeg",
-      "/DESTINATIONS/AHARBAL.jpeg"
+      "/images/Expriences/GULMARG GANDOLA.jpeg"
     ],
     "itinerary": [
       {
