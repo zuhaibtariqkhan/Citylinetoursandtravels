@@ -608,12 +608,20 @@
               <!-- Price & Actions -->
               <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
                 <div>
-                  <span class="text-[10px] text-brand-muted uppercase block">Starting From</span>
+                  <span class="text-[10px] text-brand-muted uppercase block">
+                    <%= (pkg.pricingModel === 'winter_wonderland' || pkg.pricingModel === 'fixed_couple' || pkg.pricingModel === 'himalayan_escape') ? 'Total Package' : 'Starting From' %>
+                  </span>
                   <span class="font-serif text-base sm:text-lg font-bold text-brand-blue">
                     <%= pkg.startingPriceFormatted %>
                   </span>
-                  <% if (pkg.price) { %>
+                  <% if (pkg.price && pkg.pricingModel !== 'fixed_couple' && pkg.pricingModel !== 'winter_wonderland' && pkg.pricingModel !== 'himalayan_escape') { %>
                     <span class="text-[10px] text-brand-muted">/ person</span>
+                  <% } else if (pkg.pricingModel === 'himalayan_escape') { %>
+                    <span class="text-[10px] text-brand-muted">(12 Travellers Base)</span>
+                  <% } else if (pkg.pricingModel === 'winter_wonderland') { %>
+                    <span class="text-[10px] text-brand-muted">(5 Persons)</span>
+                  <% } else if (pkg.pricingModel === 'fixed_couple') { %>
+                    <span class="text-[10px] text-brand-muted">(Couple)</span>
                   <% } %>
                 </div>
 

@@ -91,9 +91,9 @@
                           data-duration="<%= p.duration %>"
                           data-title="<%= p.title %>"
                           data-slug="<%= p.slug %>"
-                          data-min-pax="<%= p.minTravellers || 1 %>"
+                          data-min-pax="<%= p.minTravellers || (p.pricingModel === 'himalayan_escape' ? 12 : 1) %>"
                           data-max-pax="<%= p.maxTravellers || 20 %>"
-                          data-base-pax="<%= p.baseOccupancy || (p.pricingModel === 'winter_wonderland' ? 5 : 2) %>"
+                          data-base-pax="<%= p.baseOccupancy || (p.pricingModel === 'winter_wonderland' ? 5 : (p.pricingModel === 'himalayan_escape' ? 12 : 2)) %>"
                           <%= idx === 0 ? 'selected' : '' %>>
                     <%= p.title %> (<%= p.duration %>) • <%= p.startingPriceFormatted %>
                   </option>
@@ -233,7 +233,7 @@
               <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
                 <div>
                   <span class="text-[10px] text-brand-muted uppercase block">
-                    <%= (pkg.pricingModel === 'winter_wonderland' || pkg.pricingModel === 'fixed_couple') ? 'Total Package Price' : 'Starting From' %>
+                    <%= (pkg.pricingModel === 'winter_wonderland' || pkg.pricingModel === 'fixed_couple' || pkg.pricingModel === 'himalayan_escape') ? 'Total Package Price' : 'Starting From' %>
                   </span>
                   <span class="font-serif text-lg font-bold text-brand-blue">
                     <%= pkg.startingPriceFormatted %>
@@ -344,7 +344,9 @@
             travellers = 5;
           } else if (model === 'fixed_couple') {
             travellers = 2;
-          } else if (lastModel === 'winter_wonderland') {
+          } else if (model === 'himalayan_escape') {
+            travellers = 12;
+          } else if (lastModel === 'winter_wonderland' || lastModel === 'himalayan_escape') {
             travellers = basePax || 2;
           }
           lastModel = model;
@@ -411,6 +413,51 @@
               const msg = `Hello City Line Tours And Travels,\nI calculated an estimated package budget on your website:\n• Package: ${title}\n• Duration: ${duration}\n• Number of Persons: ${travellers} Persons\n• Dedicated Vehicle: Deluxe Toyota Innova\n• Total Package Price: ₹${total.toLocaleString('en-IN')}\n\nPlease share the detailed day-wise itinerary and booking availability!`;
               waBtn.href = `https://wa.me/916006725007?text=${encodeURIComponent(msg)}`;
             }
+          }
+          return;
+        }
+
+        // 1B. Himalayan Grand Escape Group Package Pricing (12+ Travellers)
+        if (model === 'himalayan_escape') {
+          paxLabel.textContent = 'Group Travellers (12+ Persons)';
+          paxNote.textContent = 'Starting group size: 12 travellers • Kashmir to Ladakh Overland Expedition';
+
+          if (travellers < 12) travellers = 12;
+          countEl.textContent = travellers;
+
+          const additional = travellers - 12;
+          const additionalCharges = Math.round(additional * (325000 / 12));
+          const total = 325000 + additionalCharges;
+          const perPerson = Math.round(total / travellers);
+
+          totalEl.className = 'font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight';
+          totalEl.textContent = '₹' + total.toLocaleString('en-IN');
+          perPersonEl.textContent = `₹${perPerson.toLocaleString('en-IN')} / person • Starting Price: ₹3,25,000 (12 pax) + ₹${additionalCharges.toLocaleString('en-IN')} additional`;
+          breakdownEl.textContent = `✓ Total overland package price for ${travellers} travellers: Starting base covers 12 travellers (₹3,25,000)${additional > 0 ? ` plus ₹${additionalCharges.toLocaleString('en-IN')} for ${additional} additional traveller(s)` : ''}. Includes 9 Nights / 10 Days deluxe stays, daily breakfast & dinner, dedicated high-capacity private expedition vehicle fleet, Inner Line Permits, oxygen support, toll taxes & driver allowances.`;
+
+          if (minusBtn) {
+            const atMin = (travellers <= 12);
+            minusBtn.style.opacity = atMin ? '0.4' : '1';
+            minusBtn.style.cursor = atMin ? 'not-allowed' : 'pointer';
+          }
+          if (plusBtn) {
+            const atMax = (travellers >= maxPax);
+            plusBtn.style.opacity = atMax ? '0.4' : '1';
+            plusBtn.style.cursor = atMax ? 'not-allowed' : 'pointer';
+          }
+
+          if (waBtn) {
+            const msg = `Hello City Line Tours And Travels,
+I would like to enquire about "The Himalayan Grand Escape: Kashmir to Ladakh – May Special":
+• Package Name: ${title}
+• Travel Duration: ${duration}
+• Number of Travellers: ${travellers} Travellers
+• Starting Package Price: ₹3,25,000 (covers 12 travellers)
+• Additional Traveller Charges: ₹${additionalCharges.toLocaleString('en-IN')} (${additional} Additional Person${additional === 1 ? '' : 's'})
+• Total Calculated Package Price: ₹${total.toLocaleString('en-IN')} (₹${perPerson.toLocaleString('en-IN')}/person)
+
+Please share booking availability and quotation!`;
+            waBtn.href = `https://wa.me/916006725007?text=${encodeURIComponent(msg)}`;
           }
           return;
         }
@@ -512,6 +559,8 @@
           paxText = '2 Persons (Couple)';
         } else if (model === 'winter_wonderland') {
           paxText = `${travellers} Persons (Family Package)`;
+        } else if (model === 'himalayan_escape') {
+          paxText = `${travellers} Travellers (Expedition Group)`;
         }
 
         if (travellersInput) {
@@ -523,6 +572,10 @@
             messageInput.value = `Hi City Line Tours, I am interested in booking the "${title}" (${duration}) for 2 Persons (Couple) at the fixed package price of ₹40,000. Please share booking availability and quotation.`;
           } else if (model === 'winter_wonderland') {
             messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalEl.textContent} for ${travellers} persons for the "${title}" (${duration} with Deluxe Toyota Innova). Please share booking availability and quotation.`;
+          } else if (model === 'himalayan_escape') {
+            const addl = travellers - 12;
+            const addlCharge = Math.round(addl * (325000 / 12));
+            messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalEl.textContent} for ${travellers} travellers for "${title}" (${duration} - Starting Price: ₹3,25,000 for 12 pax, Additional Charges: ₹${addlCharge.toLocaleString('en-IN')}). Please share booking availability and quotation.`;
           } else {
             messageInput.value = `Hi City Line Tours, I calculated an estimated budget for "${title}" on your website for ${travellers} travellers (${totalEl.textContent}). Please share the day-wise itinerary and booking confirmation details.`;
           }

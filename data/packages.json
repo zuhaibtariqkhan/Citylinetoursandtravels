@@ -746,5 +746,148 @@
     "minTravellers": 1,
     "maxTravellers": 20,
     "childPrice": null
+  },
+  {
+    "id": "the-himalayan-grand-escape",
+    "slug": "the-himalayan-grand-escape-kashmir-ladakh-10d9n",
+    "aliases": [
+      "the-himalayan-grand-escape",
+      "kashmir-to-ladakh-may-special",
+      "pkg-himalayan-escape",
+      "himalayan-grand-escape"
+    ],
+    "title": "The Himalayan Grand Escape: Kashmir to Ladakh – May Special",
+    "category": "Group / Adventure",
+    "duration": "9 Nights / 10 Days",
+    "durationDays": 10,
+    "durationNights": 9,
+    "route": "Kashmir to Ladakh – May Special",
+    "price": 325000,
+    "basePrice": 325000,
+    "startingPriceFormatted": "₹3,25,000",
+    "pricingType": "12 travellers base",
+    "pricingModel": "himalayan_escape",
+    "baseOccupancy": 12,
+    "minTravellers": 12,
+    "maxTravellers": 30,
+    "additionalPersonRate": 27083.333333333336,
+    "destinationCoverage": [
+      "Srinagar",
+      "Sonamarg",
+      "Drass",
+      "Kargil",
+      "Leh",
+      "Sham Valley",
+      "Khardung La",
+      "Nubra Valley",
+      "Diskit",
+      "Hunder",
+      "Pangong Lake",
+      "Chang La"
+    ],
+    "shortDescription": "The ultimate May special trans-Himalayan expedition from Kashmir's verdant valleys across legendary high-altitude passes to the dramatic cold desert and azure lakes of Ladakh. Specially configured for group departures of 12+ travellers with dedicated expedition fleet.",
+    "fullDescription": "The Himalayan Grand Escape is an extraordinary 10 Days / 9 Nights overland expedition connecting the emerald paradise of Kashmir with the majestic Trans-Himalayan kingdom of Ladakh during the scenic May season. Beginning with Srinagar's Dal Lake and Sonamarg's alpine meadows, cross the dramatic Zojila Pass into Drass and Kargil. Traverse high passes into Leh, explore ancient cliffside monasteries, cross the legendary Khardung La (18,380 ft) into the sand dunes of Nubra Valley, marvel at the shifting turquoise hues of Pangong Tso, and experience the cultural heritage of the Himalayas with dedicated premium vehicles, comfortable stays, and seasoned local expedition captains.",
+    "featuredImage": "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1200&q=80",
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival in Srinagar – Sunset Shikara on Dal Lake & Expedition Briefing",
+        "description": "Warm traditional welcome upon arrival at Srinagar International Airport by our senior City Line tour manager. Private transfer to your hotel or traditional luxury houseboat on Dal Lake. Relax and acclimatize after your flight. In the late afternoon, enjoy a peaceful 1-hour sunset Shikara ride across the serene waters of Dal Lake, taking in views of the Zabarwan mountain range and floating gardens. Evening expedition orientation briefing with your trip leader covering high-altitude precautions, route highlights, and gear guidelines.",
+        "meals": "Dinner Included",
+        "stay": "Overnight in Deluxe Houseboat / Hotel, Srinagar"
+      },
+      {
+        "day": 2,
+        "title": "Srinagar to Kargil via Sonamarg, Zojila Pass & Drass War Memorial",
+        "description": "After an early breakfast, embark on an epic mountain drive heading northeast towards Kargil. Pass through the breathtaking alpine meadows and glacial streams of Sonamarg (Meadow of Gold). Begin the thrilling ascent across legendary Zojila Pass (11,575 ft), the gateway between the Kashmir Valley and Ladakh. Descend into Drass, renowned as the second coldest inhabited place on earth. Visit the poignant Kargil War Memorial (Vijay Path) to pay heartfelt tributes to the brave heroes of Operation Vijay. Continue drive along the Dras and Suru rivers to arrive in Kargil town by evening.",
+        "meals": "Breakfast & Dinner Included",
+        "stay": "Overnight in Deluxe Hotel, Kargil"
+      },
+      {
+        "day": 3,
+        "title": "Kargil to Leh via Mulbekh Buddha, Lamayuru Moonland, Magnetic Hill & Sangam",
+        "description": "Depart Kargil along the legendary Srinagar-Leh National Highway (NH-1). Stop at Mulbekh to admire the awe-inspiring 9-metre rock-carved Maitreya Buddha statue (Chamba) dating back to the 8th century. Cross two high-altitude passes: Namika La (12,198 ft) and Fotu La (13,479 ft), the highest point on the Srinagar-Leh highway. Descend to the world-famous 11th-century Lamayuru Monastery, perched dramatically amid surreal geological formations known as 'Moonland'. Continue past the gravity-defying Magnetic Hill and witness the confluence of the Indus and Zanskar rivers (Sangam) at Nimmu. Arrive in Leh (11,500 ft) in the evening and check in to your hotel.",
+        "meals": "Breakfast & Dinner Included",
+        "stay": "Overnight in Deluxe Hotel, Leh"
+      },
+      {
+        "day": 4,
+        "title": "Leh Acclimatization Day & Cultural Heritage Exploration",
+        "description": "Dedicated acclimatization day essential for adapting to Ladakh's high altitude. Enjoy a relaxed breakfast and rest during the morning hours. In the afternoon, set out for a relaxed orientation of Leh: visit the historic Leh Palace built in the 17th century by King Sengge Namgyal, admire the iconic white-domed Shanti Stupa offering sweeping panoramic sunset views of Leh town and the snow-capped Stok Kangri range, and visit the Hall of Fame museum maintained by the Indian Army. Spend the evening strolling through the vibrant Leh Main Bazaar for Ladakhi handicrafts, pashmina, and dried apricots.",
+        "meals": "Breakfast & Dinner Included",
+        "stay": "Overnight in Deluxe Hotel, Leh"
+      },
+      {
+        "day": 5,
+        "title": "Leh to Nubra Valley via Khardung La Pass (18,380 ft) & Hunder Sand Dunes",
+        "description": "After breakfast, begin an exhilarating ascent up to Khardung La Pass, standing at an astonishing 18,380 ft as one of the world's highest motorable roads. Enjoy photo stops with views stretching across the Karakoram range. Descend into the dramatic Nubra Valley ('Valley of Flowers'). Stop at Diskit Monastery, the oldest and largest gompa in Nubra, featuring the colossal 106-foot statue of Jampa (Maitreya) Buddha blessing the valley. Continue to Hunder village, famous for its surreal cold desert white sand dunes nestled between snow-clad peaks. Enjoy an optional ride on the rare double-humped Bactrian camels. Check in at your luxury camp or hotel.",
+        "meals": "Breakfast & Dinner Included",
+        "stay": "Overnight in Deluxe Swiss Camp / Hotel, Nubra Valley (Hunder)"
+      },
+      {
+        "day": 6,
+        "title": "Nubra Valley: Excursion to Turtuk (Balti Border Village) & Hunder",
+        "description": "Embark on a captivating day excursion towards the Indo-Pak border along the sparkling Shyok River to Turtuk. Opened to tourists in 2010, Turtuk is a culturally unique Balti village distinct from the rest of Ladakh, known for its terraced apricot orchards, traditional wooden houses, and warm hospitality. Meet local Balti families, visit the ancient royal house of the Yabgo Dynasty, and view the towering ridges of the Karakoram and K2 range. Return to Hunder in the late afternoon for a relaxing evening under the starlit Himalayan sky.",
+        "meals": "Breakfast & Dinner Included",
+        "stay": "Overnight in Deluxe Swiss Camp / Hotel, Nubra Valley (Hunder)"
+      },
+      {
+        "day": 7,
+        "title": "Nubra Valley to Pangong Lake via the Scenic Shyok River Route",
+        "description": "After breakfast, take the scenic overland route connecting Nubra Valley to Pangong Tso via the Shyok River gorge. Marvel at the dramatic raw wilderness, rugged canyons, and river crossings of eastern Ladakh. In the afternoon, catch your first breathtaking glimpse of Pangong Lake (14,270 ft) — a stunning 134-km long high-altitude endorheic lake bisected by the international boundary between India and Tibet. Watch the lake water magically transform through shades of turquoise, deep cobalt, emerald, and azure as the sun sets over the surrounding barren peaks. Check in at your lakeview camp/cottage.",
+        "meals": "Breakfast & Dinner Included",
+        "stay": "Overnight in Deluxe Lakefront Camp / Cottage, Pangong Lake"
+      },
+      {
+        "day": 8,
+        "title": "Pangong Sunrise to Leh via Chang La Pass (17,688 ft) & Thiksey Monastery",
+        "description": "Wake up early to witness an unforgettable sunrise over the glowing turquoise waters of Pangong Lake. After breakfast, begin the scenic return drive towards Leh crossing the formidable Chang La Pass (17,688 ft), the third-highest motorable mountain pass in the world. En route to Leh, visit the magnificent 12-storey Thiksey Monastery, dramatically stacked upon a hill with remarkable resemblance to the Potala Palace in Lhasa, Tibet. Stop at Druk Padma Karpo School (famously known as the Rancho School from the movie 3 Idiots). Reach Leh by evening with time for leisure and souvenir shopping.",
+        "meals": "Breakfast & Dinner Included",
+        "stay": "Overnight in Deluxe Hotel, Leh"
+      },
+      {
+        "day": 9,
+        "title": "Leh Sham Valley Heritage Tour & Indus Valley Exploration",
+        "description": "Spend your final full day exploring the rich heritage of the upper Indus Valley. Visit Shey Palace and its giant copper-gilt Buddha statue, explore the historic Hemis Monastery (the largest and wealthiest monastery in Ladakh housing sacred Buddhist relics), and pay homage at Sindhu Ghat along the revered Indus River. Enjoy a farewell celebration dinner in Leh with your fellow travellers and City Line expedition crew, sharing stories and photographs from this unforgettable 10-day cross-Himalayan odyssey.",
+        "meals": "Breakfast & Dinner Included",
+        "stay": "Overnight in Deluxe Hotel, Leh"
+      },
+      {
+        "day": 10,
+        "title": "Departure from Leh Airport (KBR Airport) – Farewell Himalayas",
+        "description": "Enjoy a leisurely breakfast admiring the morning Himalayan skyline. Our dedicated expedition vehicle will provide on-time transfer to Kushok Bakula Rimpochee Airport (Leh Airport) for your scheduled flight home. Depart with cherished memories, dramatic landscape photographs, and lifelong friendships from 'The Himalayan Grand Escape: Kashmir to Ladakh May Special' overland expedition.",
+        "meals": "Breakfast Included",
+        "stay": "Tour Concludes with Warm City Line Memories"
+      }
+    ],
+    "inclusions": [
+      "Starting group package for 12 persons with additional traveller scalability (+₹27,083.33/person)",
+      "Accommodation for 9 Nights: 1N Srinagar Houseboat/Hotel, 1N Kargil, 4N Leh Deluxe Hotel, 2N Nubra Valley Deluxe Camp, 1N Pangong Lake Luxury Camp",
+      "Daily Breakfast and Dinner throughout the entire 10-day expedition",
+      "Dedicated high-capacity private expedition vehicle fleet (Tempo Traveller / Toyota Innova) for all transfers, pass crossings, and sightseeing",
+      "Inner Line Permits (ILP), Wildlife Sanctuary fees, and Ladakh Environmental conservation fees",
+      "Emergency oxygen cylinder assistance and vehicle first-aid contingency for high-altitude passes",
+      "Toll taxes, parking charges, fuel, and experienced mountain-certified driver allowances",
+      "Complimentary 1-Hour Shikara Ride on Dal Lake, Srinagar",
+      "24/7 dedicated local on-trip assistance from City Line Tours & Travels"
+    ],
+    "exclusions": [
+      "Airfare to Srinagar International Airport (SXR) and departure flight from Leh Airport (IXL)",
+      "Monument entry fees, monastery donations, and camera tickets",
+      "Double-humped Bactrian camel ride in Hunder, river rafting in Zanskar, or personal activities",
+      "Emergency medical evacuation or travel insurance",
+      "Unforeseen expenses due to road blockages, landslides, severe weather, or pass closures",
+      "Personal laundry, telephone calls, room service, alcoholic beverages, and tips"
+    ],
+    "accommodation": "1N Deluxe Houseboat / Hotel Srinagar • 1N Deluxe Hotel Kargil • 4N Premium Hotel Leh • 2N Deluxe Swiss Tents/Hotel Nubra Valley • 1N Lakefront Deluxe Camp Pangong Lake",
+    "transportation": "Dedicated High-Capacity Commercial Tourist Vehicles (Tempo Traveller / Innova Fleet) with experienced mountain chauffeurs",
+    "featured": true,
+    "published": true
   }
 ]
