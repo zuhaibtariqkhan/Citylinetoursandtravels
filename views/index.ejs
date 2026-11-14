@@ -132,8 +132,8 @@
 
     </div>
 
-    <!-- Bottom Controls: Live Weather Effect Pill & Scene Indicators -->
-    <div class="absolute bottom-4 sm:bottom-5 inset-x-0 z-20 px-4 sm:px-8 flex items-center justify-between text-xs">
+    <!-- Bottom Controls: Live Weather Effect Pill -->
+    <div class="absolute bottom-4 sm:bottom-5 inset-x-0 z-20 px-4 sm:px-8 flex items-center justify-start text-xs">
       
       <!-- Live Srinagar Weather Dynamic Effect Indicator -->
       <div class="relative inline-block" id="heroWeatherControl">
@@ -146,14 +146,6 @@
           <i id="heroWeatherIcon" data-lucide="<%= srinagarIcon || 'sun' %>" class="w-3.5 h-3.5 text-amber-300"></i>
           <span id="snowStatusText">Srinagar: <%= srinagarCond %> (<%= srinagarTemp %>°C)</span>
         </div>
-      </div>
-
-      <!-- Ken-Burns Scene Switcher Bullets -->
-      <div class="flex items-center space-x-2.5 bg-black/30 backdrop-blur px-3 py-1.5 rounded-full border border-white/10" id="heroSceneNav">
-        <button type="button" class="hero-scene-dot w-6 sm:w-8 h-1.5 rounded-full bg-brand-sky transition-all duration-300" data-target="0" title="Kashmir Scenic 1"></button>
-        <button type="button" class="hero-scene-dot w-2 h-1.5 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-target="1" title="Kashmir Scenic 2"></button>
-        <button type="button" class="hero-scene-dot w-2 h-1.5 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-target="2" title="Kashmir Scenic 3"></button>
-        <button type="button" class="hero-scene-dot w-2 h-1.5 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-target="3" title="Kashmir Scenic 4"></button>
       </div>
 
     </div>
