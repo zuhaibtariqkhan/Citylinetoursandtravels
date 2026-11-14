@@ -92,7 +92,7 @@
         <!-- Location Filter & Search -->
         <div class="flex items-center space-x-2 w-full lg:w-auto">
           <!-- Destination Hub Dropdown -->
-          <select id="hotelLocationSelect" class="form-input text-xs py-2 px-3 w-40 shrink-0 bg-brand-offwhite border-brand-border font-medium text-brand-navy">
+          <select id="hotelLocationSelect" aria-label="Filter hotels by destination hub" class="form-input text-xs py-2 px-3 w-40 shrink-0 bg-brand-offwhite border-brand-border font-medium text-brand-navy">
             <option value="all">All Locations</option>
             <option value="Srinagar">Srinagar (13)</option>
             <option value="Gulmarg">Gulmarg (3)</option>
@@ -104,6 +104,7 @@
             <i data-lucide="search" class="w-4 h-4 text-brand-muted absolute left-3 top-2.5"></i>
             <input type="text" 
                    id="hotelSearchInput" 
+                   aria-label="Search hotels and houseboats"
                    placeholder="Search Taj, Khyber, LaLit..." 
                    class="w-full pl-9 pr-3 py-2 rounded-xl border border-brand-border bg-brand-offwhite text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue">
           </div>

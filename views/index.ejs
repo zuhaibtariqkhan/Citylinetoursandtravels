@@ -223,10 +223,10 @@
 
         <!-- Destination Select -->
         <div>
-          <label class="block text-[11px] font-semibold text-brand-slate mb-1 uppercase tracking-wider">Destination</label>
+          <label for="quickConsultDest" class="block text-[11px] font-semibold text-brand-slate mb-1 uppercase tracking-wider">Destination</label>
           <div class="relative">
             <i data-lucide="map-pin" class="w-4 h-4 text-brand-blue absolute left-3 top-2.5"></i>
-            <select name="destination" class="form-input pl-9 text-xs sm:text-sm py-2">
+            <select id="quickConsultDest" name="destination" class="form-input pl-9 text-xs sm:text-sm py-2">
               <option value="All Kashmir (Classic Tour)">All Kashmir (Classic)</option>
               <option value="Srinagar & Dal Lake">Srinagar & Dal Lake</option>
               <option value="Gulmarg Ski & Gondola">Gulmarg Ski & Gondola</option>
@@ -239,19 +239,19 @@
 
         <!-- Travel Date -->
         <div>
-          <label class="block text-[11px] font-semibold text-brand-slate mb-1 uppercase tracking-wider">Travel Date</label>
+          <label for="quickConsultDate" class="block text-[11px] font-semibold text-brand-slate mb-1 uppercase tracking-wider">Travel Date</label>
           <div class="relative">
             <i data-lucide="calendar" class="w-4 h-4 text-brand-blue absolute left-3 top-2.5"></i>
-            <input type="date" name="travelDate" class="form-input pl-9 text-xs sm:text-sm py-2">
+            <input type="date" id="quickConsultDate" name="travelDate" class="form-input pl-9 text-xs sm:text-sm py-2">
           </div>
         </div>
 
         <!-- Travellers -->
         <div>
-          <label class="block text-[11px] font-semibold text-brand-slate mb-1 uppercase tracking-wider">Travellers</label>
+          <label for="quickConsultTravellers" class="block text-[11px] font-semibold text-brand-slate mb-1 uppercase tracking-wider">Travellers</label>
           <div class="relative">
             <i data-lucide="users" class="w-4 h-4 text-brand-blue absolute left-3 top-2.5"></i>
-            <select name="travellers" class="form-input pl-9 text-xs sm:text-sm py-2">
+            <select id="quickConsultTravellers" name="travellers" class="form-input pl-9 text-xs sm:text-sm py-2">
               <option value="Couple (2 Adults)">Couple (2 Adults)</option>
               <option value="Family (3-4 Pax)">Family (3-4 Pax)</option>
               <option value="Group (5+ Pax)">Group (5+ Pax)</option>
@@ -262,10 +262,10 @@
 
         <!-- Contact (Phone / Mobile) -->
         <div>
-          <label class="block text-[11px] font-semibold text-brand-slate mb-1 uppercase tracking-wider">Mobile Number <span class="text-rose-500">*</span></label>
+          <label for="quickConsultPhone" class="block text-[11px] font-semibold text-brand-slate mb-1 uppercase tracking-wider">Mobile Number <span class="text-rose-500">*</span></label>
           <div class="relative">
             <i data-lucide="phone" class="w-4 h-4 text-brand-blue absolute left-3 top-2.5"></i>
-            <input type="tel" name="phone" required placeholder="Phone / WhatsApp" class="form-input pl-9 text-xs sm:text-sm py-2">
+            <input type="tel" id="quickConsultPhone" name="phone" required placeholder="Phone / WhatsApp" class="form-input pl-9 text-xs sm:text-sm py-2">
           </div>
         </div>
 
@@ -698,7 +698,7 @@
           <div class="bg-white rounded-2xl border border-brand-border overflow-hidden card-hover flex flex-col shadow-sm">
             
             <!-- Image & Category Tag -->
-            <div class="relative h-52 img-zoom-container">
+            <div class="relative h-56 sm:h-60 img-zoom-container">
               <img src="<%= pkg.featuredImage %>" alt="<%= pkg.title %>" loading="lazy" decoding="async" class="w-full h-full object-cover">
               <div class="absolute top-3 left-3">
                 <span class="bg-white/95 backdrop-blur text-brand-navy text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">

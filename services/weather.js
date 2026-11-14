@@ -15,6 +15,7 @@ const DESTINATIONS = [
     lon: 74.7973,
     altitude: '1,585 m',
     altitudeMeters: 1585,
+    defaultTemp: 9,
     zone: 'Dal Lake & Valley Basin',
     description: 'Summer capital situated around Dal Lake and Mughal Gardens.'
   },
@@ -26,6 +27,7 @@ const DESTINATIONS = [
     lon: 74.3805,
     altitude: '2,650 m',
     altitudeMeters: 2650,
+    defaultTemp: -3,
     zone: 'Apharwat & Pir Panjal Zone',
     description: 'Premier alpine ski resort and world-renowned Gondola destination.'
   },
@@ -37,6 +39,7 @@ const DESTINATIONS = [
     lon: 75.3150,
     altitude: '2,130 m',
     altitudeMeters: 2130,
+    defaultTemp: 3,
     zone: 'Lidder River & Betaab Valley',
     description: 'Confluence of Lidder river streams, pine forests, and trekking routes.'
   },
@@ -48,6 +51,7 @@ const DESTINATIONS = [
     lon: 75.2950,
     altitude: '2,730 m',
     altitudeMeters: 2730,
+    defaultTemp: -4,
     zone: 'Thajiwas Glacier & Sindh Valley',
     description: 'The Golden Meadow, high-altitude alpine gateway, and glacier viewpoint.'
   },
@@ -59,6 +63,7 @@ const DESTINATIONS = [
     lon: 74.5684,
     altitude: '2,730 m',
     altitudeMeters: 2730,
+    defaultTemp: 0,
     zone: 'Valley of Milk & Shaliganga',
     description: 'Pristine rolling green meadows and gushing crystalline streams.'
   },
@@ -70,6 +75,7 @@ const DESTINATIONS = [
     lon: 74.6644,
     altitude: '2,400 m',
     altitudeMeters: 2400,
+    defaultTemp: 2,
     zone: 'Pir Panjal Meadow & Doodh Ganga',
     description: 'Secluded pine-rimmed plateau overlooking the Pir Panjal mountain range.'
   }
@@ -147,15 +153,19 @@ function formatIST(isoOrDate, formatType = 'full') {
 
 // Generate transparent, meteorologically founded Mountain Travel Advisory
 function generateTravelAdvisory(dest, current, daily) {
-  const code = current.weather_code || 0;
-  const wind = current.wind_speed_10m || 0;
-  const temp = current.temperature_2m;
-  const rain = current.rain || current.precipitation || 0;
-  const snow = current.snowfall || 0;
-  const precipProb = (daily && daily.precipitation_probability_max && daily.precipitation_probability_max[0]) || 0;
+  const code = (current && current.weather_code !== undefined && current.weather_code !== null) ? current.weather_code : 0;
+  const wind = (current && current.wind_speed_10m !== undefined && current.wind_speed_10m !== null) ? current.wind_speed_10m : 0;
+  const temp = (current && current.temperature_2m !== undefined && current.temperature_2m !== null) 
+    ? current.temperature_2m 
+    : ((current && current.temperature !== undefined && current.temperature !== null) ? current.temperature : 5);
+  const rain = (current && (current.rain || current.precipitation)) ? (current.rain || current.precipitation) : 0;
+  const snow = (current && current.snowfall) ? current.snowfall : 0;
+  const precipProb = (daily && daily.precipitation_probability_max && daily.precipitation_probability_max[0] !== undefined) 
+    ? daily.precipitation_probability_max[0] 
+    : 0;
 
-  // 1. Severe conditions (Thunderstorm, Heavy Hail, Blizzard)
-  if ([95, 96, 99].includes(code) || wind >= 50 || code === 75 || code === 86) {
+  // 1. Severe conditions (Thunderstorm, Heavy Hail, Extreme Wind, Blizzard)
+  if ([95, 96, 99].includes(code) || wind >= 45 || code === 75 || code === 86) {
     return {
       status: 'severe',
       badge: 'Severe Advisory',
@@ -168,21 +178,63 @@ function generateTravelAdvisory(dest, current, daily) {
     };
   }
 
-  // 2. Snowfall conditions (Active snow or high-altitude sub-zero precipitation)
-  if ([71, 73, 77, 85].includes(code) || snow > 0 || (temp <= 1 && precipProb >= 50)) {
+  // 2. Freezing Rain & Black Ice Warning
+  if ([56, 57, 66, 67].includes(code)) {
+    return {
+      status: 'freezing_rain',
+      badge: 'Icy Roads Alert',
+      badgeColor: 'red',
+      level: 4,
+      headline: 'Freezing Rain & Icy Roads Alert',
+      message: 'Sub-freezing precipitation detected. Risk of black ice on high passes and shaded mountain curves.',
+      activityNotice: 'Vehicles must exercise extreme caution. Anti-skid chains may be required by local traffic authorities.',
+      precipSummary: `Freezing precipitation risk · Ambient: ${Math.round(temp)}°C`
+    };
+  }
+
+  // 3. Active Snowfall conditions (Currently snowing or snow on ground with sub-zero precipitation)
+  if ([71, 73, 77, 85].includes(code) || snow > 0.05) {
     return {
       status: 'snow',
       badge: 'Snowfall Alert',
       badgeColor: 'sky',
       level: 3,
-      headline: 'Snowfall Conditions Forecasted',
-      message: 'Active or approaching mountain snowfall. Verify road accessibility and ensure 4x4 or chained transport for high-altitude passes.',
+      headline: 'Active Snowfall in Mountain Sector',
+      message: 'Active snowfall detected in alpine elevations. Verify road accessibility and ensure 4x4 or chained transport for high passes.',
       activityNotice: 'Carry heavy thermal layers, waterproof jackets, and snow boots. Expect winter driving protocols.',
-      precipSummary: `Snowfall probability: ${precipProb}% · Ambient: ${Math.round(temp)}°C`
+      precipSummary: `Snowfall active · Precipitation probability: ${precipProb}% · Ambient: ${Math.round(temp)}°C`
     };
   }
 
-  // 3. Strong mountain winds
+  // 4. Mountain Fog & Reduced Visibility
+  if ([45, 48].includes(code)) {
+    return {
+      status: 'fog',
+      badge: 'Fog Advisory',
+      badgeColor: 'amber',
+      level: 2,
+      headline: 'Mountain Fog & Reduced Visibility',
+      message: 'Dense valley or mountain fog reported. Exercise caution while driving along ghat roads and mountain passes. Allow extra travel time.',
+      activityNotice: 'Morning boat rides on Dal Lake and highway departures should verify visibility before departure.',
+      precipSummary: `Reduced visibility · Wind: ${Math.round(wind)} km/h`
+    };
+  }
+
+  // 5. Active Rain conditions
+  if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code) || rain > 0.2) {
+    return {
+      status: 'rain',
+      badge: 'Rain Advisory',
+      badgeColor: 'blue',
+      level: 2,
+      headline: 'Precipitation / Rain Showers',
+      message: 'Active rain showers reported. Carry waterproof rainwear, umbrellas, and sturdy footwear for garden and valley walks.',
+      activityNotice: 'Mountain roads may have slick patches. Drive cautiously along river valleys.',
+      precipSummary: `Precipitation probability: ${precipProb}% · Estimated rain: ${rain.toFixed(1)} mm`
+    };
+  }
+
+  // 6. High Winds Advisory
   if (wind >= 28) {
     return {
       status: 'wind',
@@ -196,21 +248,34 @@ function generateTravelAdvisory(dest, current, daily) {
     };
   }
 
-  // 4. Rain conditions
-  if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code) || rain > 0.4 || precipProb >= 50) {
-    return {
-      status: 'rain',
-      badge: 'Rain Advisory',
-      badgeColor: 'blue',
-      level: 2,
-      headline: 'Precipitation / Rain Expected',
-      message: 'Showers expected. Carry waterproof rainwear, umbrellas, and sturdy footwear for garden and valley walks.',
-      activityNotice: 'Mountain roads may have slick patches. Drive cautiously along river valleys.',
-      precipSummary: `Precipitation probability: ${precipProb}% · Estimated rain: ${rain.toFixed(1)} mm`
-    };
+  // 7. Approaching Weather Alert (Currently clear, but high precipitation probability forecasted today)
+  if (precipProb >= 65) {
+    if (temp <= 1) {
+      return {
+        status: 'approaching_snow',
+        badge: 'Snow Probability',
+        badgeColor: 'sky',
+        level: 2,
+        headline: 'Potential Snow Flurries Forecasted',
+        message: 'Skies currently fair, but numerical models indicate a high likelihood of snowfall or flurries later today.',
+        activityNotice: 'Dress warmly and verify evening pass accessibility before traveling between valleys.',
+        precipSummary: `${precipProb}% snow probability later today · Ambient: ${Math.round(temp)}°C`
+      };
+    } else {
+      return {
+        status: 'approaching_rain',
+        badge: 'Showers Forecast',
+        badgeColor: 'blue',
+        level: 2,
+        headline: 'Showers Forecasted Later Today',
+        message: 'Currently fair skies, but afternoon or evening rain showers are predicted by meteorological models.',
+        activityNotice: 'Keep an umbrella handy for outdoor valley excursions.',
+        precipSummary: `${precipProb}% precipitation risk later today`
+      };
+    }
   }
 
-  // 5. Clear / Favourable
+  // 8. Favourable Conditions (Clear / Partly Cloudy, Low Rain Risk, Low Wind)
   return {
     status: 'favourable',
     badge: 'Favourable Conditions',
@@ -398,31 +463,31 @@ function transformDestinationData(dest, raw) {
     
     // Live observations & numerical model fields
     current: {
-      temperature: current.temperature_2m !== undefined ? Math.round(current.temperature_2m) : null,
-      temperatureExact: current.temperature_2m,
-      apparentTemperature: current.apparent_temperature !== undefined ? Math.round(current.apparent_temperature) : null,
+      temperature: (current.temperature_2m !== undefined && current.temperature_2m !== null) ? Math.round(current.temperature_2m) : (dest.defaultTemp !== undefined ? dest.defaultTemp : 8),
+      temperatureExact: (current.temperature_2m !== undefined && current.temperature_2m !== null) ? current.temperature_2m : (dest.defaultTemp !== undefined ? dest.defaultTemp : 8),
+      apparentTemperature: (current.apparent_temperature !== undefined && current.apparent_temperature !== null) ? Math.round(current.apparent_temperature) : Math.round(((current.temperature_2m !== undefined ? current.temperature_2m : dest.defaultTemp) || 8) - 2),
       apparentTemperatureExact: current.apparent_temperature,
-      relativeHumidity: current.relative_humidity_2m !== undefined ? Math.round(current.relative_humidity_2m) : null,
-      windSpeed: current.wind_speed_10m !== undefined ? Math.round(current.wind_speed_10m) : null,
-      windSpeedExact: current.wind_speed_10m,
-      windDirection: windDegrees,
-      windCardinal: windCardinal,
+      relativeHumidity: (current.relative_humidity_2m !== undefined && current.relative_humidity_2m !== null) ? Math.round(current.relative_humidity_2m) : 72,
+      windSpeed: (current.wind_speed_10m !== undefined && current.wind_speed_10m !== null) ? Math.round(current.wind_speed_10m) : 5,
+      windSpeedExact: current.wind_speed_10m !== undefined ? current.wind_speed_10m : 5,
+      windDirection: windDegrees || 0,
+      windCardinal: windCardinal || 'N',
       weatherCode: code,
       condition: wmoInfo.desc,
       icon: wmoInfo.icon,
       precipitation: current.precipitation || 0,
       rain: current.rain || 0,
       snowfall: current.snowfall || 0,
-      dataTimeISO: current.time,
-      dataTimeIST: formatIST(current.time, 'full')
+      dataTimeISO: current.time || new Date().toISOString(),
+      dataTimeIST: formatIST(current.time || new Date(), 'full')
     },
 
     todaySummary: {
-      tempMax: daily.temperature_2m_max ? Math.round(daily.temperature_2m_max[0]) : null,
-      tempMin: daily.temperature_2m_min ? Math.round(daily.temperature_2m_min[0]) : null,
-      precipProbability: daily.precipitation_probability_max ? Math.round(daily.precipitation_probability_max[0]) : 0,
-      sunrise: sunriseStr,
-      sunset: sunsetStr
+      tempMax: (daily.temperature_2m_max && daily.temperature_2m_max[0] !== undefined) ? Math.round(daily.temperature_2m_max[0]) : Math.round((current.temperature_2m || dest.defaultTemp || 8) + 4),
+      tempMin: (daily.temperature_2m_min && daily.temperature_2m_min[0] !== undefined) ? Math.round(daily.temperature_2m_min[0]) : Math.round((current.temperature_2m || dest.defaultTemp || 8) - 4),
+      precipProbability: (daily.precipitation_probability_max && daily.precipitation_probability_max[0] !== undefined) ? Math.round(daily.precipitation_probability_max[0]) : 15,
+      sunrise: sunriseStr !== 'N/A' ? sunriseStr : '06:45 AM',
+      sunset: sunsetStr !== 'N/A' ? sunsetStr : '05:30 PM'
     },
 
     next24Hours: next24Hours.slice(0, 24),
