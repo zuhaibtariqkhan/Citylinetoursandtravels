@@ -42,12 +42,12 @@
         <div class="bg-brand-offwhite border border-brand-border p-4 rounded-2xl flex flex-wrap items-center gap-4 sm:gap-6">
           <div>
             <span class="text-[11px] text-brand-muted uppercase block">
-              <%= pkg.pricingModel === 'amarnath_yatra' ? 'Starting Package Price (2 Yatris)' : (pkg.pricingModel === 'tulip_festival' ? 'Starting Package Price (2 Travellers)' : (pkg.pricingModel === 'winter_wonderland' ? 'Total Package Price (5 Persons)' : (pkg.pricingModel === 'himalayan_escape' ? 'Starting Package Price (12 Travellers)' : (pkg.pricingModel === 'fixed_couple' ? 'Total Fixed Price (Couple)' : 'Starting Price')))) %>
+              <%= pkg.pricingModel === 'autumn_chinar' ? 'Starting Package Price (2 Persons)' : (pkg.pricingModel === 'amarnath_yatra' ? 'Starting Package Price (2 Yatris)' : (pkg.pricingModel === 'tulip_festival' ? 'Starting Package Price (2 Travellers)' : (pkg.pricingModel === 'winter_wonderland' ? 'Total Package Price (5 Persons)' : (pkg.pricingModel === 'himalayan_escape' ? 'Starting Package Price (12 Travellers)' : (pkg.pricingModel === 'fixed_couple' ? 'Total Fixed Price (Couple)' : 'Starting Price'))))) %>
             </span>
             <div class="font-serif text-2xl font-bold text-brand-blue">
               <%= pkg.startingPriceFormatted %>
             </div>
-            <% if (pkg.price && pkg.pricingModel !== 'fixed_couple' && pkg.pricingModel !== 'winter_wonderland' && pkg.pricingModel !== 'himalayan_escape' && pkg.pricingModel !== 'tulip_festival' && pkg.pricingModel !== 'amarnath_yatra') { %>
+            <% if (pkg.price && pkg.pricingModel !== 'fixed_couple' && pkg.pricingModel !== 'winter_wonderland' && pkg.pricingModel !== 'himalayan_escape' && pkg.pricingModel !== 'tulip_festival' && pkg.pricingModel !== 'amarnath_yatra' && pkg.pricingModel !== 'autumn_chinar') { %>
               <span class="text-[11px] text-brand-muted">/<%= pkg.pricingType || 'person' %></span>
             <% } else if (pkg.pricingModel === 'himalayan_escape') { %>
               <span class="text-[11px] text-brand-muted">for 12 Travellers Base</span>
@@ -55,6 +55,8 @@
               <span class="text-[11px] text-brand-muted">for 2 Travellers Base (₹13,500/person)</span>
             <% } else if (pkg.pricingModel === 'amarnath_yatra') { %>
               <span class="text-[11px] text-brand-muted">for 2 Yatris Base (₹17,500/Yatri)</span>
+            <% } else if (pkg.pricingModel === 'autumn_chinar') { %>
+              <span class="text-[11px] text-brand-muted">for 2 Persons Base (₹33,000/person)</span>
             <% } %>
           </div>
           <div class="border-l border-slate-200 pl-4 sm:pl-6">
@@ -120,13 +122,13 @@
             <div>
               <span class="text-[11px] text-brand-muted uppercase block">Stay</span>
               <span class="font-semibold text-xs sm:text-sm text-brand-navy">
-                <%= (pkg.pricingModel === 'amarnath_yatra') ? 'Deluxe Hotels / Camps' : ((pkg.pricingModel === 'winter_wonderland' || pkg.pricingModel === 'tulip_festival') ? 'Deluxe Room' : (pkg.pricingModel === 'himalayan_escape' ? 'Deluxe Camps & Hotels' : 'Houseboat & Hotel')) %>
+                <%= (pkg.pricingModel === 'amarnath_yatra') ? 'Deluxe Hotels / Camps' : ((pkg.pricingModel === 'autumn_chinar') ? 'Deluxe Room & Houseboat' : ((pkg.pricingModel === 'winter_wonderland' || pkg.pricingModel === 'tulip_festival') ? 'Deluxe Room' : (pkg.pricingModel === 'himalayan_escape' ? 'Deluxe Camps & Hotels' : 'Houseboat & Hotel'))) %>
               </span>
             </div>
             <div>
               <span class="text-[11px] text-brand-muted uppercase block">Vehicle</span>
               <span class="font-semibold text-xs sm:text-sm text-brand-navy">
-                <%= (pkg.pricingModel === 'amarnath_yatra') ? 'Private Vehicle' : (pkg.pricingModel === 'tulip_festival' ? 'Deluxe Sedan' : (pkg.pricingModel === 'winter_wonderland' ? 'Toyota Innova' : (pkg.pricingModel === 'himalayan_escape' ? 'Expedition Fleet' : (pkg.transportation ? (pkg.transportation.includes('Innova') ? 'Toyota Innova' : 'Private Car') : 'Private Dedicated')))) %>
+                <%= (pkg.pricingModel === 'amarnath_yatra') ? 'Private Vehicle' : ((pkg.pricingModel === 'autumn_chinar') ? 'Private Dedicated Vehicle' : (pkg.pricingModel === 'tulip_festival' ? 'Deluxe Sedan' : (pkg.pricingModel === 'winter_wonderland' ? 'Toyota Innova' : (pkg.pricingModel === 'himalayan_escape' ? 'Expedition Fleet' : (pkg.transportation ? (pkg.transportation.includes('Innova') ? 'Toyota Innova' : 'Private Car') : 'Private Dedicated'))))) %>
               </span>
             </div>
             <div>
@@ -172,11 +174,11 @@
               </div>
               <div class="col-span-2 sm:col-span-1">
                 <span class="text-brand-muted block text-[10px] uppercase font-semibold">
-                  <%= (pkg.pricingModel === 'amarnath_yatra' || pkg.pricingModel === 'winter_wonderland' || pkg.pricingModel === 'tulip_festival') ? '3. Starting Package Price' : (pkg.pricingModel === 'himalayan_escape' ? '3. Starting Package Price' : (pkg.pricingModel === 'fixed_couple' ? '3. Fixed Package Price' : '3. Price Per Person')) %>
+                  <%= (pkg.pricingModel === 'autumn_chinar' || pkg.pricingModel === 'amarnath_yatra' || pkg.pricingModel === 'winter_wonderland' || pkg.pricingModel === 'tulip_festival') ? '3. Starting Package Price' : (pkg.pricingModel === 'himalayan_escape' ? '3. Starting Package Price' : (pkg.pricingModel === 'fixed_couple' ? '3. Fixed Package Price' : '3. Price Per Person')) %>
                 </span>
                 <% if (pkg.price && pkg.price > 0) { %>
                   <strong class="text-brand-blue block text-sm">
-                    <%= pkg.startingPriceFormatted %> <span class="text-[10px] font-normal text-brand-muted">/<%= pkg.pricingModel === 'amarnath_yatra' ? '2 yatris base' : (pkg.pricingModel === 'tulip_festival' ? '2 travellers base' : (pkg.pricingModel === 'himalayan_escape' ? '12 travellers base' : (pkg.pricingType || 'person'))) %></span>
+                    <%= pkg.startingPriceFormatted %> <span class="text-[10px] font-normal text-brand-muted">/<%= pkg.pricingModel === 'autumn_chinar' ? '2 persons base' : (pkg.pricingModel === 'amarnath_yatra' ? '2 yatris base' : (pkg.pricingModel === 'tulip_festival' ? '2 travellers base' : (pkg.pricingModel === 'himalayan_escape' ? '12 travellers base' : (pkg.pricingType || 'person')))) %></span>
                   </strong>
                 <% } else { %>
                   <strong class="text-brand-blue block text-xs">Contact us for a personalised quotation.</strong>
@@ -687,6 +689,127 @@
                       <span class="block text-[10px] text-brand-muted uppercase font-semibold">8 Yatris</span>
                       <strong class="block text-brand-navy font-serif text-sm mt-0.5">₹1,40,000</strong>
                       <span class="text-[9px] text-slate-500 block">+₹1,05,000</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            <% } else if (pkg.pricingModel === 'autumn_chinar') { %>
+              <!-- KASHMIR AUTUMN - REAL-TIME PACKAGE PRICE CALCULATOR (Starting 2 Persons) -->
+              <div id="autumnCalculator" class="space-y-6 mb-6">
+                <!-- Group Occupancy Selector (+ / -) -->
+                <div class="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <span class="text-xs font-bold text-brand-navy block uppercase tracking-wider">Number of Travellers</span>
+                    <span class="text-[11px] text-brand-muted block mt-0.5">Base group size: 2 persons (minimum 2) • Dedicated Private Vehicle</span>
+                  </div>
+                  <div class="flex items-center space-x-3 self-start sm:self-auto">
+                    <button type="button" id="autumnMinusBtn" class="w-10 h-10 rounded-xl bg-white border border-brand-border text-brand-navy font-bold hover:bg-slate-100 flex items-center justify-center transition shadow-sm select-none text-base disabled:opacity-40 disabled:cursor-not-allowed">
+                      -
+                    </button>
+                    <span id="autumnPersonsCount" class="font-serif font-bold text-2xl text-brand-navy w-12 text-center">
+                      2
+                    </span>
+                    <button type="button" id="autumnPlusBtn" class="w-10 h-10 rounded-xl bg-white border border-brand-border text-brand-navy font-bold hover:bg-slate-100 flex items-center justify-center transition shadow-sm select-none text-base">
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                <!-- 4-Metric Transparent Pricing Strip -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs">
+                  <div class="bg-brand-offwhite border border-brand-border p-3.5 rounded-xl">
+                    <span class="text-[11px] text-brand-muted block uppercase font-medium">Starting Package Price</span>
+                    <strong class="text-sm text-brand-navy font-bold block mt-1">₹66,000</strong>
+                    <span class="text-[10px] text-brand-blue block mt-0.5">Covers 2 Persons</span>
+                  </div>
+                  <div class="bg-brand-offwhite border border-brand-border p-3.5 rounded-xl">
+                    <span class="text-[11px] text-brand-muted block uppercase font-medium">Base Group Size</span>
+                    <strong class="text-sm text-brand-navy font-bold block mt-1">2 Persons</strong>
+                    <span class="text-[10px] text-slate-500 block mt-0.5">₹33,000 / person</span>
+                  </div>
+                  <div class="bg-brand-offwhite border border-brand-border p-3.5 rounded-xl">
+                    <span class="text-[11px] text-brand-muted block uppercase font-medium">Additional Travellers</span>
+                    <strong class="text-sm text-brand-navy font-bold block mt-1" id="autumnAdditionalCountDisplay">0 Persons</strong>
+                    <span class="text-[10px] text-slate-500 block mt-0.5" id="autumnAdditionalRateText">+₹33,000 / person</span>
+                  </div>
+                  <div class="bg-brand-offwhite border border-brand-border p-3.5 rounded-xl">
+                    <span class="text-[11px] text-brand-muted block uppercase font-medium">Additional Charges</span>
+                    <strong class="text-sm text-brand-navy font-bold block mt-1 text-emerald-700" id="autumnAdditionalChargesDisplay">₹0</strong>
+                    <span class="text-[10px] text-emerald-600 block mt-0.5">Real-time update</span>
+                  </div>
+                </div>
+
+                <!-- Prominent Highlight Total Box -->
+                <div class="bg-gradient-to-r from-brand-navy via-slate-900 to-amber-900 text-white p-6 sm:p-7 rounded-2xl shadow-lg transition-all duration-300">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/15 pb-4 mb-4">
+                    <div>
+                      <span class="text-xs text-amber-300 font-semibold uppercase tracking-wider block">Selected Number of Travellers</span>
+                      <strong class="text-lg text-white font-serif" id="autumnGroupSizeDisplay">2 Persons (Base Group Size)</strong>
+                    </div>
+                    <div class="sm:text-right">
+                      <span class="text-xs text-slate-300 block">Effective Per-Person Price</span>
+                      <strong class="text-lg font-bold text-amber-300" id="autumnPerPersonDisplay">₹33,000 / person</strong>
+                    </div>
+                  </div>
+
+                  <div>
+                    <span class="text-[11px] text-amber-300 font-bold uppercase tracking-wider block mb-1">
+                      TOTAL CALCULATED PACKAGE PRICE
+                    </span>
+                    <div class="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight transition-all duration-200" id="autumnTotalPriceDisplay">
+                      ₹66,000
+                    </div>
+                    <p class="text-xs text-slate-200 mt-2.5 leading-relaxed" id="autumnBreakdownNote">
+                      ✓ Total package price for 2 persons: Base covers 2 persons (₹66,000). Includes 04 Nights / 05 Days Deluxe Room &amp; Houseboat accommodation across Srinagar, Gulmarg &amp; Pahalgam, daily breakfast &amp; dinner, comfortable private dedicated vehicle for all sightseeing &amp; transfers, airport pickup &amp; drop, toll taxes and driver allowances.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Quick Reference Pricing Tier Grid -->
+                <div class="bg-brand-offwhite border border-brand-border rounded-2xl p-4 sm:p-5">
+                  <div class="flex items-center justify-between mb-3">
+                    <h4 class="font-serif text-xs font-bold text-brand-navy uppercase tracking-wider flex items-center space-x-1.5">
+                      <i data-lucide="layers" class="w-3.5 h-3.5 text-brand-blue"></i>
+                      <span>Verified Traveller Pricing Tiers</span>
+                    </h4>
+                    <span class="text-[11px] text-brand-muted">Click any tier to calculate</span>
+                  </div>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 text-center text-xs">
+                    <div class="autumn-tier-card p-2.5 rounded-xl border transition cursor-pointer select-none bg-brand-navy text-white border-brand-navy shadow-sm" data-pax="2">
+                      <span class="block text-[10px] text-slate-200 uppercase font-semibold">2 Persons</span>
+                      <strong class="block text-amber-300 font-serif text-sm mt-0.5">₹66,000</strong>
+                      <span class="text-[9px] text-slate-300 block">Base Price</span>
+                    </div>
+                    <div class="autumn-tier-card p-2.5 rounded-xl border transition cursor-pointer select-none bg-white text-brand-navy border-brand-border hover:border-brand-blue" data-pax="3">
+                      <span class="block text-[10px] text-brand-muted uppercase font-semibold">3 Persons</span>
+                      <strong class="block text-brand-navy font-serif text-sm mt-0.5">₹99,000</strong>
+                      <span class="text-[9px] text-slate-500 block">+₹33,000</span>
+                    </div>
+                    <div class="autumn-tier-card p-2.5 rounded-xl border transition cursor-pointer select-none bg-white text-brand-navy border-brand-border hover:border-brand-blue" data-pax="4">
+                      <span class="block text-[10px] text-brand-muted uppercase font-semibold">4 Persons</span>
+                      <strong class="block text-brand-navy font-serif text-sm mt-0.5">₹1,32,000</strong>
+                      <span class="text-[9px] text-slate-500 block">+₹66,000</span>
+                    </div>
+                    <div class="autumn-tier-card p-2.5 rounded-xl border transition cursor-pointer select-none bg-white text-brand-navy border-brand-border hover:border-brand-blue" data-pax="5">
+                      <span class="block text-[10px] text-brand-muted uppercase font-semibold">5 Persons</span>
+                      <strong class="block text-brand-navy font-serif text-sm mt-0.5">₹1,65,000</strong>
+                      <span class="text-[9px] text-slate-500 block">+₹99,000</span>
+                    </div>
+                    <div class="autumn-tier-card p-2.5 rounded-xl border transition cursor-pointer select-none bg-white text-brand-navy border-brand-border hover:border-brand-blue" data-pax="6">
+                      <span class="block text-[10px] text-brand-muted uppercase font-semibold">6 Persons</span>
+                      <strong class="block text-brand-navy font-serif text-sm mt-0.5">₹1,98,000</strong>
+                      <span class="text-[9px] text-slate-500 block">+₹1,32,000</span>
+                    </div>
+                    <div class="autumn-tier-card p-2.5 rounded-xl border transition cursor-pointer select-none bg-white text-brand-navy border-brand-border hover:border-brand-blue" data-pax="7">
+                      <span class="block text-[10px] text-brand-muted uppercase font-semibold">7 Persons</span>
+                      <strong class="block text-brand-navy font-serif text-sm mt-0.5">₹2,31,000</strong>
+                      <span class="text-[9px] text-slate-500 block">+₹1,65,000</span>
+                    </div>
+                    <div class="autumn-tier-card p-2.5 rounded-xl border transition cursor-pointer select-none bg-white text-brand-navy border-brand-border hover:border-brand-blue" data-pax="8">
+                      <span class="block text-[10px] text-brand-muted uppercase font-semibold">8 Persons</span>
+                      <strong class="block text-brand-navy font-serif text-sm mt-0.5">₹2,64,000</strong>
+                      <span class="text-[9px] text-slate-500 block">+₹1,98,000</span>
                     </div>
                   </div>
                 </div>
@@ -1922,6 +2045,166 @@ Please share Yatra coordination availability, dates, and quotation!`;
         });
 
         updateAmarnathCalc();
+        return;
+      }
+
+      // 1E. Kashmir Autumn - Real-Time Package Price Calculator (Starting 2 Persons)
+      if (model === 'autumn_chinar') {
+        const autumnPersonsCountEl = document.getElementById('autumnPersonsCount');
+        const autumnMinusBtn = document.getElementById('autumnMinusBtn');
+        const autumnPlusBtn = document.getElementById('autumnPlusBtn');
+        const autumnGroupSizeDisplay = document.getElementById('autumnGroupSizeDisplay');
+        const autumnPerPersonDisplay = document.getElementById('autumnPerPersonDisplay');
+        const autumnTotalPriceDisplay = document.getElementById('autumnTotalPriceDisplay');
+        const autumnBreakdownNote = document.getElementById('autumnBreakdownNote');
+        const autumnAdditionalCountDisplay = document.getElementById('autumnAdditionalCountDisplay');
+        const autumnAdditionalChargesDisplay = document.getElementById('autumnAdditionalChargesDisplay');
+        const tierCards = document.querySelectorAll('.autumn-tier-card');
+
+        let autumnTravellers = 2;
+        const BASE_PRICE = 66000;
+        const BASE_PAX = 2;
+        const ADDL_RATE = 33000;
+
+        function calculateAutumnPrice(travellers) {
+          if (travellers < BASE_PAX) return null;
+          const additional = travellers - BASE_PAX;
+          const additionalCharge = additional * ADDL_RATE;
+          const total = BASE_PRICE + additionalCharge;
+          const perPerson = Math.round(total / travellers);
+          return {
+            travellers,
+            additional,
+            additionalCharge,
+            total,
+            perPerson
+          };
+        }
+
+        function updateAutumnCalc() {
+          if (autumnTravellers < BASE_PAX) autumnTravellers = BASE_PAX;
+
+          const calc = calculateAutumnPrice(autumnTravellers);
+          if (!calc) return;
+
+          if (autumnPersonsCountEl) autumnPersonsCountEl.textContent = calc.travellers;
+          if (autumnGroupSizeDisplay) {
+            autumnGroupSizeDisplay.textContent = `${calc.travellers} Persons ${calc.travellers === BASE_PAX ? '(Base Group Size)' : ''}`;
+          }
+          if (autumnAdditionalCountDisplay) {
+            autumnAdditionalCountDisplay.textContent = calc.additional === 0 ? '0 Persons' : `+${calc.additional} ${calc.additional === 1 ? 'Person' : 'Persons'}`;
+          }
+          if (autumnAdditionalChargesDisplay) {
+            autumnAdditionalChargesDisplay.textContent = '₹' + calc.additionalCharge.toLocaleString('en-IN');
+          }
+          if (autumnPerPersonDisplay) {
+            autumnPerPersonDisplay.textContent = `₹${calc.perPerson.toLocaleString('en-IN')} / person`;
+          }
+          if (autumnTotalPriceDisplay) {
+            autumnTotalPriceDisplay.textContent = '₹' + calc.total.toLocaleString('en-IN');
+          }
+          if (autumnBreakdownNote) {
+            autumnBreakdownNote.textContent = `✓ Total package price for ${calc.travellers} persons: Base covers 2 persons (₹66,000)${calc.additional > 0 ? ` plus ₹${calc.additionalCharge.toLocaleString('en-IN')} for ${calc.additional} additional person(s) at ₹33,000/person` : ''}. Includes 04 Nights / 05 Days Deluxe Room & Houseboat accommodation across Srinagar, Gulmarg & Pahalgam, daily breakfast & dinner, comfortable private dedicated vehicle for all sightseeing & transfers, airport pickup & drop, toll taxes and driver allowances.`;
+          }
+
+          // Disable minus button at 2
+          if (autumnMinusBtn) {
+            const atMin = (autumnTravellers <= BASE_PAX);
+            autumnMinusBtn.style.opacity = atMin ? '0.4' : '1';
+            autumnMinusBtn.style.cursor = atMin ? 'not-allowed' : 'pointer';
+            autumnMinusBtn.disabled = atMin;
+          }
+
+          // Highlight matching tier card if within 2-8
+          tierCards.forEach(card => {
+            const cardPax = parseInt(card.getAttribute('data-pax')) || 0;
+            const strongEl = card.querySelector('strong');
+            const topSpan = card.querySelector('span:first-child');
+            const botSpan = card.querySelector('span:last-child');
+
+            if (cardPax === autumnTravellers) {
+              card.classList.add('bg-brand-navy', 'text-white', 'border-brand-navy', 'shadow-sm');
+              card.classList.remove('bg-white', 'text-brand-navy', 'border-brand-border');
+              if (strongEl) strongEl.className = 'block text-amber-300 font-serif text-sm mt-0.5';
+              if (topSpan) topSpan.className = 'block text-[10px] text-slate-200 uppercase font-semibold';
+              if (botSpan) botSpan.className = 'text-[9px] text-slate-300 block';
+            } else {
+              card.classList.remove('bg-brand-navy', 'text-white', 'border-brand-navy', 'shadow-sm');
+              card.classList.add('bg-white', 'text-brand-navy', 'border-brand-border');
+              if (strongEl) strongEl.className = 'block text-brand-navy font-serif text-sm mt-0.5';
+              if (topSpan) topSpan.className = 'block text-[10px] text-brand-muted uppercase font-semibold';
+              if (botSpan) botSpan.className = 'text-[9px] text-slate-500 block';
+            }
+          });
+
+          // WhatsApp enquiry integration
+          if (waBtn) {
+            const waMsg = `Hello City Line Tours And Travels,
+I would like to enquire about "Kashmir Autumn – The Golden Chinar Escape":
+• Package Name: ${title}
+• Travel Duration: ${duration}
+• Route: Srinagar – Gulmarg – Pahalgam – Aharbal – Srinagar
+• Number of Travellers: ${calc.travellers} Persons
+• Starting Package Price: ₹66,000 (covers 2 persons base)
+• Additional Person Charges: ₹${calc.additionalCharge.toLocaleString('en-IN')} (${calc.additional} Additional Person${calc.additional === 1 ? '' : 's'})
+• Total Calculated Package Price: ₹${calc.total.toLocaleString('en-IN')} (₹${calc.perPerson.toLocaleString('en-IN')}/person)
+
+Please share booking availability, autumn season details, and quotation!`;
+            waBtn.href = `https://wa.me/916006725007?text=${encodeURIComponent(waMsg)}`;
+          }
+        }
+
+        autumnMinusBtn?.addEventListener('click', () => {
+          if (autumnTravellers > BASE_PAX) {
+            autumnTravellers--;
+            updateAutumnCalc();
+          }
+        });
+
+        autumnPlusBtn?.addEventListener('click', () => {
+          autumnTravellers++;
+          updateAutumnCalc();
+        });
+
+        tierCards.forEach(card => {
+          card.addEventListener('click', () => {
+            const p = parseInt(card.getAttribute('data-pax'));
+            if (p >= BASE_PAX) {
+              autumnTravellers = p;
+              updateAutumnCalc();
+            }
+          });
+        });
+
+        enquireBtn?.addEventListener('click', () => {
+          const modal = document.getElementById('enquiryModal');
+          if (!modal) return;
+
+          const modalHeading = document.getElementById('modalTargetTitle');
+          const hiddenPkg = document.getElementById('modalPackageTitle');
+          const travellersInput = modal.querySelector('select[name="travellers"], input[name="travellers"]');
+          const messageInput = modal.querySelector('textarea[name="message"]');
+
+          const calc = calculateAutumnPrice(autumnTravellers);
+          const totalStr = '₹' + calc.total.toLocaleString('en-IN');
+          const paxStr = `${calc.travellers} Persons (Golden Autumn)`;
+
+          if (modalHeading) modalHeading.textContent = `Enquire: ${title}`;
+          if (hiddenPkg) hiddenPkg.value = title;
+
+          if (travellersInput) {
+            travellersInput.value = paxStr;
+          }
+
+          if (messageInput) {
+            messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalStr} for ${calc.travellers} travellers for "${title}" (${duration} - Starting Price: ₹66,000 for 2 persons, Additional Charges: ₹${calc.additionalCharge.toLocaleString('en-IN')}). Please share booking availability, autumn foliage updates, and quotation.`;
+          }
+
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+
+        updateAutumnCalc();
         return;
       }
 

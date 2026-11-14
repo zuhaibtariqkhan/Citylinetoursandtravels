@@ -1290,5 +1290,186 @@
     },
     "featured": true,
     "published": true
+  },
+  {
+    "id": "kashmir-autumn-golden-chinar-escape",
+    "slug": "kashmir-autumn-golden-chinar-escape-5d4n",
+    "aliases": [
+      "kashmir-autumn",
+      "kashmir-autumn-golden-chinar",
+      "golden-chinar-escape",
+      "kashmir-autumn-5d4n",
+      "pkg-kashmir-autumn"
+    ],
+    "title": "Kashmir Autumn – The Golden Chinar Escape",
+    "shortTitle": "Kashmir Golden Autumn",
+    "mainHeading": "Kashmir Autumn – The Golden Chinar Escape",
+    "tagline": "Where Your Travel Dreams Take Flight",
+    "additionalTagline": "Respect Every Faith, Embrace Every Journey.",
+    "category": "Seasonal / Autumn",
+    "categoryLabel": "Autumn Special Package",
+    "season": "October – November",
+    "duration": "04 Nights / 05 Days",
+    "durationDays": 5,
+    "durationNights": 4,
+    "route": "Srinagar – Gulmarg – Pahalgam – Aharbal – Srinagar",
+    "destinationsCovered": "Srinagar – Gulmarg – Pahalgam – Aharbal – Srinagar",
+    "destinationCoverage": [
+      "Srinagar",
+      "Gulmarg",
+      "Pahalgam",
+      "Aharbal Waterfall",
+      "Srinagar"
+    ],
+    "tourType": "Family, Couple & Leisure Autumn Escape",
+    "baseOccupancy": 2,
+    "minTravellers": 2,
+    "maxTravellers": 20,
+    "occupancyLabel": "2 Persons (Base Group)",
+    "price": 66000,
+    "basePrice": 66000,
+    "startingPriceFormatted": "₹66,000",
+    "pricePerPerson": 33000,
+    "additionalPersonCharge": 33000,
+    "pricingType": "2 persons base",
+    "pricingModel": "autumn_chinar",
+    "additionalPersonPricing": true,
+    "currency": "INR",
+    "accommodation": "04 Nights / 05 Days in Premium Deluxe Room & Heritage Houseboat across Srinagar, Gulmarg & Pahalgam",
+    "meals": "Daily Breakfast & Dinner at all Hotels and Houseboat",
+    "transportation": "Comfortable Dedicated Private Sanitized Vehicle for all Airport, Sightseeing & Inter-Valley Transfers",
+    "shortDescription": "Experience the golden magic of Kashmir during October and November when the majestic Chinar trees turn fiery shades of crimson, amber, and gold. Explore Srinagar's heritage Mughal gardens, the crisp alpine heights of Gulmarg, the pine-clad valleys of Pahalgam, and the roaring cascade of Aharbal Waterfall.",
+    "fullDescription": "Experience the breathtaking splendour of Kashmir during autumn—the magical season when the entire valley is bathed in shades of amber, bronze, and radiant gold. October and November offer crisp mountain air, mild sunny days, and the spectacular transformation of majestic Chinar trees across Srinagar's historic Mughal gardens.\n\nThis exclusive 5-day itinerary connects Kashmir's most iconic autumn landscapes: the glowing Chinars and tranquil waters of Dal Lake in Srinagar, the golden meadows and snow-dusted ridges of Gulmarg, the whispering pine forests and Lidder River of Pahalgam, the purple saffron harvest of Pampore, and the thunderous, forest-framed cascade of Aharbal Waterfall—widely celebrated as the Niagara of Kashmir.\n\nComplete with premium Deluxe room accommodation, 1 night in a luxury Dal Lake houseboat, daily breakfast and dinner, dedicated private vehicle with an experienced mountain chauffeur, and seamless Srinagar airport pickup and departure transfers.",
+    "featuredImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80",
+      "/images/Expriences/MUGHAL GARDENS.jpeg",
+      "/images/Expriences/DAL LAKE SHIKARA.jpeg",
+      "/images/Expriences/GULMARG GANDOLA.jpeg",
+      "/DESTINATIONS/AHARBAL.jpeg"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "ARRIVAL IN SRINAGAR – GOLDEN CHINAR & MUGHAL GARDENS TOUR",
+        "description": "Pickup from Srinagar International Airport with a warm welcome by our representative. Transfer to hotel for check-in and relaxation. Afternoon tour of Srinagar's world-famous Mughal Gardens during their peak autumn transformation: Nishat Bagh (Garden of Bliss) with century-old Chinars glowing in vibrant rust and crimson, Shalimar Bagh (Abode of Love), Chashme Shahi (Royal Spring), and Pari Mahal (Palace of Fairies) offering panoramic autumn vistas of Dal Lake and the Zabarwan mountain range. Conclude the day with a serene sunset Shikara ride on Dal Lake surrounded by floating gardens and amber reflections.",
+        "places": [
+          "Nishat Bagh (Golden Chinars)",
+          "Shalimar Bagh",
+          "Chashme Shahi",
+          "Pari Mahal",
+          "Dal Lake Sunset Shikara Ride"
+        ],
+        "distance": "Airport to Hotel ~15 KM (30–45 Mins)",
+        "stay": "Deluxe Room in Srinagar",
+        "meals": "Dinner Included"
+      },
+      {
+        "day": 2,
+        "title": "SRINAGAR TO GULMARG – THE MEADOW OF FLOWERS IN AUTUMN",
+        "description": "After breakfast, check out and embark on a scenic drive to Gulmarg (approximately 50 KM / 1.5–2 hours). As you ascend through Tangmarg, admire the hillside pine forests touched by crisp autumn air. Arrive in Gulmarg, check into the hotel, and proceed to the world-renowned Gulmarg Gondola (Asia's highest cable car). Ride Phase 1 to Kongdoori and Phase 2 to Apharwat Peak (13,780 ft) for sweeping panoramic views of the Pir Panjal range and early seasonal snowdusting. Explore the historic St. Mary's Church, Maharani Temple, and the tranquil Gulmarg Golf Course surrounded by golden alpine meadows.",
+        "places": [
+          "Tangmarg Scenic Drive",
+          "Gulmarg Gondola (Phase 1 & 2)",
+          "Apharwat Peak",
+          "St. Mary's Church",
+          "Maharani Temple",
+          "Gulmarg Golf Course"
+        ],
+        "distance": "Approximately 50 KM (1.5–2 Hours)",
+        "stay": "Deluxe Room in Gulmarg",
+        "meals": "Breakfast & Dinner Included"
+      },
+      {
+        "day": 3,
+        "title": "GULMARG TO PAHALGAM VIA PAMPORE SAFFRON BLOSSOMS",
+        "description": "After breakfast, check out and drive towards Pahalgam (approximately 140–150 KM / 4–5 hours). Travel through Kashmir's picturesque countryside. En route, make a special stop at the Saffron Fields of Pampore during the peak October/November saffron harvesting season—witness purple crocus flowers carpeting the plateaus. Continue past the Sangam cricket bat craft workshops and the historic 9th-century Awantipora temple ruins. Arrive in Pahalgam, the Valley of Shepherds, and check into your riverside hotel. Spend the evening strolling along the Lidder River amidst golden pine and deodar forests.",
+        "places": [
+          "Pampore Saffron Fields (Harvest Season)",
+          "Cricket Bat Workshops, Sangam",
+          "Awantipora Ruins",
+          "Lidder River",
+          "Pahalgam Pine Woods"
+        ],
+        "distance": "Approximately 140–150 KM (4–5 Hours)",
+        "stay": "Deluxe Room in Pahalgam",
+        "meals": "Breakfast & Dinner Included"
+      },
+      {
+        "day": 4,
+        "title": "PAHALGAM TO AHARBAL WATERFALL & RETURN TO SRINAGAR",
+        "description": "Enjoy an early breakfast, check out from Pahalgam, and drive towards Aharbal Waterfall (approximately 90 KM / 2.5–3 hours), situated in southern Kashmir's Kulgam district. Drive through scenic rural landscapes and apple orchards during peak autumn apple harvest. Arrive at Aharbal, where the powerful Veshu River roars down a 25-meter sheer granite gorge, earning its reputation as the 'Niagara Falls of Kashmir'. Marvel at the dramatic misty spray set against dense golden pine forests. In the afternoon, return towards Srinagar and check into a luxury Dal Lake heritage houseboat for a traditional Kashmiri dinner.",
+        "places": [
+          "Kulgam Apple Orchards",
+          "Aharbal Waterfall & Granite Gorge",
+          "Veshu River Viewpoints",
+          "Dal Lake Heritage Houseboat"
+        ],
+        "distance": "Approximately 90 KM to Aharbal + 70 KM to Srinagar (4–5 Hours Total Drive)",
+        "stay": "Luxury Heritage Houseboat / Deluxe Hotel in Srinagar",
+        "meals": "Breakfast & Dinner Included"
+      },
+      {
+        "day": 5,
+        "title": "SRINAGAR – SOUVENIR SHOPPING & AIRPORT DEPARTURE",
+        "description": "Wake up to the peaceful morning mist over Dal Lake. Enjoy a traditional breakfast on the houseboat deck. Check out and spend morning hours exploring local artisan craft centers for authentic Kashmiri Pashmina shawls, walnut wood carvings, saffron, and dry fruits. Transfer to Srinagar International Airport at least 2 hours before your scheduled flight. Tour concludes with golden autumn memories of Kashmir!",
+        "stay": "Tour Concludes (Airport Drop)",
+        "meals": "Breakfast Included"
+      }
+    ],
+    "inclusions": [
+      "04 Nights premium accommodation (02 Nights Srinagar Hotel + 01 Night Gulmarg Hotel + 01 Night Pahalgam Hotel + 01 Night Dal Lake Heritage Houseboat).",
+      "Deluxe room category with proper autumn heating amenities at all destinations.",
+      "Comfortable Dedicated Private Sanitized Vehicle for the complete tour itinerary.",
+      "Daily breakfast and dinner prepared fresh at hotels and houseboat.",
+      "01 Hour complimentary Shikara ride on Dal Lake.",
+      "Srinagar Airport pickup and departure transfers.",
+      "All inter-city tolls, mountain road taxes, parking fees, and driver allowances.",
+      "24/7 dedicated local travel coordinator assistance throughout your stay."
+    ],
+    "exclusions": [
+      "Airfare or train tickets to and from Srinagar.",
+      "Gulmarg Gondola tickets (must be booked online via official JKCCC portal).",
+      "Local union taxi / pony charges for interior sightseeing in Pahalgam (Aru, Betaab, Chandanwari).",
+      "Entry tickets to Mughal Gardens and monuments.",
+      "Lunches, personal beverages, snacks, and extra meals.",
+      "Personal expenses, laundry, tips, and shopping.",
+      "Any items or services not explicitly mentioned under package inclusions."
+    ],
+    "importantNotesTitle": "IMPORTANT TRAVEL NOTES — AUTUMN SEASON IN KASHMIR",
+    "importantNotes": [
+      "Autumn in Kashmir (October to November) features crisp sunny daytime temperatures (15°C to 20°C) and chilly night temperatures (2°C to 8°C). Pack medium to heavy woollens, jackets, and thermal wear.",
+      "Chinar foliage transformation peaks from mid-October to mid-November. Colour intensity is a natural phenomenon influenced by seasonal rainfall and temperature.",
+      "Pampore saffron flowers bloom typically from late October through early November; viewing is subject to annual crop cycles.",
+      "Gulmarg Gondola tickets must be booked well in advance through the official JKCCC portal to secure preferred Phase 1 and Phase 2 boarding slots.",
+      "Local sightseeing in Pahalgam (Betaab Valley, Aru, Chandanwari) requires local union vehicles or ponies payable directly by guests."
+    ],
+    "responsibleTourism": {
+      "title": "OUR COMMITMENT — KEEP KASHMIR CLEAN & GREEN",
+      "intro": "Autumn leaves carpet Kashmir's heritage gardens in pristine beauty. We kindly request all travellers to help preserve this fragile Himalayan ecosystem.",
+      "guidelines": [
+        "Do not litter in gardens, streams, or around the Aharbal waterfall gorge.",
+        "Use designated waste receptacles for plastics and packaging.",
+        "Support local saffron farmers and artisans directly by purchasing verified authentic products.",
+        "Respect local Kashmiri customs, heritage monuments, and natural habitats."
+      ],
+      "closingHeading": "CHERISH KASHMIR'S GOLDEN SEASON RESPONSIBLY!",
+      "closingNote": "Thank you for choosing City Line Tours and Travels. Respect Every Faith, Embrace Every Journey.",
+      "closingMessage": "CHERISH KASHMIR'S GOLDEN SEASON RESPONSIBLY!\nThank you for choosing City Line Tours and Travels. Respect Every Faith, Embrace Every Journey."
+    },
+    "contactInfo": {
+      "companyName": "CITY LINE TOURS AND TRAVELS",
+      "tagline": "Where Your Travel Dreams Take Flight",
+      "additionalTagline": "Respect Every Faith, Embrace Every Journey.",
+      "phones": [
+        "6006725007",
+        "99066 76890"
+      ],
+      "email": "citylinetoursandtravels@gmail.com",
+      "location": "Srinagar, Kashmir",
+      "closingMessage": "Thank you for choosing City Line Tours and Travels. Respect Every Faith, Embrace Every Journey."
+    },
+    "featured": true,
+    "published": true
   }
 ]

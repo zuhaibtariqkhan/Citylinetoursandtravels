@@ -91,7 +91,7 @@
                           data-duration="<%= p.duration %>"
                           data-title="<%= p.title %>"
                           data-slug="<%= p.slug %>"
-                          data-min-pax="<%= p.minTravellers || (p.pricingModel === 'himalayan_escape' ? 12 : (p.pricingModel === 'tulip_festival' || p.pricingModel === 'amarnath_yatra' ? 2 : 1)) %>"
+                          data-min-pax="<%= p.minTravellers || (p.pricingModel === 'himalayan_escape' ? 12 : (p.pricingModel === 'tulip_festival' || p.pricingModel === 'amarnath_yatra' || p.pricingModel === 'autumn_chinar' ? 2 : 1)) %>"
                           data-max-pax="<%= p.maxTravellers || 20 %>"
                           data-base-pax="<%= p.baseOccupancy || (p.pricingModel === 'winter_wonderland' ? 5 : (p.pricingModel === 'himalayan_escape' ? 12 : 2)) %>"
                           <%= idx === 0 ? 'selected' : '' %>>
@@ -233,7 +233,7 @@
               <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
                 <div>
                   <span class="text-[10px] text-brand-muted uppercase block">
-                    <%= (pkg.pricingModel === 'winter_wonderland' || pkg.pricingModel === 'fixed_couple' || pkg.pricingModel === 'himalayan_escape' || pkg.pricingModel === 'tulip_festival' || pkg.pricingModel === 'amarnath_yatra') ? 'Total Package Price' : 'Starting From' %>
+                    <%= (pkg.pricingModel === 'winter_wonderland' || pkg.pricingModel === 'fixed_couple' || pkg.pricingModel === 'himalayan_escape' || pkg.pricingModel === 'tulip_festival' || pkg.pricingModel === 'amarnath_yatra' || pkg.pricingModel === 'autumn_chinar') ? 'Total Package Price' : 'Starting From' %>
                   </span>
                   <span class="font-serif text-lg font-bold text-brand-blue">
                     <%= pkg.startingPriceFormatted %>
@@ -346,9 +346,9 @@
             travellers = 2;
           } else if (model === 'himalayan_escape') {
             travellers = 12;
-          } else if (model === 'tulip_festival' || model === 'amarnath_yatra') {
+          } else if (model === 'tulip_festival' || model === 'amarnath_yatra' || model === 'autumn_chinar') {
             travellers = 2;
-          } else if (lastModel === 'winter_wonderland' || lastModel === 'himalayan_escape' || lastModel === 'tulip_festival' || lastModel === 'amarnath_yatra') {
+          } else if (lastModel === 'winter_wonderland' || lastModel === 'himalayan_escape' || lastModel === 'tulip_festival' || lastModel === 'amarnath_yatra' || lastModel === 'autumn_chinar') {
             travellers = basePax || 2;
           }
           lastModel = model;
@@ -556,6 +556,52 @@ Please share Yatra coordination availability, guidelines, and quotation!`;
           return;
         }
 
+        // 1E. Kashmir Autumn – The Golden Chinar Escape (2+ Persons)
+        if (model === 'autumn_chinar') {
+          paxLabel.textContent = 'Persons (Minimum 2 Persons)';
+          paxNote.textContent = 'Starting package covers 2 persons base • Dedicated Private Vehicle';
+
+          if (travellers < 2) travellers = 2;
+          countEl.textContent = travellers;
+
+          const additional = travellers - 2;
+          const additionalCharges = additional * 33000;
+          const total = 66000 + additionalCharges;
+          const perPerson = 33000;
+
+          totalEl.className = 'font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight';
+          totalEl.textContent = '₹' + total.toLocaleString('en-IN');
+          perPersonEl.textContent = `₹${perPerson.toLocaleString('en-IN')} / person • Base Package: ₹66,000 (2 Persons)${additional > 0 ? ` + ₹${additionalCharges.toLocaleString('en-IN')} (${additional} addl)` : ''}`;
+          breakdownEl.textContent = `✓ Total package price for ${travellers} persons: Starting base covers 2 persons (₹66,000)${additional > 0 ? ` plus ₹${additionalCharges.toLocaleString('en-IN')} for ${additional} additional person(s) at ₹33,000/person` : ''}. Includes 04 Nights / 05 Days deluxe accommodation (03 Nights Deluxe Srinagar Room + 01 Night Dal Lake Deluxe Houseboat), daily breakfast & dinner, dedicated private vehicle with English/Hindi-speaking driver for all sightseeing & transfers, 1-hour sunset Shikara ride, toll taxes, parking fees & driver allowances.`;
+
+          if (minusBtn) {
+            const atMin = (travellers <= 2);
+            minusBtn.style.opacity = atMin ? '0.4' : '1';
+            minusBtn.style.cursor = atMin ? 'not-allowed' : 'pointer';
+          }
+          if (plusBtn) {
+            const atMax = (travellers >= maxPax);
+            plusBtn.style.opacity = atMax ? '0.4' : '1';
+            plusBtn.style.cursor = atMax ? 'not-allowed' : 'pointer';
+          }
+
+          if (waBtn) {
+            const msg = `Hello City Line Tours And Travels,
+I would like to enquire about "Kashmir Autumn – The Golden Chinar Escape":
+• Package Name: ${title}
+• Travel Duration: ${duration}
+• Route: Srinagar – Gulmarg – Pahalgam – Aharbal – Srinagar
+• Number of Persons: ${travellers} Persons
+• Starting Package Price: ₹66,000 (covers 2 persons base)
+• Additional Person Charges: ₹${additionalCharges.toLocaleString('en-IN')} (${additional} Additional Person${additional === 1 ? '' : 's'})
+• Total Calculated Package Price: ₹${total.toLocaleString('en-IN')} (₹${perPerson.toLocaleString('en-IN')}/person)
+
+Please share booking availability, autumn season details, and confirmation quotation!`;
+            waBtn.href = `https://wa.me/916006725007?text=${encodeURIComponent(msg)}`;
+          }
+          return;
+        }
+
         // 2. On Request (no pricing configured)
         if (model === 'on_request' || price <= 0) {
           paxLabel.textContent = 'Number of People';
@@ -659,6 +705,8 @@ Please share Yatra coordination availability, guidelines, and quotation!`;
           paxText = `${travellers} Travellers (Tulip Festival)`;
         } else if (model === 'amarnath_yatra') {
           paxText = `${travellers} Yatris (Amarnath Yatra)`;
+        } else if (model === 'autumn_chinar') {
+          paxText = `${travellers} Persons (Golden Autumn)`;
         }
 
         if (travellersInput) {
@@ -682,6 +730,10 @@ Please share Yatra coordination availability, guidelines, and quotation!`;
             const addl = travellers - 2;
             const addlCharge = addl * 17500;
             messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalEl.textContent} for ${travellers} Yatris for "${title}" (${duration} - Starting Price: ₹35,000 for 2 Yatris, Additional Charges: ₹${addlCharge.toLocaleString('en-IN')}). Please share booking availability, Yatra guidelines, and quotation.`;
+          } else if (model === 'autumn_chinar') {
+            const addl = travellers - 2;
+            const addlCharge = addl * 33000;
+            messageInput.value = `Hi City Line Tours, I calculated an estimated total budget of ${totalEl.textContent} for ${travellers} persons for "${title}" (${duration} - Starting Price: ₹66,000 for 2 persons base, Additional Charges: ₹${addlCharge.toLocaleString('en-IN')}). Please share booking availability and quotation.`;
           } else {
             messageInput.value = `Hi City Line Tours, I calculated an estimated budget for "${title}" on your website for ${travellers} travellers (${totalEl.textContent}). Please share the day-wise itinerary and booking confirmation details.`;
           }

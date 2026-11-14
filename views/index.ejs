@@ -629,7 +629,7 @@
 
       <!-- Packages Cards Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 reveal-stagger">
-        <% (featuredPackages.length > 0 ? featuredPackages : allPackages).slice(0, 9).forEach(pkg => { %>
+        <% (featuredPackages.length > 0 ? featuredPackages : allPackages).slice(0, 12).forEach(pkg => { %>
           <div class="bg-white rounded-2xl border border-brand-border overflow-hidden card-hover flex flex-col shadow-sm">
             
             <!-- Image & Category Tag -->
@@ -680,12 +680,12 @@
               <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
                 <div>
                   <span class="text-[10px] text-brand-muted uppercase block">
-                    <%= (pkg.pricingModel === 'winter_wonderland' || pkg.pricingModel === 'fixed_couple' || pkg.pricingModel === 'himalayan_escape' || pkg.pricingModel === 'tulip_festival' || pkg.pricingModel === 'amarnath_yatra') ? 'Total Package' : 'Starting From' %>
+                    <%= (pkg.pricingModel === 'winter_wonderland' || pkg.pricingModel === 'fixed_couple' || pkg.pricingModel === 'himalayan_escape' || pkg.pricingModel === 'tulip_festival' || pkg.pricingModel === 'amarnath_yatra' || pkg.pricingModel === 'autumn_chinar') ? 'Total Package' : 'Starting From' %>
                   </span>
                   <span class="font-serif text-base sm:text-lg font-bold text-brand-blue">
                     <%= pkg.startingPriceFormatted %>
                   </span>
-                  <% if (pkg.price && pkg.pricingModel !== 'fixed_couple' && pkg.pricingModel !== 'winter_wonderland' && pkg.pricingModel !== 'himalayan_escape' && pkg.pricingModel !== 'tulip_festival' && pkg.pricingModel !== 'amarnath_yatra') { %>
+                  <% if (pkg.price && pkg.pricingModel !== 'fixed_couple' && pkg.pricingModel !== 'winter_wonderland' && pkg.pricingModel !== 'himalayan_escape' && pkg.pricingModel !== 'tulip_festival' && pkg.pricingModel !== 'amarnath_yatra' && pkg.pricingModel !== 'autumn_chinar') { %>
                     <span class="text-[10px] text-brand-muted">/ person</span>
                   <% } else if (pkg.pricingModel === 'himalayan_escape') { %>
                     <span class="text-[10px] text-brand-muted">(12 Travellers Base)</span>
@@ -697,6 +697,8 @@
                     <span class="text-[10px] text-brand-muted">(2 Travellers Base)</span>
                   <% } else if (pkg.pricingModel === 'amarnath_yatra') { %>
                     <span class="text-[10px] text-brand-muted">(2 Yatris Base)</span>
+                  <% } else if (pkg.pricingModel === 'autumn_chinar') { %>
+                    <span class="text-[10px] text-brand-muted">(2 Persons Base)</span>
                   <% } %>
                 </div>
 
