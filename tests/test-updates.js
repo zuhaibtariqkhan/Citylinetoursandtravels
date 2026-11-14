@@ -54,24 +54,10 @@ async function run() {
   assert(home.body.includes('Travel With Confidence'), 'Homepage must contain Travel With Confidence');
   console.log('✓ Section 08 (Our Commitment) verified');
 
-  // Testimonials and Customer Photo Carousel check
-  assert(home.body.includes('Memories by Our Travellers'), 'Homepage must contain Memories by Our Travellers heading');
-  assert(home.body.includes('Real journeys, genuine smiles and unforgettable Kashmir memories.'), 'Homepage must contain subtitle');
-  assert(home.body.includes('id="travellerCarouselTrack"'), 'Homepage must contain travellerCarouselTrack');
-  assert(home.body.includes('id="travellerCarouselPrev"'), 'Homepage must contain desktop prev button');
-  assert(home.body.includes('id="travellerCarouselNext"'), 'Homepage must contain desktop next button');
-  assert(home.body.includes('Traveller Photo 01'), 'Homepage must contain placeholder slots');
-
-  // Position check: Testimonials before Carousel before Final CTA
-  const revIdx = home.body.indexOf('id="verifiedReviewsSection"');
-  const carIdx = home.body.indexOf('id="travellerMemoriesSection"');
-  const ctaIdx = home.body.indexOf('id="finalCtaSection"');
-  assert(revIdx !== -1, 'Must contain verifiedReviewsSection');
-  assert(carIdx !== -1, 'Must contain travellerMemoriesSection');
-  assert(ctaIdx !== -1, 'Must contain finalCtaSection');
-  assert(revIdx < carIdx, 'Testimonials must appear before customer photo carousel');
-  assert(carIdx < ctaIdx, 'Customer photo carousel must appear before final CTA');
-  console.log('✓ Carousel position verified immediately after testimonials section');
+  // Customer Photo Carousel removal check
+  assert(!home.body.includes('id="travellerMemoriesSection"'), 'Homepage must NOT contain travellerMemoriesSection after deletion request');
+  assert(!home.body.includes('Memories by Our Travellers'), 'Homepage must NOT contain Memories by Our Travellers heading');
+  console.log('✓ Verified Memories by Our Travellers section deleted from homepage');
 
   // 3. Verify About page
   const about = await fetch('http://localhost:3000/about');
