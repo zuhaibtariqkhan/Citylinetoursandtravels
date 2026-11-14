@@ -59,9 +59,9 @@
     "slug": "kashmiri-bakery-experience",
     "title": "Kashmiri Bakery Experience: Traditional Kandur Culture",
     "location": "Local Bakeries (Kandur Waan) Across Kashmir",
-    "shortDescription": "Visit traditional Kashmiri bakeries, locally known as Kandur Waan, and discover the art of preparing freshly baked Girda, Lavasa, Sheermal, Kulcha and Bakarkhani. Enjoy these delicious breads with traditional pink Noon Chai. Experience the warmth of Kashmiri morning traditions and observe local bakers preparing bread in traditional ovens.",
+    "shortDescription": "Visit traditional Kashmiri bakeries, locally known as Kandur Waan, and discover the art of preparing freshly baked Girda, Lavasa, Sheermal, Kulcha and Bakarkhani. Enjoy these delicious freshly baked breads while experiencing the warmth of Kashmiri morning traditions and observing local bakers preparing bread in traditional ovens.",
     "image": "/EXPERIENCEV2/BAKERY KASHMIRI.jpeg",
-    "tag": "Kandur Waan & Noon Chai",
+    "tag": "Kandur",
     "icon": "croissant"
   },
   {
@@ -228,10 +228,10 @@
     "slug": "sonamarg-river-experience",
     "title": "Sonamarg River Experience: A Peaceful Escape",
     "location": "Sindh River Gorges, Sonamarg",
-    "shortDescription": "Discover Sonamarg’s beautiful rivers and mountain streams through peaceful riverside activities. Enjoy scenic walks, nature photography and relaxing moments surrounded by spectacular Himalayan landscapes. Visitors can also explore permitted trout fishing opportunities where available. Experience the refreshing atmosphere and natural beauty of this magnificent mountain destination.",
+    "shortDescription": "Discover Sonamarg’s beautiful rivers and mountain streams through peaceful riverside activities. Enjoy scenic walks, nature photography and relaxing moments surrounded by spectacular Himalayan landscapes. Experience the refreshing atmosphere and natural beauty of this magnificent mountain destination.",
     "image": "/Experience/SONAMARG RIVER.jpeg",
-    "tag": "Sindh River & Trout Waters",
-    "icon": "fish"
+    "tag": "Sindh River",
+    "icon": "waves"
   },
   {
     "id": "exp-19",

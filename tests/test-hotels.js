@@ -26,7 +26,7 @@ http.get('http://localhost:3000/hotels', (res) => {
       { name: 'Welcomhotel by ITC Hotels, Pine N Peak', loc: 'Aru Road, Pahalgam' },
       { name: 'Mountnoor Sarovar Premiere', loc: 'Sallar Dalseer, Pahalgam' },
       { name: 'The Walnut Creek', loc: 'Dewathoo, Pahalgam' },
-      { name: 'Black Pearl Houseboat', loc: 'Dal Lake, Srinagar' },
+      { name: 'Black Pearl', loc: 'Dal Lake, Srinagar' },
       { name: 'Houseboat Royal Star', loc: 'Gate No. 14, Dal Lake, Gagribal, Srinagar' },
       { name: 'Mascot Houseboats', loc: 'Nigeen Lake, Srinagar' }
     ];
