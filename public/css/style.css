@@ -1286,3 +1286,99 @@ body > section:first-of-type,
     hyphens: manual;
   }
 }
+
+/* ========================================================
+   PREMIUM FULL-PAGE SECTION SCROLLING (CSS SCROLL SNAP)
+   Smooth Viewport Section Alignment (Desktop & Mobile)
+   ======================================================== */
+
+:root {
+  --header-snap-offset: 80px;
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --viewport-height: 100dvh;
+  }
+}
+@supports not (height: 100dvh) {
+  :root {
+    --viewport-height: 100vh;
+  }
+}
+
+/* Document-level CSS Scroll Snap Configuration */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-snap-offset, 80px);
+  scroll-snap-type: y proximity;
+}
+
+/* Major sections targeted for scroll alignment */
+.scroll-snap-section {
+  scroll-snap-align: start;
+  scroll-margin-top: var(--header-snap-offset, 80px);
+  scroll-snap-stop: normal;
+  position: relative;
+}
+
+/* Footer alignment at the bottom */
+footer {
+  scroll-snap-align: end;
+  scroll-snap-stop: normal;
+}
+
+/* Desktop Viewport Alignment: Allows major sections to comfortably occupy full visible viewport */
+@media (min-width: 1024px) {
+  .snap-viewport-fit {
+    min-height: calc(100vh - var(--header-snap-offset, 80px));
+    min-height: calc(var(--viewport-height, 100vh) - var(--header-snap-offset, 80px));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .snap-viewport-fit > div {
+    width: 100%;
+  }
+
+  /* Allow taller content to grow naturally without clipping */
+  .snap-viewport-fit.content-heavy,
+  .snap-viewport-fit:has(> .content-heavy) {
+    min-height: auto;
+    justify-content: flex-start;
+  }
+}
+
+/* Mobile & Tablet Specific Behaviour: Flexible, touch-friendly, no rigid vertical forcing */
+@media (max-width: 1023px) {
+  html {
+    scroll-padding-top: var(--header-snap-offset, 80px);
+    scroll-snap-type: y proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .scroll-snap-section {
+    scroll-snap-align: start;
+    scroll-margin-top: var(--header-snap-offset, 80px);
+    scroll-snap-stop: normal;
+  }
+
+  /* Keep mobile heights natural and flexible to prevent excessive whitespace */
+  .snap-viewport-fit {
+    min-height: auto !important;
+    display: block !important;
+  }
+}
+
+/* Accessibility: Respect user reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+    scroll-snap-type: none !important;
+  }
+  .scroll-snap-section,
+  footer {
+    scroll-snap-align: none !important;
+  }
+}
