@@ -1,0 +1,13 @@
+# LiteSpeed / Apache Node.js Configuration for Hostinger
+<IfModule mod_passenger.c>
+  PassengerAppRoot .
+  PassengerAppType node
+  PassengerStartupFile server.js
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ http://127.0.0.1:3000/$1 [P,L]
+</IfModule>
