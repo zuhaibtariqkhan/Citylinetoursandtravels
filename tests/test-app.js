@@ -68,8 +68,35 @@ async function runTests() {
       if (item.expected === 200 && !res.body.includes('City Line')) {
         throw new Error(`Response body missing brand identifier 'City Line'`);
       }
+      if (item.path === '/') {
+        if (!res.body.includes('quickConsultWhatsAppBtn') || !res.body.includes('quickConsultEmailBtn')) {
+          throw new Error(`Homepage missing Quick Consultation WhatsApp or Email buttons`);
+        }
+      }
+      if (item.path === '/experiences') {
+        if (!res.body.includes('/thevinci.jpeg')) {
+          throw new Error(`Experiences page missing updated Pangong Lake image '/thevinci.jpeg'`);
+        }
+      }
     });
   }
+
+  // Test static thevinci image assets
+  await test('GET /thevinci.jpeg', async () => {
+    const res = await fetchUrl('/thevinci.jpeg');
+    if (res.status !== 200) throw new Error(`Expected 200 but got ${res.status}`);
+    if (!res.headers['content-type'] || !res.headers['content-type'].includes('image')) {
+      throw new Error(`Expected image content-type but got ${res.headers['content-type']}`);
+    }
+  });
+
+  await test('GET /thevinci (extensionless alias)', async () => {
+    const res = await fetchUrl('/thevinci');
+    if (res.status !== 200) throw new Error(`Expected 200 but got ${res.status}`);
+    if (!res.headers['content-type'] || !res.headers['content-type'].includes('image/jpeg')) {
+      throw new Error(`Expected image/jpeg content-type but got ${res.headers['content-type']}`);
+    }
+  });
 
   // 2. Test Customer Enquiry Submission & Email Generation
   await test('POST /api/enquiries (Customer enquiry & mail notification dispatch)', async () => {
@@ -189,6 +216,12 @@ async function runTests() {
     if (mailRes.status !== 200 || !mailRes.body.includes('Email Notifications & Outbox')) {
       throw new Error('Failed to load Admin Email Logs');
     }
+
+    // Cleanup test records
+    const enquiriesFile = path.join(__dirname, '..', 'data', 'enquiries.json');
+    const emailLogsFile = path.join(__dirname, '..', 'data', 'email_logs.json');
+    if (fs.existsSync(enquiriesFile)) fs.writeFileSync(enquiriesFile, '[]', 'utf8');
+    if (fs.existsSync(emailLogsFile)) fs.writeFileSync(emailLogsFile, '[]', 'utf8');
   });
 
   console.log(`--------------------------------------------------`);

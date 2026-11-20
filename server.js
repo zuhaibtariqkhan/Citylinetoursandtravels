@@ -54,6 +54,12 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Direct fallback aliases for static image assets
+app.get(['/thevinci', '/thevinci.jpg'], (req, res) => {
+  res.type('image/jpeg');
+  res.sendFile(path.join(__dirname, 'public', 'thevinci.jpeg'));
+});
+
 // Static assets with 7-day browser cache headers & ETags
 app.use(express.static(path.join(__dirname, 'public'), {
   redirect: false,
@@ -309,7 +315,9 @@ app.post('/api/enquiries', async (req, res) => {
   try {
     const { name, phone, email, destination, packageTitle, travelDate, travellers, duration, budget, travelType, accommodation, message, source } = req.body;
 
-    if (!name || !phone) {
+    const callerName = (name && name.trim()) || (source && source.includes('Quick') ? 'Website Visitor' : null);
+
+    if (!callerName || !phone) {
       if (req.xhr || req.headers.accept?.includes('json')) {
         return res.status(400).json({ success: false, message: 'Please provide both your name and phone number.' });
       }
@@ -318,7 +326,7 @@ app.post('/api/enquiries', async (req, res) => {
 
     // Save enquiry to database
     const newEnquiry = db.createEnquiry({
-      name,
+      name: callerName,
       phone,
       email,
       destination,
